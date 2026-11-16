@@ -40,6 +40,8 @@ export interface LocalizedText {
   title: string;
   summary: string;
   description: string;
+  /** Cancellation & terms in this language; falls back to Activity.cancellationPolicy. */
+  cancellation?: string;
 }
 
 export interface Provider {

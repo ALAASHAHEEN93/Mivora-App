@@ -5,6 +5,24 @@
  */
 import type { Activity, LocalizedText, LanguageCode, Session } from "@/domain/types";
 import { addDays, berlinDate, weekday, TIME_ZONE } from "@/domain/time";
+import { DEMO_POLICIES, DEMO_TRANSLATIONS, type DemoPolicy } from "./demo-translations";
+
+const POLICY_BY_ID: Record<string, DemoPolicy> = { a4: "noSignup", a5: "dropIn", a11: "camp" };
+
+/** Adds the drafted translations and localized cancellation texts to a demo listing. */
+function withTranslations(activity: Activity): Activity {
+  const content = { ...activity.content };
+  for (const [lang, triple] of Object.entries(DEMO_TRANSLATIONS[activity.id] ?? {})) {
+    const code = lang as LanguageCode;
+    if (!content[code] && triple) content[code] = text(...triple);
+  }
+  const policy = DEMO_POLICIES[POLICY_BY_ID[activity.id] ?? "standard"];
+  for (const code of Object.keys(content) as LanguageCode[]) {
+    const c = content[code];
+    if (c) content[code] = { ...c, cancellation: policy[code] };
+  }
+  return { ...activity, content };
+}
 
 /** "+01:00" / "+02:00" for a Berlin calendar date (DST-aware). */
 function berlinOffset(isoDate: string): string {
@@ -70,7 +88,7 @@ export function buildDemoActivities(now: Date = new Date()): Activity[] {
     return { id: `camp-${i}`, startsAt: at(d, "09:00"), endsAt: at(d, "15:00"), status: "scheduled" };
   });
 
-  return [
+  const list: Activity[] = [
     {
       ...base,
       id: "a1",
@@ -375,4 +393,5 @@ export function buildDemoActivities(now: Date = new Date()): Activity[] {
       accent: "coral",
     },
   ];
+  return list.map(withTranslations);
 }

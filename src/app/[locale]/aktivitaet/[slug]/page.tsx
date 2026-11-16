@@ -140,7 +140,7 @@ export default async function ActivityPage({ params }: { params: Params }) {
             <h2 id="cancel" className="mb-2 font-display text-2xl font-bold">
               {t("activity.cancellation")}
             </h2>
-            <p lang="de">{activity.cancellationPolicy}</p>
+            <p lang={text.cancellation ? lang : activity.originalLocale}>{text.cancellation ?? activity.cancellationPolicy}</p>
           </section>
 
           <p className="text-sm text-muted">
@@ -163,7 +163,7 @@ export default async function ActivityPage({ params }: { params: Params }) {
                 {t("activity.openMap")} <Icon name="external" className="size-4" />
               </a>
             </Fact>
-            <Fact label={t("activity.languagesLabel")}>{activity.languages.map((l) => languageName(l, locale)).join(", ")}</Fact>
+            <Fact label={t("activity.languagesLabel")}>{new Intl.ListFormat(locale, { type: "conjunction" }).format(activity.languages.map((l) => languageName(l, locale)))}</Fact>
             <Fact label={t("activity.accessibilityLabel")}>
               {activity.accessibility.length === 0 ? (
                 t("activity.none")
