@@ -11,9 +11,11 @@ import { Icon } from "@/components/Icon";
 import { Mascot } from "@/components/illustrations/Mascot";
 import { WeekStrip } from "@/components/WeekStrip";
 import { Link } from "@/i18n/navigation";
+import { cookies } from "next/headers";
+import { CITY_COOKIE, cityName, findCity } from "@/domain/cities";
 
-/** Listings depend on the current date: regenerate at most every 5 minutes. */
-export const revalidate = 300;
+/** Depends on the chosen city (cookie) and today's date. */
+export const dynamic = "force-dynamic";
 
 const ACCENTS = ["coral", "sunshine", "teal", "lavender"] as const;
 
@@ -52,6 +54,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     activityRepository.search({ category: "holidayCamp" }),
   ]);
 
+  const city = findCity((await cookies()).get(CITY_COOKIE)?.value);
+  const soonCity = city && !city.live ? cityName(city.slug, locale) : null;
+
   return (
     <div className="flex flex-col gap-10">
       <section
@@ -69,6 +74,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <p className="text-sm text-muted">{todayLabel}</p>
           </div>
         </div>
+
+        {soonCity && (
+          <div role="status" className="mt-5 flex items-start gap-3 rounded-3xl bg-surface p-4 shadow-[0_6px_18px_-10px_rgba(42,47,58,0.35)]">
+            <Icon name="pin" className="mt-0.5 size-5 shrink-0 text-primary" />
+            <div>
+              <p className="font-bold">{t("home.citySoonTitle", { city: soonCity })}</p>
+              <p className="text-sm text-muted">{t("home.citySoonText", { city: soonCity, live: cityName("koeln", locale) })}</p>
+            </div>
+          </div>
+        )}
 
         <p className="mt-5 font-display text-3xl font-bold leading-tight md:text-4xl">{t("home.greeting")}</p>
 

@@ -42,7 +42,9 @@
     "goodAfternoon": "Tünaydın!",
     "goodEvening": "İyi akşamlar!",
     "upcoming": "Yaklaşanlar",
-    "pickDay": "Bir gün seç"
+    "pickDay": "Bir gün seç",
+    "citySoonTitle": "Mivora yakında {city} şehrinde",
+    "citySoonText": "Önce {live} ile başlıyoruz. O zamana kadar burada {live} etkinliklerini görürsün."
   },
   "date": {
     "today": "Bugün",
@@ -144,7 +146,8 @@
     "intro": "Çocuk profilli aile hesabı (yalnızca takma ad, doğum yılı ve ilgi alanları) bir sonraki adımda geliyor.",
     "privacyTitle": "Gizlilik",
     "privacyText": "Mümkün olduğunca az veri saklıyoruz. Çocuklarınızın verileri asla herkese açık değildir.",
-    "comingSoon": "Yakında"
+    "comingSoon": "Yakında",
+    "legalTitle": "Yasal bilgiler"
   },
   "footer": {
     "imprint": "Künye (Impressum)",
@@ -172,5 +175,17 @@
     "unplan": "Takvimden kaldır",
     "plannedShort": "Planlandı",
     "dayPlanned": "{count, plural, =0 {plan yok} one {# plan} other {# plan}}"
+  },
+  "welcome": {
+    "title": "Mivora'ya hoş geldin",
+    "subtitle": "Şehrindeki çocuklar için kursları, gezileri ve tatil etkinliklerini keşfet.",
+    "tagline": "Birlikte daha çok deneyim",
+    "cityQuestion": "Hangi şehirde yaşıyorsun?",
+    "cityPlaceholder": "Şehir seç",
+    "cityHint": "Şehri istediğin zaman uygulamanın üst kısmından değiştirebilirsin.",
+    "cityError": "Lütfen listeden bir şehir seç.",
+    "soon": "yakında",
+    "start": "Hadi başlayalım",
+    "changeCity": "Şehri değiştir (şu an: {city})"
   }
 }

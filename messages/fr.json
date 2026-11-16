@@ -42,7 +42,9 @@
     "goodAfternoon": "Bon après-midi !",
     "goodEvening": "Bonsoir !",
     "upcoming": "À venir",
-    "pickDay": "Choisis un jour"
+    "pickDay": "Choisis un jour",
+    "citySoonTitle": "Mivora arrive bientôt à {city}",
+    "citySoonText": "Nous commençons d'abord à {live}. En attendant, tu vois ici des activités à {live}."
   },
   "date": {
     "today": "Aujourd'hui",
@@ -144,7 +146,8 @@
     "intro": "Le compte famille avec profils enfants (surnom, année de naissance et centres d'intérêt uniquement) arrive à l'étape suivante.",
     "privacyTitle": "Confidentialité",
     "privacyText": "Nous stockons le moins de données possible. Les données de vos enfants ne sont jamais publiques.",
-    "comingSoon": "Bientôt"
+    "comingSoon": "Bientôt",
+    "legalTitle": "Mentions légales"
   },
   "footer": {
     "imprint": "Mentions légales",
@@ -172,5 +175,17 @@
     "unplan": "Retirer du calendrier",
     "plannedShort": "Prévu",
     "dayPlanned": "{count, plural, =0 {rien de prévu} one {# prévu} other {# prévus}}"
+  },
+  "welcome": {
+    "title": "Bienvenue sur Mivora",
+    "subtitle": "Découvre des cours, des sorties et des activités de vacances pour enfants dans ta ville.",
+    "tagline": "Plus de moments ensemble",
+    "cityQuestion": "Dans quelle ville habites-tu ?",
+    "cityPlaceholder": "Choisir une ville",
+    "cityHint": "Tu peux changer de ville à tout moment en haut de l'app.",
+    "cityError": "Choisis une ville dans la liste.",
+    "soon": "bientôt",
+    "start": "C'est parti",
+    "changeCity": "Changer de ville (actuelle : {city})"
   }
 }

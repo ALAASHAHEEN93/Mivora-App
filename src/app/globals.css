@@ -104,3 +104,29 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Launch splash: pop the logo in, then fade the whole screen out. */
+@keyframes mv-splash-out {
+  0%, 70% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
+}
+@keyframes mv-splash-pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  60% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); }
+}
+@keyframes mv-bob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -6px; }
+}
+.mv-splash {
+  animation: mv-splash-out 1.6s ease-in forwards;
+  pointer-events: none;
+}
+.mv-splash-logo {
+  animation: mv-splash-pop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mv-splash { animation-duration: 0.6s; }
+  .mv-splash-logo { animation: none; }
+}

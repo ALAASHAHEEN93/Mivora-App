@@ -4,10 +4,7 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, rtlLocales, type Locale } from "@/i18n/routing";
-import { Link } from "@/i18n/navigation";
-import { MainNav } from "@/components/MainNav";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-import { Mascot } from "@/components/illustrations/Mascot";
+import { Splash } from "@/components/Splash";
 import "../globals.css";
 
 const nunito = Nunito({ subsets: ["latin", "latin-ext", "cyrillic"], variable: "--font-nunito", display: "swap" });
@@ -26,10 +23,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: t("description"),
     alternates: { languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}`])) },
     robots: { index: false, follow: false }, // demo build: keep out of search engines
+    applicationName: "Mivora",
+    appleWebApp: { capable: true, title: "Mivora", statusBarStyle: "default" },
+    icons: { icon: "/app-icon/192", apple: "/app-icon/180" },
   };
 }
 
 export const viewport: Viewport = {
+  viewportFit: "cover", // full-screen app layout; safe areas handled with env(safe-area-inset-*)
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffdcc8" },
     { media: "(prefers-color-scheme: dark)", color: "#15171d" },
@@ -60,32 +61,8 @@ export default async function LocaleLayout({
           >
             {t("common.skipToContent")}
           </a>
-          <p role="note" className="bg-sun-400 px-4 py-1.5 text-center text-sm font-bold text-[#1f2430]">
-            {t("common.demoBanner")}
-          </p>
-          <header className="sticky top-0 z-20 bg-[var(--kw-hero)]/90 backdrop-blur md:bg-bg/90">
-            <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-              <Link href="/" className="flex items-center gap-1.5 font-display text-2xl font-bold">
-                <Mascot className="size-9" />
-                Mivora
-              </Link>
-              <MainNav variant="top" />
-              <LanguageSwitcher />
-            </div>
-          </header>
-          <main id="main" className="mx-auto max-w-6xl px-4 pb-28 pt-5 md:pb-16">
-            {children}
-          </main>
-          <footer className="border-t border-line pb-28 md:pb-0">
-            <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-5 gap-y-2 px-4 py-6 text-sm text-muted">
-              <span>© Mivora</span>
-              <span>{t("footer.imprint")}</span>
-              <span>{t("footer.privacy")}</span>
-              <span>{t("footer.terms")}</span>
-              <span className="w-full text-xs">{t("footer.demoNote")}</span>
-            </div>
-          </footer>
-          <MainNav variant="bottom" />
+          <Splash tagline={t("welcome.tagline")} />
+          {children}
         </NextIntlClientProvider>
       </body>
     </html>
