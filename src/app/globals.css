@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+/*
+ * Mivora design tokens.
+ * Semantic tokens switch for dark mode; components only use the semantic names.
+ * Contrast of text/background pairs is checked in src/domain/contrast.test.ts.
+ */
+:root {
+  --kw-bg: #fffbf5;
+  --kw-surface: #ffffff;
+  --kw-ink: #1f2430;
+  --kw-muted: #555b6b;
+  --kw-line: #e9e1d4;
+  --kw-hero: #ffdcc8;
+
+  --kw-primary: #b23a2a; /* coral, deep enough for white text */
+  --kw-on-primary: #ffffff;
+  --kw-focus: #0b6e66;
+
+  --kw-coral-100: #ffe4de;
+  --kw-coral-500: #ff6f5b;
+  --kw-sun-100: #fff1c7;
+  --kw-sun-400: #ffc93c;
+  --kw-teal-100: #d4f2ee;
+  --kw-teal-700: #0b6e66;
+  --kw-lav-100: #ebe6ff;
+  --kw-lav-500: #8f7ce8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --kw-bg: #15171d;
+    --kw-surface: #1f222b;
+    --kw-ink: #f4f1ea;
+    --kw-muted: #b6bac6;
+    --kw-line: #333845;
+    --kw-hero: #4a2a20;
+
+    --kw-primary: #ff8e7d;
+    --kw-on-primary: #1b0f0d;
+    --kw-focus: #6fd8cb;
+
+    --kw-coral-100: #3d2420;
+    --kw-sun-100: #3a3016;
+    --kw-teal-100: #163634;
+    --kw-teal-700: #6fd8cb;
+    --kw-lav-100: #2a2545;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--kw-bg);
+  --color-surface: var(--kw-surface);
+  --color-ink: var(--kw-ink);
+  --color-muted: var(--kw-muted);
+  --color-line: var(--kw-line);
+  --color-primary: var(--kw-primary);
+  --color-on-primary: var(--kw-on-primary);
+  --color-focus: var(--kw-focus);
+  --color-coral-100: var(--kw-coral-100);
+  --color-coral-500: var(--kw-coral-500);
+  --color-sun-100: var(--kw-sun-100);
+  --color-sun-400: var(--kw-sun-400);
+  --color-teal-100: var(--kw-teal-100);
+  --color-teal-700: var(--kw-teal-700);
+  --color-lav-100: var(--kw-lav-100);
+  --color-lav-500: var(--kw-lav-500);
+
+  --font-sans: var(--font-nunito), var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-playfair), var(--font-nunito), var(--font-arabic), Georgia, serif;
+  --radius-card: 1.25rem;
+}
+
+html {
+  background: var(--kw-bg);
+  color: var(--kw-ink);
+}
+
+[dir="rtl"] body {
+  font-family: var(--font-arabic), var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Serif display face has no Arabic glyphs: use the Arabic face for display text in RTL. */
+[dir="rtl"] .font-display {
+  font-family: var(--font-arabic), serif;
+}
+
+body {
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 3px solid var(--kw-focus);
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
