@@ -14,7 +14,7 @@ export default async function AppLayout({ children, params }: { children: React.
 
   return (
     <>
-      <p role="note" className="bg-sun-400 px-4 pb-1 pt-[max(0.25rem,env(safe-area-inset-top))] text-center text-xs font-bold text-[#1f2430]">
+      <p role="note" className="bg-sun-400 px-4 pb-1 pt-[max(0.25rem,env(safe-area-inset-top))] text-center text-xs font-bold text-[#1d3557]">
         {t("common.demoBanner")}
       </p>
       <header className="sticky top-0 z-20 bg-[var(--kw-hero)]/90 backdrop-blur md:bg-bg/90">

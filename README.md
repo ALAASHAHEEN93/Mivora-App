@@ -39,6 +39,13 @@ pnpm dev
 ```
 `pnpm db:studio` opens a table browser. The seed refuses to run against a non-local host.
 
+**Family accounts** (needs the database): sign-in is an emailed 6-digit code. In development every email lands in Mailpit at http://localhost:8025 (started by `pnpm db:up`). Account tests run against a separate database:
+```bash
+docker compose exec db psql -U mivora -c "create database mivora_test;"
+DATABASE_URL=postgresql://mivora:mivora_local_only@127.0.0.1:5432/mivora_test pnpm prisma migrate deploy
+TEST_DATABASE_URL=postgresql://mivora:mivora_local_only@127.0.0.1:5432/mivora_test pnpm test
+```
+
 ## Structure
 ```
 messages/            UI strings per locale (de is the source; missing keys fall back to de)

@@ -6,47 +6,47 @@
  * Contrast of text/background pairs is checked in src/domain/contrast.test.ts.
  */
 :root {
-  --kw-bg: #fff8ee;
+  --kw-bg: #f1faee; /* mint white */
   --kw-surface: #ffffff;
-  --kw-ink: #2a1e14;
-  --kw-muted: #6b5644;
-  --kw-line: #f1e3cf;
-  --kw-hero: #ffd9a8;
+  --kw-ink: #1d3557; /* navy */
+  --kw-muted: #4a5d73;
+  --kw-line: #d7e8e4;
+  --kw-hero: #a8dadc; /* aqua */
 
-  --kw-primary: #ff7a1a; /* sunny orange: fills (buttons, active tab) with dark text */
-  --kw-on-primary: #2a1608;
-  --kw-accent: #b34700; /* deeper orange for text and icons on light surfaces */
-  --kw-focus: #0b5f8f;
+  --kw-primary: #457b9d; /* steel blue: buttons, active tab (white text 4.6:1) */
+  --kw-on-primary: #ffffff;
+  --kw-accent: #34627f; /* steel blue, deepened for links on mint */
+  --kw-focus: #1d3557;
 
-  --kw-coral-100: #ffe7d1;
-  --kw-coral-500: #ff7a1a;
-  --kw-sun-100: #fff1c2;
-  --kw-sun-400: #ffc21a;
-  --kw-teal-100: #d6f0ff; /* sky */
-  --kw-teal-700: #0b5f8f;
-  --kw-lav-100: #eee8ff;
-  --kw-lav-500: #8f7ce8;
+  --kw-coral-100: #f6eed6; /* gold tint */
+  --kw-coral-500: #d9bf77; /* gold */
+  --kw-sun-100: #f6eed6;
+  --kw-sun-400: #d9bf77;
+  --kw-teal-100: #ddf0f0; /* aqua tint */
+  --kw-teal-700: #34627f;
+  --kw-lav-100: #e3ecf3;
+  --kw-lav-500: #457b9d;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --kw-bg: #16130f;
-    --kw-surface: #221d17;
-    --kw-ink: #f7efe6;
-    --kw-muted: #c2b4a5;
-    --kw-line: #3a3128;
-    --kw-hero: #4a2a10;
+    --kw-bg: #0f1c2e;
+    --kw-surface: #172a42;
+    --kw-ink: #f1faee;
+    --kw-muted: #b6c6d3;
+    --kw-line: #2a3f5a;
+    --kw-hero: #1d3557;
 
-    --kw-primary: #ff9a4d;
-    --kw-on-primary: #1b0d02;
-    --kw-accent: #ffb067;
-    --kw-focus: #7cc8f2;
+    --kw-primary: #a8dadc;
+    --kw-on-primary: #0f1c2e;
+    --kw-accent: #a8dadc;
+    --kw-focus: #d9bf77;
 
-    --kw-coral-100: #3d2414;
-    --kw-sun-100: #3a3016;
-    --kw-teal-100: #13303f;
-    --kw-teal-700: #7cc8f2;
-    --kw-lav-100: #2a2545;
+    --kw-coral-100: #3a321c;
+    --kw-sun-100: #3a321c;
+    --kw-teal-100: #18363d;
+    --kw-teal-700: #a8dadc;
+    --kw-lav-100: #1f3150;
   }
 }
 
@@ -132,4 +132,53 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .mv-splash { animation-duration: 0.6s; }
   .mv-splash-logo { animation: none; }
+}
+@keyframes mv-nudge {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 4px 0; }
+}
+[dir="rtl"] .motion-safe\:animate-\[mv-nudge_1\.6s_ease-in-out_2\] { animation-direction: reverse; }
+
+/* ---------- Playful motion (all disabled with prefers-reduced-motion) ---------- */
+@keyframes mv-pop-in {
+  0% { opacity: 0; transform: scale(0.4) translateY(12px); }
+  60% { opacity: 1; transform: scale(1.12) translateY(-2px); }
+  100% { transform: scale(1) translateY(0); }
+}
+@keyframes mv-wiggle {
+  0%, 100% { rotate: 0deg; }
+  25% { rotate: -10deg; }
+  50% { rotate: 8deg; }
+  75% { rotate: -4deg; }
+}
+@keyframes mv-heart-pop {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.45); }
+  60% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+@keyframes mv-tab-bounce {
+  0% { transform: translateY(0) scale(1); }
+  40% { transform: translateY(-6px) scale(1.08); }
+  70% { transform: translateY(1px) scale(0.97); }
+  100% { transform: translateY(0) scale(1); }
+}
+@keyframes mv-blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+@keyframes mv-hop {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mv-pop-in { animation: mv-pop-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both; animation-delay: calc(var(--i, 0) * 60ms); }
+  .mv-wiggle-on-touch:hover .mv-wiggle-target,
+  .mv-wiggle-on-touch:active .mv-wiggle-target { animation: mv-wiggle 0.5s ease-in-out; }
+  [aria-pressed="true"] .mv-heart { animation: mv-heart-pop 0.45s ease-out; }
+  [aria-current="page"] .mv-tab-icon { animation: mv-tab-bounce 0.5s ease-out; }
+  .mv-blink { transform-box: fill-box; transform-origin: center; animation: mv-blink 4.5s infinite; }
+  .mv-hop { animation: mv-hop 1.8s ease-in-out infinite; animation-delay: calc(var(--i, 0) * 220ms); }
+  .mv-press { transition: transform 0.15s ease; }
+  .mv-press:active { transform: scale(0.97); }
 }

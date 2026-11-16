@@ -32,8 +32,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export const viewport: Viewport = {
   viewportFit: "cover", // full-screen app layout; safe areas handled with env(safe-area-inset-*)
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffd9a8" },
-    { media: "(prefers-color-scheme: dark)", color: "#16130f" },
+    { media: "(prefers-color-scheme: light)", color: "#a8dadc" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f1c2e" },
   ],
 };
 

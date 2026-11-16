@@ -5,7 +5,8 @@ import type { ActivityResult } from "@/domain/filters";
 import { intlLocale } from "@/domain/format";
 import { TIME_ZONE } from "@/domain/time";
 import { ActivityCard } from "@/components/ActivityCard";
-import { Artwork } from "@/components/Artwork";
+import { CategoryIcon } from "@/components/CategoryIcon";
+import { ScrollRow } from "@/components/ScrollRow";
 import { ChipLink, SectionHeader } from "@/components/ui";
 import { Icon } from "@/components/Icon";
 import { Mascot } from "@/components/illustrations/Mascot";
@@ -17,7 +18,8 @@ import { CITY_COOKIE, cityName, findCity } from "@/domain/cities";
 /** Depends on the chosen city (cookie) and today's date. */
 export const dynamic = "force-dynamic";
 
-const ACCENTS = ["coral", "sunshine", "teal", "lavender"] as const;
+/** Palette bubbles behind the category icons: aqua, gold, light steel, gold tint, aqua tint. */
+const BUBBLES = ["bg-[#a8dadc]", "bg-[#d9bf77]", "bg-[#c9dce8]", "bg-[#f6eed6]", "bg-[#ddf0f0]"];
 
 function Rail({ items, empty }: { items: ActivityResult[]; empty: string }) {
   if (items.length === 0) return <p className="text-muted">{empty}</p>;
@@ -96,7 +98,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             name="q"
             type="search"
             placeholder={t("home.searchPlaceholder")}
-            className="min-h-13 w-full rounded-full border-0 bg-surface px-5 text-base shadow-[0_6px_20px_-10px_rgba(42,47,58,0.4)] placeholder:text-muted focus:outline-none focus-visible:ring-4 focus-visible:ring-[#ffb067]"
+            className="min-h-13 w-full rounded-full border-0 bg-surface px-5 text-base shadow-[0_6px_20px_-10px_rgba(42,47,58,0.4)] placeholder:text-muted focus:outline-none focus-visible:ring-4 focus-visible:ring-[#457b9d]"
           />
           <button type="submit" className="grid min-h-13 min-w-13 place-items-center rounded-full bg-primary text-on-primary shadow-md">
             <Icon name="search" />
@@ -125,22 +127,30 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       <section aria-labelledby="cats">
-        <h2 id="cats" className="mb-4 font-display text-2xl font-bold">
-          {t("home.categories")}
-        </h2>
-        <ul className="-mx-4 flex snap-x gap-3 overflow-x-auto px-4 pb-3 md:mx-0 md:grid md:grid-cols-5 md:overflow-visible md:px-0">
+        <div className="mb-3 flex items-end justify-between gap-4">
+          <h2 id="cats" className="font-display text-2xl font-bold md:text-3xl">
+            {t("home.categories")}
+          </h2>
+          <Link href="/entdecken" className="shrink-0 font-bold underline decoration-2 underline-offset-4 hover:text-accent">
+            {t("home.seeAll")}
+          </Link>
+        </div>
+        {/* Mobile: swipeable row. The 5th bubble is cut off and the end edge fades, so it reads as "more this way". */}
+        <ScrollRow className="flex snap-x snap-mandatory scroll-px-4 gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none] md:flex-wrap md:justify-between md:overflow-visible md:px-0 [&::-webkit-scrollbar]:hidden">
           {CATEGORY_SLUGS.map((c, i) => (
-            <li key={c} className="w-36 shrink-0 snap-start md:w-auto">
+            <li key={c} className="mv-pop-in w-[4.5rem] shrink-0 snap-start md:w-[5.25rem]" style={{ "--i": i } as React.CSSProperties}>
               <Link
                 href={{ pathname: "/entdecken", query: { kategorie: c } }}
-                className="group block overflow-hidden rounded-3xl bg-surface shadow-[0_6px_18px_-10px_rgba(42,47,58,0.35)] transition hover:-translate-y-1"
+                className="mv-wiggle-on-touch group flex flex-col items-center gap-1.5 rounded-2xl py-1 text-center"
               >
-                <Artwork accent={ACCENTS[i % ACCENTS.length]!} category={c} className="aspect-square w-full transition duration-500 group-hover:scale-110" />
-                <span className="block px-3 py-2.5 text-center text-sm font-extrabold">{t(`categories.${c}`)}</span>
+                <span className={`grid size-16 place-items-center rounded-full text-[#1d3557] shadow-[0_6px_16px_-10px_rgba(36,48,77,0.5)] transition group-hover:-translate-y-0.5 group-active:scale-95 ${BUBBLES[i % BUBBLES.length]}`}>
+                  <CategoryIcon category={c} className="mv-wiggle-target size-7" />
+                </span>
+                <span className="line-clamp-2 text-xs font-bold leading-tight">{t(`categories.${c}`)}</span>
               </Link>
             </li>
           ))}
-        </ul>
+        </ScrollRow>
       </section>
 
       <section>

@@ -111,3 +111,57 @@ model Session {
   @@index([activityId, startsAt])
   @@index([startsAt])
 }
+
+// ---------- Accounts & family (step 6) ----------
+// Data minimisation: we store the parent's email and, per child, only an optional
+// nickname, birth year and interests. No full names, birthdays, photos or health data.
+
+model User {
+  id        String        @id @default(cuid())
+  email     String        @unique // stored lower-case
+  locale    String        @default("de")
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  sessions  AuthSession[]
+  children  Child[]
+}
+
+/// One-time sign-in code sent by email. Only an HMAC of the code is stored.
+model LoginCode {
+  id        String    @id @default(cuid())
+  email     String
+  codeHash  String
+  attempts  Int       @default(0)
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([email, createdAt])
+}
+
+/// Signed-in device. Only a SHA-256 of the session token is stored.
+model AuthSession {
+  id         String   @id @default(cuid())
+  tokenHash  String   @unique
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  lastSeenAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model Child {
+  id        String   @id @default(cuid())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  nickname  String? // optional, max 30 chars
+  birthYear Int
+  interests String[] // category slugs
+  color     String   @default("orange")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}

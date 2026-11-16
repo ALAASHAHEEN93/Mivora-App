@@ -23,7 +23,7 @@ export function WeekStrip({ locale, now, selected, label }: { locale: string; no
                 aria-current={isActive ? "date" : undefined}
                 className={`flex min-h-16 flex-col items-center justify-center rounded-full py-2 transition ${
                   isActive
-                    ? "bg-surface text-ink shadow-[0_8px_20px_-8px_rgba(255,122,26,0.55)] ring-2 ring-[#ffb067]"
+                    ? "bg-surface text-ink shadow-[0_8px_20px_-8px_rgba(69,123,157,0.45)] ring-2 ring-[#457b9d]"
                     : "text-muted hover:bg-surface/70"
                 }`}
               >

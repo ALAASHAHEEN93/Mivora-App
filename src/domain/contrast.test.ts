@@ -29,7 +29,6 @@ const PAIRS: [string, string][] = [
   ["accent", "bg"],
   ["accent", "surface"],
   ["accent", "coral-100"],
-  ["on-primary", "coral-500"],
   ["ink", "coral-100"],
   ["ink", "sun-100"],
   ["ink", "teal-100"],
@@ -44,7 +43,10 @@ describe("colour contrast (WCAG AA, 4.5:1 for body text)", () => {
       expect(contrast(theme[fg]!, theme[bg]!)).toBeGreaterThanOrEqual(4.5);
     });
   }
+  it("palette pills (aqua, gold) always use fixed navy text", () => {
+    for (const bg of ["#a8dadc", "#d9bf77", "#c9dce8", light["coral-500"]!]) expect(contrast("#1d3557", bg)).toBeGreaterThanOrEqual(4.5);
+  });
   it("demo banner: ink on sunshine", () => {
-    expect(contrast("#2a1608", light["sun-400"]!)).toBeGreaterThanOrEqual(4.5);
+    expect(contrast("#1d3557", light["sun-400"]!)).toBeGreaterThanOrEqual(4.5);
   });
 });

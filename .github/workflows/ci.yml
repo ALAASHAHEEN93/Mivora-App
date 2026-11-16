@@ -11,6 +11,18 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: mivora
+          POSTGRES_PASSWORD: ci_only
+          POSTGRES_DB: mivora_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U mivora" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      TEST_DATABASE_URL: postgresql://mivora:ci_only@localhost:5432/mivora_test
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -19,6 +31,10 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - name: Migrate test database
+        run: pnpm prisma migrate deploy
+        env:
+          DATABASE_URL: ${{ env.TEST_DATABASE_URL }}
       - run: pnpm typecheck
       - run: pnpm test
       - run: pnpm build

@@ -124,7 +124,7 @@ export function Calendar({ activities, today, nowIso }: { activities: Activity[]
         aria-label={`${fmt({ weekday: "long", day: "numeric", month: "long" }).format(asDate(day))}, ${t("dayPlanned", { count: n })}`}
         className={`flex aspect-square w-full flex-col items-center justify-center gap-0.5 rounded-full text-base font-bold transition ${
           active
-            ? "bg-primary text-on-primary shadow-[0_8px_18px_-6px_rgba(229,82,63,0.9)]"
+            ? "bg-primary text-on-primary shadow-[0_8px_18px_-6px_rgba(69,123,157,0.7)]"
             : `bg-surface shadow-[0_3px_10px_-6px_rgba(42,47,58,0.35)] hover:-translate-y-0.5 ${past ? "text-muted" : ""}`
         } ${isToday && !active ? "ring-2 ring-accent" : ""}`}
       >
