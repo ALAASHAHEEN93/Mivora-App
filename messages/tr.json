@@ -128,7 +128,8 @@
     "notTranslated": "Bu açıklama henüz sizin dilinizde yok.",
     "addToWeek": "Haftama ekle",
     "back": "Geri",
-    "notFound": "Bu etkinlik artık mevcut değil."
+    "notFound": "Bu etkinlik artık mevcut değil.",
+    "photoCredit": "Fotoğraf: {name} / Unsplash"
   },
   "saved": {
     "title": "Kaydedilenler",

@@ -6,6 +6,7 @@
 import type { Activity, LocalizedText, LanguageCode, Session } from "@/domain/types";
 import { addDays, berlinDate, weekday, TIME_ZONE } from "@/domain/time";
 import { DEMO_POLICIES, DEMO_TRANSLATIONS, type DemoPolicy } from "./demo-translations";
+import { DEMO_PHOTOS } from "./demo-photos";
 
 const POLICY_BY_ID: Record<string, DemoPolicy> = { a4: "noSignup", a5: "dropIn", a11: "camp" };
 
@@ -21,7 +22,7 @@ function withTranslations(activity: Activity): Activity {
     const c = content[code];
     if (c) content[code] = { ...c, cancellation: policy[code] };
   }
-  return { ...activity, content };
+  return { ...activity, content, photo: DEMO_PHOTOS[activity.id] };
 }
 
 /** "+01:00" / "+02:00" for a Berlin calendar date (DST-aware). */

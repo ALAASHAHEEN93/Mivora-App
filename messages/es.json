@@ -128,7 +128,8 @@
     "notTranslated": "Esta descripción aún no está disponible en tu idioma.",
     "addToWeek": "Añadir a mi semana",
     "back": "Volver",
-    "notFound": "Esta actividad ya no está disponible."
+    "notFound": "Esta actividad ya no está disponible.",
+    "photoCredit": "Foto: {name} / Unsplash"
   },
   "saved": {
     "title": "Guardados",

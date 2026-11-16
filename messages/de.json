@@ -128,7 +128,8 @@
     "notTranslated": "Diese Beschreibung gibt es noch nicht in deiner Sprache.",
     "addToWeek": "Zu meiner Woche",
     "back": "Zurück",
-    "notFound": "Dieses Angebot ist nicht mehr verfügbar."
+    "notFound": "Dieses Angebot ist nicht mehr verfügbar.",
+    "photoCredit": "Foto: {name} / Unsplash"
   },
   "saved": {
     "title": "Gemerkt",

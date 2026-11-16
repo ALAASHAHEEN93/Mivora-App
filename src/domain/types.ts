@@ -60,6 +60,14 @@ export interface Venue {
   lng: number;
 }
 
+export interface Photo {
+  src: string;
+  /** Photographer / rights holder, shown on the detail page. */
+  credit: string;
+  sourceUrl: string;
+  license: "unsplash" | "provider";
+}
+
 export interface Activity {
   id: string;
   slug: string;
@@ -85,6 +93,7 @@ export interface Activity {
   source: { type: SourceType; reference: string };
   lastVerifiedAt: string;
   expiresAt: string;
-  /** Hue used for the placeholder illustration until real photos exist. */
+  photo?: Photo;
+  /** Hue used for the illustration when there is no photo. */
   accent: "coral" | "sunshine" | "teal" | "lavender";
 }

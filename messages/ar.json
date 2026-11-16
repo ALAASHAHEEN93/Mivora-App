@@ -128,7 +128,8 @@
     "notTranslated": "هذا الوصف غير متوفر بلغتك بعد.",
     "addToWeek": "إضافة إلى أسبوعي",
     "back": "رجوع",
-    "notFound": "هذا النشاط لم يعد متاحًا."
+    "notFound": "هذا النشاط لم يعد متاحًا.",
+    "photoCredit": "الصورة: {name} / Unsplash"
   },
   "saved": {
     "title": "المحفوظات",

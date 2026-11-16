@@ -4,7 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { activityRepository } from "@/data/repository";
 import { formatDate, formatSessionStart, formatTime } from "@/domain/format";
 import { languageName, pickContent } from "@/domain/localize";
-import { Artwork } from "@/components/Artwork";
+import { ListingPicture } from "@/components/ListingPicture";
 import { PriceTag } from "@/components/PriceTag";
 import { SaveButton } from "@/components/SaveButton";
 import { PlanButton } from "@/components/PlanButton";
@@ -75,7 +75,7 @@ export default async function ActivityPage({ params }: { params: Params }) {
       </Link>
 
       <div className="overflow-hidden rounded-[2rem] shadow-[0_14px_36px_-16px_rgba(42,47,58,0.45)]">
-        <Artwork accent={activity.accent} category={activity.categories[0]!} />
+        <ListingPicture activity={activity} priority sizes="(min-width: 1024px) 64rem, 100vw" className="aspect-[16/9] w-full" />
       </div>
 
       <header className="flex flex-col gap-3">
@@ -146,6 +146,14 @@ export default async function ActivityPage({ params }: { params: Params }) {
           <p className="text-sm text-muted">
             {t("activity.source")}: {activity.source.type === "demo" ? t("activity.sourceDemo") : activity.source.reference} ·{" "}
             {t("activity.lastChecked", { date: formatDate(activity.lastVerifiedAt, locale) })}
+            {activity.photo && (
+              <>
+                {" · "}
+                <a href={activity.photo.sourceUrl} rel="noopener noreferrer" target="_blank" className="underline hover:text-ink">
+                  {t("activity.photoCredit", { name: activity.photo.credit })}
+                </a>
+              </>
+            )}
           </p>
         </div>
 

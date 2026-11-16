@@ -19,7 +19,7 @@ import { formatTime, intlLocale } from "@/domain/format";
 import { pickContent } from "@/domain/localize";
 import { usePlanned } from "@/components/saved-store";
 import { ActivityCard } from "@/components/ActivityCard";
-import { Artwork } from "@/components/Artwork";
+import { ListingPicture } from "@/components/ListingPicture";
 import { PlanButton } from "@/components/PlanButton";
 import { Icon } from "@/components/Icon";
 import { Link } from "@/i18n/navigation";
@@ -264,7 +264,7 @@ export function Calendar({ activities, today, nowIso }: { activities: Activity[]
                     key={encodePlanned(p)}
                     className={`flex items-stretch overflow-hidden rounded-3xl bg-surface shadow-[0_8px_24px_-14px_rgba(42,47,58,0.45)] ${clash ? "ring-2 ring-[#e5523f]" : ""}`}
                   >
-                    <Artwork accent={a.accent} category={a.categories[0]!} className="aspect-square w-24 shrink-0 sm:w-28" />
+                    <ListingPicture activity={a} sizes="112px" className="aspect-square w-24 shrink-0 sm:w-28" />
                     <div className="flex min-w-0 flex-1 flex-col justify-center gap-1 px-4 py-3">
                       <p className="text-sm font-bold text-primary">
                         {formatTime(p.startsAt, locale)} – {formatTime(p.endsAt, locale)}

@@ -12,6 +12,10 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  images: {
+    // Demo listing photos (Unsplash License). Provider uploads will get their own host later.
+    remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com", pathname: "/photo-*" }],
+  },
   // Lets `pnpm build:check` build next to a running dev server without clobbering .next
   distDir: process.env.NEXT_DIST_DIR || ".next",
   async headers() {

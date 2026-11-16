@@ -128,7 +128,8 @@
     "notTranslated": "Ten opis nie jest jeszcze dostępny w Twoim języku.",
     "addToWeek": "Do mojego tygodnia",
     "back": "Wstecz",
-    "notFound": "Ta oferta nie jest już dostępna."
+    "notFound": "Ta oferta nie jest już dostępna.",
+    "photoCredit": "Zdjęcie: {name} / Unsplash"
   },
   "saved": {
     "title": "Zapisane",

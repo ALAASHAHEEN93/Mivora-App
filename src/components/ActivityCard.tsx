@@ -5,7 +5,7 @@ import { formatSessionStart, priceAmount } from "@/domain/format";
 import { pickContent } from "@/domain/localize";
 import { Icon } from "./Icon";
 import { SaveButton } from "./SaveButton";
-import { Artwork } from "./Artwork";
+import { ListingPicture } from "./ListingPicture";
 
 /** Picture card: illustration fills the card, title and date sit on a dark gradient for contrast. */
 export function ActivityCard({
@@ -24,9 +24,9 @@ export function ActivityCard({
 
   return (
     <article className="group relative overflow-hidden rounded-[1.75rem] bg-surface shadow-[0_10px_30px_-12px_rgba(42,47,58,0.35)] transition hover:-translate-y-1">
-      <Artwork
-        accent={activity.accent}
-        category={activity.categories[0]!}
+      <ListingPicture
+        activity={activity}
+        sizes={size === "lg" ? "(min-width: 768px) 50vw, 90vw" : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 90vw"}
         className={`w-full transition duration-500 group-hover:scale-105 ${size === "lg" ? "aspect-[16/10]" : "aspect-[4/3]"}`}
       />
 
