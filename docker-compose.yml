@@ -1,0 +1,14 @@
+# Local development database only. Not for production.
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: mivora
+      POSTGRES_PASSWORD: mivora_local_only
+      POSTGRES_DB: mivora
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - mivora-db:/var/lib/postgresql/data
+volumes:
+  mivora-db:

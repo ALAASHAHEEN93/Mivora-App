@@ -51,7 +51,8 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} dir={dir} className={`${nunito.variable} ${playfair.variable} ${arabic.variable}`}>
-      <body className="min-h-dvh bg-bg font-sans text-ink">
+      {/* suppressHydrationWarning: browser extensions (e.g. ColorZilla) add attributes to <body>; only affects this element */}
+      <body className="min-h-dvh bg-bg font-sans text-ink" suppressHydrationWarning>
         <NextIntlClientProvider>
           <a
             href="#main"

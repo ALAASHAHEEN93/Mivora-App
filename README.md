@@ -28,13 +28,25 @@ pnpm build && pnpm start
 pnpm build:check  # production build without disturbing a running dev server
 ```
 
+### With the local database (optional)
+Without `DATABASE_URL` the app uses the built-in demo data. To run on PostgreSQL (needs Docker Desktop):
+```bash
+cp .env.example .env.local   # local-only credentials, never commit .env.local
+pnpm db:up                   # starts Postgres 17 in Docker (bound to 127.0.0.1)
+pnpm db:migrate              # applies prisma/migrations
+pnpm db:seed                 # loads the DEMO listings; rerun to refresh dates
+pnpm dev
+```
+`pnpm db:studio` opens a table browser. The seed refuses to run against a non-local host.
+
 ## Structure
 ```
 messages/            UI strings per locale (de is the source; missing keys fall back to de)
 src/app/[locale]/    pages: / · entdecken · aktivitaet/[slug] · gemerkt · meine-woche · profil
 src/components/      UI components (design tokens live in src/app/globals.css)
 src/domain/          pure logic: types, filters, Berlin-time date ranges, formatting, query validation
-src/data/            repository interface + demo data (swap for PostgreSQL in the next step)
+src/data/            repository interface, demo data, PostgreSQL repository (src/data/db)
+prisma/              schema, migrations, demo seed
 src/i18n/            next-intl routing/config
 docs/                product, research, tech and launch docs
 ```

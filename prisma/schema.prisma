@@ -1,0 +1,113 @@
+// Mivora catalogue schema (implementation step 4).
+// Accounts, child profiles and bookings come in later steps.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum ListingStatus {
+  draft
+  pending
+  published
+  archived
+}
+
+enum SessionStatus {
+  scheduled
+  cancelled
+  full
+}
+
+model Provider {
+  id         String     @id @default(cuid())
+  name       String
+  verified   Boolean    @default(false)
+  activities Activity[]
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+}
+
+model Venue {
+  id         String     @id @default(cuid())
+  name       String
+  street     String
+  postalCode String
+  city       String
+  district   String
+  lat        Float
+  lng        Float
+  activities Activity[]
+
+  @@index([city, district])
+}
+
+model Activity {
+  id                  String        @id @default(cuid())
+  slug                String        @unique
+  status              ListingStatus @default(draft)
+  categories          String[]
+  ageMin              Int
+  ageMax              Int
+  priceKind           String // "free" | "paid"
+  priceCents          Int?
+  priceUnit           String? // "perChild" | "perFamily" | "perSession"
+  languages           String[]
+  setting             String // "indoor" | "outdoor" | "both"
+  accessibility       String[]
+  accessibilitySource String // "provider" | "verified"
+  bookingMode         String // "external_link" | "inquiry"
+  externalUrl         String?
+  cancellationPolicy  String
+  originalLocale      String
+  sourceType          String // "provider" | "admin" | "partner_feed" | "demo"
+  sourceReference     String
+  lastVerifiedAt      DateTime
+  expiresAt           DateTime
+  accent              String
+
+  photoSrc       String?
+  photoCredit    String?
+  photoSourceUrl String?
+  photoLicense   String?
+
+  provider     Provider              @relation(fields: [providerId], references: [id])
+  providerId   String
+  venue        Venue                 @relation(fields: [venueId], references: [id])
+  venueId      String
+  translations ActivityTranslation[]
+  sessions     Session[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status, expiresAt])
+}
+
+model ActivityTranslation {
+  activity     Activity @relation(fields: [activityId], references: [id], onDelete: Cascade)
+  activityId   String
+  locale       String
+  title        String
+  summary      String
+  description  String
+  cancellation String?
+
+  @@id([activityId, locale])
+}
+
+model Session {
+  id         String        @id @default(cuid())
+  activity   Activity      @relation(fields: [activityId], references: [id], onDelete: Cascade)
+  activityId String
+  startsAt   DateTime      @db.Timestamptz(3)
+  endsAt     DateTime      @db.Timestamptz(3)
+  status     SessionStatus @default(scheduled)
+
+  @@index([activityId, startsAt])
+  @@index([startsAt])
+}

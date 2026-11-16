@@ -51,3 +51,18 @@ export function dateRange(key: DateRangeKey, now: Date): { from: string; to: str
       return null;
   }
 }
+
+const offsetFmt = new Intl.DateTimeFormat("en-US", { timeZone: TIME_ZONE, timeZoneName: "longOffset" });
+const clockFmt = new Intl.DateTimeFormat("en-GB", {
+  timeZone: TIME_ZONE,
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+  hourCycle: "h23",
+});
+
+/** ISO 8601 in Berlin local time with offset, e.g. "2026-11-21T10:00:00+01:00". */
+export function toBerlinIso(d: Date): string {
+  const offset = offsetFmt.formatToParts(d).find((p) => p.type === "timeZoneName")?.value.replace("GMT", "") || "+00:00";
+  return `${berlinDate(d)}T${clockFmt.format(d)}${offset}`;
+}

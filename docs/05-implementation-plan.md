@@ -4,7 +4,7 @@ Each step ends in something runnable and tested. Phase 1 is the responsive web M
 
 **Progress (2026-11-16):** steps 1–3 and 5 are done on demo data, plus Saved and a calendar (month/week, overlap warnings, .ics export) stored on the device. Step 7 is therefore partly done; it moves to the server with accounts in step 6. Two deliberate changes from this plan:
 - The project is a single Next.js app, not a monorepo. Domain logic lives in `src/domain` and can be split out later.
-- The catalogue runs behind a repository interface with demo data. Step 4 (PostgreSQL) comes next.
+- The catalogue runs behind a repository interface. Step 4 is done locally (2026-11-16): Prisma 7 schema, first migration, demo seed, and a PostgreSQL repository used whenever `DATABASE_URL` is set; otherwise demo data. Deviations: plain lat/lng instead of PostGIS (add it with the map/radius search), 13 visible demo listings instead of ~40, and age/date/category filters still run in app code after the database narrows to visible listings. Next: step 6 (accounts & family).
 
 Not built yet: Explore map view (needs a tile provider choice), calendar view, Playwright/axe end-to-end tests.
 

@@ -92,3 +92,11 @@ describe("date ranges (Europe/Berlin)", () => {
     expect(dateRange("today", new Date("2026-11-20T23:30:00Z"))).toEqual({ from: "2026-11-21", to: "2026-11-21" });
   });
 });
+
+import { toBerlinIso } from "./time";
+describe("toBerlinIso", () => {
+  it("formats winter and summer times with the Berlin offset", () => {
+    expect(toBerlinIso(new Date("2026-11-21T09:00:00Z"))).toBe("2026-11-21T10:00:00+01:00");
+    expect(toBerlinIso(new Date("2026-07-04T22:30:00Z"))).toBe("2026-07-05T00:30:00+02:00");
+  });
+});

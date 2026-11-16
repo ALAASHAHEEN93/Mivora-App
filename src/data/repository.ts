@@ -42,4 +42,15 @@ class DemoActivityRepository implements ActivityRepository {
   }
 }
 
-export const activityRepository: ActivityRepository = new DemoActivityRepository();
+function createRepository(): ActivityRepository {
+  if (process.env.DATABASE_URL) {
+    // Loaded lazily so builds without a database never touch Prisma.
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { PrismaActivityRepository } = require("./db/prisma-repository") as typeof import("./db/prisma-repository");
+    return new PrismaActivityRepository();
+  }
+  return new DemoActivityRepository();
+}
+
+/** PostgreSQL when DATABASE_URL is set (local Docker), otherwise built-in demo data. */
+export const activityRepository: ActivityRepository = createRepository();
