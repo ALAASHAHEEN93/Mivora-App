@@ -110,7 +110,7 @@ export default async function ActivityPage({ params }: { params: Params }) {
             <ul className="flex flex-col gap-2">
               {shown.map((s) => (
                 <li key={s.id} className="flex flex-wrap items-center gap-2 rounded-2xl bg-surface px-4 py-3 shadow-[0_4px_14px_-8px_rgba(42,47,58,0.35)]">
-                  <Icon name="calendar" className="size-5 shrink-0 text-primary" />
+                  <Icon name="calendar" className="size-5 shrink-0 text-accent" />
                   <time dateTime={s.startsAt} className="font-bold">
                     {formatSessionStart(s.startsAt, locale)}
                   </time>
@@ -167,7 +167,7 @@ export default async function ActivityPage({ params }: { params: Params }) {
               <p>
                 {venue.street}, {venue.postalCode} {venue.city}-{venue.district}
               </p>
-              <a href={mapUrl} target="_blank" rel="noopener noreferrer" className="mt-1 inline-flex items-center gap-1 font-bold text-primary underline-offset-4 hover:underline">
+              <a href={mapUrl} target="_blank" rel="noopener noreferrer" className="mt-1 inline-flex items-center gap-1 font-bold text-accent underline-offset-4 hover:underline">
                 {t("activity.openMap")} <Icon name="external" className="size-4" />
               </a>
             </Fact>

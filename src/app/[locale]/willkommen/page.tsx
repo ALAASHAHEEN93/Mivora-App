@@ -52,7 +52,7 @@ export default async function WelcomePage({
           {t("cityQuestion")}
         </label>
         <div className="relative">
-          <Icon name="pin" className="pointer-events-none absolute start-4 top-1/2 size-5 -translate-y-1/2 text-primary" />
+          <Icon name="pin" className="pointer-events-none absolute start-4 top-1/2 size-5 -translate-y-1/2 text-accent" />
           <select
             id="city"
             name="city"
@@ -60,7 +60,7 @@ export default async function WelcomePage({
             defaultValue={current}
             aria-invalid={fehler === "stadt" || undefined}
             aria-describedby="city-hint"
-            className="min-h-14 w-full appearance-none rounded-2xl border-2 border-line bg-surface pe-12 ps-12 text-lg font-bold shadow-[0_6px_18px_-10px_rgba(42,47,58,0.35)] focus:border-primary focus:outline-none"
+            className="min-h-14 w-full appearance-none rounded-2xl border-2 border-line bg-surface pe-12 ps-12 text-lg font-bold shadow-[0_6px_18px_-10px_rgba(42,47,58,0.35)] focus:border-accent focus:outline-none"
           >
             <option value="" disabled>
               {t("cityPlaceholder")}
@@ -75,7 +75,7 @@ export default async function WelcomePage({
             ▾
           </span>
         </div>
-        <p id="city-hint" className={`text-start text-sm ${fehler === "stadt" ? "font-bold text-primary" : "text-muted"}`}>
+        <p id="city-hint" className={`text-start text-sm ${fehler === "stadt" ? "font-bold text-accent" : "text-muted"}`}>
           {fehler === "stadt" ? t("cityError") : t("cityHint")}
         </p>
         <button

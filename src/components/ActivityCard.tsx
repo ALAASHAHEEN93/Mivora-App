@@ -31,7 +31,7 @@ export function ActivityCard({
       />
 
       <div className="absolute start-3 top-3 flex items-center gap-1.5 rounded-full bg-white/90 py-1 pe-3 ps-1 text-sm font-bold text-[#1f2430] shadow-sm">
-        <span aria-hidden="true" className="grid size-7 place-items-center rounded-full bg-[#ff6f5b] text-xs text-white">
+        <span aria-hidden="true" className="grid size-7 place-items-center rounded-full bg-[#ff7a1a] text-xs text-[#2a1608]">
           {activity.provider.name.charAt(0)}
         </span>
         {t("common.ageShort", { min: activity.ageMin, max: activity.ageMax })}
@@ -55,7 +55,7 @@ export function ActivityCard({
             <Icon name="pin" className="size-4" />
             {activity.venue.district}
           </span>
-          <span className="ms-auto rounded-full bg-[#ff6f5b] px-2.5 py-0.5 font-bold text-[#1f2430] [text-shadow:none]">
+          <span className="ms-auto rounded-full bg-[#ff7a1a] px-2.5 py-0.5 font-bold text-[#1f2430] [text-shadow:none]">
             {amount ?? t("common.free")}
           </span>
         </p>

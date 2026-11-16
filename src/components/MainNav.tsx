@@ -52,7 +52,7 @@ export function MainNav({ variant }: { variant: "bottom" | "top" }) {
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 className={`flex min-h-16 flex-col items-center justify-center gap-0.5 text-[0.7rem] font-bold ${
-                  active ? "text-primary" : "text-muted"
+                  active ? "text-accent" : "text-muted"
                 }`}
               >
                 <span

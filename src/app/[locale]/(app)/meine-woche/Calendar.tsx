@@ -126,7 +126,7 @@ export function Calendar({ activities, today, nowIso }: { activities: Activity[]
           active
             ? "bg-primary text-on-primary shadow-[0_8px_18px_-6px_rgba(229,82,63,0.9)]"
             : `bg-surface shadow-[0_3px_10px_-6px_rgba(42,47,58,0.35)] hover:-translate-y-0.5 ${past ? "text-muted" : ""}`
-        } ${isToday && !active ? "ring-2 ring-primary" : ""}`}
+        } ${isToday && !active ? "ring-2 ring-accent" : ""}`}
       >
         {compact && <span className="text-[0.65rem] font-semibold opacity-80">{fmt({ weekday: "short" }).format(asDate(day))}</span>}
         <span>{Number(day.slice(8, 10))}</span>
@@ -266,7 +266,7 @@ export function Calendar({ activities, today, nowIso }: { activities: Activity[]
                   >
                     <ListingPicture activity={a} sizes="112px" className="aspect-square w-24 shrink-0 sm:w-28" />
                     <div className="flex min-w-0 flex-1 flex-col justify-center gap-1 px-4 py-3">
-                      <p className="text-sm font-bold text-primary">
+                      <p className="text-sm font-bold text-accent">
                         {formatTime(p.startsAt, locale)} – {formatTime(p.endsAt, locale)}
                       </p>
                       <Link href={`/aktivitaet/${a.slug}`} lang={lang} className="font-display text-lg font-bold leading-tight hover:underline">

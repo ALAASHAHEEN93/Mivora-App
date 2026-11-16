@@ -6,44 +6,46 @@
  * Contrast of text/background pairs is checked in src/domain/contrast.test.ts.
  */
 :root {
-  --kw-bg: #fffbf5;
+  --kw-bg: #fff8ee;
   --kw-surface: #ffffff;
-  --kw-ink: #1f2430;
-  --kw-muted: #555b6b;
-  --kw-line: #e9e1d4;
-  --kw-hero: #ffdcc8;
+  --kw-ink: #2a1e14;
+  --kw-muted: #6b5644;
+  --kw-line: #f1e3cf;
+  --kw-hero: #ffd9a8;
 
-  --kw-primary: #b23a2a; /* coral, deep enough for white text */
-  --kw-on-primary: #ffffff;
-  --kw-focus: #0b6e66;
+  --kw-primary: #ff7a1a; /* sunny orange: fills (buttons, active tab) with dark text */
+  --kw-on-primary: #2a1608;
+  --kw-accent: #b34700; /* deeper orange for text and icons on light surfaces */
+  --kw-focus: #0b5f8f;
 
-  --kw-coral-100: #ffe4de;
-  --kw-coral-500: #ff6f5b;
-  --kw-sun-100: #fff1c7;
-  --kw-sun-400: #ffc93c;
-  --kw-teal-100: #d4f2ee;
-  --kw-teal-700: #0b6e66;
-  --kw-lav-100: #ebe6ff;
+  --kw-coral-100: #ffe7d1;
+  --kw-coral-500: #ff7a1a;
+  --kw-sun-100: #fff1c2;
+  --kw-sun-400: #ffc21a;
+  --kw-teal-100: #d6f0ff; /* sky */
+  --kw-teal-700: #0b5f8f;
+  --kw-lav-100: #eee8ff;
   --kw-lav-500: #8f7ce8;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --kw-bg: #15171d;
-    --kw-surface: #1f222b;
-    --kw-ink: #f4f1ea;
-    --kw-muted: #b6bac6;
-    --kw-line: #333845;
-    --kw-hero: #4a2a20;
+    --kw-bg: #16130f;
+    --kw-surface: #221d17;
+    --kw-ink: #f7efe6;
+    --kw-muted: #c2b4a5;
+    --kw-line: #3a3128;
+    --kw-hero: #4a2a10;
 
-    --kw-primary: #ff8e7d;
-    --kw-on-primary: #1b0f0d;
-    --kw-focus: #6fd8cb;
+    --kw-primary: #ff9a4d;
+    --kw-on-primary: #1b0d02;
+    --kw-accent: #ffb067;
+    --kw-focus: #7cc8f2;
 
-    --kw-coral-100: #3d2420;
+    --kw-coral-100: #3d2414;
     --kw-sun-100: #3a3016;
-    --kw-teal-100: #163634;
-    --kw-teal-700: #6fd8cb;
+    --kw-teal-100: #13303f;
+    --kw-teal-700: #7cc8f2;
     --kw-lav-100: #2a2545;
   }
 }
@@ -56,6 +58,7 @@
   --color-line: var(--kw-line);
   --color-primary: var(--kw-primary);
   --color-on-primary: var(--kw-on-primary);
+  --color-accent: var(--kw-accent);
   --color-focus: var(--kw-focus);
   --color-coral-100: var(--kw-coral-100);
   --color-coral-500: var(--kw-coral-500);

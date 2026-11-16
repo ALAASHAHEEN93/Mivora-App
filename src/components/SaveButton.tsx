@@ -17,7 +17,7 @@ export function SaveButton({ id, title, size = "sm" }: { id: string; title: stri
         onClick={() => toggle(id)}
         className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border-2 border-ink px-5 font-bold hover:bg-sun-100"
       >
-        <Icon name="heart" filled={saved} className="size-5 text-primary" />
+        <Icon name="heart" filled={saved} className="size-5 text-accent" />
         {saved ? t("saved") : t("save")}
       </button>
     );
@@ -29,7 +29,7 @@ export function SaveButton({ id, title, size = "sm" }: { id: string; title: stri
       aria-pressed={saved}
       aria-label={`${saved ? t("saved") : t("save")}: ${title}`}
       onClick={() => toggle(id)}
-      className="grid size-11 place-items-center rounded-full bg-surface/90 text-primary shadow-sm hover:scale-105"
+      className="grid size-11 place-items-center rounded-full bg-surface/90 text-accent shadow-sm hover:scale-105"
     >
       <Icon name="heart" filled={saved} className="size-5" />
     </button>

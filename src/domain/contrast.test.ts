@@ -26,8 +26,10 @@ const PAIRS: [string, string][] = [
   ["muted", "bg"],
   ["muted", "surface"],
   ["on-primary", "primary"],
-  ["primary", "bg"],
-  ["primary", "surface"],
+  ["accent", "bg"],
+  ["accent", "surface"],
+  ["accent", "coral-100"],
+  ["on-primary", "coral-500"],
   ["ink", "coral-100"],
   ["ink", "sun-100"],
   ["ink", "teal-100"],
@@ -43,6 +45,6 @@ describe("colour contrast (WCAG AA, 4.5:1 for body text)", () => {
     });
   }
   it("demo banner: ink on sunshine", () => {
-    expect(contrast("#1f2430", light["sun-400"]!)).toBeGreaterThanOrEqual(4.5);
+    expect(contrast("#2a1608", light["sun-400"]!)).toBeGreaterThanOrEqual(4.5);
   });
 });

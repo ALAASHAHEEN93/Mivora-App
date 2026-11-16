@@ -77,7 +77,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
         {soonCity && (
           <div role="status" className="mt-5 flex items-start gap-3 rounded-3xl bg-surface p-4 shadow-[0_6px_18px_-10px_rgba(42,47,58,0.35)]">
-            <Icon name="pin" className="mt-0.5 size-5 shrink-0 text-primary" />
+            <Icon name="pin" className="mt-0.5 size-5 shrink-0 text-accent" />
             <div>
               <p className="font-bold">{t("home.citySoonTitle", { city: soonCity })}</p>
               <p className="text-sm text-muted">{t("home.citySoonText", { city: soonCity, live: cityName("koeln", locale) })}</p>
@@ -96,7 +96,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             name="q"
             type="search"
             placeholder={t("home.searchPlaceholder")}
-            className="min-h-13 w-full rounded-full border-0 bg-surface px-5 text-base shadow-[0_6px_20px_-10px_rgba(42,47,58,0.4)] placeholder:text-muted focus:outline-none focus-visible:ring-4 focus-visible:ring-[#ffb59f]"
+            className="min-h-13 w-full rounded-full border-0 bg-surface px-5 text-base shadow-[0_6px_20px_-10px_rgba(42,47,58,0.4)] placeholder:text-muted focus:outline-none focus-visible:ring-4 focus-visible:ring-[#ffb067]"
           />
           <button type="submit" className="grid min-h-13 min-w-13 place-items-center rounded-full bg-primary text-on-primary shadow-md">
             <Icon name="search" />

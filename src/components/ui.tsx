@@ -23,7 +23,7 @@ export function SectionHeader({ title, href, linkLabel }: { title: string; href?
     <div className="mb-4 flex items-end justify-between gap-4">
       <h2 className="font-display text-2xl font-bold md:text-3xl">{title}</h2>
       {href && linkLabel && (
-        <Link href={href} className="shrink-0 font-bold underline decoration-2 underline-offset-4 hover:text-primary">
+        <Link href={href} className="shrink-0 font-bold underline decoration-2 underline-offset-4 hover:text-accent">
           {linkLabel}
         </Link>
       )}
