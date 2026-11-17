@@ -348,7 +348,10 @@
     "submittedBy": "Envoyé par {email}",
     "approved": "Validée – l'annonce est maintenant visible.",
     "rejected": "Refusée – l'organisateur voit le motif.",
-    "failed": "Échec. Déjà traitée ?"
+    "failed": "Échec. Déjà traitée ?",
+    "reportsTitle": "Signalements",
+    "noReports": "Aucun signalement ouvert.",
+    "resolve": "Traité"
   },
   "system": {
     "notFoundTitle": "Oups, cette page n'existe pas",
@@ -358,5 +361,21 @@
     "errorTitle": "Un problème est survenu",
     "errorText": "Ce n'est pas de ta faute. Réessaie dans un instant.",
     "retry": "Réessayer"
+  },
+  "report": {
+    "title": "Signaler un problème",
+    "intro": "Qu'est-ce qui ne va pas ?",
+    "reasons": {
+      "wrongInfo": "Infos erronées (heure, lieu, prix …)",
+      "cancelled": "N'a plus lieu",
+      "inappropriate": "Contenu inapproprié",
+      "other": "Autre chose"
+    },
+    "messageLabel": "Que devons-nous savoir ? (facultatif, requis pour « Autre chose »)",
+    "send": "Envoyer le signalement",
+    "thanks": "Merci ! Nous allons vérifier.",
+    "invalid": "Choisis un motif – pour « Autre chose », ajoute une courte note.",
+    "limit": "Cette annonce vient de recevoir beaucoup de signalements. Réessaie plus tard.",
+    "unavailable": "Dans cet aperçu, les signalements ne fonctionnent qu'avec la base de données locale."
   }
 }

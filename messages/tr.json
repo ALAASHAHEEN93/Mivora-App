@@ -348,7 +348,10 @@
     "submittedBy": "Gönderen: {email}",
     "approved": "Onaylandı – ilan artık görünüyor.",
     "rejected": "Reddedildi – sağlayıcı nedeni görür.",
-    "failed": "Olmadı. Zaten işlendi mi?"
+    "failed": "Olmadı. Zaten işlendi mi?",
+    "reportsTitle": "Bildirimler",
+    "noReports": "Açık bildirim yok.",
+    "resolve": "Tamamlandı"
   },
   "system": {
     "notFoundTitle": "Hoppala, bu sayfa yok",
@@ -358,5 +361,21 @@
     "errorTitle": "Bir şeyler ters gitti",
     "errorText": "Senin hatan değil. Lütfen birazdan tekrar dene.",
     "retry": "Tekrar dene"
+  },
+  "report": {
+    "title": "Sorun bildir",
+    "intro": "Ne yanlış?",
+    "reasons": {
+      "wrongInfo": "Bilgiler yanlış (saat, yer, fiyat …)",
+      "cancelled": "Artık yapılmıyor",
+      "inappropriate": "Uygunsuz içerik",
+      "other": "Başka bir şey"
+    },
+    "messageLabel": "Bilmemiz gereken ne? (isteğe bağlı, “Başka bir şey” için gerekli)",
+    "send": "Bildirimi gönder",
+    "thanks": "Teşekkürler! İnceleyeceğiz.",
+    "invalid": "Lütfen bir neden seç – “Başka bir şey” için kısa bir not da ekle.",
+    "limit": "Bu ilan için az önce çok bildirim geldi. Lütfen daha sonra tekrar dene.",
+    "unavailable": "Bu önizlemede bildirimler yalnızca yerel veritabanıyla çalışır."
   }
 }

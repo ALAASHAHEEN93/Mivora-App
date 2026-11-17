@@ -348,7 +348,10 @@
     "submittedBy": "Inviato da {email}",
     "approved": "Approvato – l'annuncio ora è visibile.",
     "rejected": "Rifiutato – l'organizzatore vede il motivo.",
-    "failed": "Non è riuscito. Era già stato gestito?"
+    "failed": "Non è riuscito. Era già stato gestito?",
+    "reportsTitle": "Segnalazioni",
+    "noReports": "Nessuna segnalazione aperta.",
+    "resolve": "Fatto"
   },
   "system": {
     "notFoundTitle": "Ops, questa pagina non esiste",
@@ -358,5 +361,21 @@
     "errorTitle": "Qualcosa è andato storto",
     "errorText": "Non è colpa tua. Riprova tra un momento.",
     "retry": "Riprova"
+  },
+  "report": {
+    "title": "Segnala un problema",
+    "intro": "Cosa non va?",
+    "reasons": {
+      "wrongInfo": "Dati errati (orario, luogo, prezzo …)",
+      "cancelled": "Non si svolge più",
+      "inappropriate": "Contenuto inappropriato",
+      "other": "Altro"
+    },
+    "messageLabel": "Cosa dobbiamo sapere? (facoltativo, richiesto per «Altro»)",
+    "send": "Invia segnalazione",
+    "thanks": "Grazie! Lo verificheremo.",
+    "invalid": "Scegli un motivo – per «Altro» aggiungi una breve nota.",
+    "limit": "Questo annuncio ha appena ricevuto molte segnalazioni. Riprova più tardi.",
+    "unavailable": "In questa anteprima le segnalazioni funzionano solo con il database locale."
   }
 }

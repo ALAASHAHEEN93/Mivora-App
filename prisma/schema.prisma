@@ -81,6 +81,7 @@ model Activity {
   /// Reason shown to the provider when a submission is rejected.
   reviewNote    String?
   auditLog      AuditLog[]
+  reports       Report[]
 
   provider     Provider              @relation(fields: [providerId], references: [id])
   providerId   String
@@ -135,6 +136,8 @@ model User {
   planned   PlannedItem[]
   submissions Activity[] @relation("Submissions")
   auditLog    AuditLog[]
+  reports     Report[]   @relation("Reporter")
+  resolved    Report[]   @relation("Resolver")
 }
 
 /// One-time sign-in code sent by email. Only an HMAC of the code is stored.
@@ -214,5 +217,23 @@ model AuditLog {
   note       String?
   createdAt  DateTime  @default(now())
 
+  @@index([activityId, createdAt])
+}
+
+/// "Report a problem" on a listing (wrong info, cancelled, inappropriate…). Reporter is optional.
+model Report {
+  id           String    @id @default(cuid())
+  activity     Activity  @relation(fields: [activityId], references: [id], onDelete: Cascade)
+  activityId   String
+  reason       String // wrongInfo | cancelled | inappropriate | other
+  message      String?
+  reporter     User?     @relation("Reporter", fields: [reporterId], references: [id], onDelete: SetNull)
+  reporterId   String?
+  createdAt    DateTime  @default(now())
+  resolvedAt   DateTime?
+  resolvedBy   User?     @relation("Resolver", fields: [resolvedById], references: [id], onDelete: SetNull)
+  resolvedById String?
+
+  @@index([resolvedAt, createdAt])
   @@index([activityId, createdAt])
 }

@@ -5,6 +5,7 @@ import { hasLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { getPrisma } from "@/data/db/client";
 import { approveSubmission, isAdmin, rejectSubmission } from "@/server/listings";
+import { resolveReport } from "@/server/reports";
 import { getCurrentUser } from "@/server/auth/session";
 
 async function requireAdmin() {
@@ -28,4 +29,10 @@ export async function rejectAction(formData: FormData) {
   const user = await requireAdmin();
   const ok = await rejectSubmission(getPrisma(), user, String(formData.get("id")), String(formData.get("reason") ?? ""));
   redirect(`/${localeOf(formData)}/admin?ergebnis=${ok ? "abgelehnt" : "fehler"}`);
+}
+
+export async function resolveReportAction(formData: FormData) {
+  const user = await requireAdmin();
+  await resolveReport(getPrisma(), user, String(formData.get("id")));
+  redirect(`/${localeOf(formData)}/admin#meldungen`);
 }

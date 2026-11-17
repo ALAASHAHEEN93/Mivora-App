@@ -11,6 +11,7 @@ import { PlanButton } from "@/components/PlanButton";
 import { Icon } from "@/components/Icon";
 import { Link } from "@/i18n/navigation";
 import { buttonPrimary } from "@/components/ui";
+import { ReportProblem } from "@/components/ReportProblem";
 
 export const revalidate = 300;
 
@@ -33,9 +34,9 @@ function Fact({ label, children }: { label: string; children: React.ReactNode })
   );
 }
 
-export default async function ActivityPage({ params, searchParams }: { params: Params; searchParams: Promise<{ neu?: string }> }) {
+export default async function ActivityPage({ params, searchParams }: { params: Params; searchParams: Promise<{ neu?: string; meldung?: string }> }) {
   const { locale, slug } = await params;
-  const { neu } = await searchParams;
+  const { neu, meldung } = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations();
   const result = await activityRepository.findVisibleBySlug(slug);
@@ -170,6 +171,8 @@ export default async function ActivityPage({ params, searchParams }: { params: P
               </>
             )}
           </p>
+
+          <ReportProblem activityId={activity.id} slug={activity.slug} locale={locale} status={meldung} />
         </div>
 
         <aside className="flex flex-col gap-4 md:sticky md:top-24 md:self-start">

@@ -5,7 +5,9 @@ import { getPrisma } from "@/data/db/client";
 import { formatEuro, formatSessionStart, formatTime } from "@/domain/format";
 import { isAdmin, listPending } from "@/server/listings";
 import { getCurrentUser } from "@/server/auth/session";
-import { approveAction, rejectAction } from "./actions";
+import { approveAction, rejectAction, resolveReportAction } from "./actions";
+import { listOpenReports } from "@/server/reports";
+import { Link } from "@/i18n/navigation";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Admin", robots: { index: false, follow: false } };
@@ -18,7 +20,7 @@ export default async function AdminPage({ params, searchParams }: { params: Prom
   const user = await getCurrentUser();
   if (!user || !isAdmin(user.email)) notFound();
   const t = await getTranslations();
-  const pending = await listPending(getPrisma(), user);
+  const [pending, reports] = await Promise.all([listPending(getPrisma(), user), listOpenReports(getPrisma(), user)]);
 
   return (
     <div className="mx-auto flex max-w-3xl flex-col gap-5">
@@ -107,6 +109,30 @@ export default async function AdminPage({ params, searchParams }: { params: Prom
           </article>
         );
       })}
+      <section id="meldungen" aria-labelledby="reports-h" className="mt-4 flex flex-col gap-3 scroll-mt-24">
+        <h2 id="reports-h" className="font-display text-2xl font-bold">
+          {t("admin.reportsTitle")} ({reports.length})
+        </h2>
+        {reports.length === 0 && <p className="text-muted">{t("admin.noReports")}</p>}
+        {reports.map((r) => (
+          <article key={r.id} className="flex flex-col gap-2 rounded-2xl bg-surface p-4 shadow-[0_3px_10px_-6px_rgba(42,47,58,0.35)]">
+            <Link href={`/aktivitaet/${r.activity.slug}`} className="font-bold underline underline-offset-4" lang="de">
+              {r.activity.translations[0]?.title ?? r.activity.slug}
+            </Link>
+            <p className="text-sm">
+              <span className="font-bold">{t(`report.reasons.${r.reason}`)}</span> · {formatSessionStart(r.createdAt.toISOString(), locale)}
+            </p>
+            {r.message && <p className="whitespace-pre-line rounded-xl bg-bg p-3 text-sm">{r.message}</p>}
+            <form action={resolveReportAction}>
+              <input type="hidden" name="locale" value={locale} />
+              <input type="hidden" name="id" value={r.id} />
+              <button type="submit" className="min-h-11 rounded-full border-2 border-line px-5 text-sm font-bold">
+                {t("admin.resolve")}
+              </button>
+            </form>
+          </article>
+        ))}
+      </section>
     </div>
   );
 }

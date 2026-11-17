@@ -11,6 +11,7 @@ import { hashToken, MAX_CODE_ATTEMPTS } from "./auth/crypto";
 import { addToList, assignChildren, getLists, mergeLists, removeFromList } from "./lists";
 import { approveSubmission, createSubmission, listOwnSubmissions, listPending, photoAccess, rejectSubmission } from "./listings";
 import { readPhoto, savePhoto } from "./photos";
+import { createReport, listOpenReports, resolveReport } from "./reports";
 import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
@@ -28,6 +29,7 @@ describe.skipIf(!url)("accounts & family (database)", () => {
   });
   afterAll(() => db?.$disconnect());
   beforeEach(async () => {
+    await db.report.deleteMany();
     await db.auditLog.deleteMany();
     await db.activity.deleteMany({ where: { sourceType: "provider" } });
     await db.savedActivity.deleteMany();
@@ -290,4 +292,43 @@ describe.skipIf(!url)("accounts & family (database)", () => {
       expect((await createSubmission(db, a.userId, input(), now)).ok).toBe(false);
     });
   });
+
+  describe("problem reports", () => {
+    const ADMIN = "admin@example.invalid";
+    beforeAll(() => {
+      process.env.ADMIN_EMAILS = ADMIN;
+    });
+    async function publishedActivity() {
+      const admin = await signIn(ADMIN);
+      const r = parseSubmission(validSubmissionForm(), new Date("2026-11-17T12:00:00Z"));
+      if (!r.ok) throw new Error();
+      const res = await createSubmission(db, admin.userId, r.value, new Date("2026-11-17T12:00:00Z"), null, { id: admin.userId, email: ADMIN });
+      if (!res.ok) throw new Error();
+      return { admin, id: res.id };
+    }
+
+    it("anyone can report a published listing; admins see and resolve it; others can't", async () => {
+      const { admin, id } = await publishedActivity();
+      const parent = await signIn("eltern@example.invalid");
+      expect(await createReport(db, { activityId: id, reason: "cancelled", message: "Findet nicht statt", reporterId: null })).toEqual({ ok: true });
+      expect(await createReport(db, { activityId: id, reason: "wrongInfo", message: "", reporterId: parent.userId })).toEqual({ ok: true });
+
+      await expect(listOpenReports(db, { id: parent.userId, email: "eltern@example.invalid" })).rejects.toThrow("forbidden");
+      const open = await listOpenReports(db, { id: admin.userId, email: ADMIN });
+      expect(open).toHaveLength(2);
+      expect(await resolveReport(db, { id: admin.userId, email: ADMIN }, open[0]!.id)).toBe(true);
+      expect(await listOpenReports(db, { id: admin.userId, email: ADMIN })).toHaveLength(1);
+    });
+
+    it("rejects junk reasons, empty 'other', unknown listings, and limits flooding", async () => {
+      const { id } = await publishedActivity();
+      const parent = await signIn("eltern@example.invalid");
+      expect(await createReport(db, { activityId: id, reason: "<script>", message: "x", reporterId: null })).toEqual({ ok: false, reason: "invalid" });
+      expect(await createReport(db, { activityId: id, reason: "other", message: "  ", reporterId: null })).toEqual({ ok: false, reason: "invalid" });
+      expect(await createReport(db, { activityId: "nope", reason: "cancelled", message: null, reporterId: null })).toEqual({ ok: false, reason: "invalid" });
+      for (let i = 0; i < 3; i++) await createReport(db, { activityId: id, reason: "wrongInfo", message: null, reporterId: parent.userId });
+      expect(await createReport(db, { activityId: id, reason: "wrongInfo", message: null, reporterId: parent.userId })).toEqual({ ok: false, reason: "limit" });
+    });
+  });
 });
+

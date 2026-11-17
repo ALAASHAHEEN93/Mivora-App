@@ -348,7 +348,10 @@
     "submittedBy": "Eingereicht von {email}",
     "approved": "Freigegeben – das Angebot ist jetzt sichtbar.",
     "rejected": "Abgelehnt – der Anbieter sieht den Grund.",
-    "failed": "Das hat nicht geklappt. Wurde es schon bearbeitet?"
+    "failed": "Das hat nicht geklappt. Wurde es schon bearbeitet?",
+    "reportsTitle": "Meldungen",
+    "noReports": "Keine offenen Meldungen.",
+    "resolve": "Erledigt"
   },
   "system": {
     "notFoundTitle": "Hoppla, diese Seite gibt es nicht",
@@ -358,5 +361,21 @@
     "errorTitle": "Da ist etwas schiefgelaufen",
     "errorText": "Das lag nicht an dir. Versuch es bitte gleich noch einmal.",
     "retry": "Nochmal versuchen"
+  },
+  "report": {
+    "title": "Problem melden",
+    "intro": "Was stimmt nicht?",
+    "reasons": {
+      "wrongInfo": "Angaben sind falsch (Zeit, Ort, Preis …)",
+      "cancelled": "Findet nicht mehr statt",
+      "inappropriate": "Unpassender Inhalt",
+      "other": "Etwas anderes"
+    },
+    "messageLabel": "Was sollen wir wissen? (optional, bei „Etwas anderes“ nötig)",
+    "send": "Meldung senden",
+    "thanks": "Danke! Wir schauen uns das an.",
+    "invalid": "Bitte wähle einen Grund – bei „Etwas anderes“ auch eine kurze Beschreibung.",
+    "limit": "Für dieses Angebot wurde gerade schon viel gemeldet. Bitte versuch es später noch einmal.",
+    "unavailable": "Meldungen sind in dieser Vorschau nur mit der lokalen Datenbank möglich."
   }
 }

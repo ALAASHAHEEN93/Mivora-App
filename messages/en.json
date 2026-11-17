@@ -348,7 +348,10 @@
     "submittedBy": "Submitted by {email}",
     "approved": "Approved – the listing is now visible.",
     "rejected": "Declined – the provider can see the reason.",
-    "failed": "That didn't work. Was it already handled?"
+    "failed": "That didn't work. Was it already handled?",
+    "reportsTitle": "Reports",
+    "noReports": "No open reports.",
+    "resolve": "Done"
   },
   "system": {
     "notFoundTitle": "Oops, this page doesn't exist",
@@ -358,5 +361,21 @@
     "errorTitle": "Something went wrong",
     "errorText": "It wasn't you. Please try again in a moment.",
     "retry": "Try again"
+  },
+  "report": {
+    "title": "Report a problem",
+    "intro": "What's wrong?",
+    "reasons": {
+      "wrongInfo": "Details are wrong (time, place, price …)",
+      "cancelled": "No longer takes place",
+      "inappropriate": "Inappropriate content",
+      "other": "Something else"
+    },
+    "messageLabel": "What should we know? (optional, needed for “Something else”)",
+    "send": "Send report",
+    "thanks": "Thanks! We'll look into it.",
+    "invalid": "Please choose a reason – for “Something else” add a short note too.",
+    "limit": "This listing just got many reports. Please try again later.",
+    "unavailable": "Reports only work with the local database in this preview."
   }
 }

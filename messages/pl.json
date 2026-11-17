@@ -348,7 +348,10 @@
     "submittedBy": "Wysłane przez {email}",
     "approved": "Zatwierdzono – oferta jest teraz widoczna.",
     "rejected": "Odrzucono – organizator widzi powód.",
-    "failed": "Nie udało się. Czy już to obsłużono?"
+    "failed": "Nie udało się. Czy już to obsłużono?",
+    "reportsTitle": "Zgłoszenia",
+    "noReports": "Brak otwartych zgłoszeń.",
+    "resolve": "Załatwione"
   },
   "system": {
     "notFoundTitle": "Ups, ta strona nie istnieje",
@@ -358,5 +361,21 @@
     "errorTitle": "Coś poszło nie tak",
     "errorText": "To nie twoja wina. Spróbuj ponownie za chwilę.",
     "retry": "Spróbuj ponownie"
+  },
+  "report": {
+    "title": "Zgłoś problem",
+    "intro": "Co jest nie tak?",
+    "reasons": {
+      "wrongInfo": "Błędne dane (godzina, miejsce, cena …)",
+      "cancelled": "Już się nie odbywa",
+      "inappropriate": "Nieodpowiednia treść",
+      "other": "Coś innego"
+    },
+    "messageLabel": "Co powinniśmy wiedzieć? (opcjonalnie, wymagane przy „Coś innego”)",
+    "send": "Wyślij zgłoszenie",
+    "thanks": "Dziękujemy! Sprawdzimy to.",
+    "invalid": "Wybierz powód – przy „Coś innego” dodaj krótki opis.",
+    "limit": "Ta oferta dostała właśnie wiele zgłoszeń. Spróbuj później.",
+    "unavailable": "Zgłoszenia działają w tej wersji tylko z lokalną bazą danych."
   }
 }

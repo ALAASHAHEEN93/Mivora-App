@@ -348,7 +348,10 @@
     "submittedBy": "Enviado por {email}",
     "approved": "Aprobado: el anuncio ya es visible.",
     "rejected": "Rechazado: el organizador ve el motivo.",
-    "failed": "No funcionó. ¿Ya se había gestionado?"
+    "failed": "No funcionó. ¿Ya se había gestionado?",
+    "reportsTitle": "Avisos",
+    "noReports": "No hay avisos abiertos.",
+    "resolve": "Resuelto"
   },
   "system": {
     "notFoundTitle": "Vaya, esta página no existe",
@@ -358,5 +361,21 @@
     "errorTitle": "Algo salió mal",
     "errorText": "No ha sido culpa tuya. Inténtalo de nuevo en un momento.",
     "retry": "Reintentar"
+  },
+  "report": {
+    "title": "Informar de un problema",
+    "intro": "¿Qué está mal?",
+    "reasons": {
+      "wrongInfo": "Datos incorrectos (hora, lugar, precio …)",
+      "cancelled": "Ya no se realiza",
+      "inappropriate": "Contenido inapropiado",
+      "other": "Otra cosa"
+    },
+    "messageLabel": "¿Qué debemos saber? (opcional, necesario para «Otra cosa»)",
+    "send": "Enviar aviso",
+    "thanks": "¡Gracias! Lo revisaremos.",
+    "invalid": "Elige un motivo; para «Otra cosa» añade una nota breve.",
+    "limit": "Este anuncio acaba de recibir muchos avisos. Inténtalo más tarde.",
+    "unavailable": "En esta vista previa los avisos solo funcionan con la base de datos local."
   }
 }
