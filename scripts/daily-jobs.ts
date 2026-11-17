@@ -20,10 +20,17 @@ const send = async (m: OutgoingMail) => {
   await transport.sendMail({ from: EMAIL_FROM, to: m.to, subject: m.subject, text: m.text });
 };
 
-try {
-  const reminders = await sendTomorrowReminders(db, send, appUrl);
-  const rechecks = await sendRecheckRequests(db, send, appUrl);
-  console.log(`${new Date().toISOString()} reminders sent: ${reminders}, re-check requests sent: ${rechecks}`);
-} finally {
-  await db.$disconnect();
+async function main() {
+  try {
+    const reminders = await sendTomorrowReminders(db, send, appUrl);
+    const rechecks = await sendRecheckRequests(db, send, appUrl);
+    console.log(`${new Date().toISOString()} reminders sent: ${reminders}, re-check requests sent: ${rechecks}`);
+  } finally {
+    await db.$disconnect();
+  }
 }
+
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
