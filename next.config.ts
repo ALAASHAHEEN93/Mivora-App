@@ -12,6 +12,8 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Self-contained server bundle for the Docker image.
+  output: "standalone",
   // Provider photo uploads go through a server action (5 MB photo + form fields).
   experimental: { serverActions: { bodySizeLimit: "6mb" } },
   images: {

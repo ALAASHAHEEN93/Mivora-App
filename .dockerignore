@@ -1,0 +1,12 @@
+.git
+node_modules
+.next
+.next-check
+storage
+src/generated
+.env
+.env.*
+!.env.example
+coverage
+*.tsbuildinfo
+.claude

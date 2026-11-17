@@ -1,0 +1,18 @@
+# HTTPS certificates are fetched and renewed automatically for {$DOMAIN}.
+{$DOMAIN} {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Robots-Tag "noindex, nofollow"
+		-Server
+	}
+
+	# Test version: everything except the health check needs the shared tester password.
+	@gated not path /api/health
+	basic_auth @gated {
+		{$GATE_USER} {$GATE_HASH}
+	}
+
+	reverse_proxy app:3000
+}
