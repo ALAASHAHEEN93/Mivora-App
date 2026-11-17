@@ -52,8 +52,12 @@ export function shiftMonth(year: number, month: number, delta: number): { year: 
   return { year: Math.floor(idx / 12), month: (idx % 12) + 1 };
 }
 
-/** Keys (encodePlanned) of items that overlap in time with at least one other item. */
-export function findConflicts(items: PlannedItem[]): Set<string> {
+/**
+ * Keys (encodePlanned) of items that overlap in time with at least one other item.
+ * With `childrenOf`, two overlapping items only clash if the same child goes to both
+ * (an item nobody is assigned to yet clashes with everything, to be safe).
+ */
+export function findConflicts(items: PlannedItem[], childrenOf?: (key: string) => readonly string[]): Set<string> {
   const out = new Set<string>();
   const sorted = [...items].sort((a, b) => a.startsAt.localeCompare(b.startsAt));
   for (let i = 0; i < sorted.length; i++) {
@@ -61,11 +65,17 @@ export function findConflicts(items: PlannedItem[]): Set<string> {
       const a = sorted[i]!;
       const b = sorted[j]!;
       if (Date.parse(b.startsAt) >= Date.parse(a.endsAt)) break;
+      if (childrenOf && !shareChild(childrenOf(encodePlanned(a)), childrenOf(encodePlanned(b)))) continue;
       out.add(encodePlanned(a));
       out.add(encodePlanned(b));
     }
   }
   return out;
+}
+
+function shareChild(a: readonly string[], b: readonly string[]): boolean {
+  if (a.length === 0 || b.length === 0) return true;
+  return a.some((id) => b.includes(id));
 }
 
 function icsDate(iso: string): string {
@@ -78,7 +88,7 @@ function icsText(s: string): string {
 
 /** RFC 5545 calendar file, importable into Google/Apple/Outlook calendars. */
 export function toIcs(
-  events: { uid: string; title: string; location: string; startsAt: string; endsAt: string }[],
+  events: { uid: string; title: string; location: string; startsAt: string; endsAt: string; description?: string }[],
   now: Date = new Date(),
 ): string {
   const stamp = icsDate(now.toISOString());
@@ -95,6 +105,7 @@ export function toIcs(
       `DTEND:${icsDate(e.endsAt)}`,
       `SUMMARY:${icsText(e.title)}`,
       `LOCATION:${icsText(e.location)}`,
+      ...(e.description ? [`DESCRIPTION:${icsText(e.description)}`] : []),
       "END:VEVENT",
     ]),
     "END:VCALENDAR",

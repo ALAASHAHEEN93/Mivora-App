@@ -174,7 +174,12 @@
     "plan": "Takvime ekle",
     "unplan": "Takvimden kaldır",
     "plannedShort": "Planlandı",
-    "dayPlanned": "{count, plural, =0 {plan yok} one {# plan} other {# plan}}"
+    "dayPlanned": "{count, plural, =0 {plan yok} one {# plan} other {# plan}}",
+    "filterLabel": "Takvimi çocuğa göre filtrele",
+    "all": "Hepsi",
+    "whoGoes": "Kim gidiyor?",
+    "forChildren": "Kimin için: {names}",
+    "conflictChild": "Dikkat: {names} için aynı saatte iki etkinlik var."
   },
   "welcome": {
     "title": "Mivora'ya hoş geldin",

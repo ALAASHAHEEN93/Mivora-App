@@ -62,3 +62,24 @@ describe("ics export", () => {
     expect(ics.endsWith("END:VCALENDAR\r\n")).toBe(true);
   });
 });
+
+describe("per-child conflicts", () => {
+  const yoga = { activityId: "y", startsAt: "2026-11-21T10:00:00+01:00", endsAt: "2026-11-21T10:45:00+01:00" };
+  const walk = { activityId: "w", startsAt: "2026-11-21T10:30:00+01:00", endsAt: "2026-11-21T12:30:00+01:00" };
+  const kids = (map: Record<string, string[]>) => (key: string) => map[key.split("|")[0]!] ?? [];
+
+  it("different children at the same time is fine", () => {
+    expect(findConflicts([yoga, walk], kids({ y: ["maus"], w: ["baer"] })).size).toBe(0);
+  });
+  it("the same child in two places clashes", () => {
+    expect(findConflicts([yoga, walk], kids({ y: ["maus"], w: ["maus", "baer"] })).size).toBe(2);
+  });
+  it("unassigned items still warn", () => {
+    expect(findConflicts([yoga, walk], kids({ y: ["maus"] })).size).toBe(2);
+  });
+  it("adds a description line to the calendar file", () => {
+    const ics = toIcs([{ uid: "1", title: "Yoga", location: "Köln", startsAt: yoga.startsAt, endsAt: yoga.endsAt, description: "Für: Maus, Bär" }], new Date("2026-11-17T00:00:00Z"));
+    expect(ics).toContain("DESCRIPTION:Für: Maus\\, Bär");
+  });
+});
+

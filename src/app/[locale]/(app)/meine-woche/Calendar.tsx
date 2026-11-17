@@ -17,7 +17,8 @@ import { searchActivities, upcomingSessions } from "@/domain/filters";
 import { addDays, berlinDate } from "@/domain/time";
 import { formatTime, intlLocale } from "@/domain/format";
 import { pickContent } from "@/domain/localize";
-import { usePlanned } from "@/components/saved-store";
+import { useFamily, usePlanned } from "@/components/saved-store";
+import { childColor as colorAt } from "@/domain/children";
 import { ActivityCard } from "@/components/ActivityCard";
 import { ListingPicture } from "@/components/ListingPicture";
 import { PlanButton } from "@/components/PlanButton";
@@ -32,6 +33,7 @@ const asDate = (isoDay: string) => new Date(`${isoDay}T12:00:00Z`);
 
 export function Calendar({ activities, today, nowIso, note }: { activities: Activity[]; today: string; nowIso: string; note?: React.ReactNode }) {
   const t = useTranslations("calendar");
+  const tf = useTranslations("family");
   const locale = useLocale();
   const now = useMemo(() => new Date(nowIso), [nowIso]);
   const fmt = (opts: Intl.DateTimeFormatOptions) => new Intl.DateTimeFormat(intlLocale(locale), { ...opts, timeZone: "UTC" });
@@ -42,6 +44,16 @@ export function Calendar({ activities, today, nowIso, note }: { activities: Acti
 
   const byId = useMemo(() => new Map(activities.map((a) => [a.id, a])), [activities]);
   const { ids } = usePlanned();
+  const { children, assignments, toggleChild } = useFamily();
+  const [filter, setFilter] = useState<string>("all");
+  const activeFilter = filter !== "all" && children.some((c) => c.id === filter) ? filter : "all";
+  const childIndex = useMemo(() => new Map(children.map((c, i) => [c.id, i])), [children]);
+  const childName = (id: string) => {
+    const i = childIndex.get(id) ?? 0;
+    return children[i]?.nickname ?? tf("childFallback", { n: i + 1 });
+  };
+  const childColor = (id: string) => colorAt(childIndex.get(id) ?? 0);
+  const childrenOf = (key: string): string[] => (assignments[key] ?? []).filter((id) => childIndex.has(id));
 
   const planned = useMemo(
     () =>
@@ -52,11 +64,11 @@ export function Calendar({ activities, today, nowIso, note }: { activities: Acti
     [ids, byId],
   );
 
-  const plannedByDay = useMemo(() => {
-    const m = new Map<string, PlannedItem[]>();
-    for (const p of planned) m.set(dayOf(p.startsAt), [...(m.get(dayOf(p.startsAt)) ?? []), p]);
-    return m;
-  }, [planned]);
+  // With a child selected, the calendar only shows that child's dates.
+  const visible = activeFilter === "all" ? planned : planned.filter((p) => childrenOf(encodePlanned(p)).includes(activeFilter));
+
+  const plannedByDay = new Map<string, PlannedItem[]>();
+  for (const p of visible) plannedByDay.set(dayOf(p.startsAt), [...(plannedByDay.get(dayOf(p.startsAt)) ?? []), p]);
 
   const offerDays = useMemo(() => {
     const s = new Set<string>();
@@ -65,7 +77,9 @@ export function Calendar({ activities, today, nowIso, note }: { activities: Acti
   }, [activities, now]);
 
   const dayPlanned = plannedByDay.get(selected) ?? [];
-  const conflicts = findConflicts(dayPlanned);
+  const conflicts = findConflicts(dayPlanned, children.length > 0 ? childrenOf : undefined);
+  // Children who are booked into two overlapping dates (named in the warning).
+  const clashingKids = children.filter((c) => [...conflicts].filter((k) => childrenOf(k).includes(c.id)).length > 1).map((c) => childName(c.id));
   const plannedKeys = new Set(planned.map(encodePlanned));
   const ideas = searchActivities(activities, { day: selected }, now)
     .map((r) => ({ ...r, sessions: r.sessions.filter((s) => !plannedKeys.has(encodePlanned({ activityId: r.activity.id, startsAt: s.startsAt, endsAt: s.endsAt }))) }))
@@ -77,9 +91,11 @@ export function Calendar({ activities, today, nowIso, note }: { activities: Acti
   }
 
   function exportIcs() {
-    const events = planned.map((p) => {
+    const events = visible.map((p) => {
       const a = byId.get(p.activityId)!;
+      const kids = childrenOf(encodePlanned(p)).map(childName);
       return {
+        ...(kids.length ? { description: t("forChildren", { names: kids.join(", ") }) } : {}),
         uid: encodePlanned(p).replace(/[^a-zA-Z0-9]/g, ""),
         title: pickContent(a, locale).text.title,
         location: `${a.venue.name}, ${a.venue.city}-${a.venue.district}`,
@@ -98,12 +114,18 @@ export function Calendar({ activities, today, nowIso, note }: { activities: Acti
   const weekdayNames = weekDays("2024-01-01").map((d) => fmt({ weekday: "short" }).format(asDate(d)));
 
   function dots(day: string, active: boolean) {
-    const count = Math.min(plannedByDay.get(day)?.length ?? 0, 3);
+    const items = (plannedByDay.get(day) ?? []).slice(0, 3);
+    const count = items.length;
     return (
       <span className="flex h-1.5 items-center gap-0.5" aria-hidden="true">
-        {Array.from({ length: count }, (_, i) => (
-          <span key={i} className={`size-1.5 rounded-full ${active ? "bg-on-primary" : "bg-primary"}`} />
-        ))}
+        {items.map((p, i) => {
+          const first = childrenOf(encodePlanned(p))[0];
+          return first && !active ? (
+            <span key={i} className="size-1.5 rounded-full ring-1 ring-[#1d3557]/40" style={{ background: childColor(first) }} />
+          ) : (
+            <span key={i} className={`size-1.5 rounded-full ${active ? "bg-on-primary" : "bg-primary"}`} />
+          );
+        })}
         {count === 0 && offerDays.has(day) && <span className={`size-1.5 rounded-full ${active ? "bg-on-primary/70" : "bg-teal-700/60"}`} />}
       </span>
     );
@@ -176,6 +198,35 @@ export function Calendar({ activities, today, nowIso, note }: { activities: Acti
         ))}
       </div>
 
+      {children.length > 0 && (
+        <div role="group" aria-label={t("filterLabel")} className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] md:mx-0 md:px-0">
+          {[{ id: "all" }, ...children].map((c) => {
+            const on = activeFilter === c.id;
+            const isAll = c.id === "all";
+            return (
+              <button
+                key={c.id}
+                type="button"
+                aria-pressed={on}
+                onClick={() => setFilter(c.id)}
+                className={`inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full pe-4 ps-1.5 font-bold transition ${
+                  on ? "bg-primary text-on-primary shadow-md" : "bg-surface shadow-[0_3px_10px_-6px_rgba(42,47,58,0.35)]"
+                }`}
+              >
+                <span
+                  aria-hidden="true"
+                  className="grid size-8 place-items-center rounded-full text-sm text-[#1d3557]"
+                  style={{ background: isAll ? "#f1faee" : childColor(c.id) }}
+                >
+                  {isAll ? "★" : childName(c.id).charAt(0).toUpperCase()}
+                </span>
+                {isAll ? t("all") : childName(c.id)}
+              </button>
+            );
+          })}
+        </div>
+      )}
+
       <section className="md:grid md:grid-cols-[minmax(0,26rem)_1fr] md:items-start md:gap-8">
         <div className="flex flex-col gap-4">
           {view === "month" ? (
@@ -247,7 +298,8 @@ export function Calendar({ activities, today, nowIso, note }: { activities: Acti
 
           {conflicts.size > 0 && (
             <p role="status" className="flex items-center gap-2 rounded-2xl bg-sun-100 px-4 py-3 font-bold">
-              <Icon name="alert" className="size-5 shrink-0" /> {t("conflict")}
+              <Icon name="alert" className="size-5 shrink-0" />{" "}
+              {clashingKids.length > 0 ? t("conflictChild", { names: clashingKids.join(", ") }) : t("conflict")}
             </p>
           )}
 
@@ -275,6 +327,29 @@ export function Calendar({ activities, today, nowIso, note }: { activities: Acti
                       <p className="flex items-center gap-1 text-sm text-muted">
                         <Icon name="pin" className="size-4" /> {a.venue.district}
                       </p>
+                      {children.length > 0 && (
+                        <div role="group" aria-label={`${t("whoGoes")} ${text.title}`} className="mt-1 flex flex-wrap items-center gap-1.5">
+                          <span className="text-xs font-bold text-muted">{t("whoGoes")}</span>
+                          {children.map((c) => {
+                            const on = childrenOf(encodePlanned(p)).includes(c.id);
+                            return (
+                              <button
+                                key={c.id}
+                                type="button"
+                                aria-pressed={on}
+                                onClick={() => toggleChild(encodePlanned(p), c.id)}
+                                className={`mv-press inline-flex min-h-9 items-center gap-1 rounded-full px-2.5 text-xs font-bold transition ${
+                                  on ? "text-[#1d3557] ring-2 ring-[#1d3557]" : "text-muted ring-1 ring-line"
+                                }`}
+                                style={{ background: on ? childColor(c.id) : "transparent" }}
+                              >
+                                {on && <Icon name="check" className="size-3.5" />}
+                                {childName(c.id)}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      )}
                     </div>
                     <div className="flex items-center pe-3">
                       <PlanButton item={p} label={text.title} compact />

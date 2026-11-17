@@ -174,7 +174,12 @@
     "plan": "Add to calendar",
     "unplan": "Remove from calendar",
     "plannedShort": "Planned",
-    "dayPlanned": "{count, plural, =0 {nothing planned} one {# planned} other {# planned}}"
+    "dayPlanned": "{count, plural, =0 {nothing planned} one {# planned} other {# planned}}",
+    "filterLabel": "Filter calendar by child",
+    "all": "Everyone",
+    "whoGoes": "Who's going?",
+    "forChildren": "For: {names}",
+    "conflictChild": "Heads up: two things at the same time for {names}."
   },
   "welcome": {
     "title": "Welcome to Mivora",

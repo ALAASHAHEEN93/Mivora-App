@@ -174,7 +174,12 @@
     "plan": "До календаря",
     "unplan": "Видалити з календаря",
     "plannedShort": "Заплановано",
-    "dayPlanned": "{count, plural, =0 {нічого не заплановано} one {# заняття} few {# заняття} many {# занять} other {# заняття}}"
+    "dayPlanned": "{count, plural, =0 {нічого не заплановано} one {# заняття} few {# заняття} many {# занять} other {# заняття}}",
+    "filterLabel": "Фільтр календаря за дитиною",
+    "all": "Усі",
+    "whoGoes": "Хто йде?",
+    "forChildren": "Для: {names}",
+    "conflictChild": "Увага: два заняття одночасно для {names}."
   },
   "welcome": {
     "title": "Ласкаво просимо до Mivora",

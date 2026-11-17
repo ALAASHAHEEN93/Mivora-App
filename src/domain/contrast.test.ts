@@ -46,6 +46,10 @@ describe("colour contrast (WCAG AA, 4.5:1 for body text)", () => {
   it("palette pills (aqua, gold) always use fixed navy text", () => {
     for (const bg of ["#a8dadc", "#d9bf77", "#c9dce8", light["coral-500"]!]) expect(contrast("#1d3557", bg)).toBeGreaterThanOrEqual(4.5);
   });
+  it("child colours carry navy text", async () => {
+    const { CHILD_COLORS } = await import("./children");
+    for (const bg of CHILD_COLORS) expect(contrast("#1d3557", bg)).toBeGreaterThanOrEqual(4.5);
+  });
   it("demo banner: ink on sunshine", () => {
     expect(contrast("#1d3557", light["sun-400"]!)).toBeGreaterThanOrEqual(4.5);
   });

@@ -17,11 +17,26 @@ export function validateListValue(list: ListName, value: unknown): string | null
 // All functions are scoped by userId: a family only ever touches its own lists.
 
 export async function getLists(db: PrismaClient, userId: string) {
-  const [saved, planned] = await Promise.all([
+  const [saved, planned, children] = await Promise.all([
     db.savedActivity.findMany({ where: { userId }, orderBy: { createdAt: "asc" }, select: { activityId: true } }),
-    db.plannedItem.findMany({ where: { userId }, orderBy: { startsAt: "asc" }, select: { key: true } }),
+    db.plannedItem.findMany({ where: { userId }, orderBy: { startsAt: "asc" }, select: { key: true, childIds: true } }),
+    db.child.findMany({ where: { userId }, orderBy: { birthYear: "asc" }, select: { id: true, nickname: true, birthYear: true } }),
   ]);
-  return { saved: saved.map((s) => s.activityId), planned: planned.map((p) => p.key) };
+  const known = new Set(children.map((c) => c.id));
+  const assignments: Record<string, string[]> = {};
+  for (const p of planned) {
+    const ids = p.childIds.filter((id) => known.has(id)); // drop children that were removed
+    if (ids.length) assignments[p.key] = ids;
+  }
+  return { saved: saved.map((s) => s.activityId), planned: planned.map((p) => p.key), children, assignments };
+}
+
+/** Sets which of the family's own children go to a planned date. Ids of other families are ignored. */
+export async function assignChildren(db: PrismaClient, userId: string, key: string, childIds: unknown) {
+  const wanted = Array.isArray(childIds) ? childIds.filter((v): v is string => typeof v === "string").slice(0, 20) : [];
+  const own = await db.child.findMany({ where: { userId, id: { in: wanted } }, select: { id: true } });
+  const res = await db.plannedItem.updateMany({ where: { userId, key }, data: { childIds: own.map((c) => c.id) } });
+  return res.count === 1;
 }
 
 export async function addToList(db: PrismaClient, userId: string, list: ListName, value: string) {

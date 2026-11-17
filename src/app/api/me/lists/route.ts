@@ -1,6 +1,6 @@
 import { getPrisma } from "@/data/db/client";
 import { getCurrentUser } from "@/server/auth/session";
-import { addToList, getLists, mergeLists, removeFromList, validateListValue, type ListName } from "@/server/lists";
+import { addToList, assignChildren, getLists, mergeLists, removeFromList, validateListValue, type ListName } from "@/server/lists";
 
 export const dynamic = "force-dynamic";
 
@@ -25,7 +25,7 @@ export async function GET() {
   return json({ userId: user.id, ...(await getLists(getPrisma(), user.id)) });
 }
 
-/** Body: {op:"add"|"remove", list:"saved"|"planned", value} or {op:"merge", saved:[], planned:[]}. */
+/** Body: {op:"add"|"remove", list, value} · {op:"merge", saved:[], planned:[]} · {op:"assign", value:key, childIds:[]}. */
 export async function POST(req: Request) {
   if (!sameOrigin(req)) return json({ error: "forbidden" }, 403);
   const user = await getCurrentUser();
@@ -43,6 +43,12 @@ export async function POST(req: Request) {
     const saved = Array.isArray(body.saved) ? body.saved : [];
     const planned = Array.isArray(body.planned) ? body.planned : [];
     return json({ userId: user.id, ...(await mergeLists(db, user.id, { saved, planned })) });
+  }
+
+  if (body.op === "assign") {
+    const key = validateListValue("planned", body.value);
+    if (!key) return json({ error: "bad_request" }, 400);
+    return (await assignChildren(db, user.id, key, body.childIds)) ? json({ ok: true }) : json({ error: "not_found" }, 404);
   }
 
   const list = body.list === "saved" || body.list === "planned" ? (body.list as ListName) : null;

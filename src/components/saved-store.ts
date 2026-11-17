@@ -102,3 +102,46 @@ export const deviceLists = {
     planned.replace(EMPTY);
   },
 };
+
+// ---------- Family (children + who goes to which planned date) ----------
+// Only exists for signed-in parents; loaded by AccountSync, kept in memory.
+
+export interface FamilyChild {
+  id: string;
+  nickname: string | null;
+  birthYear: number;
+}
+interface FamilyState {
+  children: FamilyChild[];
+  assignments: Record<string, string[]>;
+}
+const NO_FAMILY: FamilyState = { children: [], assignments: {} };
+let family: FamilyState = NO_FAMILY;
+const familyListeners = new Set<() => void>();
+
+export function setFamily(next: FamilyState | null) {
+  family = next ?? NO_FAMILY;
+  familyListeners.forEach((l) => l());
+}
+
+function subscribeFamily(l: () => void) {
+  familyListeners.add(l);
+  return () => familyListeners.delete(l);
+}
+
+export function useFamily() {
+  const state = useSyncExternalStore(subscribeFamily, () => family, () => NO_FAMILY);
+  const toggleChild = useCallback((key: string, childId: string) => {
+    const current = family.assignments[key] ?? [];
+    const next = current.includes(childId) ? current.filter((x) => x !== childId) : [...current, childId];
+    setFamily({ ...family, assignments: { ...family.assignments, [key]: next } });
+    if (!syncOn) return;
+    void fetch("/api/me/lists", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ op: "assign", value: key, childIds: next }),
+      keepalive: true,
+    }).catch(() => {});
+  }, []);
+  return { ...state, toggleChild };
+}

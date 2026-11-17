@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { deviceLists, setSyncEnabled } from "./saved-store";
+import { deviceLists, setFamily, setSyncEnabled, type FamilyChild } from "./saved-store";
 
 /** Which account this device last synced with (an opaque id, not personal data). */
 const SYNCED_KEY = "mv.syncedAccount.v1";
@@ -33,6 +33,7 @@ export function AccountSync({ signedIn }: { signedIn: boolean }) {
     let cancelled = false;
     if (!signedIn) {
       setSyncEnabled(false);
+      setFamily(null);
       if (getSynced()) {
         deviceLists.clear();
         setSynced(null);
@@ -43,7 +44,13 @@ export function AccountSync({ signedIn }: { signedIn: boolean }) {
       try {
         const res = await fetch("/api/me/lists", { cache: "no-store" });
         if (!res.ok) return;
-        const server = (await res.json()) as { userId: string; saved: string[]; planned: string[] };
+        const server = (await res.json()) as {
+          userId: string;
+          saved: string[];
+          planned: string[];
+          children: FamilyChild[];
+          assignments: Record<string, string[]>;
+        };
         let lists = server;
         if (getSynced() !== server.userId) {
           const merged = await fetch("/api/me/lists", {
@@ -56,6 +63,7 @@ export function AccountSync({ signedIn }: { signedIn: boolean }) {
         }
         if (cancelled) return;
         deviceLists.replace({ saved: lists.saved, planned: lists.planned });
+        setFamily({ children: lists.children, assignments: lists.assignments });
         setSynced(server.userId);
         setSyncEnabled(true);
       } catch {

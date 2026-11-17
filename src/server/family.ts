@@ -48,7 +48,7 @@ export async function exportAccount(db: PrismaClient, userId: string) {
       children: true,
       sessions: { select: { createdAt: true, lastSeenAt: true, expiresAt: true } },
       saved: { select: { activityId: true, createdAt: true } },
-      planned: { select: { activityId: true, startsAt: true, endsAt: true, createdAt: true } },
+      planned: { select: { activityId: true, startsAt: true, endsAt: true, childIds: true, createdAt: true } },
     },
   });
   if (!user) return null;

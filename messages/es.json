@@ -174,7 +174,12 @@
     "plan": "Añadir",
     "unplan": "Quitar del calendario",
     "plannedShort": "Planificado",
-    "dayPlanned": "{count, plural, =0 {nada planificado} one {# planificado} other {# planificados}}"
+    "dayPlanned": "{count, plural, =0 {nada planificado} one {# planificado} other {# planificados}}",
+    "filterLabel": "Filtrar el calendario por niño",
+    "all": "Todos",
+    "whoGoes": "¿Quién va?",
+    "forChildren": "Para: {names}",
+    "conflictChild": "Atención: dos actividades a la vez para {names}."
   },
   "welcome": {
     "title": "Bienvenido a Mivora",

@@ -174,7 +174,12 @@
     "plan": "Einplanen",
     "unplan": "Aus dem Kalender entfernen",
     "plannedShort": "Eingeplant",
-    "dayPlanned": "{count, plural, =0 {nichts eingeplant} one {# Termin eingeplant} other {# Termine eingeplant}}"
+    "dayPlanned": "{count, plural, =0 {nichts eingeplant} one {# Termin eingeplant} other {# Termine eingeplant}}",
+    "filterLabel": "Kalender filtern nach Kind",
+    "all": "Alle",
+    "whoGoes": "Wer geht hin?",
+    "forChildren": "Für: {names}",
+    "conflictChild": "Achtung: zwei Termine gleichzeitig für {names}."
   },
   "welcome": {
     "title": "Willkommen bei Mivora",

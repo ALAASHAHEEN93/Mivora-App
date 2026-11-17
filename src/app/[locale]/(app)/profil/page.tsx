@@ -5,6 +5,7 @@ import { Mascot } from "@/components/illustrations/Mascot";
 import { Link } from "@/i18n/navigation";
 import { getPrisma } from "@/data/db/client";
 import { CATEGORY_SLUGS } from "@/domain/types";
+import { childColor } from "@/domain/children";
 import { listChildren } from "@/server/family";
 import { accountsAvailable, getCurrentUser } from "@/server/auth/session";
 import { addChildAction, deleteAccountAction, removeChildAction, signOutAction, updateChildAction } from "./actions";
@@ -14,7 +15,6 @@ export const dynamic = "force-dynamic";
 const card = "flex flex-col gap-3 rounded-3xl bg-surface p-5 shadow-[0_8px_24px_-14px_rgba(42,47,58,0.4)]";
 const primaryBtn = "inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-5 font-bold text-on-primary transition active:scale-[0.98]";
 const field = "min-h-12 w-full rounded-2xl border-2 border-line bg-bg px-4 font-semibold focus:border-accent focus:outline-none";
-const KID_COLORS = ["bg-coral-100", "bg-teal-100", "bg-sun-100", "bg-lav-100"];
 
 type ChildRow = { id: string; nickname: string | null; birthYear: number; interests: string[] };
 
@@ -133,7 +133,7 @@ export default async function ProfilePage({
             {children.length === 0 && <p className="text-muted">{t("family.noChildren")}</p>}
             <ul className="flex flex-col gap-3">
               {children.map((c, i) => (
-                <li key={c.id} className={`rounded-2xl p-4 ${KID_COLORS[i % KID_COLORS.length]}`}>
+                <li key={c.id} className="rounded-2xl p-4 text-[#1d3557]" style={{ background: childColor(i) }}>
                   <div className="flex items-center gap-3">
                     <span aria-hidden="true" className="grid size-11 shrink-0 place-items-center rounded-full bg-surface text-lg font-bold">
                       {(c.nickname ?? "★").charAt(0).toUpperCase()}
@@ -147,8 +147,8 @@ export default async function ProfilePage({
                     </div>
                   </div>
                   <details className="mt-2">
-                    <summary className="min-h-10 cursor-pointer py-2 text-sm font-bold text-accent">{t("family.edit")}</summary>
-                    <div className="mt-2 rounded-2xl bg-surface p-4">
+                    <summary className="min-h-10 cursor-pointer py-2 text-sm font-bold underline underline-offset-4">{t("family.edit")}</summary>
+                    <div className="mt-2 rounded-2xl bg-surface p-4 text-ink">
                       <ChildForm locale={locale} child={c} action={updateChildAction} submitLabel={t("family.save")} />
                       <form action={removeChildAction} className="mt-3">
                         <input type="hidden" name="locale" value={locale} />

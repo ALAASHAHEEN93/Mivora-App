@@ -187,6 +187,7 @@ model PlannedItem {
   activityId String
   startsAt   DateTime @db.Timestamptz(3)
   endsAt     DateTime @db.Timestamptz(3)
+  childIds   String[] @default([]) // which of the family's children go (ids of Child rows of the same user)
   createdAt  DateTime @default(now())
 
   @@unique([userId, key])

@@ -174,7 +174,12 @@
     "plan": "أضف إلى التقويم",
     "unplan": "إزالة من التقويم",
     "plannedShort": "مخطط",
-    "dayPlanned": "{count, plural, =0 {لا شيء مخطط} one {موعد واحد} two {موعدان} few {# مواعيد} many {# موعدًا} other {# موعد}}"
+    "dayPlanned": "{count, plural, =0 {لا شيء مخطط} one {موعد واحد} two {موعدان} few {# مواعيد} many {# موعدًا} other {# موعد}}",
+    "filterLabel": "تصفية التقويم حسب الطفل",
+    "all": "الكل",
+    "whoGoes": "من سيذهب؟",
+    "forChildren": "لـ: {names}",
+    "conflictChild": "انتبه: موعدان في الوقت نفسه لـ {names}."
   },
   "welcome": {
     "title": "أهلًا بك في Mivora",

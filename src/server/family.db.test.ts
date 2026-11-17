@@ -8,7 +8,7 @@ import { PrismaClient } from "@/generated/prisma/client";
 import { addChild, deleteAccount, exportAccount, listChildren, removeChild, updateChild } from "./family";
 import { createLoginCode, endSession, userForSessionToken, verifyLoginCode } from "./auth/service";
 import { hashToken, MAX_CODE_ATTEMPTS } from "./auth/crypto";
-import { addToList, getLists, mergeLists, removeFromList } from "./lists";
+import { addToList, assignChildren, getLists, mergeLists, removeFromList } from "./lists";
 
 const url = process.env.TEST_DATABASE_URL;
 const SECRET = "test-secret-test-secret-test-secret-1234";
@@ -122,10 +122,10 @@ describe.skipIf(!url)("accounts & family (database)", () => {
     await addToList(db, anna.userId, "saved", "demo-a7");
     await addToList(db, anna.userId, "planned", PLAN);
 
-    expect(await getLists(db, ben.userId)).toEqual({ saved: [], planned: [] });
+    expect(await getLists(db, ben.userId)).toMatchObject({ saved: [], planned: [], assignments: {} });
     await removeFromList(db, ben.userId, "saved", "demo-a7");
     await removeFromList(db, ben.userId, "planned", PLAN);
-    expect(await getLists(db, anna.userId)).toEqual({ saved: ["demo-a7"], planned: [PLAN] });
+    expect(await getLists(db, anna.userId)).toMatchObject({ saved: ["demo-a7"], planned: [PLAN] });
   });
 
   it("merges device items once, ignores junk, and keeps the calendar key exactly", async () => {
@@ -147,4 +147,24 @@ describe.skipIf(!url)("accounts & family (database)", () => {
     expect(await db.savedActivity.count()).toBe(0);
     expect(await db.plannedItem.count()).toBe(0);
   });
+
+  it("assigns only the family's own children to a planned date", async () => {
+    const anna = await signIn("anna@example.invalid");
+    const ben = await signIn("ben@example.invalid");
+    const maus = await addChild(db, anna.userId, { nickname: "Maus", birthYear: 2020, interests: [] });
+    const baer = await addChild(db, ben.userId, { nickname: "Bär", birthYear: 2019, interests: [] });
+    await addToList(db, anna.userId, "planned", PLAN);
+
+    expect(await assignChildren(db, anna.userId, PLAN, [maus!.id, baer!.id, "made-up"])).toBe(true);
+    expect((await getLists(db, anna.userId)).assignments).toEqual({ [PLAN]: [maus!.id] });
+
+    // Ben can't assign anything to Anna's calendar entry
+    expect(await assignChildren(db, ben.userId, PLAN, [baer!.id])).toBe(false);
+    expect((await getLists(db, ben.userId)).children.map((c) => c.nickname)).toEqual(["Bär"]);
+
+    // a removed child disappears from the assignment
+    await removeChild(db, anna.userId, maus!.id);
+    expect((await getLists(db, anna.userId)).assignments).toEqual({});
+  });
 });
+
