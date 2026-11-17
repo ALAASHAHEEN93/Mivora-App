@@ -42,10 +42,11 @@ export async function submitListing(_prev: SubmitState, formData: FormData): Pro
   if (!parsed.ok || Object.keys(errors).length > 0) return { errors, values: valuesOf(formData), hadPhoto: Boolean(photo) };
 
   const photoId = processed?.ok ? await savePhoto(processed.data) : null;
-  const res = await createSubmission(getPrisma(), user.id, parsed.value, new Date(), photoId);
+  const wantsPublish = formData.get("publishNow") === "yes";
+  const res = await createSubmission(getPrisma(), user.id, parsed.value, new Date(), photoId, wantsPublish ? { id: user.id, email: user.email } : null);
   if (!res.ok) {
     if (photoId) await deletePhoto(photoId);
     return { errors: {}, values: valuesOf(formData), limit: true, hadPhoto: Boolean(photo) };
   }
-  redirect(`/${locale}/anbieten?eingereicht=1`);
+  redirect(res.published ? `/${locale}/aktivitaet/${res.slug}?neu=1` : `/${locale}/anbieten?eingereicht=1`);
 }

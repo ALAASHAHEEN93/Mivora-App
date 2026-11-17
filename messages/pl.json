@@ -334,7 +334,10 @@
     "photoHint": "JPG, PNG lub WebP, co najmniej 400 pikseli, maks. 5 MB. Usuwamy ukryte dane, np. miejsce wykonania.",
     "photoRemove": "Usuń zdjęcie",
     "confirmPhoto": "Mam prawa do tego zdjęcia, a wszystkie rozpoznawalne osoby – w przypadku dzieci ich rodzice – zgadzają się na publikację.",
-    "photoReselect": "Wybierz zdjęcie jeszcze raz."
+    "photoReselect": "Wybierz zdjęcie jeszcze raz.",
+    "publishNow": "Opublikuj teraz (jesteś adminem)",
+    "publishNowHint": "Od razu widoczne w aplikacji, bez sprawdzania. Zapisywane w dzienniku z twoim kontem.",
+    "publishedNow": "Opublikowano! Twoje zajęcia są już widoczne w aplikacji."
   },
   "admin": {
     "title": "Sprawdzanie",

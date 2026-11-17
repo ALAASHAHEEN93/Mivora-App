@@ -264,6 +264,26 @@ describe.skipIf(!url)("accounts & family (database)", () => {
       expect(await photoAccess(db, photoId, null, now)).toBe("public");
     });
 
+    it("admins can publish directly (logged); providers cannot, even if they ask", async () => {
+      const admin = await signIn(ADMIN);
+      const provider = await signIn("anbieter@example.invalid");
+
+      const own = await createSubmission(db, admin.userId, input(), now, null, { id: admin.userId, email: ADMIN });
+      if (!own.ok) throw new Error();
+      expect(own.published).toBe(true);
+      expect((await db.activity.findUniqueOrThrow({ where: { id: own.id } })).status).toBe("published");
+      expect((await db.auditLog.findFirstOrThrow({ where: { activityId: own.id } })).action).toBe("published_by_admin");
+
+      // a provider claiming to be the admin, or passing their own non-admin identity, stays pending
+      const sneaky = await createSubmission(db, provider.userId, input(), now, null, { id: admin.userId, email: ADMIN });
+      const plain = await createSubmission(db, provider.userId, input(), now, null, { id: provider.userId, email: "anbieter@example.invalid" });
+      for (const r of [sneaky, plain]) {
+        if (!r.ok) throw new Error();
+        expect(r.published).toBe(false);
+        expect((await db.activity.findUniqueOrThrow({ where: { id: r.id } })).status).toBe("pending");
+      }
+    });
+
     it("limits open submissions per provider", async () => {
       const a = await signIn("anbieter@example.invalid");
       for (let i = 0; i < 10; i++) expect((await createSubmission(db, a.userId, input(), now)).ok).toBe(true);

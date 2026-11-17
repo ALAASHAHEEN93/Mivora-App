@@ -334,7 +334,10 @@
     "photoHint": "JPG, PNG or WebP, at least 400 pixels, up to 5 MB. We remove hidden data such as where it was taken.",
     "photoRemove": "Remove photo",
     "confirmPhoto": "I hold the rights to this photo, and everyone recognisable in it – for children, their parents – agrees to it being published.",
-    "photoReselect": "Please choose your photo again."
+    "photoReselect": "Please choose your photo again.",
+    "publishNow": "Publish now (you're an admin)",
+    "publishNowHint": "Visible in the app right away, without review. Recorded in the audit log with your account.",
+    "publishedNow": "Published! Your activity is now visible in the app."
   },
   "admin": {
     "title": "Review",

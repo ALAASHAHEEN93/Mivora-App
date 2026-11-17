@@ -334,7 +334,10 @@
     "photoHint": "JPG, PNG veya WebP, en az 400 piksel, en fazla 5 MB. Çekildiği yer gibi gizli bilgileri kaldırırız.",
     "photoRemove": "Fotoğrafı kaldır",
     "confirmPhoto": "Bu fotoğrafın haklarına sahibim ve fotoğrafta tanınabilen herkes – çocuklar için ebeveynleri – yayınlanmasını kabul ediyor.",
-    "photoReselect": "Lütfen fotoğrafını tekrar seç."
+    "photoReselect": "Lütfen fotoğrafını tekrar seç.",
+    "publishNow": "Hemen yayınla (yöneticisin)",
+    "publishNowHint": "Kontrol olmadan uygulamada hemen görünür. Hesabınla kontrol kaydına yazılır.",
+    "publishedNow": "Yayınlandı! Etkinliğin artık uygulamada görünüyor."
   },
   "admin": {
     "title": "Kontrol",

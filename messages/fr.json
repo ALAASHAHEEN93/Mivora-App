@@ -334,7 +334,10 @@
     "photoHint": "JPG, PNG ou WebP, au moins 400 pixels, 5 Mo maximum. Nous supprimons les données cachées comme le lieu de prise de vue.",
     "photoRemove": "Retirer la photo",
     "confirmPhoto": "Je détiens les droits sur cette photo, et toutes les personnes reconnaissables – pour les enfants, leurs parents – acceptent sa publication.",
-    "photoReselect": "Merci de choisir à nouveau ta photo."
+    "photoReselect": "Merci de choisir à nouveau ta photo.",
+    "publishNow": "Publier maintenant (tu es admin)",
+    "publishNowHint": "Visible tout de suite dans l'app, sans vérification. Noté dans le journal avec ton compte.",
+    "publishedNow": "Publié ! Ton activité est maintenant visible dans l'app."
   },
   "admin": {
     "title": "Vérification",

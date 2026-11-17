@@ -334,7 +334,10 @@
     "photoHint": "JPG, PNG oder WebP, mindestens 400 Pixel, höchstens 5 MB. Wir entfernen versteckte Daten wie den Aufnahmeort.",
     "photoRemove": "Foto entfernen",
     "confirmPhoto": "Ich habe die Rechte an diesem Foto, und alle erkennbaren Personen – bei Kindern die Eltern – sind mit der Veröffentlichung einverstanden.",
-    "photoReselect": "Bitte wähle dein Foto noch einmal aus."
+    "photoReselect": "Bitte wähle dein Foto noch einmal aus.",
+    "publishNow": "Sofort veröffentlichen (du bist Admin)",
+    "publishNowHint": "Ohne Prüfung direkt in der App sichtbar. Wird im Prüfprotokoll mit deinem Konto vermerkt.",
+    "publishedNow": "Veröffentlicht! Dein Angebot ist jetzt in der App sichtbar."
   },
   "admin": {
     "title": "Prüfung",

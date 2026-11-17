@@ -5,6 +5,8 @@ import type { LocalizedText } from "@/domain/types";
 import { deletePhoto, photoIdFromUrl, photoUrl } from "./photos";
 
 export const MAX_OPEN_SUBMISSIONS = 10;
+
+type Actor = { id: string; email: string };
 const ACCENTS = ["coral", "sunshine", "teal", "lavender"] as const;
 
 /** Admins are configured on the server (ADMIN_EMAILS), never granted from the app. */
@@ -17,8 +19,20 @@ export function isAdmin(email: string | null | undefined): boolean {
   return list.includes(email.toLowerCase());
 }
 
-/** Saves a provider's listing as "pending": it is not public until an admin approves it. */
-export async function createSubmission(db: PrismaClient, userId: string, input: SubmissionInput, now = new Date(), photoId: string | null = null) {
+/**
+ * Saves a provider's listing as "pending": it is not public until an admin approves it.
+ * Shortcut: when `publishAs` is an admin (checked here, not trusted from the form), the
+ * listing is published right away and the audit log says so.
+ */
+export async function createSubmission(
+  db: PrismaClient,
+  userId: string,
+  input: SubmissionInput,
+  now = new Date(),
+  photoId: string | null = null,
+  publishAs: Actor | null = null,
+) {
+  const publishNow = Boolean(publishAs && publishAs.id === userId && isAdmin(publishAs.email));
   const open = await db.activity.count({ where: { submittedById: userId, status: "pending" } });
   if (open >= MAX_OPEN_SUBMISSIONS) return { ok: false as const, reason: "limit" as const };
 
@@ -32,7 +46,7 @@ export async function createSubmission(db: PrismaClient, userId: string, input: 
     const created = await tx.activity.create({
       data: {
         slug: slugify(input.de.title, randomBytes(4).toString("hex").slice(0, 6)),
-        status: "pending",
+        status: publishNow ? "published" : "pending",
         categories: input.categories,
         ageMin: input.ageMin,
         ageMax: input.ageMax,
@@ -60,10 +74,10 @@ export async function createSubmission(db: PrismaClient, userId: string, input: 
         sessions: { create: input.sessions.map((s) => ({ startsAt: new Date(s.startsAt), endsAt: new Date(s.endsAt) })) },
       },
     });
-    await tx.auditLog.create({ data: { activityId: created.id, actorId: userId, action: "submitted" } });
+    await tx.auditLog.create({ data: { activityId: created.id, actorId: userId, action: publishNow ? "published_by_admin" : "submitted" } });
     return created;
   });
-  return { ok: true as const, id: activity.id, slug: activity.slug };
+  return { ok: true as const, id: activity.id, slug: activity.slug, published: publishNow };
 }
 
 /** A provider's own submissions, newest first. Never includes anyone else's. */
@@ -82,8 +96,6 @@ export function listOwnSubmissions(db: PrismaClient, userId: string) {
     },
   });
 }
-
-type Actor = { id: string; email: string };
 
 export async function listPending(db: PrismaClient, actor: Actor) {
   if (!isAdmin(actor.email)) throw new Error("forbidden");

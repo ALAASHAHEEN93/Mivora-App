@@ -12,7 +12,7 @@ const field =
 const chip =
   "inline-flex min-h-10 cursor-pointer items-center gap-2 rounded-full border-2 border-line bg-surface px-3 text-sm font-bold has-[:checked]:border-accent has-[:checked]:bg-teal-100";
 
-export function ListingForm({ today }: { today: string }) {
+export function ListingForm({ today, isAdmin = false }: { today: string; isAdmin?: boolean }) {
   const t = useTranslations();
   const locale = useLocale();
   const [state, action, pending] = useActionState<SubmitState, FormData>(submitListing, null);
@@ -335,6 +335,16 @@ export function ListingForm({ today }: { today: string }) {
             </label>
           ))}
         </>,
+      )}
+
+      {isAdmin && (
+        <label className="flex items-start gap-3 rounded-3xl border-2 border-dashed border-accent bg-sun-100 p-4">
+          <input type="checkbox" name="publishNow" value="yes" defaultChecked={state ? one("publishNow") === "yes" : true} className="mt-1 size-5 shrink-0 accent-[var(--kw-primary)]" />
+          <span className="flex flex-col gap-1">
+            <span className="font-bold">{t("provider.publishNow")}</span>
+            <span className="text-sm text-muted">{t("provider.publishNowHint")}</span>
+          </span>
+        </label>
       )}
 
       <button

@@ -33,8 +33,9 @@ function Fact({ label, children }: { label: string; children: React.ReactNode })
   );
 }
 
-export default async function ActivityPage({ params }: { params: Params }) {
+export default async function ActivityPage({ params, searchParams }: { params: Params; searchParams: Promise<{ neu?: string }> }) {
   const { locale, slug } = await params;
+  const { neu } = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations();
   const result = await activityRepository.findVisibleBySlug(slug);
@@ -81,6 +82,12 @@ export default async function ActivityPage({ params }: { params: Params }) {
       <div className="overflow-hidden rounded-[2rem] shadow-[0_14px_36px_-16px_rgba(42,47,58,0.45)]">
         <ListingPicture activity={activity} priority sizes="(min-width: 1024px) 64rem, 100vw" className="aspect-[16/9] w-full" />
       </div>
+
+      {neu && (
+        <p role="status" className="rounded-2xl bg-sun-100 px-4 py-3 font-bold">
+          {t("provider.publishedNow")}
+        </p>
+      )}
 
       <header className="flex flex-col gap-3">
         <ul className="flex flex-wrap gap-2 text-sm font-bold">

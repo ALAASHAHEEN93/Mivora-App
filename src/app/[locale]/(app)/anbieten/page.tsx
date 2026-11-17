@@ -5,7 +5,7 @@ import { getPrisma } from "@/data/db/client";
 import { berlinDate } from "@/domain/time";
 import { formatSessionStart } from "@/domain/format";
 import { Mascot } from "@/components/illustrations/Mascot";
-import { listOwnSubmissions } from "@/server/listings";
+import { isAdmin, listOwnSubmissions } from "@/server/listings";
 import { accountsAvailable, getCurrentUser } from "@/server/auth/session";
 import { ListingForm } from "./ListingForm";
 
@@ -85,7 +85,7 @@ export default async function ProviderPage({ params, searchParams }: { params: P
             )}
           </section>
           <h2 className="mt-2 font-display text-2xl font-bold">{t("provider.newTitle")}</h2>
-          <ListingForm today={berlinDate(new Date())} />
+          <ListingForm today={berlinDate(new Date())} isAdmin={isAdmin(user.email)} />
         </>
       )}
     </div>

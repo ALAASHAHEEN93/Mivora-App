@@ -334,7 +334,10 @@
     "photoHint": "JPG, PNG o WebP, almeno 400 pixel, massimo 5 MB. Rimuoviamo i dati nascosti come il luogo dello scatto.",
     "photoRemove": "Rimuovi foto",
     "confirmPhoto": "Ho i diritti su questa foto e tutte le persone riconoscibili – per i bambini, i genitori – acconsentono alla pubblicazione.",
-    "photoReselect": "Scegli di nuovo la tua foto."
+    "photoReselect": "Scegli di nuovo la tua foto.",
+    "publishNow": "Pubblica subito (sei admin)",
+    "publishNowHint": "Visibile subito nell'app, senza controllo. Registrato nel registro con il tuo account.",
+    "publishedNow": "Pubblicato! La tua attività è ora visibile nell'app."
   },
   "admin": {
     "title": "Controllo",
