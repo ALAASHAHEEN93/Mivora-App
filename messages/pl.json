@@ -377,5 +377,34 @@
     "invalid": "Wybierz powód – przy „Coś innego” dodaj krótki opis.",
     "limit": "Ta oferta dostała właśnie wiele zgłoszeń. Spróbuj później.",
     "unavailable": "Zgłoszenia działają w tej wersji tylko z lokalną bazą danych."
+  },
+  "inquiry": {
+    "title": "Zapytanie do organizatora",
+    "intro": "Zapytaj o wolne miejsca lub zadaj pytanie. Organizator odpowie e-mailem.",
+    "sessionLabel": "Preferowany termin",
+    "anyDate": "Obojętnie / jeszcze nie wiem",
+    "childAgeLabel": "Wiek dziecka (opcjonalnie)",
+    "messageLabel": "Twoja wiadomość",
+    "messageHint": "Co najmniej 10 znaków. Nie podawaj danych o zdrowiu dziecka.",
+    "consent": "Zgadzam się, aby Mivora przekazała mój adres e-mail ({email}) organizatorowi, żeby mógł odpowiedzieć.",
+    "send": "Wyślij zapytanie",
+    "sent": "Wysłano! Organizator odpowie ci e-mailem.",
+    "signIn": "Zaloguj się, aby wysłać zapytanie – wtedy organizator może ci odpowiedzieć.",
+    "signInButton": "Zaloguj się",
+    "demo": "Dla ofert demonstracyjnych zapytania nie są możliwe.",
+    "errors": {
+      "invalid": "Sprawdź wiadomość (co najmniej 10 znaków) i termin.",
+      "consent": "Potwierdź, że możemy przekazać twój adres e-mail.",
+      "noProvider": "Ta oferta nie przyjmuje jeszcze zapytań przez Mivora.",
+      "limit": "Wysłałeś dziś już 5 zapytań. Spróbuj jutro.",
+      "mail": "Nie udało się teraz wysłać zapytania. Spróbuj ponownie za chwilę."
+    }
+  },
+  "inquiryEmail": {
+    "subject": "Nowe zapytanie przez Mivora: {title}",
+    "intro": "Rodzina interesuje się „{title}”.",
+    "date": "Preferowany termin",
+    "childAge": "Wiek dziecka",
+    "replyHint": "Po prostu odpowiedz na tego e-maila – trafi bezpośrednio do rodziny."
   }
 }

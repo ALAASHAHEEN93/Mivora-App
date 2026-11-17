@@ -377,5 +377,34 @@
     "invalid": "Elige un motivo; para «Otra cosa» añade una nota breve.",
     "limit": "Este anuncio acaba de recibir muchos avisos. Inténtalo más tarde.",
     "unavailable": "En esta vista previa los avisos solo funcionan con la base de datos local."
+  },
+  "inquiry": {
+    "title": "Solicitud al organizador",
+    "intro": "Pregunta por plazas libres o envía una duda. El organizador te responde por correo.",
+    "sessionLabel": "Fecha preferida",
+    "anyDate": "Cualquiera / aún no lo sé",
+    "childAgeLabel": "Edad del niño (opcional)",
+    "messageLabel": "Tu mensaje",
+    "messageHint": "Mínimo 10 caracteres. No incluyas datos de salud de tu hijo.",
+    "consent": "Acepto que Mivora comparta mi correo ({email}) con el organizador para que pueda responderme.",
+    "send": "Enviar solicitud",
+    "sent": "¡Enviado! El organizador te responderá por correo.",
+    "signIn": "Inicia sesión para enviar una solicitud; así el organizador podrá responderte.",
+    "signInButton": "Iniciar sesión",
+    "demo": "No se pueden enviar solicitudes a anuncios de demostración.",
+    "errors": {
+      "invalid": "Revisa tu mensaje (mínimo 10 caracteres) y la fecha.",
+      "consent": "Confirma que podemos compartir tu correo.",
+      "noProvider": "Esta actividad aún no acepta solicitudes a través de Mivora.",
+      "limit": "Hoy ya has enviado 5 solicitudes. Inténtalo mañana.",
+      "mail": "No se pudo enviar la solicitud ahora. Inténtalo de nuevo en un momento."
+    }
+  },
+  "inquiryEmail": {
+    "subject": "Nueva solicitud a través de Mivora: {title}",
+    "intro": "Una familia está interesada en «{title}».",
+    "date": "Fecha preferida",
+    "childAge": "Edad del niño",
+    "replyHint": "Responde a este correo: llega directamente a la familia."
   }
 }

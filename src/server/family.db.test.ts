@@ -12,6 +12,7 @@ import { addToList, assignChildren, getLists, mergeLists, removeFromList } from 
 import { approveSubmission, createSubmission, listOwnSubmissions, listPending, photoAccess, rejectSubmission } from "./listings";
 import { readPhoto, savePhoto } from "./photos";
 import { createReport, listOpenReports, resolveReport } from "./reports";
+import { createInquiry } from "./inquiries";
 import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
@@ -29,6 +30,7 @@ describe.skipIf(!url)("accounts & family (database)", () => {
   });
   afterAll(() => db?.$disconnect());
   beforeEach(async () => {
+    await db.inquiry.deleteMany();
     await db.report.deleteMany();
     await db.auditLog.deleteMany();
     await db.activity.deleteMany({ where: { sourceType: "provider" } });
@@ -328,6 +330,44 @@ describe.skipIf(!url)("accounts & family (database)", () => {
       expect(await createReport(db, { activityId: "nope", reason: "cancelled", message: null, reporterId: null })).toEqual({ ok: false, reason: "invalid" });
       for (let i = 0; i < 3; i++) await createReport(db, { activityId: id, reason: "wrongInfo", message: null, reporterId: parent.userId });
       expect(await createReport(db, { activityId: id, reason: "wrongInfo", message: null, reporterId: parent.userId })).toEqual({ ok: false, reason: "limit" });
+    });
+  });
+
+  describe("booking requests", () => {
+    const ADMIN = "admin@example.invalid";
+    const now = new Date("2026-11-17T12:00:00Z");
+    beforeAll(() => {
+      process.env.ADMIN_EMAILS = ADMIN;
+    });
+    async function inquiryListing() {
+      const provider = await signIn(ADMIN);
+      // no booking link -> "inquiry" mode
+      const r = parseSubmission(validSubmissionForm({ bookingUrl: null }), now);
+      if (!r.ok) throw new Error(JSON.stringify(r.errors));
+      const res = await createSubmission(db, provider.userId, r.value, now, null, { id: provider.userId, email: ADMIN });
+      if (!res.ok) throw new Error();
+      const first = await db.session.findFirstOrThrow({ where: { activityId: res.id }, orderBy: { startsAt: "asc" } });
+      return { id: res.id, firstSession: first.startsAt };
+    }
+
+    it("sends to the provider only with consent, a real message and a real date", async () => {
+      const { id, firstSession } = await inquiryListing();
+      const parent = await signIn("eltern@example.invalid");
+      const base = { activityId: id, parentId: parent.userId, message: "Gibt es noch Plätze für zwei Kinder?", childAge: "5" };
+      expect(await createInquiry(db, { ...base, sessionAt: "", consent: null }, now)).toEqual({ ok: false, reason: "consent" });
+      expect(await createInquiry(db, { ...base, message: "hi", sessionAt: "", consent: "yes" }, now)).toEqual({ ok: false, reason: "invalid" });
+      expect(await createInquiry(db, { ...base, sessionAt: "2030-01-01T10:00:00Z", consent: "yes" }, now)).toEqual({ ok: false, reason: "invalid" });
+      const ok = await createInquiry(db, { ...base, sessionAt: firstSession.toISOString(), consent: "yes" }, now);
+      expect(ok).toMatchObject({ ok: true, to: { email: ADMIN } });
+      expect(await db.inquiry.count()).toBe(1);
+    });
+
+    it("limits requests per parent per day", async () => {
+      const { id } = await inquiryListing();
+      const parent = await signIn("eltern@example.invalid");
+      const req = { activityId: id, parentId: parent.userId, message: "Gibt es noch Plätze für uns?", childAge: "", sessionAt: "", consent: "yes" };
+      for (let i = 0; i < 5; i++) expect((await createInquiry(db, req, now)).ok).toBe(true);
+      expect(await createInquiry(db, req, now)).toEqual({ ok: false, reason: "limit" });
     });
   });
 });

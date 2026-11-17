@@ -12,6 +12,7 @@ import { Icon } from "@/components/Icon";
 import { Link } from "@/i18n/navigation";
 import { buttonPrimary } from "@/components/ui";
 import { ReportProblem } from "@/components/ReportProblem";
+import { InquiryForm } from "@/components/InquiryForm";
 
 export const revalidate = 300;
 
@@ -34,9 +35,9 @@ function Fact({ label, children }: { label: string; children: React.ReactNode })
   );
 }
 
-export default async function ActivityPage({ params, searchParams }: { params: Params; searchParams: Promise<{ neu?: string; meldung?: string }> }) {
+export default async function ActivityPage({ params, searchParams }: { params: Params; searchParams: Promise<{ neu?: string; meldung?: string; anfrage?: string }> }) {
   const { locale, slug } = await params;
-  const { neu, meldung } = await searchParams;
+  const { neu, meldung, anfrage } = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations();
   const result = await activityRepository.findVisibleBySlug(slug);
@@ -172,6 +173,10 @@ export default async function ActivityPage({ params, searchParams }: { params: P
             )}
           </p>
 
+          {activity.bookingMode !== "external_link" && (
+            <InquiryForm activityId={activity.id} slug={activity.slug} locale={locale} sessions={shown} isDemo={activity.source.type === "demo"} status={anfrage} />
+          )}
+
           <ReportProblem activityId={activity.id} slug={activity.slug} locale={locale} status={meldung} />
         </div>
 
@@ -226,9 +231,9 @@ export default async function ActivityPage({ params, searchParams }: { params: P
                 {t("activity.bookExternal")} <Icon name="external" className="size-4" />
               </a>
             ) : (
-              <p className="flex-1 rounded-xl bg-sun-100 px-3 py-2 text-sm">
-                <strong>{t("activity.inquire")}:</strong> {t("activity.inquireNote")}
-              </p>
+              <a href="#anfrage" className={`${buttonPrimary} flex-1`}>
+                {t("activity.inquire")}
+              </a>
             )}
             <SaveButton id={activity.id} title={text.title} size="lg" />
           </div>

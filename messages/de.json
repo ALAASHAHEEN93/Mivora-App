@@ -377,5 +377,34 @@
     "invalid": "Bitte wähle einen Grund – bei „Etwas anderes“ auch eine kurze Beschreibung.",
     "limit": "Für dieses Angebot wurde gerade schon viel gemeldet. Bitte versuch es später noch einmal.",
     "unavailable": "Meldungen sind in dieser Vorschau nur mit der lokalen Datenbank möglich."
+  },
+  "inquiry": {
+    "title": "Anfrage an den Anbieter",
+    "intro": "Frag nach freien Plätzen oder stell eine Frage. Der Anbieter antwortet dir per E-Mail.",
+    "sessionLabel": "Wunschtermin",
+    "anyDate": "Egal / noch offen",
+    "childAgeLabel": "Alter des Kindes (optional)",
+    "messageLabel": "Deine Nachricht",
+    "messageHint": "Mindestens 10 Zeichen. Bitte keine Gesundheitsdaten deines Kindes.",
+    "consent": "Ich bin einverstanden, dass Mivora meine E-Mail-Adresse ({email}) an den Anbieter weitergibt, damit er mir antworten kann.",
+    "send": "Anfrage senden",
+    "sent": "Gesendet! Der Anbieter antwortet dir per E-Mail.",
+    "signIn": "Melde dich an, um eine Anfrage zu senden – so kann der Anbieter dir antworten.",
+    "signInButton": "Anmelden",
+    "demo": "Bei Demo-Angeboten sind Anfragen nicht möglich.",
+    "errors": {
+      "invalid": "Bitte prüfe deine Nachricht (mindestens 10 Zeichen) und den Termin.",
+      "consent": "Bitte bestätige, dass wir deine E-Mail-Adresse weitergeben dürfen.",
+      "noProvider": "Dieses Angebot nimmt noch keine Anfragen über Mivora an.",
+      "limit": "Du hast heute schon 5 Anfragen gesendet. Bitte versuch es morgen wieder.",
+      "mail": "Die Anfrage konnte gerade nicht gesendet werden. Bitte versuch es gleich noch einmal."
+    }
+  },
+  "inquiryEmail": {
+    "subject": "Neue Anfrage über Mivora: {title}",
+    "intro": "Eine Familie interessiert sich für „{title}“.",
+    "date": "Wunschtermin",
+    "childAge": "Alter des Kindes",
+    "replyHint": "Antworte einfach auf diese E-Mail – sie geht direkt an die Familie."
   }
 }

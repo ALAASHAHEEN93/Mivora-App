@@ -377,5 +377,34 @@
     "invalid": "Lütfen bir neden seç – “Başka bir şey” için kısa bir not da ekle.",
     "limit": "Bu ilan için az önce çok bildirim geldi. Lütfen daha sonra tekrar dene.",
     "unavailable": "Bu önizlemede bildirimler yalnızca yerel veritabanıyla çalışır."
+  },
+  "inquiry": {
+    "title": "Sağlayıcıya talep",
+    "intro": "Boş yer sor ya da bir soru gönder. Sağlayıcı sana e-postayla yanıt verir.",
+    "sessionLabel": "Tercih edilen tarih",
+    "anyDate": "Fark etmez / henüz belli değil",
+    "childAgeLabel": "Çocuğun yaşı (isteğe bağlı)",
+    "messageLabel": "Mesajın",
+    "messageHint": "En az 10 karakter. Lütfen çocuğunun sağlık bilgilerini yazma.",
+    "consent": "Mivora'nın, yanıt verebilmesi için e-posta adresimi ({email}) sağlayıcıyla paylaşmasını kabul ediyorum.",
+    "send": "Talep gönder",
+    "sent": "Gönderildi! Sağlayıcı sana e-postayla yanıt verecek.",
+    "signIn": "Talep göndermek için giriş yap – böylece sağlayıcı sana yanıt verebilir.",
+    "signInButton": "Giriş yap",
+    "demo": "Demo ilanlarda talep gönderilemez.",
+    "errors": {
+      "invalid": "Lütfen mesajını (en az 10 karakter) ve tarihi kontrol et.",
+      "consent": "Lütfen e-posta adresini paylaşmamızı onayla.",
+      "noProvider": "Bu etkinlik henüz Mivora üzerinden talep kabul etmiyor.",
+      "limit": "Bugün zaten 5 talep gönderdin. Lütfen yarın tekrar dene.",
+      "mail": "Talep şu anda gönderilemedi. Lütfen birazdan tekrar dene."
+    }
+  },
+  "inquiryEmail": {
+    "subject": "Mivora üzerinden yeni talep: {title}",
+    "intro": "Bir aile “{title}” ile ilgileniyor.",
+    "date": "Tercih edilen tarih",
+    "childAge": "Çocuğun yaşı",
+    "replyHint": "Bu e-postayı yanıtlaman yeterli – doğrudan aileye gider."
   }
 }

@@ -377,5 +377,34 @@
     "invalid": "Please choose a reason – for “Something else” add a short note too.",
     "limit": "This listing just got many reports. Please try again later.",
     "unavailable": "Reports only work with the local database in this preview."
+  },
+  "inquiry": {
+    "title": "Request to the provider",
+    "intro": "Ask about free places or send a question. The provider replies by email.",
+    "sessionLabel": "Preferred date",
+    "anyDate": "Any / not sure yet",
+    "childAgeLabel": "Child's age (optional)",
+    "messageLabel": "Your message",
+    "messageHint": "At least 10 characters. Please don't include health details about your child.",
+    "consent": "I agree that Mivora shares my email address ({email}) with the provider so they can reply.",
+    "send": "Send request",
+    "sent": "Sent! The provider will reply by email.",
+    "signIn": "Sign in to send a request – so the provider can reply to you.",
+    "signInButton": "Sign in",
+    "demo": "Requests aren't possible for demo listings.",
+    "errors": {
+      "invalid": "Please check your message (at least 10 characters) and the date.",
+      "consent": "Please confirm that we may share your email address.",
+      "noProvider": "This activity doesn't take requests through Mivora yet.",
+      "limit": "You've already sent 5 requests today. Please try again tomorrow.",
+      "mail": "The request couldn't be sent right now. Please try again in a moment."
+    }
+  },
+  "inquiryEmail": {
+    "subject": "New request via Mivora: {title}",
+    "intro": "A family is interested in “{title}”.",
+    "date": "Preferred date",
+    "childAge": "Child's age",
+    "replyHint": "Simply reply to this email – it goes straight to the family."
   }
 }

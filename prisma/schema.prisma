@@ -82,6 +82,7 @@ model Activity {
   reviewNote    String?
   auditLog      AuditLog[]
   reports       Report[]
+  inquiries     Inquiry[]
 
   provider     Provider              @relation(fields: [providerId], references: [id])
   providerId   String
@@ -137,6 +138,7 @@ model User {
   submissions Activity[] @relation("Submissions")
   auditLog    AuditLog[]
   reports     Report[]   @relation("Reporter")
+  inquiries   Inquiry[]
   resolved    Report[]   @relation("Resolver")
 }
 
@@ -235,5 +237,21 @@ model Report {
   resolvedById String?
 
   @@index([resolvedAt, createdAt])
+  @@index([activityId, createdAt])
+}
+
+/// A parent's booking request to a provider (sent by email; stored for the record and limits).
+model Inquiry {
+  id         String   @id @default(cuid())
+  activity   Activity @relation(fields: [activityId], references: [id], onDelete: Cascade)
+  activityId String
+  parent     User     @relation(fields: [parentId], references: [id], onDelete: Cascade)
+  parentId   String
+  sessionAt  DateTime? @db.Timestamptz(3)
+  childAge   Int?
+  message    String
+  createdAt  DateTime @default(now())
+
+  @@index([parentId, createdAt])
   @@index([activityId, createdAt])
 }

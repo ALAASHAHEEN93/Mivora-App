@@ -15,3 +15,37 @@ export async function sendLoginCodeEmail(to: string, code: string, locale: strin
 <p style="color:#6b5644">${t("expiry")}</p><p>– Mivora</p></div>`;
   await nodemailer.createTransport(url).sendMail({ from, to, subject: t("subject", { code }), text, html });
 }
+
+/** Booking request to a provider. Reply-To is the parent, who agreed to share their address. */
+export async function sendInquiryEmail(input: {
+  to: string;
+  providerLocale: string;
+  parentEmail: string;
+  title: string;
+  sessionLabel: string | null;
+  childAge: number | null;
+  message: string;
+}) {
+  const url = process.env.SMTP_URL;
+  const from = process.env.EMAIL_FROM;
+  if (!url || !from) throw new Error("SMTP_URL and EMAIL_FROM must be set to send booking requests");
+  const t = await getTranslations({ locale: input.providerLocale, namespace: "inquiryEmail" });
+  const lines = [
+    t("intro", { title: input.title }),
+    "",
+    input.sessionLabel ? `${t("date")}: ${input.sessionLabel}` : null,
+    input.childAge !== null ? `${t("childAge")}: ${input.childAge}` : null,
+    "",
+    input.message,
+    "",
+    t("replyHint"),
+    "– Mivora",
+  ].filter((l): l is string => l !== null);
+  await nodemailer.createTransport(url).sendMail({
+    from,
+    to: input.to,
+    replyTo: input.parentEmail,
+    subject: t("subject", { title: input.title }),
+    text: lines.join("\n"),
+  });
+}
