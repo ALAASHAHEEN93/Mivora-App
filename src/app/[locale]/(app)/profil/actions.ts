@@ -62,3 +62,9 @@ export async function deleteAccountAction(formData: FormData) {
   await signOutCurrent();
   redirect(`/${localeOf(formData)}/profil?geloescht=1`);
 }
+
+export async function toggleRemindersAction(formData: FormData) {
+  const user = await requireUser(formData);
+  await getPrisma().user.update({ where: { id: user.id }, data: { remindersEnabled: formData.get("enabled") === "yes" } });
+  revalidatePath(`/${localeOf(formData)}/profil`);
+}

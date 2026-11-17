@@ -261,7 +261,11 @@
     "deleteButton": "Usuń konto na zawsze",
     "deletedDone": "Twoje konto i wszystkie profile dzieci zostały usunięte.",
     "confirmMissing": "Potwierdź usunięcie, zaznaczając pole.",
-    "childInvalid": "Sprawdź dane dziecka."
+    "childInvalid": "Sprawdź dane dziecka.",
+    "remindersTitle": "Przypomnienia",
+    "remindersText": "Wieczorem dzień wcześniej wyślemy ci e-mail z jutrzejszymi zajęciami.",
+    "remindersOn": "Przypomnienia włączone",
+    "remindersOff": "Przypomnienia wyłączone"
   },
   "email": {
     "subject": "Twój kod Mivora: {code}",
@@ -359,7 +363,10 @@
     "editHint": "Po zapisaniu ponownie sprawdzimy ofertę. Do tego czasu nie jest widoczna.",
     "editHintAdmin": "Jesteś adminem: z „Opublikuj teraz” zmiany są od razu widoczne.",
     "changedDone": "Zapisano! Sprawdzimy zmiany przed publikacją.",
-    "currentPhoto": "Obecne zdjęcie – wybierz poniżej nowe, aby je zastąpić."
+    "currentPhoto": "Obecne zdjęcie – wybierz poniżej nowe, aby je zastąpić.",
+    "staleQuestion": "Nadal aktualne?",
+    "confirmCurrent": "Tak, nadal aktualne",
+    "confirmedDone": "Dziękujemy! Oferta potwierdzona jako aktualna."
   },
   "admin": {
     "title": "Sprawdzanie",
@@ -428,5 +435,17 @@
     "date": "Preferowany termin",
     "childAge": "Wiek dziecka",
     "replyHint": "Po prostu odpowiedz na tego e-maila – trafi bezpośrednio do rodziny."
+  },
+  "reminderEmail": {
+    "subject": "Przypomnienie: twoje jutrzejsze zajęcia",
+    "intro": "Cześć! Oto co zaplanowałeś na jutro:",
+    "link": "Otwórz kalendarz: {url}",
+    "optOut": "Przypomnienia możesz wyłączyć w profilu."
+  },
+  "recheckEmail": {
+    "subject": "Czy „{title}” jest nadal aktualne?",
+    "intro": "Cześć! Sprawdź proszę, czy oferta „{title}” jest nadal poprawna (terminy, cena, miejsce).",
+    "action": "Potwierdź lub edytuj: {url}",
+    "why": "Rodziny ufają Mivora, bo dane są aktualne. Dziękujemy za pomoc!"
   }
 }

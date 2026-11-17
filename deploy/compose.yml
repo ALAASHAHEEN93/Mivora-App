@@ -64,6 +64,21 @@ services:
     depends_on:
       db: { condition: service_healthy }
 
+  # Daily emails (reminders + "still current?"). Run from the server's cron at 18:00 Berlin:
+  #   0 18 * * * cd /opt/mivora && docker compose -f deploy/compose.yml --env-file deploy/.env run --rm jobs
+  jobs:
+    build: { context: .., target: build }
+    profiles: [tools]
+    command: ["pnpm", "jobs:daily"]
+    environment:
+      DATABASE_URL: postgresql://mivora:${DB_PASSWORD}@db:5432/mivora
+      SMTP_URL: ${SMTP_URL}
+      EMAIL_FROM: ${EMAIL_FROM}
+      APP_URL: https://${DOMAIN}
+      TZ: Europe/Berlin
+    depends_on:
+      db: { condition: service_healthy }
+
 volumes:
   db:
   photos:

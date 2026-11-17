@@ -261,7 +261,11 @@
     "deleteButton": "Eliminar cuenta definitivamente",
     "deletedDone": "Tu cuenta y todos los perfiles de niños se han eliminado.",
     "confirmMissing": "Marca la casilla para confirmar.",
-    "childInvalid": "Revisa los datos del niño."
+    "childInvalid": "Revisa los datos del niño.",
+    "remindersTitle": "Recordatorios",
+    "remindersText": "La tarde anterior te enviamos un correo con las actividades de mañana.",
+    "remindersOn": "Recordatorios activados",
+    "remindersOff": "Recordatorios desactivados"
   },
   "email": {
     "subject": "Tu código de Mivora: {code}",
@@ -359,7 +363,10 @@
     "editHint": "Tras guardar revisamos el anuncio de nuevo. Hasta entonces no es visible.",
     "editHintAdmin": "Eres admin: con «Publicar ahora» tus cambios se ven al momento.",
     "changedDone": "¡Guardado! Revisaremos los cambios antes de publicarlos.",
-    "currentPhoto": "Foto actual: elige una nueva abajo para sustituirla."
+    "currentPhoto": "Foto actual: elige una nueva abajo para sustituirla.",
+    "staleQuestion": "¿Sigue vigente?",
+    "confirmCurrent": "Sí, sigue vigente",
+    "confirmedDone": "¡Gracias! Tu anuncio está confirmado como vigente."
   },
   "admin": {
     "title": "Revisión",
@@ -428,5 +435,17 @@
     "date": "Fecha preferida",
     "childAge": "Edad del niño",
     "replyHint": "Responde a este correo: llega directamente a la familia."
+  },
+  "reminderEmail": {
+    "subject": "Recordatorio: tus actividades de mañana",
+    "intro": "¡Hola! Esto es lo que planeaste para mañana:",
+    "link": "Abrir calendario: {url}",
+    "optOut": "Puedes desactivar estos recordatorios en tu perfil."
+  },
+  "recheckEmail": {
+    "subject": "¿Sigue vigente «{title}»?",
+    "intro": "¡Hola! Comprueba rápidamente que tu anuncio «{title}» sigue siendo correcto (fechas, precio, lugar).",
+    "action": "Confirmar o editar: {url}",
+    "why": "Las familias confían en Mivora porque los datos están al día. ¡Gracias por ayudar!"
   }
 }

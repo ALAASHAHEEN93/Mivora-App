@@ -91,6 +91,7 @@ export function listOwnSubmissions(db: PrismaClient, userId: string) {
       status: true,
       reviewNote: true,
       createdAt: true,
+      lastVerifiedAt: true,
       translations: { where: { locale: "de" }, select: { title: true } },
       sessions: { orderBy: { startsAt: "asc" }, take: 1, select: { startsAt: true } },
     },

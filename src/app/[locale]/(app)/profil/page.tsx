@@ -9,7 +9,7 @@ import { childColor } from "@/domain/children";
 import { listChildren } from "@/server/family";
 import { isAdmin } from "@/server/listings";
 import { accountsAvailable, getCurrentUser } from "@/server/auth/session";
-import { addChildAction, deleteAccountAction, removeChildAction, signOutAction, updateChildAction } from "./actions";
+import { addChildAction, deleteAccountAction, removeChildAction, signOutAction, toggleRemindersAction, updateChildAction } from "./actions";
 
 export const dynamic = "force-dynamic";
 
@@ -176,6 +176,23 @@ export default async function ProfilePage({
             </details>
           </section>
         </>
+      )}
+
+      {user && (
+        <section className={card}>
+          <h2 className="font-display text-xl font-bold">{t("family.remindersTitle")}</h2>
+          <p className="text-sm text-muted">{t("family.remindersText")}</p>
+          <form action={toggleRemindersAction}>
+            <input type="hidden" name="locale" value={locale} />
+            <input type="hidden" name="enabled" value={user.remindersEnabled ? "no" : "yes"} />
+            <button type="submit" role="switch" aria-checked={user.remindersEnabled} className="inline-flex min-h-12 items-center gap-3 font-bold">
+              <span aria-hidden="true" className={`relative h-7 w-12 rounded-full transition ${user.remindersEnabled ? "bg-primary" : "bg-line"}`}>
+                <span className={`absolute top-1 size-5 rounded-full bg-surface shadow transition-all ${user.remindersEnabled ? "start-6" : "start-1"}`} />
+              </span>
+              {user.remindersEnabled ? t("family.remindersOn") : t("family.remindersOff")}
+            </button>
+          </form>
+        </section>
       )}
 
       <section className={card}>

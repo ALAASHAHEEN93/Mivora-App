@@ -20,7 +20,8 @@
     "db:migrate": "prisma migrate dev",
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
-    "dev:preview": "NEXT_DIST_DIR=.next-preview next dev --turbopack"
+    "dev:preview": "NEXT_DIST_DIR=.next-preview next dev --turbopack",
+    "jobs:daily": "tsx scripts/daily-jobs.ts"
   },
   "dependencies": {
     "@prisma/adapter-pg": "7.10.1",

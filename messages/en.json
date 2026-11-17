@@ -261,7 +261,11 @@
     "deleteButton": "Delete account permanently",
     "deletedDone": "Your account and all child profiles have been deleted.",
     "confirmMissing": "Please tick the box to confirm deletion.",
-    "childInvalid": "Please check the child's details."
+    "childInvalid": "Please check the child's details.",
+    "remindersTitle": "Reminders",
+    "remindersText": "The evening before, we email you tomorrow's planned activities.",
+    "remindersOn": "Reminders on",
+    "remindersOff": "Reminders off"
   },
   "email": {
     "subject": "Your Mivora code: {code}",
@@ -359,7 +363,10 @@
     "editHint": "After saving we review the listing again. Until then it isn't visible.",
     "editHintAdmin": "You're an admin: with “Publish now” your changes are visible right away.",
     "changedDone": "Saved! We'll review the changes before they appear.",
-    "currentPhoto": "Current photo – choose a new one below to replace it."
+    "currentPhoto": "Current photo – choose a new one below to replace it.",
+    "staleQuestion": "Still current?",
+    "confirmCurrent": "Yes, still current",
+    "confirmedDone": "Thanks! Your listing is confirmed as current."
   },
   "admin": {
     "title": "Review",
@@ -428,5 +435,17 @@
     "date": "Preferred date",
     "childAge": "Child's age",
     "replyHint": "Simply reply to this email – it goes straight to the family."
+  },
+  "reminderEmail": {
+    "subject": "Reminder: your activities tomorrow",
+    "intro": "Hello! Here's what you planned for tomorrow:",
+    "link": "Open your calendar: {url}",
+    "optOut": "You can switch these reminders off in your profile."
+  },
+  "recheckEmail": {
+    "subject": "Is “{title}” still current?",
+    "intro": "Hello! Please quickly check that your listing “{title}” is still correct (dates, price, place).",
+    "action": "Confirm or edit: {url}",
+    "why": "Families trust Mivora because listings are up to date. Thanks for helping!"
   }
 }

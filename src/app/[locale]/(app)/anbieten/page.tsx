@@ -8,6 +8,8 @@ import { Mascot } from "@/components/illustrations/Mascot";
 import { isAdmin, listOwnSubmissions } from "@/server/listings";
 import { accountsAvailable, getCurrentUser } from "@/server/auth/session";
 import { ListingForm } from "./ListingForm";
+import { confirmCurrentAction } from "./actions";
+import { isStale } from "@/server/jobs";
 
 export const dynamic = "force-dynamic";
 
@@ -24,9 +26,9 @@ const BADGE: Record<string, string> = {
   draft: "bg-lav-100",
 };
 
-export default async function ProviderPage({ params, searchParams }: { params: Promise<{ locale: string }>; searchParams: Promise<{ eingereicht?: string; geaendert?: string }> }) {
+export default async function ProviderPage({ params, searchParams }: { params: Promise<{ locale: string }>; searchParams: Promise<{ eingereicht?: string; geaendert?: string; bestaetigt?: string }> }) {
   const { locale } = await params;
-  const { eingereicht, geaendert } = await searchParams;
+  const { eingereicht, geaendert, bestaetigt } = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations();
   const user = await getCurrentUser();
@@ -51,6 +53,11 @@ export default async function ProviderPage({ params, searchParams }: { params: P
         </section>
       ) : (
         <>
+          {bestaetigt && (
+            <p role="status" className="rounded-2xl bg-teal-100 px-4 py-3 font-bold">
+              {t("provider.confirmedDone")}
+            </p>
+          )}
           {geaendert && (
             <p role="status" className="rounded-2xl bg-teal-100 px-4 py-3 font-bold">
               {t("provider.changedDone")}
@@ -79,6 +86,16 @@ export default async function ProviderPage({ params, searchParams }: { params: P
                     </div>
                     {m.sessions[0] && <p className="text-sm text-muted">{formatSessionStart(m.sessions[0].startsAt.toISOString(), locale)}</p>}
                     {m.status === "archived" && m.reviewNote && <p className="text-sm">{t("provider.reason", { note: m.reviewNote })}</p>}
+                    {m.status === "published" && isStale(m.lastVerifiedAt) && (
+                      <form action={confirmCurrentAction} className="flex flex-wrap items-center gap-2 rounded-xl bg-sun-100 p-2 text-sm">
+                        <input type="hidden" name="locale" value={locale} />
+                        <input type="hidden" name="id" value={m.id} />
+                        <span className="font-bold">{t("provider.staleQuestion")}</span>
+                        <button type="submit" className="min-h-10 rounded-full bg-primary px-4 font-bold text-on-primary">
+                          {t("provider.confirmCurrent")}
+                        </button>
+                      </form>
+                    )}
                     <div className="flex gap-4">
                       {m.status === "published" && (
                         <Link href={`/aktivitaet/${m.slug}`} className="w-fit text-sm font-bold text-accent underline underline-offset-4">

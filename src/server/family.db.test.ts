@@ -13,6 +13,7 @@ import { approveSubmission, createSubmission, listOwnSubmissions, listPending, p
 import { readPhoto, savePhoto } from "./photos";
 import { createReport, listOpenReports, resolveReport } from "./reports";
 import { createInquiry } from "./inquiries";
+import { confirmListing, sendRecheckRequests, sendTomorrowReminders, type OutgoingMail } from "./jobs";
 import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
@@ -391,6 +392,61 @@ describe.skipIf(!url)("accounts & family (database)", () => {
       const req = { activityId: id, parentId: parent.userId, message: "Gibt es noch Plätze für uns?", childAge: "", sessionAt: "", consent: "yes" };
       for (let i = 0; i < 5; i++) expect((await createInquiry(db, req, now)).ok).toBe(true);
       expect(await createInquiry(db, req, now)).toEqual({ ok: false, reason: "limit" });
+    });
+  });
+
+  describe("daily email jobs", () => {
+    const ADMIN = "admin@example.invalid";
+    beforeAll(() => {
+      process.env.ADMIN_EMAILS = ADMIN;
+    });
+
+    it("reminds parents once, the evening before, only if they want reminders", async () => {
+      const anna = await signIn("anna@example.invalid");
+      const ben = await signIn("ben@example.invalid");
+      await db.user.update({ where: { id: ben.userId }, data: { remindersEnabled: false } });
+      const maus = await addChild(db, anna.userId, { nickname: "Maus", birthYear: 2020, interests: [] });
+      const tomorrow = "demo-a1|2026-11-21T10:00:00+01:00|2026-11-21T10:45:00+01:00";
+      const later = "demo-a1|2026-11-28T10:00:00+01:00|2026-11-28T10:45:00+01:00";
+      for (const u of [anna, ben]) {
+        await addToList(db, u.userId, "planned", tomorrow);
+        await addToList(db, u.userId, "planned", later);
+      }
+      await assignChildren(db, anna.userId, tomorrow, [maus!.id]);
+
+      const mails: OutgoingMail[] = [];
+      const send = async (m: OutgoingMail) => {
+        mails.push(m);
+      };
+      const evening = new Date("2026-11-20T17:00:00Z"); // 18:00 in Köln, the day before
+      expect(await sendTomorrowReminders(db, send, "https://test.example", evening)).toBe(1);
+      expect(mails).toHaveLength(1);
+      expect(mails[0]!.to).toBe("anna@example.invalid");
+      expect(mails[0]!.text).toContain("10:00");
+      expect(mails[0]!.text).toContain("(Maus)");
+      // not twice
+      expect(await sendTomorrowReminders(db, send, "https://test.example", evening)).toBe(0);
+    });
+
+    it("asks providers about stale listings, at most weekly; confirming resets it", async () => {
+      const admin = await signIn(ADMIN);
+      const r = parseSubmission(validSubmissionForm(), new Date("2026-11-17T12:00:00Z"));
+      if (!r.ok) throw new Error();
+      const res = await createSubmission(db, admin.userId, r.value, new Date("2026-11-17T12:00:00Z"), null, { id: admin.userId, email: ADMIN });
+      if (!res.ok) throw new Error();
+      const mails: OutgoingMail[] = [];
+      const send = async (m: OutgoingMail) => {
+        mails.push(m);
+      };
+      const in10days = new Date("2026-11-27T12:00:00Z");
+      expect(await sendRecheckRequests(db, send, "https://test.example", in10days)).toBe(0);
+      // make it look unconfirmed for 40 days, still running
+      await db.activity.update({ where: { id: res.id }, data: { lastVerifiedAt: new Date("2026-10-01T12:00:00Z"), expiresAt: new Date("2027-06-01T00:00:00Z") } });
+      expect(await sendRecheckRequests(db, send, "https://test.example", in10days)).toBe(1);
+      expect(mails[0]!.subject).toContain("Kinderturnen am Mittwoch");
+      expect(await sendRecheckRequests(db, send, "https://test.example", in10days)).toBe(0); // not again this week
+      expect(await confirmListing(db, admin.userId, res.id, in10days)).toBe(true);
+      expect(await sendRecheckRequests(db, send, "https://test.example", new Date("2026-12-05T12:00:00Z"))).toBe(0);
     });
   });
 });

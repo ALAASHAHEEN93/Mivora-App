@@ -261,7 +261,11 @@
     "deleteButton": "Elimina account definitivamente",
     "deletedDone": "Il tuo account e tutti i profili dei bambini sono stati eliminati.",
     "confirmMissing": "Spunta la casella per confermare l'eliminazione.",
-    "childInvalid": "Controlla i dati del bambino."
+    "childInvalid": "Controlla i dati del bambino.",
+    "remindersTitle": "Promemoria",
+    "remindersText": "La sera prima ti inviamo un'email con le attività di domani.",
+    "remindersOn": "Promemoria attivi",
+    "remindersOff": "Promemoria disattivati"
   },
   "email": {
     "subject": "Il tuo codice Mivora: {code}",
@@ -359,7 +363,10 @@
     "editHint": "Dopo il salvataggio controlliamo di nuovo l'annuncio. Fino ad allora non è visibile.",
     "editHintAdmin": "Sei admin: con «Pubblica subito» le modifiche sono visibili subito.",
     "changedDone": "Salvato! Controlleremo le modifiche prima della pubblicazione.",
-    "currentPhoto": "Foto attuale – scegline una nuova qui sotto per sostituirla."
+    "currentPhoto": "Foto attuale – scegline una nuova qui sotto per sostituirla.",
+    "staleQuestion": "Ancora attuale?",
+    "confirmCurrent": "Sì, ancora attuale",
+    "confirmedDone": "Grazie! Il tuo annuncio è confermato come attuale."
   },
   "admin": {
     "title": "Controllo",
@@ -428,5 +435,17 @@
     "date": "Data preferita",
     "childAge": "Età del bambino",
     "replyHint": "Rispondi semplicemente a questa email: arriva direttamente alla famiglia."
+  },
+  "reminderEmail": {
+    "subject": "Promemoria: le tue attività di domani",
+    "intro": "Ciao! Ecco cosa hai in programma domani:",
+    "link": "Apri il calendario: {url}",
+    "optOut": "Puoi disattivare questi promemoria nel profilo."
+  },
+  "recheckEmail": {
+    "subject": "«{title}» è ancora attuale?",
+    "intro": "Ciao! Controlla velocemente che il tuo annuncio «{title}» sia ancora corretto (date, prezzo, luogo).",
+    "action": "Conferma o modifica: {url}",
+    "why": "Le famiglie si fidano di Mivora perché i dati sono aggiornati. Grazie per l'aiuto!"
   }
 }

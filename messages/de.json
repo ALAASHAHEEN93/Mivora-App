@@ -261,7 +261,11 @@
     "deleteButton": "Konto endgültig löschen",
     "deletedDone": "Dein Konto und alle Kinderprofile wurden gelöscht.",
     "confirmMissing": "Bitte bestätige das Löschen mit dem Häkchen.",
-    "childInvalid": "Bitte prüfe die Angaben zum Kind."
+    "childInvalid": "Bitte prüfe die Angaben zum Kind.",
+    "remindersTitle": "Erinnerungen",
+    "remindersText": "Am Abend vorher schicken wir dir eine E-Mail mit den Terminen von morgen.",
+    "remindersOn": "Erinnerungen an",
+    "remindersOff": "Erinnerungen aus"
   },
   "email": {
     "subject": "Dein Mivora-Code: {code}",
@@ -359,7 +363,10 @@
     "editHint": "Nach dem Speichern prüfen wir das Angebot erneut. Bis dahin ist es nicht sichtbar.",
     "editHintAdmin": "Du bist Admin: Mit „Sofort veröffentlichen“ sind deine Änderungen direkt sichtbar.",
     "changedDone": "Gespeichert! Wir prüfen die Änderungen, bevor sie erscheinen.",
-    "currentPhoto": "Aktuelles Foto – wähle unten ein neues, um es zu ersetzen."
+    "currentPhoto": "Aktuelles Foto – wähle unten ein neues, um es zu ersetzen.",
+    "staleQuestion": "Ist das noch aktuell?",
+    "confirmCurrent": "Ja, noch aktuell",
+    "confirmedDone": "Danke! Dein Angebot ist als aktuell bestätigt."
   },
   "admin": {
     "title": "Prüfung",
@@ -428,5 +435,17 @@
     "date": "Wunschtermin",
     "childAge": "Alter des Kindes",
     "replyHint": "Antworte einfach auf diese E-Mail – sie geht direkt an die Familie."
+  },
+  "reminderEmail": {
+    "subject": "Erinnerung: deine Termine für morgen",
+    "intro": "Hallo! Das hast du für morgen eingeplant:",
+    "link": "Kalender öffnen: {url}",
+    "optOut": "Du kannst diese Erinnerungen im Profil abschalten."
+  },
+  "recheckEmail": {
+    "subject": "Ist „{title}“ noch aktuell?",
+    "intro": "Hallo! Bitte prüf kurz, ob dein Angebot „{title}“ noch stimmt (Termine, Preis, Ort).",
+    "action": "Bestätigen oder bearbeiten: {url}",
+    "why": "Familien vertrauen Mivora, weil die Angaben aktuell sind. Danke für deine Hilfe!"
   }
 }

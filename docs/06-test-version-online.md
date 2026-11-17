@@ -35,7 +35,7 @@ Check current prices on the providers' websites before ordering. Alternatives (V
 2. Build and start: `docker compose -f deploy/compose.yml --env-file deploy/.env up -d --build`
 3. Create tables: `docker compose -f deploy/compose.yml --env-file deploy/.env run --rm migrate`
 4. Load demo listings: `docker compose -f deploy/compose.yml --env-file deploy/.env run --rm seed`
-5. Turn on the firewall (only ports 22, 80, 443), automatic security updates and the nightly backup.
+5. Turn on the firewall (only ports 22, 80, 443), automatic security updates, the nightly backup and the daily email job (reminders + "still current?" at 18:00).
 6. Check: tester password works, HTTPS valid, sign-in email arrives, provider → admin flow works, photos load.
 
 ## Before real families use it (not for the test version)

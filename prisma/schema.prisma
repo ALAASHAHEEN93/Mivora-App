@@ -80,6 +80,8 @@ model Activity {
   submittedById String?
   /// Reason shown to the provider when a submission is rejected.
   reviewNote    String?
+  /// Last "is your listing still current?" email to the provider.
+  recheckSentAt DateTime?
   auditLog      AuditLog[]
   reports       Report[]
   inquiries     Inquiry[]
@@ -129,6 +131,8 @@ model User {
   id        String        @id @default(cuid())
   email     String        @unique // stored lower-case
   locale    String        @default("de")
+  /// Evening-before reminders for planned activities (parents can switch them off).
+  remindersEnabled Boolean @default(true)
   createdAt DateTime      @default(now())
   updatedAt DateTime      @updatedAt
   sessions  AuthSession[]
@@ -202,6 +206,7 @@ model PlannedItem {
   startsAt   DateTime @db.Timestamptz(3)
   endsAt     DateTime @db.Timestamptz(3)
   childIds   String[] @default([]) // which of the family's children go (ids of Child rows of the same user)
+  reminderSentAt DateTime?
   createdAt  DateTime @default(now())
 
   @@unique([userId, key])

@@ -261,7 +261,11 @@
     "deleteButton": "Supprimer définitivement",
     "deletedDone": "Ton compte et tous les profils d'enfants ont été supprimés.",
     "confirmMissing": "Coche la case pour confirmer la suppression.",
-    "childInvalid": "Vérifie les informations de l'enfant."
+    "childInvalid": "Vérifie les informations de l'enfant.",
+    "remindersTitle": "Rappels",
+    "remindersText": "La veille au soir, nous t'envoyons par e-mail les activités du lendemain.",
+    "remindersOn": "Rappels activés",
+    "remindersOff": "Rappels désactivés"
   },
   "email": {
     "subject": "Ton code Mivora : {code}",
@@ -359,7 +363,10 @@
     "editHint": "Après l'enregistrement, nous vérifions l'annonce à nouveau. D'ici là, elle n'est pas visible.",
     "editHintAdmin": "Tu es admin : avec « Publier maintenant », tes modifications sont visibles tout de suite.",
     "changedDone": "Enregistré ! Nous vérifierons les modifications avant leur publication.",
-    "currentPhoto": "Photo actuelle – choisis-en une nouvelle ci-dessous pour la remplacer."
+    "currentPhoto": "Photo actuelle – choisis-en une nouvelle ci-dessous pour la remplacer.",
+    "staleQuestion": "Toujours d'actualité ?",
+    "confirmCurrent": "Oui, toujours d'actualité",
+    "confirmedDone": "Merci ! Ton annonce est confirmée comme actuelle."
   },
   "admin": {
     "title": "Vérification",
@@ -428,5 +435,17 @@
     "date": "Date souhaitée",
     "childAge": "Âge de l'enfant",
     "replyHint": "Réponds simplement à cet e-mail – il arrive directement à la famille."
+  },
+  "reminderEmail": {
+    "subject": "Rappel : tes activités de demain",
+    "intro": "Bonjour ! Voici ce que tu as prévu demain :",
+    "link": "Ouvrir le calendrier : {url}",
+    "optOut": "Tu peux désactiver ces rappels dans ton profil."
+  },
+  "recheckEmail": {
+    "subject": "« {title} » est-il toujours d'actualité ?",
+    "intro": "Bonjour ! Vérifie rapidement que ton annonce « {title} » est toujours correcte (dates, prix, lieu).",
+    "action": "Confirmer ou modifier : {url}",
+    "why": "Les familles font confiance à Mivora parce que les infos sont à jour. Merci de ton aide !"
   }
 }

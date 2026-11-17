@@ -261,7 +261,11 @@
     "deleteButton": "Hesabı kalıcı olarak sil",
     "deletedDone": "Hesabın ve tüm çocuk profilleri silindi.",
     "confirmMissing": "Lütfen silmeyi kutucukla onayla.",
-    "childInvalid": "Lütfen çocuk bilgilerini kontrol et."
+    "childInvalid": "Lütfen çocuk bilgilerini kontrol et.",
+    "remindersTitle": "Hatırlatmalar",
+    "remindersText": "Bir önceki akşam yarınki etkinliklerini e-postayla göndeririz.",
+    "remindersOn": "Hatırlatmalar açık",
+    "remindersOff": "Hatırlatmalar kapalı"
   },
   "email": {
     "subject": "Mivora kodun: {code}",
@@ -359,7 +363,10 @@
     "editHint": "Kaydettikten sonra ilanı tekrar kontrol ederiz. O zamana kadar görünmez.",
     "editHintAdmin": "Yöneticisin: “Hemen yayınla” ile değişikliklerin hemen görünür.",
     "changedDone": "Kaydedildi! Değişiklikleri yayınlamadan önce kontrol edeceğiz.",
-    "currentPhoto": "Mevcut fotoğraf – değiştirmek için aşağıdan yenisini seç."
+    "currentPhoto": "Mevcut fotoğraf – değiştirmek için aşağıdan yenisini seç.",
+    "staleQuestion": "Hâlâ güncel mi?",
+    "confirmCurrent": "Evet, hâlâ güncel",
+    "confirmedDone": "Teşekkürler! İlanın güncel olarak onaylandı."
   },
   "admin": {
     "title": "Kontrol",
@@ -428,5 +435,17 @@
     "date": "Tercih edilen tarih",
     "childAge": "Çocuğun yaşı",
     "replyHint": "Bu e-postayı yanıtlaman yeterli – doğrudan aileye gider."
+  },
+  "reminderEmail": {
+    "subject": "Hatırlatma: yarınki etkinliklerin",
+    "intro": "Merhaba! Yarın için planladıkların:",
+    "link": "Takvimi aç: {url}",
+    "optOut": "Bu hatırlatmaları profilinden kapatabilirsin."
+  },
+  "recheckEmail": {
+    "subject": "“{title}” hâlâ güncel mi?",
+    "intro": "Merhaba! Lütfen “{title}” ilanının hâlâ doğru olduğunu kısaca kontrol et (tarihler, fiyat, yer).",
+    "action": "Onayla veya düzenle: {url}",
+    "why": "Aileler, bilgiler güncel olduğu için Mivora'ya güveniyor. Yardımın için teşekkürler!"
   }
 }

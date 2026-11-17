@@ -6,6 +6,7 @@ import { routing } from "@/i18n/routing";
 import { getPrisma } from "@/data/db/client";
 import { parseSubmission } from "@/domain/submission";
 import { createSubmission, updateSubmission } from "@/server/listings";
+import { confirmListing } from "@/server/jobs";
 import { deletePhoto, processPhoto, savePhoto } from "@/server/photos";
 import { getCurrentUser } from "@/server/auth/session";
 
@@ -58,4 +59,13 @@ export async function submitListing(_prev: SubmitState, formData: FormData): Pro
     return { errors: {}, values: valuesOf(formData), limit: true, hadPhoto: Boolean(photo) };
   }
   redirect(res.published ? `/${locale}/aktivitaet/${res.slug}?neu=1` : `/${locale}/anbieten?eingereicht=1`);
+}
+
+export async function confirmCurrentAction(formData: FormData) {
+  const l = String(formData.get("locale") ?? "");
+  const locale = hasLocale(routing.locales, l) ? l : routing.defaultLocale;
+  const user = await getCurrentUser();
+  if (!user) redirect(`/${locale}/anmelden`);
+  await confirmListing(getPrisma(), user.id, String(formData.get("id") ?? ""));
+  redirect(`/${locale}/anbieten?bestaetigt=1`);
 }
