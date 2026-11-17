@@ -2,7 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Fredoka, Nunito, Noto_Sans_Arabic } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
+import { pickNamespaces } from "@/i18n/client-namespaces";
 import { routing, rtlLocales, type Locale } from "@/i18n/routing";
 import { Splash } from "@/components/Splash";
 import "../globals.css";
@@ -49,13 +50,15 @@ export default async function LocaleLayout({
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
   const t = await getTranslations();
+  // Only the text groups interactive parts need go to the phone.
+  const messages = (await getMessages()) as Record<string, unknown>;
   const dir = rtlLocales.includes(locale as Locale) ? "rtl" : "ltr";
 
   return (
     <html lang={locale} dir={dir} className={`${nunito.variable} ${fredoka.variable} ${arabic.variable}`}>
       {/* suppressHydrationWarning: browser extensions (e.g. ColorZilla) add attributes to <body>; only affects this element */}
       <body className="min-h-dvh bg-bg font-sans text-ink" suppressHydrationWarning>
-        <NextIntlClientProvider>
+        <NextIntlClientProvider messages={pickNamespaces(messages)}>
           <a
             href="#main"
             className="sr-only focus:not-sr-only focus:fixed focus:start-3 focus:top-3 focus:z-50 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-bg"
