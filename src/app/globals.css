@@ -70,7 +70,7 @@
   --color-lav-500: var(--kw-lav-500);
 
   --font-sans: var(--font-nunito), var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-playfair), var(--font-nunito), var(--font-arabic), Georgia, serif;
+  --font-display: var(--font-baloo), var(--font-nunito), var(--font-arabic), ui-rounded, sans-serif;
   --font-logo: var(--font-baloo), var(--font-nunito), ui-rounded, sans-serif;
   --radius-card: 1.25rem;
 }
@@ -86,7 +86,7 @@ html {
 
 /* Serif display face has no Arabic glyphs: use the Arabic face for display text in RTL. */
 [dir="rtl"] .font-display {
-  font-family: var(--font-arabic), serif;
+  font-family: var(--font-arabic), sans-serif;
 }
 
 body {
