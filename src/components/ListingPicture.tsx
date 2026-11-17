@@ -24,7 +24,16 @@ export function ListingPicture({
   }
   return (
     <div className={`relative overflow-hidden bg-coral-100 ${className}`}>
-      <Image src={activity.photo.src} alt="" fill sizes={sizes} priority={priority} className="object-cover" />
+      <Image
+        src={activity.photo.src}
+        alt=""
+        fill
+        sizes={sizes}
+        priority={priority}
+        // Uploaded photos are already resized and cleaned on upload; serve them as they are.
+        unoptimized={activity.photo.src.startsWith("/api/photos/")}
+        className="object-cover"
+      />
     </div>
   );
 }

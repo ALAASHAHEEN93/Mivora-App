@@ -136,7 +136,8 @@
     "back": "Volver",
     "notFound": "Esta actividad ya no está disponible.",
     "photoCredit": "Foto: {name} / Unsplash",
-    "sourceProvider": "Enviado por el organizador, revisado por Mivora"
+    "sourceProvider": "Enviado por el organizador, revisado por Mivora",
+    "photoByProvider": "Foto: {name}"
   },
   "saved": {
     "title": "Guardados",
@@ -321,8 +322,17 @@
       "range": "Fuera del rango permitido",
       "past": "En el pasado",
       "order": "Debe ser posterior al primer valor",
-      "confirm": "Confirma, por favor"
-    }
+      "confirm": "Confirma, por favor",
+      "badType": "Elige una foto JPG, PNG o WebP",
+      "tooBig": "Más de 5 MB",
+      "tooSmall": "Demasiado pequeña (mínimo 400 píxeles)"
+    },
+    "sectionPhoto": "Foto",
+    "photoLabel": "Foto (opcional)",
+    "photoHint": "JPG, PNG o WebP, mínimo 400 píxeles, máximo 5 MB. Eliminamos datos ocultos como el lugar donde se tomó.",
+    "photoRemove": "Quitar foto",
+    "confirmPhoto": "Tengo los derechos de esta foto y todas las personas reconocibles – en el caso de niños, sus padres – aceptan su publicación.",
+    "photoReselect": "Vuelve a elegir tu foto."
   },
   "admin": {
     "title": "Revisión",

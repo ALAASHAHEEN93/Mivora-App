@@ -136,7 +136,8 @@
     "back": "Zurück",
     "notFound": "Dieses Angebot ist nicht mehr verfügbar.",
     "photoCredit": "Foto: {name} / Unsplash",
-    "sourceProvider": "Vom Anbieter eingereicht, von Mivora geprüft"
+    "sourceProvider": "Vom Anbieter eingereicht, von Mivora geprüft",
+    "photoByProvider": "Foto: {name}"
   },
   "saved": {
     "title": "Gemerkt",
@@ -321,8 +322,17 @@
       "range": "Außerhalb des erlaubten Bereichs",
       "past": "Liegt in der Vergangenheit",
       "order": "Muss nach dem ersten Wert liegen",
-      "confirm": "Bitte bestätigen"
-    }
+      "confirm": "Bitte bestätigen",
+      "badType": "Bitte ein JPG-, PNG- oder WebP-Foto wählen",
+      "tooBig": "Größer als 5 MB",
+      "tooSmall": "Zu klein (mindestens 400 Pixel)"
+    },
+    "sectionPhoto": "Foto",
+    "photoLabel": "Foto (optional)",
+    "photoHint": "JPG, PNG oder WebP, mindestens 400 Pixel, höchstens 5 MB. Wir entfernen versteckte Daten wie den Aufnahmeort.",
+    "photoRemove": "Foto entfernen",
+    "confirmPhoto": "Ich habe die Rechte an diesem Foto, und alle erkennbaren Personen – bei Kindern die Eltern – sind mit der Veröffentlichung einverstanden.",
+    "photoReselect": "Bitte wähle dein Foto noch einmal aus."
   },
   "admin": {
     "title": "Prüfung",

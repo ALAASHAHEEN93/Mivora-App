@@ -64,7 +64,8 @@ export interface Photo {
   src: string;
   /** Photographer / rights holder, shown on the detail page. */
   credit: string;
-  sourceUrl: string;
+  /** Link to the original (stock photos); absent for provider uploads. */
+  sourceUrl?: string;
   license: "unsplash" | "provider";
 }
 

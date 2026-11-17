@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useId } from "react";
+import { useActionState, useEffect, useId, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { ACCESSIBILITY_TAGS, CATEGORY_SLUGS } from "@/domain/types";
 import { KOELN_DISTRICTS, MAX_REPEAT_WEEKS } from "@/domain/submission";
@@ -21,6 +21,34 @@ export function ListingForm({ today }: { today: string }) {
   const one = (k: string, d = "") => (typeof v[k] === "string" ? (v[k] as string) : d);
   const many = (k: string, d: string[] = []) => (Array.isArray(v[k]) ? (v[k] as string[]) : state ? [] : d);
   const uid = useId();
+  const fileRef = useRef<HTMLInputElement>(null);
+  const [preview, setPreview] = useState<string | null>(null);
+  const [localError, setLocalError] = useState<string | null>(null);
+  useEffect(() => () => void (preview && URL.revokeObjectURL(preview)), [preview]);
+  // React resets the form after each submit, which empties the file field: drop the stale preview too.
+  useEffect(() => setPreview(null), [state]);
+
+  function onPick(e: React.ChangeEvent<HTMLInputElement>) {
+    const f = e.target.files?.[0];
+    setLocalError(null);
+    if (!f) return setPreview(null);
+    if (!["image/jpeg", "image/png", "image/webp"].includes(f.type)) {
+      e.target.value = "";
+      setPreview(null);
+      return setLocalError("badType");
+    }
+    if (f.size > 5 * 1024 * 1024) {
+      e.target.value = "";
+      setPreview(null);
+      return setLocalError("tooBig");
+    }
+    setPreview(URL.createObjectURL(f));
+  }
+  function clearPhoto() {
+    if (fileRef.current) fileRef.current.value = "";
+    setPreview(null);
+    setLocalError(null);
+  }
   const errId = (k: string) => `${uid}-${k}-err`;
   const a11y = (k: string) => (err[k] ? { "aria-invalid": true, "aria-describedby": errId(k) } : {});
   const Err = ({ k }: { k: string }) =>
@@ -77,6 +105,54 @@ export function ListingForm({ today }: { today: string }) {
               {text("descriptionEn", t("provider.descriptionEn"), { max: 2000, area: true })}
             </div>
           </details>
+        </>,
+      )}
+
+      {section(
+        t("provider.sectionPhoto"),
+        <>
+          <div className="flex flex-col gap-2">
+            <label htmlFor={`${uid}-photo`} className="font-bold">
+              {t("provider.photoLabel")}
+            </label>
+            {preview && (
+              // eslint-disable-next-line @next/next/no-img-element -- local preview of the picked file
+              <img src={preview} alt="" className="aspect-[16/10] w-full rounded-2xl object-cover" />
+            )}
+            <input
+              ref={fileRef}
+              id={`${uid}-photo`}
+              name="photo"
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              onChange={onPick}
+              aria-describedby={`${uid}-photo-hint${err.photo || localError ? ` ${errId("photo")}` : ""}`}
+              className="w-full rounded-2xl border-2 border-dashed border-line bg-bg p-3 text-sm file:me-3 file:min-h-10 file:rounded-full file:border-0 file:bg-primary file:px-4 file:font-bold file:text-on-primary"
+            />
+            <span id={`${uid}-photo-hint`} className="text-sm text-muted">
+              {t("provider.photoHint")}
+            </span>
+            {(localError || err.photo) && (
+              <span id={errId("photo")} className="text-sm font-bold text-[#b3261e]">
+                {t(`provider.errors.${localError ?? err.photo}`)}
+              </span>
+            )}
+            {state?.hadPhoto && !preview && Object.keys(err).length > 0 && <span className="text-sm font-bold">{t("provider.photoReselect")}</span>}
+            {preview && (
+              <>
+                <button type="button" onClick={clearPhoto} className="min-h-10 w-fit rounded-full border-2 border-line px-4 text-sm font-bold">
+                  {t("provider.photoRemove")}
+                </button>
+                <label className="flex items-start gap-3">
+                  <input type="checkbox" name="confirmPhoto" value="yes" className="mt-1 size-5 shrink-0 accent-[var(--kw-primary)]" {...a11y("confirmPhoto")} />
+                  <span className="flex flex-col gap-1">
+                    <span>{t("provider.confirmPhoto")}</span>
+                    <Err k="confirmPhoto" />
+                  </span>
+                </label>
+              </>
+            )}
+          </div>
         </>,
       )}
 

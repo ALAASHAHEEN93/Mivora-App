@@ -2,6 +2,7 @@ import { randomBytes } from "node:crypto";
 import type { PrismaClient } from "@/generated/prisma/client";
 import { slugify, type SubmissionInput } from "@/domain/submission";
 import type { LocalizedText } from "@/domain/types";
+import { deletePhoto, photoIdFromUrl, photoUrl } from "./photos";
 
 export const MAX_OPEN_SUBMISSIONS = 10;
 const ACCENTS = ["coral", "sunshine", "teal", "lavender"] as const;
@@ -17,7 +18,7 @@ export function isAdmin(email: string | null | undefined): boolean {
 }
 
 /** Saves a provider's listing as "pending": it is not public until an admin approves it. */
-export async function createSubmission(db: PrismaClient, userId: string, input: SubmissionInput, now = new Date()) {
+export async function createSubmission(db: PrismaClient, userId: string, input: SubmissionInput, now = new Date(), photoId: string | null = null) {
   const open = await db.activity.count({ where: { submittedById: userId, status: "pending" } });
   if (open >= MAX_OPEN_SUBMISSIONS) return { ok: false as const, reason: "limit" as const };
 
@@ -51,6 +52,7 @@ export async function createSubmission(db: PrismaClient, userId: string, input: 
         lastVerifiedAt: now,
         expiresAt: new Date(new Date(last.endsAt).getTime() + 24 * 60 * 60 * 1000),
         accent: ACCENTS[Math.floor(Math.random() * ACCENTS.length)]!,
+        ...(photoId ? { photoSrc: photoUrl(photoId), photoCredit: input.orgName, photoLicense: "provider" } : {}),
         providerId: provider.id,
         venueId: venue.id,
         submittedById: userId,
@@ -104,8 +106,30 @@ export async function rejectSubmission(db: PrismaClient, actor: Actor, activityI
   if (!isAdmin(actor.email)) throw new Error("forbidden");
   const note = reason.trim().slice(0, 500);
   if (note.length < 3) return false;
-  const res = await db.activity.updateMany({ where: { id: activityId, status: "pending" }, data: { status: "archived", reviewNote: note } });
+  const before = await db.activity.findUnique({ where: { id: activityId }, select: { photoSrc: true } });
+  const res = await db.activity.updateMany({
+    where: { id: activityId, status: "pending" },
+    data: { status: "archived", reviewNote: note, photoSrc: null, photoCredit: null, photoLicense: null },
+  });
   if (res.count !== 1) return false;
+  // A declined listing's photo is not kept.
+  const photoId = photoIdFromUrl(before?.photoSrc);
+  if (photoId) await deletePhoto(photoId);
   await db.auditLog.create({ data: { activityId, actorId: actor.id, action: "rejected", note } });
   return true;
+}
+
+/**
+ * Who may see an uploaded photo: everyone once the listing is published and current;
+ * before that only the provider who uploaded it and admins.
+ */
+export async function photoAccess(db: PrismaClient, photoId: string, viewer: Actor | null, now = new Date()): Promise<"public" | "private" | null> {
+  const a = await db.activity.findFirst({
+    where: { photoSrc: photoUrl(photoId) },
+    select: { status: true, expiresAt: true, submittedById: true },
+  });
+  if (!a) return null;
+  if (a.status === "published" && a.expiresAt > now) return "public";
+  if (viewer && (viewer.id === a.submittedById || isAdmin(viewer.email))) return "private";
+  return null;
 }

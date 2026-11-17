@@ -9,7 +9,11 @@ import { addChild, deleteAccount, exportAccount, listChildren, removeChild, upda
 import { createLoginCode, endSession, userForSessionToken, verifyLoginCode } from "./auth/service";
 import { hashToken, MAX_CODE_ATTEMPTS } from "./auth/crypto";
 import { addToList, assignChildren, getLists, mergeLists, removeFromList } from "./lists";
-import { approveSubmission, createSubmission, listOwnSubmissions, listPending, rejectSubmission } from "./listings";
+import { approveSubmission, createSubmission, listOwnSubmissions, listPending, photoAccess, rejectSubmission } from "./listings";
+import { readPhoto, savePhoto } from "./photos";
+import { mkdtempSync } from "node:fs";
+import { tmpdir } from "node:os";
+import path from "node:path";
 import { parseSubmission } from "@/domain/submission";
 import { validSubmissionForm } from "@/test/submission-form";
 
@@ -230,6 +234,36 @@ describe.skipIf(!url)("accounts & family (database)", () => {
       expect(mine[0]).toMatchObject({ status: "archived", reviewNote: "Bitte genaue Adresse angeben." });
     });
 
+    it("an unpublished photo is only visible to its provider and admins; declining deletes it", async () => {
+      process.env.STORAGE_DIR = mkdtempSync(path.join(tmpdir(), "mivora-photos-"));
+      const provider = await signIn("anbieter@example.invalid");
+      const other = await signIn("andere@example.invalid");
+      const admin = await signIn(ADMIN);
+      const photoId = await savePhoto(Buffer.from("test"));
+      const res = await createSubmission(db, provider.userId, input(), now, photoId);
+      if (!res.ok) throw new Error();
+
+      expect(await photoAccess(db, photoId, null, now)).toBeNull();
+      expect(await photoAccess(db, photoId, { id: other.userId, email: "andere@example.invalid" }, now)).toBeNull();
+      expect(await photoAccess(db, photoId, { id: provider.userId, email: "anbieter@example.invalid" }, now)).toBe("private");
+      expect(await photoAccess(db, photoId, { id: admin.userId, email: ADMIN }, now)).toBe("private");
+
+      await rejectSubmission(db, { id: admin.userId, email: ADMIN }, res.id, "Foto passt nicht");
+      expect(await readPhoto(photoId)).toBeNull();
+      expect(await photoAccess(db, photoId, { id: provider.userId, email: "anbieter@example.invalid" }, now)).toBeNull();
+    });
+
+    it("an approved listing's photo is public", async () => {
+      process.env.STORAGE_DIR = mkdtempSync(path.join(tmpdir(), "mivora-photos-"));
+      const provider = await signIn("anbieter@example.invalid");
+      const admin = await signIn(ADMIN);
+      const photoId = await savePhoto(Buffer.from("test"));
+      const res = await createSubmission(db, provider.userId, input(), now, photoId);
+      if (!res.ok) throw new Error();
+      await approveSubmission(db, { id: admin.userId, email: ADMIN }, res.id);
+      expect(await photoAccess(db, photoId, null, now)).toBe("public");
+    });
+
     it("limits open submissions per provider", async () => {
       const a = await signIn("anbieter@example.invalid");
       for (let i = 0; i < 10; i++) expect((await createSubmission(db, a.userId, input(), now)).ok).toBe(true);
@@ -237,4 +271,3 @@ describe.skipIf(!url)("accounts & family (database)", () => {
     });
   });
 });
-

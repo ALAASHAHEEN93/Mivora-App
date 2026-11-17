@@ -35,6 +35,10 @@ export default async function AdminPage({ params, searchParams }: { params: Prom
         return (
           <article key={a.id} className="flex flex-col gap-3 rounded-3xl bg-surface p-5 shadow-[0_8px_24px_-14px_rgba(42,47,58,0.4)]">
             <p className="text-sm text-muted">{t("admin.submittedBy", { email: a.submittedBy?.email ?? "–" })}</p>
+            {a.photoSrc && (
+              // eslint-disable-next-line @next/next/no-img-element -- private photo, served only to the provider and admins
+              <img src={a.photoSrc} alt="" className="aspect-[16/10] w-full rounded-2xl object-cover" />
+            )}
             {/* Provider text is rendered as plain text only. */}
             <h2 className="font-display text-2xl font-bold" lang="de">
               {de?.title}

@@ -12,6 +12,8 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Provider photo uploads go through a server action (5 MB photo + form fields).
+  experimental: { serverActions: { bodySizeLimit: "6mb" } },
   images: {
     // Demo listing photos (Unsplash License). Provider uploads will get their own host later.
     remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com", pathname: "/photo-*" }],

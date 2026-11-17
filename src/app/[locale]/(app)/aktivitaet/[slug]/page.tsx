@@ -153,9 +153,13 @@ export default async function ActivityPage({ params }: { params: Params }) {
             {activity.photo && (
               <>
                 {" · "}
-                <a href={activity.photo.sourceUrl} rel="noopener noreferrer" target="_blank" className="underline hover:text-ink">
-                  {t("activity.photoCredit", { name: activity.photo.credit })}
-                </a>
+                {activity.photo.sourceUrl ? (
+                  <a href={activity.photo.sourceUrl} rel="noopener noreferrer" target="_blank" className="underline hover:text-ink">
+                    {t("activity.photoCredit", { name: activity.photo.credit })}
+                  </a>
+                ) : (
+                  t("activity.photoByProvider", { name: activity.photo.credit })
+                )}
               </>
             )}
           </p>

@@ -136,7 +136,8 @@
     "back": "Retour",
     "notFound": "Cette activité n'est plus disponible.",
     "photoCredit": "Photo : {name} / Unsplash",
-    "sourceProvider": "Envoyé par l'organisateur, vérifié par Mivora"
+    "sourceProvider": "Envoyé par l'organisateur, vérifié par Mivora",
+    "photoByProvider": "Photo : {name}"
   },
   "saved": {
     "title": "Favoris",
@@ -321,8 +322,17 @@
       "range": "Hors de la plage autorisée",
       "past": "Dans le passé",
       "order": "Doit être après la première valeur",
-      "confirm": "Merci de confirmer"
-    }
+      "confirm": "Merci de confirmer",
+      "badType": "Choisis une photo JPG, PNG ou WebP",
+      "tooBig": "Plus de 5 Mo",
+      "tooSmall": "Trop petite (au moins 400 pixels)"
+    },
+    "sectionPhoto": "Photo",
+    "photoLabel": "Photo (facultatif)",
+    "photoHint": "JPG, PNG ou WebP, au moins 400 pixels, 5 Mo maximum. Nous supprimons les données cachées comme le lieu de prise de vue.",
+    "photoRemove": "Retirer la photo",
+    "confirmPhoto": "Je détiens les droits sur cette photo, et toutes les personnes reconnaissables – pour les enfants, leurs parents – acceptent sa publication.",
+    "photoReselect": "Merci de choisir à nouveau ta photo."
   },
   "admin": {
     "title": "Vérification",

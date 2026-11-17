@@ -136,7 +136,8 @@
     "back": "Geri",
     "notFound": "Bu etkinlik artık mevcut değil.",
     "photoCredit": "Fotoğraf: {name} / Unsplash",
-    "sourceProvider": "Sağlayıcı tarafından gönderildi, Mivora tarafından kontrol edildi"
+    "sourceProvider": "Sağlayıcı tarafından gönderildi, Mivora tarafından kontrol edildi",
+    "photoByProvider": "Fotoğraf: {name}"
   },
   "saved": {
     "title": "Kaydedilenler",
@@ -321,8 +322,17 @@
       "range": "İzin verilen aralığın dışında",
       "past": "Geçmişte",
       "order": "İlk değerden sonra olmalı",
-      "confirm": "Lütfen onayla"
-    }
+      "confirm": "Lütfen onayla",
+      "badType": "Lütfen JPG, PNG veya WebP fotoğraf seç",
+      "tooBig": "5 MB'den büyük",
+      "tooSmall": "Çok küçük (en az 400 piksel)"
+    },
+    "sectionPhoto": "Fotoğraf",
+    "photoLabel": "Fotoğraf (isteğe bağlı)",
+    "photoHint": "JPG, PNG veya WebP, en az 400 piksel, en fazla 5 MB. Çekildiği yer gibi gizli bilgileri kaldırırız.",
+    "photoRemove": "Fotoğrafı kaldır",
+    "confirmPhoto": "Bu fotoğrafın haklarına sahibim ve fotoğrafta tanınabilen herkes – çocuklar için ebeveynleri – yayınlanmasını kabul ediyor.",
+    "photoReselect": "Lütfen fotoğrafını tekrar seç."
   },
   "admin": {
     "title": "Kontrol",

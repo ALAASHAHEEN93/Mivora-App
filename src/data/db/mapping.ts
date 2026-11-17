@@ -57,12 +57,12 @@ export function toDomain(row: ActivityRow): D.Activity {
     lastVerifiedAt: row.lastVerifiedAt.toISOString(),
     expiresAt: row.expiresAt.toISOString(),
     accent: row.accent as D.Activity["accent"],
-    ...(row.photoSrc && row.photoCredit && row.photoSourceUrl
+    ...(row.photoSrc && row.photoCredit
       ? {
           photo: {
             src: row.photoSrc,
             credit: row.photoCredit,
-            sourceUrl: row.photoSourceUrl,
+            ...(row.photoSourceUrl ? { sourceUrl: row.photoSourceUrl } : {}),
             license: (row.photoLicense ?? "provider") as D.Photo["license"],
           },
         }
