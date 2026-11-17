@@ -7,6 +7,7 @@ import { getPrisma } from "@/data/db/client";
 import { CATEGORY_SLUGS } from "@/domain/types";
 import { childColor } from "@/domain/children";
 import { listChildren } from "@/server/family";
+import { isAdmin } from "@/server/listings";
 import { accountsAvailable, getCurrentUser } from "@/server/auth/session";
 import { addChildAction, deleteAccountAction, removeChildAction, signOutAction, updateChildAction } from "./actions";
 
@@ -216,6 +217,21 @@ export default async function ProfilePage({
           </>
         )}
       </section>
+
+      <Link href="/anbieten" className="mv-press flex items-center gap-4 rounded-3xl bg-teal-100 p-5 shadow-[0_8px_24px_-14px_rgba(42,47,58,0.4)]">
+        <Mascot className="size-12 shrink-0" />
+        <span className="flex flex-col">
+          <span className="font-display text-xl font-bold">{t("provider.title")}</span>
+          <span className="text-sm">{t("provider.profileCta")}</span>
+        </span>
+        <Icon name="forward" className="ms-auto size-5 shrink-0" />
+      </Link>
+
+      {user && isAdmin(user.email) && (
+        <Link href="/admin" className="rounded-2xl border-2 border-line px-4 py-3 text-center font-bold">
+          {t("admin.title")}
+        </Link>
+      )}
 
       <section className="flex flex-col gap-1 rounded-2xl bg-surface p-4 text-sm text-muted">
         <h2 className="mb-1 font-bold text-ink">{t("profile.legalTitle")}</h2>

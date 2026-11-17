@@ -46,6 +46,8 @@ DATABASE_URL=postgresql://mivora:mivora_local_only@127.0.0.1:5432/mivora_test pn
 TEST_DATABASE_URL=postgresql://mivora:mivora_local_only@127.0.0.1:5432/mivora_test pnpm test
 ```
 
+**Provider listings:** `/de/anbieten` lets a signed-in provider submit a listing; it stays hidden until someone listed in `ADMIN_EMAILS` approves it at `/de/admin`. Every decision is written to the `AuditLog` table.
+
 ## Structure
 ```
 messages/            UI strings per locale (de is the source; missing keys fall back to de)

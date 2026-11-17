@@ -66,3 +66,14 @@ export function toBerlinIso(d: Date): string {
   const offset = offsetFmt.formatToParts(d).find((p) => p.type === "timeZoneName")?.value.replace("GMT", "") || "+00:00";
   return `${berlinDate(d)}T${clockFmt.format(d)}${offset}`;
 }
+
+/** "+01:00" / "+02:00" for a Berlin calendar date (DST-aware). */
+export function berlinOffset(isoDate: string): string {
+  const probe = new Date(`${isoDate}T12:00:00Z`);
+  return offsetFmt.formatToParts(probe).find((p) => p.type === "timeZoneName")?.value.replace("GMT", "") || "+01:00";
+}
+
+/** Berlin local date + "HH:MM" → ISO 8601 with offset, e.g. "2026-11-21T10:00:00+01:00". */
+export function berlinDateTime(isoDate: string, time: string): string {
+  return `${isoDate}T${time}:00${berlinOffset(isoDate)}`;
+}

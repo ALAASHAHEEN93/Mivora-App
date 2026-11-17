@@ -75,6 +75,13 @@ model Activity {
   photoSourceUrl String?
   photoLicense   String?
 
+  /// Who submitted it (provider account); null for demo/admin-entered listings.
+  submittedBy   User?   @relation("Submissions", fields: [submittedById], references: [id], onDelete: SetNull)
+  submittedById String?
+  /// Reason shown to the provider when a submission is rejected.
+  reviewNote    String?
+  auditLog      AuditLog[]
+
   provider     Provider              @relation(fields: [providerId], references: [id])
   providerId   String
   venue        Venue                 @relation(fields: [venueId], references: [id])
@@ -126,6 +133,8 @@ model User {
   children  Child[]
   saved     SavedActivity[]
   planned   PlannedItem[]
+  submissions Activity[] @relation("Submissions")
+  auditLog    AuditLog[]
 }
 
 /// One-time sign-in code sent by email. Only an HMAC of the code is stored.
@@ -192,4 +201,18 @@ model PlannedItem {
 
   @@unique([userId, key])
   @@index([userId, startsAt])
+}
+
+/// Every status change of a listing: who did what, when, and why.
+model AuditLog {
+  id         String    @id @default(cuid())
+  activity   Activity? @relation(fields: [activityId], references: [id], onDelete: SetNull)
+  activityId String?
+  actor      User?     @relation(fields: [actorId], references: [id], onDelete: SetNull)
+  actorId    String?
+  action     String // "submitted" | "approved" | "rejected"
+  note       String?
+  createdAt  DateTime  @default(now())
+
+  @@index([activityId, createdAt])
 }

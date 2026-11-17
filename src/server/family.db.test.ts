@@ -9,6 +9,9 @@ import { addChild, deleteAccount, exportAccount, listChildren, removeChild, upda
 import { createLoginCode, endSession, userForSessionToken, verifyLoginCode } from "./auth/service";
 import { hashToken, MAX_CODE_ATTEMPTS } from "./auth/crypto";
 import { addToList, assignChildren, getLists, mergeLists, removeFromList } from "./lists";
+import { approveSubmission, createSubmission, listOwnSubmissions, listPending, rejectSubmission } from "./listings";
+import { parseSubmission } from "@/domain/submission";
+import { validSubmissionForm } from "@/test/submission-form";
 
 const url = process.env.TEST_DATABASE_URL;
 const SECRET = "test-secret-test-secret-test-secret-1234";
@@ -21,6 +24,8 @@ describe.skipIf(!url)("accounts & family (database)", () => {
   });
   afterAll(() => db?.$disconnect());
   beforeEach(async () => {
+    await db.auditLog.deleteMany();
+    await db.activity.deleteMany({ where: { sourceType: "provider" } });
     await db.savedActivity.deleteMany();
     await db.plannedItem.deleteMany();
     await db.child.deleteMany();
@@ -165,6 +170,71 @@ describe.skipIf(!url)("accounts & family (database)", () => {
     // a removed child disappears from the assignment
     await removeChild(db, anna.userId, maus!.id);
     expect((await getLists(db, anna.userId)).assignments).toEqual({});
+  });
+
+  describe("provider submissions", () => {
+    const now = new Date("2026-11-17T12:00:00Z");
+    const ADMIN = "admin@example.invalid";
+    beforeAll(() => {
+      process.env.ADMIN_EMAILS = ADMIN;
+    });
+    function input() {
+      const r = parseSubmission(validSubmissionForm(), now);
+      if (!r.ok) throw new Error(JSON.stringify(r.errors));
+      return r.value;
+    }
+
+    it("a submission stays hidden until an admin approves it, with an audit trail", async () => {
+      const provider = await signIn("anbieter@example.invalid");
+      const admin = await signIn(ADMIN);
+      const res = await createSubmission(db, provider.userId, input(), now);
+      expect(res.ok).toBe(true);
+      if (!res.ok) return;
+
+      const pending = await db.activity.findUniqueOrThrow({ where: { id: res.id } });
+      expect(pending.status).toBe("pending");
+
+      expect(await approveSubmission(db, { id: admin.userId, email: ADMIN }, res.id)).toBe(true);
+      expect((await db.activity.findUniqueOrThrow({ where: { id: res.id } })).status).toBe("published");
+      // approving twice does nothing
+      expect(await approveSubmission(db, { id: admin.userId, email: ADMIN }, res.id)).toBe(false);
+
+      const log = await db.auditLog.findMany({ where: { activityId: res.id }, orderBy: { createdAt: "asc" } });
+      expect(log.map((l) => l.action)).toEqual(["submitted", "approved"]);
+      expect(log[1]!.actorId).toBe(admin.userId);
+    });
+
+    it("providers cannot approve, reject or see the queue", async () => {
+      const provider = await signIn("anbieter@example.invalid");
+      const res = await createSubmission(db, provider.userId, input(), now);
+      if (!res.ok) throw new Error();
+      const me = { id: provider.userId, email: "anbieter@example.invalid" };
+      await expect(approveSubmission(db, me, res.id)).rejects.toThrow("forbidden");
+      await expect(rejectSubmission(db, me, res.id, "nope")).rejects.toThrow("forbidden");
+      await expect(listPending(db, me)).rejects.toThrow("forbidden");
+    });
+
+    it("a rejection keeps the reason for the provider, who only sees their own submissions", async () => {
+      const a = await signIn("anbieter@example.invalid");
+      const b = await signIn("andere@example.invalid");
+      const admin = await signIn(ADMIN);
+      const res = await createSubmission(db, a.userId, input(), now);
+      await createSubmission(db, b.userId, input(), now);
+      if (!res.ok) throw new Error();
+
+      expect(await rejectSubmission(db, { id: admin.userId, email: ADMIN }, res.id, "  ")).toBe(false);
+      expect(await rejectSubmission(db, { id: admin.userId, email: ADMIN }, res.id, "Bitte genaue Adresse angeben.")).toBe(true);
+
+      const mine = await listOwnSubmissions(db, a.userId);
+      expect(mine).toHaveLength(1);
+      expect(mine[0]).toMatchObject({ status: "archived", reviewNote: "Bitte genaue Adresse angeben." });
+    });
+
+    it("limits open submissions per provider", async () => {
+      const a = await signIn("anbieter@example.invalid");
+      for (let i = 0; i < 10; i++) expect((await createSubmission(db, a.userId, input(), now)).ok).toBe(true);
+      expect((await createSubmission(db, a.userId, input(), now)).ok).toBe(false);
+    });
   });
 });
 

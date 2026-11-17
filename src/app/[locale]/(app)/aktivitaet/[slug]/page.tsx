@@ -45,7 +45,11 @@ export default async function ActivityPage({ params }: { params: Params }) {
   const shown = sessions.slice(0, 4);
   const more = sessions.length - shown.length;
   const { venue } = activity;
-  const mapUrl = `https://www.openstreetmap.org/?mlat=${venue.lat}&mlon=${venue.lng}#map=17/${venue.lat}/${venue.lng}`;
+  // Provider listings only store the district centre, so search the street address instead.
+  const mapUrl =
+    activity.source.type === "provider"
+      ? `https://www.openstreetmap.org/search?query=${encodeURIComponent(`${venue.street}, ${venue.postalCode} ${venue.city}`)}`
+      : `https://www.openstreetmap.org/?mlat=${venue.lat}&mlon=${venue.lng}#map=17/${venue.lat}/${venue.lng}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -144,7 +148,7 @@ export default async function ActivityPage({ params }: { params: Params }) {
           </section>
 
           <p className="text-sm text-muted">
-            {t("activity.source")}: {activity.source.type === "demo" ? t("activity.sourceDemo") : activity.source.reference} ·{" "}
+            {t("activity.source")}: {activity.source.type === "demo" ? t("activity.sourceDemo") : activity.source.type === "provider" ? t("activity.sourceProvider") : activity.source.reference} ·{" "}
             {t("activity.lastChecked", { date: formatDate(activity.lastVerifiedAt, locale) })}
             {activity.photo && (
               <>
