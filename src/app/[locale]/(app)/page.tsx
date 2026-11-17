@@ -11,6 +11,7 @@ import { ChipLink, SectionHeader } from "@/components/ui";
 import { Icon } from "@/components/Icon";
 import { Mascot } from "@/components/illustrations/Mascot";
 import { WeekStrip } from "@/components/WeekStrip";
+import { ForYou } from "@/components/ForYou";
 import { Link } from "@/i18n/navigation";
 import { cookies } from "next/headers";
 import { CITY_COOKIE, cityName, findCity } from "@/domain/cities";
@@ -110,6 +111,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <WeekStrip locale={locale} now={now} label={t("home.pickDay")} />
         </div>
       </section>
+
+      <ForYou now={now} />
 
       <section>
         <SectionHeader title={t("home.upcoming")} href={{ pathname: "/entdecken", query: { datum: "week" } }} linkLabel={t("home.seeAll")} />

@@ -44,7 +44,11 @@
     "upcoming": "Wkrótce",
     "pickDay": "Wybierz dzień",
     "citySoonTitle": "Mivora wkrótce w mieście {city}",
-    "citySoonText": "Najpierw startujemy w mieście {live}. Do tego czasu zobaczysz tu oferty z miasta {live}."
+    "citySoonText": "Najpierw startujemy w mieście {live}. Do tego czasu zobaczysz tu oferty z miasta {live}.",
+    "forYouTitle": "Dopasowane do twojego dziecka",
+    "forYouPitch": "Dodaj profil dziecka – tylko pseudonim i rok urodzenia. Pokażemy tu zajęcia w odpowiednim wieku.",
+    "forChild": "Dla {name}",
+    "forChildEmpty": "Teraz nie ma nic dla {name}. Zajrzyj wkrótce!"
   },
   "date": {
     "today": "Dziś",

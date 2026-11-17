@@ -44,7 +44,11 @@
     "upcoming": "قريبًا",
     "pickDay": "اختر يومًا",
     "citySoonTitle": "Mivora قادم قريبًا إلى {city}",
-    "citySoonText": "نبدأ أولًا في {live}. حتى ذلك الحين سترى هنا أنشطة من {live}."
+    "citySoonText": "نبدأ أولًا في {live}. حتى ذلك الحين سترى هنا أنشطة من {live}.",
+    "forYouTitle": "مناسب لطفلك",
+    "forYouPitch": "أضف ملف طفل – اسم دلع وسنة ميلاد فقط. وسنعرض لك هنا أنشطة مناسبة لعمره.",
+    "forChild": "لـ {name}",
+    "forChildEmpty": "لا يوجد حاليًا ما يناسب {name}. عد قريبًا!"
   },
   "date": {
     "today": "اليوم",

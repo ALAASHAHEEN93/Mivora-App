@@ -44,7 +44,11 @@
     "upcoming": "Yaklaşanlar",
     "pickDay": "Bir gün seç",
     "citySoonTitle": "Mivora yakında {city} şehrinde",
-    "citySoonText": "Önce {live} ile başlıyoruz. O zamana kadar burada {live} etkinliklerini görürsün."
+    "citySoonText": "Önce {live} ile başlıyoruz. O zamana kadar burada {live} etkinliklerini görürsün.",
+    "forYouTitle": "Çocuğuna uygun",
+    "forYouPitch": "Bir çocuk profili ekle – sadece takma ad ve doğum yılı. Burada yaşına uygun etkinlikleri gösteririz.",
+    "forChild": "{name} için",
+    "forChildEmpty": "Şu an {name} için uygun bir şey yok. Yakında tekrar bak!"
   },
   "date": {
     "today": "Bugün",

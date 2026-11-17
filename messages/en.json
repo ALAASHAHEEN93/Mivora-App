@@ -44,7 +44,11 @@
     "upcoming": "Coming up",
     "pickDay": "Pick a day",
     "citySoonTitle": "Mivora is coming to {city} soon",
-    "citySoonText": "We're starting in {live} first. Until then you'll see activities from {live} here."
+    "citySoonText": "We're starting in {live} first. Until then you'll see activities from {live} here.",
+    "forYouTitle": "Picked for your child",
+    "forYouPitch": "Add a child profile – just a nickname and birth year. Then we'll show activities for the right age here.",
+    "forChild": "For {name}",
+    "forChildEmpty": "Nothing fits {name} right now. Check back soon!"
   },
   "date": {
     "today": "Today",
