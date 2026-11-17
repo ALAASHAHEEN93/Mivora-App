@@ -352,7 +352,14 @@
     "photoReselect": "Vuelve a elegir tu foto.",
     "publishNow": "Publicar ahora (eres admin)",
     "publishNowHint": "Visible al momento en la app, sin revisión. Queda registrado con tu cuenta.",
-    "publishedNow": "¡Publicado! Tu actividad ya es visible en la app."
+    "publishedNow": "¡Publicado! Tu actividad ya es visible en la app.",
+    "edit": "Editar",
+    "editTitle": "Editar anuncio",
+    "saveChanges": "Guardar cambios",
+    "editHint": "Tras guardar revisamos el anuncio de nuevo. Hasta entonces no es visible.",
+    "editHintAdmin": "Eres admin: con «Publicar ahora» tus cambios se ven al momento.",
+    "changedDone": "¡Guardado! Revisaremos los cambios antes de publicarlos.",
+    "currentPhoto": "Foto actual: elige una nueva abajo para sustituirla."
   },
   "admin": {
     "title": "Revisión",

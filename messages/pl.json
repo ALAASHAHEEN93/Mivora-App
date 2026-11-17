@@ -352,7 +352,14 @@
     "photoReselect": "Wybierz zdjęcie jeszcze raz.",
     "publishNow": "Opublikuj teraz (jesteś adminem)",
     "publishNowHint": "Od razu widoczne w aplikacji, bez sprawdzania. Zapisywane w dzienniku z twoim kontem.",
-    "publishedNow": "Opublikowano! Twoje zajęcia są już widoczne w aplikacji."
+    "publishedNow": "Opublikowano! Twoje zajęcia są już widoczne w aplikacji.",
+    "edit": "Edytuj",
+    "editTitle": "Edytuj ofertę",
+    "saveChanges": "Zapisz zmiany",
+    "editHint": "Po zapisaniu ponownie sprawdzimy ofertę. Do tego czasu nie jest widoczna.",
+    "editHintAdmin": "Jesteś adminem: z „Opublikuj teraz” zmiany są od razu widoczne.",
+    "changedDone": "Zapisano! Sprawdzimy zmiany przed publikacją.",
+    "currentPhoto": "Obecne zdjęcie – wybierz poniżej nowe, aby je zastąpić."
   },
   "admin": {
     "title": "Sprawdzanie",

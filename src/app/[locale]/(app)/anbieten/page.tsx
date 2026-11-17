@@ -24,9 +24,9 @@ const BADGE: Record<string, string> = {
   draft: "bg-lav-100",
 };
 
-export default async function ProviderPage({ params, searchParams }: { params: Promise<{ locale: string }>; searchParams: Promise<{ eingereicht?: string }> }) {
+export default async function ProviderPage({ params, searchParams }: { params: Promise<{ locale: string }>; searchParams: Promise<{ eingereicht?: string; geaendert?: string }> }) {
   const { locale } = await params;
-  const { eingereicht } = await searchParams;
+  const { eingereicht, geaendert } = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations();
   const user = await getCurrentUser();
@@ -51,6 +51,11 @@ export default async function ProviderPage({ params, searchParams }: { params: P
         </section>
       ) : (
         <>
+          {geaendert && (
+            <p role="status" className="rounded-2xl bg-teal-100 px-4 py-3 font-bold">
+              {t("provider.changedDone")}
+            </p>
+          )}
           {eingereicht && (
             <p role="status" className="rounded-2xl bg-teal-100 px-4 py-3 font-bold">
               {t("provider.submittedDone")}
@@ -74,11 +79,16 @@ export default async function ProviderPage({ params, searchParams }: { params: P
                     </div>
                     {m.sessions[0] && <p className="text-sm text-muted">{formatSessionStart(m.sessions[0].startsAt.toISOString(), locale)}</p>}
                     {m.status === "archived" && m.reviewNote && <p className="text-sm">{t("provider.reason", { note: m.reviewNote })}</p>}
-                    {m.status === "published" && (
-                      <Link href={`/aktivitaet/${m.slug}`} className="w-fit text-sm font-bold text-accent underline underline-offset-4">
-                        {t("provider.view")}
+                    <div className="flex gap-4">
+                      {m.status === "published" && (
+                        <Link href={`/aktivitaet/${m.slug}`} className="w-fit text-sm font-bold text-accent underline underline-offset-4">
+                          {t("provider.view")}
+                        </Link>
+                      )}
+                      <Link href={`/anbieten/${m.id}`} className="w-fit text-sm font-bold text-accent underline underline-offset-4">
+                        {t("provider.edit")}
                       </Link>
-                    )}
+                    </div>
                   </li>
                 ))}
               </ul>

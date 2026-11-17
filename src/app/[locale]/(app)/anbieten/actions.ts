@@ -5,7 +5,7 @@ import { hasLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { getPrisma } from "@/data/db/client";
 import { parseSubmission } from "@/domain/submission";
-import { createSubmission } from "@/server/listings";
+import { createSubmission, updateSubmission } from "@/server/listings";
 import { deletePhoto, processPhoto, savePhoto } from "@/server/photos";
 import { getCurrentUser } from "@/server/auth/session";
 
@@ -43,6 +43,15 @@ export async function submitListing(_prev: SubmitState, formData: FormData): Pro
 
   const photoId = processed?.ok ? await savePhoto(processed.data) : null;
   const wantsPublish = formData.get("publishNow") === "yes";
+  const editId = String(formData.get("editId") ?? "");
+  if (editId) {
+    const upd = await updateSubmission(getPrisma(), user.id, editId, parsed.value, new Date(), photoId, wantsPublish ? { id: user.id, email: user.email } : null);
+    if (!upd) {
+      if (photoId) await deletePhoto(photoId);
+      redirect(`/${locale}/anbieten`);
+    }
+    redirect(upd.published ? `/${locale}/aktivitaet/${upd.slug}?neu=1` : `/${locale}/anbieten?geaendert=1`);
+  }
   const res = await createSubmission(getPrisma(), user.id, parsed.value, new Date(), photoId, wantsPublish ? { id: user.id, email: user.email } : null);
   if (!res.ok) {
     if (photoId) await deletePhoto(photoId);

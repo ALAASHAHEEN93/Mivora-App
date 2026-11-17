@@ -352,7 +352,14 @@
     "photoReselect": "Lütfen fotoğrafını tekrar seç.",
     "publishNow": "Hemen yayınla (yöneticisin)",
     "publishNowHint": "Kontrol olmadan uygulamada hemen görünür. Hesabınla kontrol kaydına yazılır.",
-    "publishedNow": "Yayınlandı! Etkinliğin artık uygulamada görünüyor."
+    "publishedNow": "Yayınlandı! Etkinliğin artık uygulamada görünüyor.",
+    "edit": "Düzenle",
+    "editTitle": "İlanı düzenle",
+    "saveChanges": "Değişiklikleri kaydet",
+    "editHint": "Kaydettikten sonra ilanı tekrar kontrol ederiz. O zamana kadar görünmez.",
+    "editHintAdmin": "Yöneticisin: “Hemen yayınla” ile değişikliklerin hemen görünür.",
+    "changedDone": "Kaydedildi! Değişiklikleri yayınlamadan önce kontrol edeceğiz.",
+    "currentPhoto": "Mevcut fotoğraf – değiştirmek için aşağıdan yenisini seç."
   },
   "admin": {
     "title": "Kontrol",

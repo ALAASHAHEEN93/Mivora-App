@@ -352,7 +352,14 @@
     "photoReselect": "Bitte wähle dein Foto noch einmal aus.",
     "publishNow": "Sofort veröffentlichen (du bist Admin)",
     "publishNowHint": "Ohne Prüfung direkt in der App sichtbar. Wird im Prüfprotokoll mit deinem Konto vermerkt.",
-    "publishedNow": "Veröffentlicht! Dein Angebot ist jetzt in der App sichtbar."
+    "publishedNow": "Veröffentlicht! Dein Angebot ist jetzt in der App sichtbar.",
+    "edit": "Bearbeiten",
+    "editTitle": "Angebot bearbeiten",
+    "saveChanges": "Änderungen speichern",
+    "editHint": "Nach dem Speichern prüfen wir das Angebot erneut. Bis dahin ist es nicht sichtbar.",
+    "editHintAdmin": "Du bist Admin: Mit „Sofort veröffentlichen“ sind deine Änderungen direkt sichtbar.",
+    "changedDone": "Gespeichert! Wir prüfen die Änderungen, bevor sie erscheinen.",
+    "currentPhoto": "Aktuelles Foto – wähle unten ein neues, um es zu ersetzen."
   },
   "admin": {
     "title": "Prüfung",

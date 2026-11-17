@@ -12,14 +12,25 @@ const field =
 const chip =
   "inline-flex min-h-10 cursor-pointer items-center gap-2 rounded-full border-2 border-line bg-surface px-3 text-sm font-bold has-[:checked]:border-accent has-[:checked]:bg-teal-100";
 
-export function ListingForm({ today, isAdmin = false }: { today: string; isAdmin?: boolean }) {
+export function ListingForm({
+  today,
+  isAdmin = false,
+  initial,
+  editId,
+}: {
+  today: string;
+  isAdmin?: boolean;
+  /** Prefilled values when editing an existing listing. */
+  initial?: Record<string, string | string[]>;
+  editId?: string;
+}) {
   const t = useTranslations();
   const locale = useLocale();
   const [state, action, pending] = useActionState<SubmitState, FormData>(submitListing, null);
-  const v = state?.values ?? {};
+  const v = state?.values ?? initial ?? {};
   const err = state?.errors ?? {};
   const one = (k: string, d = "") => (typeof v[k] === "string" ? (v[k] as string) : d);
-  const many = (k: string, d: string[] = []) => (Array.isArray(v[k]) ? (v[k] as string[]) : state ? [] : d);
+  const many = (k: string, d: string[] = []) => (Array.isArray(v[k]) ? (v[k] as string[]) : state || initial ? [] : d);
   const uid = useId();
   const fileRef = useRef<HTMLInputElement>(null);
   const [preview, setPreview] = useState<string | null>(null);
@@ -83,6 +94,7 @@ export function ListingForm({ today, isAdmin = false }: { today: string; isAdmin
   return (
     <form action={action} className="flex flex-col gap-5" noValidate>
       <input type="hidden" name="locale" value={locale} />
+      {editId && <input type="hidden" name="editId" value={editId} />}
 
       {state && (Object.keys(err).length > 0 || state.limit) && (
         <p role="alert" className="rounded-2xl bg-[#fde7e7] px-4 py-3 font-bold text-[#7a1712]">
@@ -352,7 +364,7 @@ export function ListingForm({ today, isAdmin = false }: { today: string; isAdmin
         disabled={pending}
         className="inline-flex min-h-14 items-center justify-center rounded-full bg-primary px-6 text-lg font-bold text-on-primary mv-btn-3d transition active:scale-[0.98] disabled:opacity-60"
       >
-        {t("provider.submit")}
+        {editId ? t("provider.saveChanges") : t("provider.submit")}
       </button>
     </form>
   );

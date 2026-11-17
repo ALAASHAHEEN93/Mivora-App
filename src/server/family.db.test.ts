@@ -9,7 +9,7 @@ import { addChild, deleteAccount, exportAccount, listChildren, removeChild, upda
 import { createLoginCode, endSession, userForSessionToken, verifyLoginCode } from "./auth/service";
 import { hashToken, MAX_CODE_ATTEMPTS } from "./auth/crypto";
 import { addToList, assignChildren, getLists, mergeLists, removeFromList } from "./lists";
-import { approveSubmission, createSubmission, listOwnSubmissions, listPending, photoAccess, rejectSubmission } from "./listings";
+import { approveSubmission, createSubmission, listOwnSubmissions, listPending, photoAccess, rejectSubmission, submissionFormValues, updateSubmission } from "./listings";
 import { readPhoto, savePhoto } from "./photos";
 import { createReport, listOpenReports, resolveReport } from "./reports";
 import { createInquiry } from "./inquiries";
@@ -286,6 +286,29 @@ describe.skipIf(!url)("accounts & family (database)", () => {
         expect(r.published).toBe(false);
         expect((await db.activity.findUniqueOrThrow({ where: { id: r.id } })).status).toBe("pending");
       }
+    });
+
+    it("providers edit only their own listings; edits go back to review", async () => {
+      const admin = await signIn(ADMIN);
+      const provider = await signIn("anbieter@example.invalid");
+      const other = await signIn("andere@example.invalid");
+      const res = await createSubmission(db, provider.userId, input(), now);
+      if (!res.ok) throw new Error();
+      await approveSubmission(db, { id: admin.userId, email: ADMIN }, res.id);
+
+      const changed = parseSubmission(validSubmissionForm({ title: "Kinderturnen am Donnerstag" }), now);
+      if (!changed.ok) throw new Error();
+      expect(await updateSubmission(db, other.userId, res.id, changed.value, now)).toBeNull();
+      expect(await submissionFormValues(db, other.userId, res.id, now)).toBeNull();
+
+      const upd = await updateSubmission(db, provider.userId, res.id, changed.value, now);
+      expect(upd).toMatchObject({ published: false });
+      const row = await db.activity.findUniqueOrThrow({ where: { id: res.id }, include: { translations: true } });
+      expect(row.status).toBe("pending");
+      expect(row.translations.find((x) => x.locale === "de")?.title).toBe("Kinderturnen am Donnerstag");
+
+      const values = await submissionFormValues(db, provider.userId, res.id, now);
+      expect(values?.values).toMatchObject({ title: "Kinderturnen am Donnerstag", district: "Kalk", startTime: "16:00", repeatWeeks: "4" });
     });
 
     it("limits open submissions per provider", async () => {

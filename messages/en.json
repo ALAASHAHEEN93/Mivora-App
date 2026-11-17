@@ -352,7 +352,14 @@
     "photoReselect": "Please choose your photo again.",
     "publishNow": "Publish now (you're an admin)",
     "publishNowHint": "Visible in the app right away, without review. Recorded in the audit log with your account.",
-    "publishedNow": "Published! Your activity is now visible in the app."
+    "publishedNow": "Published! Your activity is now visible in the app.",
+    "edit": "Edit",
+    "editTitle": "Edit listing",
+    "saveChanges": "Save changes",
+    "editHint": "After saving we review the listing again. Until then it isn't visible.",
+    "editHintAdmin": "You're an admin: with “Publish now” your changes are visible right away.",
+    "changedDone": "Saved! We'll review the changes before they appear.",
+    "currentPhoto": "Current photo – choose a new one below to replace it."
   },
   "admin": {
     "title": "Review",

@@ -145,3 +145,115 @@ export async function photoAccess(db: PrismaClient, photoId: string, viewer: Act
   if (viewer && (viewer.id === a.submittedById || isAdmin(viewer.email))) return "private";
   return null;
 }
+
+/**
+ * Updates the provider's own listing. Future dates are replaced by the new ones; past dates stay.
+ * A provider's edit sends the listing back to review; an admin may publish directly.
+ * Returns null when the listing doesn't exist or belongs to someone else.
+ */
+export async function updateSubmission(
+  db: PrismaClient,
+  userId: string,
+  activityId: string,
+  input: SubmissionInput,
+  now = new Date(),
+  newPhotoId: string | null = null,
+  publishAs: Actor | null = null,
+) {
+  const existing = await db.activity.findFirst({ where: { id: activityId, submittedById: userId }, select: { id: true, slug: true, providerId: true, venueId: true, photoSrc: true } });
+  if (!existing) return null;
+  const publishNow = Boolean(publishAs && publishAs.id === userId && isAdmin(publishAs.email));
+  const last = input.sessions[input.sessions.length - 1]!;
+
+  await db.$transaction(async (tx) => {
+    await tx.provider.update({ where: { id: existing.providerId }, data: { name: input.orgName } });
+    await tx.venue.update({ where: { id: existing.venueId }, data: { ...input.venue, city: "Köln" } });
+    await tx.activityTranslation.upsert({
+      where: { activityId_locale: { activityId, locale: "de" } },
+      update: { ...input.de, cancellation: input.cancellation },
+      create: { activityId, locale: "de", ...input.de, cancellation: input.cancellation },
+    });
+    if (input.en) {
+      await tx.activityTranslation.upsert({
+        where: { activityId_locale: { activityId, locale: "en" } },
+        update: input.en,
+        create: { activityId, locale: "en", ...input.en },
+      });
+    } else {
+      await tx.activityTranslation.deleteMany({ where: { activityId, locale: "en" } });
+    }
+    await tx.session.deleteMany({ where: { activityId, startsAt: { gte: now } } });
+    await tx.session.createMany({ data: input.sessions.map((s) => ({ activityId, startsAt: new Date(s.startsAt), endsAt: new Date(s.endsAt) })) });
+    await tx.activity.update({
+      where: { id: activityId },
+      data: {
+        status: publishNow ? "published" : "pending",
+        reviewNote: null,
+        categories: input.categories,
+        ageMin: input.ageMin,
+        ageMax: input.ageMax,
+        priceKind: input.price.kind,
+        priceCents: input.price.kind === "paid" ? input.price.amountCents : null,
+        priceUnit: input.price.kind === "paid" ? input.price.unit : null,
+        languages: input.languages,
+        setting: input.setting,
+        accessibility: input.accessibility,
+        bookingMode: input.bookingUrl ? "external_link" : "inquiry",
+        externalUrl: input.bookingUrl,
+        cancellationPolicy: input.cancellation,
+        lastVerifiedAt: now,
+        expiresAt: new Date(new Date(last.endsAt).getTime() + 24 * 60 * 60 * 1000),
+        ...(newPhotoId ? { photoSrc: photoUrl(newPhotoId), photoCredit: input.orgName, photoLicense: "provider" } : {}),
+      },
+    });
+    await tx.auditLog.create({ data: { activityId, actorId: userId, action: publishNow ? "edited_published_by_admin" : "edited" } });
+  });
+  if (newPhotoId) {
+    const old = photoIdFromUrl(existing.photoSrc);
+    if (old) await deletePhoto(old);
+  }
+  return { slug: existing.slug, published: publishNow };
+}
+
+/** The provider's own listing as form values, for the edit screen. */
+export async function submissionFormValues(db: PrismaClient, userId: string, activityId: string, now = new Date()) {
+  const a = await db.activity.findFirst({
+    where: { id: activityId, submittedById: userId },
+    include: { provider: true, venue: true, translations: true, sessions: { where: { startsAt: { gte: now } }, orderBy: { startsAt: "asc" } } },
+  });
+  if (!a) return null;
+  const de = a.translations.find((t) => t.locale === "de");
+  const en = a.translations.find((t) => t.locale === "en");
+  const first = a.sessions[0];
+  const berlin = (d: Date, opts: Intl.DateTimeFormatOptions) => new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Berlin", ...opts }).format(d);
+  const time = (d: Date) => berlin(d, { hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+  const values: Record<string, string | string[]> = {
+    orgName: a.provider.name,
+    title: de?.title ?? "",
+    summary: de?.summary ?? "",
+    description: de?.description ?? "",
+    titleEn: en?.title ?? "",
+    summaryEn: en?.summary ?? "",
+    descriptionEn: en?.description ?? "",
+    categories: a.categories,
+    ageMin: String(a.ageMin),
+    ageMax: String(a.ageMax),
+    priceKind: a.priceKind,
+    priceEuro: a.priceCents ? (a.priceCents / 100).toFixed(2).replace(".", ",") : "",
+    priceUnit: a.priceUnit ?? "perChild",
+    languages: a.languages,
+    setting: a.setting,
+    accessibility: a.accessibility,
+    district: a.venue.district,
+    venueName: a.venue.name,
+    street: a.venue.street,
+    postalCode: a.venue.postalCode,
+    firstDate: first ? berlin(first.startsAt, { year: "numeric", month: "2-digit", day: "2-digit" }) : "",
+    startTime: first ? time(first.startsAt) : "",
+    endTime: first ? time(first.endsAt) : "",
+    repeatWeeks: String(Math.min(Math.max(a.sessions.length, 1), 12)),
+    bookingUrl: a.externalUrl ?? "",
+    cancellation: de?.cancellation ?? a.cancellationPolicy,
+  };
+  return { values, status: a.status, photoSrc: a.photoSrc };
+}
