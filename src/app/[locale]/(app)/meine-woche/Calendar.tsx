@@ -30,7 +30,7 @@ const dayOf = (iso: string) => berlinDate(new Date(iso));
 /** Noon UTC keeps Intl formatting on the right calendar day in any timezone. */
 const asDate = (isoDay: string) => new Date(`${isoDay}T12:00:00Z`);
 
-export function Calendar({ activities, today, nowIso }: { activities: Activity[]; today: string; nowIso: string }) {
+export function Calendar({ activities, today, nowIso, note }: { activities: Activity[]; today: string; nowIso: string; note?: React.ReactNode }) {
   const t = useTranslations("calendar");
   const locale = useLocale();
   const now = useMemo(() => new Date(nowIso), [nowIso]);
@@ -316,7 +316,7 @@ export function Calendar({ activities, today, nowIso }: { activities: Activity[]
             >
               <Icon name="download" className="size-5" /> {t("export")}
             </button>
-            <p className="text-sm text-muted">{t("deviceNote")}</p>
+            {note}
           </div>
         </div>
       </section>

@@ -240,5 +240,10 @@
     "greeting": "Cześć!",
     "body": "Twój kod logowania do Mivora to:",
     "expiry": "Kod jest ważny 10 minut. Jeśli to nie ty, zignoruj tę wiadomość."
+  },
+  "sync": {
+    "synced": "Zsynchronizowane z kontem rodzinnym – tak samo na wszystkich twoich urządzeniach.",
+    "deviceOnly": "Zapisane tylko na tym urządzeniu.",
+    "signIn": "Zaloguj się, aby mieć to na wszystkich urządzeniach"
   }
 }

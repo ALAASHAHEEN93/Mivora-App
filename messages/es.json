@@ -240,5 +240,10 @@
     "greeting": "¡Hola!",
     "body": "Tu código para iniciar sesión en Mivora es:",
     "expiry": "El código es válido 10 minutos. Si no fuiste tú, ignora este correo."
+  },
+  "sync": {
+    "synced": "Sincronizado con tu cuenta familiar: igual en todos tus dispositivos.",
+    "deviceOnly": "Guardado solo en este dispositivo.",
+    "signIn": "Inicia sesión para tenerlo en todos tus dispositivos"
   }
 }

@@ -240,5 +240,10 @@
     "greeting": "Ciao!",
     "body": "Il tuo codice di accesso a Mivora è:",
     "expiry": "Il codice è valido 10 minuti. Se non sei stato tu, ignora questa email."
+  },
+  "sync": {
+    "synced": "Sincronizzato con il tuo account famiglia – uguale su tutti i tuoi dispositivi.",
+    "deviceOnly": "Salvato solo su questo dispositivo.",
+    "signIn": "Accedi per averlo su tutti i tuoi dispositivi"
   }
 }

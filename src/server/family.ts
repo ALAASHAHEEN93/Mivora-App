@@ -44,18 +44,25 @@ export async function removeChild(db: PrismaClient, userId: string, childId: str
 export async function exportAccount(db: PrismaClient, userId: string) {
   const user = await db.user.findUnique({
     where: { id: userId },
-    include: { children: true, sessions: { select: { createdAt: true, lastSeenAt: true, expiresAt: true } } },
+    include: {
+      children: true,
+      sessions: { select: { createdAt: true, lastSeenAt: true, expiresAt: true } },
+      saved: { select: { activityId: true, createdAt: true } },
+      planned: { select: { activityId: true, startsAt: true, endsAt: true, createdAt: true } },
+    },
   });
   if (!user) return null;
   return {
     exportedAt: new Date().toISOString(),
     account: { email: user.email, locale: user.locale, createdAt: user.createdAt },
     children: user.children.map((c) => ({ nickname: c.nickname, birthYear: c.birthYear, interests: c.interests, createdAt: c.createdAt })),
+    savedActivities: user.saved,
+    calendar: user.planned,
     signedInDevices: user.sessions,
   };
 }
 
-/** Deletes the account; children and sessions go with it (ON DELETE CASCADE). Codes for the email too. */
+/** Deletes the account; children, sessions, saved and calendar go with it (ON DELETE CASCADE). Codes for the email too. */
 export async function deleteAccount(db: PrismaClient, userId: string) {
   const user = await db.user.findUnique({ where: { id: userId }, select: { email: true } });
   if (!user) return false;

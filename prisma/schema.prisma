@@ -124,6 +124,8 @@ model User {
   updatedAt DateTime      @updatedAt
   sessions  AuthSession[]
   children  Child[]
+  saved     SavedActivity[]
+  planned   PlannedItem[]
 }
 
 /// One-time sign-in code sent by email. Only an HMAC of the code is stored.
@@ -164,4 +166,29 @@ model Child {
   updatedAt DateTime @updatedAt
 
   @@index([userId])
+}
+
+/// Hearted activities, synced across the family's devices.
+model SavedActivity {
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String
+  activityId String
+  createdAt  DateTime @default(now())
+
+  @@id([userId, activityId])
+}
+
+/// A session put into the family calendar. `key` is "activityId|startsAt|endsAt" as used by the app.
+model PlannedItem {
+  id         String   @id @default(cuid())
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String
+  key        String
+  activityId String
+  startsAt   DateTime @db.Timestamptz(3)
+  endsAt     DateTime @db.Timestamptz(3)
+  createdAt  DateTime @default(now())
+
+  @@unique([userId, key])
+  @@index([userId, startsAt])
 }

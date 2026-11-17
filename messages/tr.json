@@ -240,5 +240,10 @@
     "greeting": "Merhaba!",
     "body": "Mivora giriş kodun:",
     "expiry": "Kod 10 dakika geçerlidir. Bunu sen istemediysen bu e-postayı yok sayabilirsin."
+  },
+  "sync": {
+    "synced": "Aile hesabınla senkronize – tüm cihazlarında aynı.",
+    "deviceOnly": "Yalnızca bu cihazda kayıtlı.",
+    "signIn": "Tüm cihazlarında görmek için giriş yap"
   }
 }

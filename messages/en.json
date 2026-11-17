@@ -240,5 +240,10 @@
     "greeting": "Hello!",
     "body": "Your Mivora sign-in code is:",
     "expiry": "The code is valid for 10 minutes. If this wasn't you, you can ignore this email."
+  },
+  "sync": {
+    "synced": "Synced with your family account – the same on all your devices.",
+    "deviceOnly": "Saved on this device only.",
+    "signIn": "Sign in to have it on all your devices"
   }
 }

@@ -5,12 +5,15 @@ import { MainNav } from "@/components/MainNav";
 import { Icon } from "@/components/Icon";
 import { Mascot } from "@/components/illustrations/Mascot";
 import { CITY_COOKIE, cityName, findCity } from "@/domain/cities";
+import { AccountSync } from "@/components/AccountSync";
+import { getCurrentUser } from "@/server/auth/session";
 
 /** App shell: top bar with logo + chosen city, content, floating bottom tab bar. */
 export default async function AppLayout({ children, params }: { children: React.ReactNode; params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations();
   const city = findCity((await cookies()).get(CITY_COOKIE)?.value);
+  const user = await getCurrentUser();
 
   return (
     <>
@@ -39,6 +42,7 @@ export default async function AppLayout({ children, params }: { children: React.
         {children}
       </main>
       <MainNav variant="bottom" />
+      <AccountSync signedIn={Boolean(user)} />
     </>
   );
 }

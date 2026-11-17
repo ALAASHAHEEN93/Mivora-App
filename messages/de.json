@@ -240,5 +240,10 @@
     "greeting": "Hallo!",
     "body": "Dein Anmeldecode für Mivora lautet:",
     "expiry": "Der Code ist 10 Minuten gültig. Wenn du das nicht warst, kannst du diese E-Mail ignorieren."
+  },
+  "sync": {
+    "synced": "Mit deinem Familienkonto synchronisiert – auf allen deinen Geräten gleich.",
+    "deviceOnly": "Nur auf diesem Gerät gespeichert.",
+    "signIn": "Anmelden, um es auf allen Geräten zu haben"
   }
 }

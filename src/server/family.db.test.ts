@@ -8,6 +8,7 @@ import { PrismaClient } from "@/generated/prisma/client";
 import { addChild, deleteAccount, exportAccount, listChildren, removeChild, updateChild } from "./family";
 import { createLoginCode, endSession, userForSessionToken, verifyLoginCode } from "./auth/service";
 import { hashToken, MAX_CODE_ATTEMPTS } from "./auth/crypto";
+import { addToList, getLists, mergeLists, removeFromList } from "./lists";
 
 const url = process.env.TEST_DATABASE_URL;
 const SECRET = "test-secret-test-secret-test-secret-1234";
@@ -20,6 +21,8 @@ describe.skipIf(!url)("accounts & family (database)", () => {
   });
   afterAll(() => db?.$disconnect());
   beforeEach(async () => {
+    await db.savedActivity.deleteMany();
+    await db.plannedItem.deleteMany();
     await db.child.deleteMany();
     await db.authSession.deleteMany();
     await db.loginCode.deleteMany();
@@ -109,5 +112,39 @@ describe.skipIf(!url)("accounts & family (database)", () => {
     expect(await userForSessionToken(db, anna.token)).toBeNull();
     expect(await db.loginCode.count({ where: { email: "anna@example.invalid" } })).toBe(0);
     expect(await listChildren(db, ben.userId)).toHaveLength(1);
+  });
+
+  const PLAN = "demo-a1|2026-11-21T10:00:00+01:00|2026-11-21T10:45:00+01:00";
+
+  it("saved and calendar lists are private to each family", async () => {
+    const anna = await signIn("anna@example.invalid");
+    const ben = await signIn("ben@example.invalid");
+    await addToList(db, anna.userId, "saved", "demo-a7");
+    await addToList(db, anna.userId, "planned", PLAN);
+
+    expect(await getLists(db, ben.userId)).toEqual({ saved: [], planned: [] });
+    await removeFromList(db, ben.userId, "saved", "demo-a7");
+    await removeFromList(db, ben.userId, "planned", PLAN);
+    expect(await getLists(db, anna.userId)).toEqual({ saved: ["demo-a7"], planned: [PLAN] });
+  });
+
+  it("merges device items once, ignores junk, and keeps the calendar key exactly", async () => {
+    const anna = await signIn("anna@example.invalid");
+    await addToList(db, anna.userId, "saved", "demo-a1");
+    const merged = await mergeLists(db, anna.userId, { saved: ["demo-a1", "demo-a2", "<script>", 42], planned: [PLAN, "nonsense"] });
+    expect(merged.saved.sort()).toEqual(["demo-a1", "demo-a2"]);
+    expect(merged.planned).toEqual([PLAN]);
+    const again = await mergeLists(db, anna.userId, { saved: ["demo-a2"], planned: [PLAN] });
+    expect(again.saved).toHaveLength(2);
+    expect(again.planned).toHaveLength(1);
+  });
+
+  it("deleting an account also deletes its saved and calendar lists", async () => {
+    const anna = await signIn("anna@example.invalid");
+    await addToList(db, anna.userId, "saved", "demo-a1");
+    await addToList(db, anna.userId, "planned", PLAN);
+    await deleteAccount(db, anna.userId);
+    expect(await db.savedActivity.count()).toBe(0);
+    expect(await db.plannedItem.count()).toBe(0);
   });
 });
