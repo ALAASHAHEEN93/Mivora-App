@@ -48,7 +48,8 @@
     "forYouTitle": "Dopasowane do twojego dziecka",
     "forYouPitch": "Dodaj profil dziecka – tylko pseudonim i rok urodzenia. Pokażemy tu zajęcia w odpowiednim wieku.",
     "forChild": "Dla {name}",
-    "forChildEmpty": "Teraz nie ma nic dla {name}. Zajrzyj wkrótce!"
+    "forChildEmpty": "Teraz nie ma nic dla {name}. Zajrzyj wkrótce!",
+    "forAgeChild": "Dla twojego dziecka ({age})"
   },
   "date": {
     "today": "Dziś",
@@ -209,7 +210,9 @@
     "cityError": "Wybierz miasto z listy.",
     "soon": "wkrótce",
     "start": "Zaczynamy",
-    "changeCity": "Zmień miasto (obecnie: {city})"
+    "changeCity": "Zmień miasto (obecnie: {city})",
+    "agesQuestion": "Ile lat mają twoje dzieci? (opcjonalnie)",
+    "agesHint": "Zostaje tylko na tym urządzeniu. Od razu pokażemy pasujące zajęcia."
   },
   "auth": {
     "title": "Zaloguj się",

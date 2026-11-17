@@ -6,6 +6,7 @@ import { Logo } from "@/components/Logo";
 import { Icon } from "@/components/Icon";
 import { WelcomeScene } from "@/components/illustrations/WelcomeScene";
 import { CITY_COOKIE, citiesForLocale, findCity } from "@/domain/cities";
+import { AGES_COOKIE, parseAges } from "@/domain/ages";
 import { chooseCity } from "./actions";
 
 /** Reads the city cookie and error query on every request. */
@@ -30,6 +31,7 @@ export default async function WelcomePage({
   const t = await getTranslations("welcome");
   const current = findCity((await cookies()).get(CITY_COOKIE)?.value)?.slug ?? "";
   const cities = citiesForLocale(locale);
+  const savedAges = parseAges((await cookies()).get(AGES_COOKIE)?.value);
 
   return (
     <main
@@ -84,6 +86,18 @@ export default async function WelcomePage({
         <p id="city-hint" className={`text-start text-sm ${fehler === "stadt" ? "font-bold text-accent" : "text-muted"}`}>
           {fehler === "stadt" ? t("cityError") : t("cityHint")}
         </p>
+        <fieldset className="mt-2 flex flex-col gap-2">
+          <legend className="mb-1 text-start font-bold">{t("agesQuestion")}</legend>
+          <div className="flex flex-wrap gap-2">
+            {Array.from({ length: 16 }, (_, a) => (
+              <label key={a} className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full border-2 border-line bg-surface px-3 font-bold has-[:checked]:border-[#1f2340] has-[:checked]:bg-primary has-[:checked]:text-on-primary">
+                <input type="checkbox" name="ages" value={a} defaultChecked={savedAges.includes(a)} className="sr-only" />
+                {a}
+              </label>
+            ))}
+          </div>
+          <p className="text-start text-sm text-muted">{t("agesHint")}</p>
+        </fieldset>
         <button
           type="submit"
           className="mt-2 inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-primary px-6 text-lg font-bold text-on-primary mv-btn-3d transition active:scale-[0.98]"

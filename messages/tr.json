@@ -48,7 +48,8 @@
     "forYouTitle": "Çocuğuna uygun",
     "forYouPitch": "Bir çocuk profili ekle – sadece takma ad ve doğum yılı. Burada yaşına uygun etkinlikleri gösteririz.",
     "forChild": "{name} için",
-    "forChildEmpty": "Şu an {name} için uygun bir şey yok. Yakında tekrar bak!"
+    "forChildEmpty": "Şu an {name} için uygun bir şey yok. Yakında tekrar bak!",
+    "forAgeChild": "Çocuğun için ({age})"
   },
   "date": {
     "today": "Bugün",
@@ -209,7 +210,9 @@
     "cityError": "Lütfen listeden bir şehir seç.",
     "soon": "yakında",
     "start": "Hadi başlayalım",
-    "changeCity": "Şehri değiştir (şu an: {city})"
+    "changeCity": "Şehri değiştir (şu an: {city})",
+    "agesQuestion": "Çocukların kaç yaşında? (isteğe bağlı)",
+    "agesHint": "Yalnızca bu cihazda kalır. Uygun etkinlikleri hemen gösteririz."
   },
   "auth": {
     "title": "Giriş yap",

@@ -48,7 +48,8 @@
     "forYouTitle": "Elegido para tu hijo",
     "forYouPitch": "Añade un perfil infantil: solo apodo y año de nacimiento. Aquí verás actividades para su edad.",
     "forChild": "Para {name}",
-    "forChildEmpty": "Ahora no hay nada para {name}. ¡Vuelve pronto!"
+    "forChildEmpty": "Ahora no hay nada para {name}. ¡Vuelve pronto!",
+    "forAgeChild": "Para tu hijo ({age})"
   },
   "date": {
     "today": "Hoy",
@@ -209,7 +210,9 @@
     "cityError": "Elige una ciudad de la lista.",
     "soon": "pronto",
     "start": "¡Vamos!",
-    "changeCity": "Cambiar ciudad (actual: {city})"
+    "changeCity": "Cambiar ciudad (actual: {city})",
+    "agesQuestion": "¿Qué edad tienen tus hijos? (opcional)",
+    "agesHint": "Se queda solo en este dispositivo. Te mostraremos actividades adecuadas al momento."
   },
   "auth": {
     "title": "Iniciar sesión",

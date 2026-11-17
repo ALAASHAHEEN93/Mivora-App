@@ -48,7 +48,8 @@
     "forYouTitle": "Passend für dein Kind",
     "forYouPitch": "Lege ein Kinderprofil an – nur Spitzname und Geburtsjahr. Dann zeigen wir dir hier Angebote im richtigen Alter.",
     "forChild": "Für {name}",
-    "forChildEmpty": "Gerade gibt es nichts Passendes für {name}. Schau bald wieder vorbei!"
+    "forChildEmpty": "Gerade gibt es nichts Passendes für {name}. Schau bald wieder vorbei!",
+    "forAgeChild": "Für dein Kind ({age})"
   },
   "date": {
     "today": "Heute",
@@ -209,7 +210,9 @@
     "cityError": "Bitte wähle eine Stadt aus der Liste.",
     "soon": "bald",
     "start": "Los geht's",
-    "changeCity": "Stadt ändern (aktuell: {city})"
+    "changeCity": "Stadt ändern (aktuell: {city})",
+    "agesQuestion": "Wie alt sind deine Kinder? (optional)",
+    "agesHint": "Bleibt nur auf diesem Gerät. Dann zeigen wir dir sofort passende Angebote."
   },
   "auth": {
     "title": "Anmelden",

@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { CITY_COOKIE, findCity } from "@/domain/cities";
+import { AGES_COOKIE, parseAges } from "@/domain/ages";
 
 /** Saves the chosen city on this device (functional cookie, no tracking) and opens the app. */
 export async function chooseCity(formData: FormData) {
@@ -20,5 +21,12 @@ export async function chooseCity(formData: FormData) {
     httpOnly: false,
     secure: process.env.NODE_ENV === "production",
   });
+  const ages = parseAges(formData.getAll("ages"));
+  const store = await cookies();
+  if (ages.length) {
+    store.set(AGES_COOKIE, ages.join(","), { path: "/", maxAge: 60 * 60 * 24 * 365, sameSite: "lax", secure: process.env.NODE_ENV === "production" });
+  } else {
+    store.delete(AGES_COOKIE);
+  }
   redirect(`/${safeLocale}`);
 }

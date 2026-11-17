@@ -6,6 +6,8 @@ import { childColor } from "@/domain/children";
 import { possibleAges, suggestForChild } from "@/domain/suggestions";
 import { listChildren } from "@/server/family";
 import { accountsAvailable, getCurrentUser } from "@/server/auth/session";
+import { cookies } from "next/headers";
+import { AGES_COOKIE, parseAges } from "@/domain/ages";
 import { ActivityCard } from "./ActivityCard";
 import { ScrollRow } from "./ScrollRow";
 import { Mascot } from "./illustrations/Mascot";
@@ -16,12 +18,18 @@ import { Mascot } from "./illustrations/Mascot";
  * Without child profiles it shows a short invitation instead.
  */
 export async function ForYou({ now }: { now: Date }) {
-  if (!accountsAvailable()) return null;
   const t = await getTranslations();
-  const user = await getCurrentUser();
-  const children = user ? await listChildren(getPrisma(), user.id) : [];
+  const user = accountsAvailable() ? await getCurrentUser() : null;
+  const accountChildren = user ? await listChildren(getPrisma(), user.id) : [];
+  // Without child profiles, use the ages picked on the welcome screen (device only).
+  const deviceAges = accountChildren.length ? [] : parseAges((await cookies()).get(AGES_COOKIE)?.value);
+  const year = now.getUTCFullYear();
+  const children = accountChildren.length
+    ? accountChildren.map((c, i) => ({ ...c, name: c.nickname ?? t("family.childFallback", { n: i + 1 }) }))
+    : deviceAges.map((age) => ({ id: `age-${age}`, nickname: null, birthYear: year - age, interests: [] as string[], name: String(age), byAge: true }));
 
   if (children.length === 0) {
+    if (!accountsAvailable()) return null;
     return (
       <section className="flex items-center gap-4 rounded-3xl bg-surface p-5 shadow-[0_8px_24px_-14px_rgba(42,47,58,0.4)]">
         <Mascot className="size-16 shrink-0" mood="wow" />
@@ -43,7 +51,8 @@ export async function ForYou({ now }: { now: Date }) {
   return (
     <>
       {children.slice(0, 4).map((c, i) => {
-        const name = c.nickname ?? t("family.childFallback", { n: i + 1 });
+        const name = c.name;
+        const heading = "byAge" in c ? t("home.forAgeChild", { age: name }) : t("home.forChild", { name });
         const [, age] = possibleAges(c.birthYear, now);
         const picks = suggestForChild(all, c, now);
         const interests = c.interests.map((x) => t(`categories.${x}`)).join(", ");
@@ -60,7 +69,7 @@ export async function ForYou({ now }: { now: Date }) {
                 </span>
                 <div className="min-w-0">
                   <h2 id={`for-${c.id}`} className="mv-sticker truncate py-1 text-2xl md:text-3xl">
-                    <StickerName text={t("home.forChild", { name })} name={name} />
+                    <StickerName text={heading} name={name} />
                   </h2>
                   <p className="truncate text-sm text-muted">
                     {t("family.age", { age })}

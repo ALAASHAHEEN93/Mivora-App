@@ -48,7 +48,8 @@
     "forYouTitle": "Picked for your child",
     "forYouPitch": "Add a child profile – just a nickname and birth year. Then we'll show activities for the right age here.",
     "forChild": "For {name}",
-    "forChildEmpty": "Nothing fits {name} right now. Check back soon!"
+    "forChildEmpty": "Nothing fits {name} right now. Check back soon!",
+    "forAgeChild": "For your child ({age})"
   },
   "date": {
     "today": "Today",
@@ -209,7 +210,9 @@
     "cityError": "Please choose a city from the list.",
     "soon": "soon",
     "start": "Let's go",
-    "changeCity": "Change city (current: {city})"
+    "changeCity": "Change city (current: {city})",
+    "agesQuestion": "How old are your children? (optional)",
+    "agesHint": "Stays on this device only. We'll show matching activities right away."
   },
   "auth": {
     "title": "Sign in",
