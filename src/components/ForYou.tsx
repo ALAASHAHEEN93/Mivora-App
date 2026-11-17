@@ -59,8 +59,8 @@ export async function ForYou({ now }: { now: Date }) {
                   {name.charAt(0).toUpperCase()}
                 </span>
                 <div className="min-w-0">
-                  <h2 id={`for-${c.id}`} className="truncate font-display text-2xl font-bold md:text-3xl">
-                    {t("home.forChild", { name })}
+                  <h2 id={`for-${c.id}`} className="mv-sticker truncate py-1 text-2xl md:text-3xl">
+                    <StickerName text={t("home.forChild", { name })} name={name} />
                   </h2>
                   <p className="truncate text-sm text-muted">
                     {t("family.age", { age })}
@@ -89,6 +89,19 @@ export async function ForYou({ now }: { now: Date }) {
           </section>
         );
       })}
+    </>
+  );
+}
+
+/** "Für Maus": the words in pink, the child's name in apricot (works for any word order). */
+function StickerName({ text, name }: { text: string; name: string }) {
+  const i = text.indexOf(name);
+  if (i < 0) return <span className="text-[#f09c9c]">{text}</span>;
+  return (
+    <>
+      <span className="text-[#f09c9c]">{text.slice(0, i)}</span>
+      <span className="text-[#fcb46c]">{name}</span>
+      <span className="text-[#f09c9c]">{text.slice(i + name.length)}</span>
     </>
   );
 }

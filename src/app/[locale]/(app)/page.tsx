@@ -20,7 +20,7 @@ import { CITY_COOKIE, cityName, findCity } from "@/domain/cities";
 export const dynamic = "force-dynamic";
 
 /** One calm colour for all category bubbles: the icons carry the meaning. */
-const BUBBLES = ["bg-[#fff1cc]"];
+const BUBBLES = ["bg-[#ffead4]"];
 
 function Rail({ items, empty }: { items: ActivityResult[]; empty: string }) {
   if (items.length === 0) return <p className="text-muted">{empty}</p>;
@@ -99,7 +99,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             name="q"
             type="search"
             placeholder={t("home.searchPlaceholder")}
-            className="min-h-13 w-full rounded-full border-0 bg-surface px-5 text-base shadow-[0_6px_20px_-10px_rgba(42,47,58,0.4)] placeholder:text-muted focus:outline-none focus-visible:ring-4 focus-visible:ring-[#ff6b57]"
+            className="min-h-13 w-full rounded-full border-0 bg-surface px-5 text-base shadow-[0_6px_20px_-10px_rgba(42,47,58,0.4)] placeholder:text-muted focus:outline-none focus-visible:ring-4 focus-visible:ring-[#f09c9c]"
           />
           <button type="submit" className="grid min-h-13 min-w-13 place-items-center rounded-full bg-primary text-on-primary shadow-md">
             <Icon name="search" />

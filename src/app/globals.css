@@ -11,17 +11,17 @@
   --kw-ink: #1f2340; /* ink */
   --kw-muted: #5b5f73;
   --kw-line: #efe6d3;
-  --kw-hero: #fff4d9; /* soft butter, calm header */
+  --kw-hero: #fff1e3; /* soft peach-cream, calm header */
 
-  --kw-primary: #ffc93c; /* sunny yellow: main buttons, active tab (ink text 10:1) */
+  --kw-primary: #fcb46c; /* apricot: main buttons, active tab (ink text 8.7:1) */
   --kw-on-primary: #1f2340;
-  --kw-accent: #b8402c; /* deep coral for links and icons */
+  --kw-accent: #b03a4f; /* deep rose for links and icons */
   --kw-focus: #1f2340;
 
   --kw-coral-100: #ffe5df;
-  --kw-coral-500: #ff6b57; /* coral spark: hearts, today */
-  --kw-sun-100: #fff1cc;
-  --kw-sun-400: #ffc93c;
+  --kw-coral-500: #f09c9c; /* pink: hearts, today, highlights */
+  --kw-sun-100: #ffead4;
+  --kw-sun-400: #fcb46c;
   --kw-teal-100: #f3eee2; /* warm neutral tint */
   --kw-teal-700: #3d4466;
   --kw-lav-100: #eef0f7;
@@ -37,15 +37,15 @@
     --kw-line: #33364f;
     --kw-hero: #1f2238;
 
-    --kw-primary: #ffc93c;
+    --kw-primary: #fcb46c;
     --kw-on-primary: #1f2340;
-    --kw-accent: #ff9c8c;
-    --kw-focus: #ffc93c;
+    --kw-accent: #f5b3b3;
+    --kw-focus: #fcb46c;
 
     --kw-coral-100: #3a2420;
     --kw-sun-100: #3a3014;
     --kw-teal-100: #26283f;
-    --kw-teal-700: #ffd978;
+    --kw-teal-700: #fcb46c;
     --kw-lav-100: #26283f;
   }
 }
@@ -70,8 +70,8 @@
   --color-lav-500: var(--kw-lav-500);
 
   --font-sans: var(--font-nunito), var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-baloo), var(--font-nunito), var(--font-arabic), ui-rounded, sans-serif;
-  --font-logo: var(--font-baloo), var(--font-nunito), ui-rounded, sans-serif;
+  --font-display: var(--font-fredoka), var(--font-nunito), var(--font-arabic), ui-rounded, sans-serif;
+  --font-logo: var(--font-fredoka), var(--font-nunito), ui-rounded, sans-serif;
   --radius-card: 1.25rem;
 }
 
@@ -206,3 +206,16 @@ body {
   .mv-logo:active .mv-logo-star,
   a:focus-visible .mv-logo-star { animation: mv-logo-spin 0.7s ease-in-out; }
 }
+
+/* ---------- Sticker lettering (logo + big titles): light fill, dark outline, soft drop ---------- */
+.mv-sticker {
+  font-family: var(--font-logo);
+  font-weight: 700;
+  -webkit-text-stroke: 0.13em #3b2f3a;
+  paint-order: stroke fill;
+  text-shadow: 0 0.09em 0 rgb(59 47 58 / 0.22);
+  letter-spacing: 0.01em;
+}
+/* Chunky "pressable" main buttons */
+.mv-btn-3d { box-shadow: 0 4px 0 #d98a3f; transition: transform 0.12s ease, box-shadow 0.12s ease; }
+.mv-btn-3d:active { transform: translateY(3px); box-shadow: 0 1px 0 #d98a3f; }

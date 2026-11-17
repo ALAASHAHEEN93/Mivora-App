@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 const input =
   "min-h-14 w-full rounded-2xl border-2 border-line bg-surface px-4 text-lg font-bold shadow-[0_6px_18px_-10px_rgba(42,47,58,0.35)] focus:border-accent focus:outline-none";
 const primaryBtn =
-  "inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-primary px-6 text-lg font-bold text-on-primary shadow-[0_10px_24px_-10px_var(--kw-primary)] transition active:scale-[0.98]";
+  "inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-primary px-6 text-lg font-bold text-on-primary mv-btn-3d transition active:scale-[0.98]";
 
 export default async function SignInPage({
   params,

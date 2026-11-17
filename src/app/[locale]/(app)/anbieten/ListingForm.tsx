@@ -340,7 +340,7 @@ export function ListingForm({ today }: { today: string }) {
       <button
         type="submit"
         disabled={pending}
-        className="inline-flex min-h-14 items-center justify-center rounded-full bg-primary px-6 text-lg font-bold text-on-primary shadow-[0_10px_24px_-10px_var(--kw-primary)] transition active:scale-[0.98] disabled:opacity-60"
+        className="inline-flex min-h-14 items-center justify-center rounded-full bg-primary px-6 text-lg font-bold text-on-primary mv-btn-3d transition active:scale-[0.98] disabled:opacity-60"
       >
         {t("provider.submit")}
       </button>

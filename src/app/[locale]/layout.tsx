@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Baloo_2, Nunito, Noto_Sans_Arabic } from "next/font/google";
+import { Fredoka, Nunito, Noto_Sans_Arabic } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -8,8 +8,8 @@ import { Splash } from "@/components/Splash";
 import "../globals.css";
 
 const nunito = Nunito({ subsets: ["latin", "latin-ext", "cyrillic"], variable: "--font-nunito", display: "swap" });
-// Logo and headings. No Cyrillic in Baloo 2, so Ukrainian headings fall back to Nunito.
-const baloo = Baloo_2({ subsets: ["latin", "latin-ext"], weight: ["700", "800"], variable: "--font-baloo", display: "swap" });
+// Logo and headings. Fredoka has no Cyrillic/Arabic, so those headings fall back to Nunito / Noto Sans Arabic.
+const fredoka = Fredoka({ subsets: ["latin", "latin-ext"], weight: ["600", "700"], variable: "--font-fredoka", display: "swap" });
 const arabic = Noto_Sans_Arabic({ subsets: ["arabic"], variable: "--font-arabic", display: "swap" });
 
 export function generateStaticParams() {
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export const viewport: Viewport = {
   viewportFit: "cover", // full-screen app layout; safe areas handled with env(safe-area-inset-*)
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fff4d9" },
+    { media: "(prefers-color-scheme: light)", color: "#fff1e3" },
     { media: "(prefers-color-scheme: dark)", color: "#15172a" },
   ],
 };
@@ -52,7 +52,7 @@ export default async function LocaleLayout({
   const dir = rtlLocales.includes(locale as Locale) ? "rtl" : "ltr";
 
   return (
-    <html lang={locale} dir={dir} className={`${nunito.variable} ${baloo.variable} ${arabic.variable}`}>
+    <html lang={locale} dir={dir} className={`${nunito.variable} ${fredoka.variable} ${arabic.variable}`}>
       {/* suppressHydrationWarning: browser extensions (e.g. ColorZilla) add attributes to <body>; only affects this element */}
       <body className="min-h-dvh bg-bg font-sans text-ink" suppressHydrationWarning>
         <NextIntlClientProvider>

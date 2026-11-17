@@ -34,14 +34,18 @@ export default async function WelcomePage({
   return (
     <main
       id="main"
-      className="mx-auto flex min-h-dvh max-w-md flex-col bg-[linear-gradient(180deg,var(--kw-hero)_0%,var(--kw-bg)_62%)] px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))]"
+      className="mx-auto flex min-h-dvh max-w-md flex-col bg-bg px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))]"
     >
-      <div className="flex items-center justify-between gap-3">
-        <Logo className="text-[2rem]" />
-        <LanguageSwitcher />
-      </div>
-
-      <WelcomeScene className="-mx-5 mt-2 w-[calc(100%+2.5rem)]" />
+      {/* Sky hero: big sticker logo above the waving kids */}
+      <section className="-mx-5 flex flex-col bg-[#cfeaf5] px-5 pt-[max(1rem,env(safe-area-inset-top))]">
+        <div className="flex justify-end">
+          <LanguageSwitcher />
+        </div>
+        <div className="mt-2 flex justify-center">
+          <Logo className="text-[3.6rem]" />
+        </div>
+        <WelcomeScene className="-mx-5 -mt-4 w-[calc(100%+2.5rem)]" />
+      </section>
 
       <div className="mt-4 flex flex-1 flex-col gap-2 text-center">
         <h1 className="font-display text-4xl font-bold leading-tight">{t("title")}</h1>
@@ -82,7 +86,7 @@ export default async function WelcomePage({
         </p>
         <button
           type="submit"
-          className="mt-2 inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-primary px-6 text-lg font-bold text-on-primary shadow-[0_10px_24px_-10px_var(--kw-primary)] transition active:scale-[0.98]"
+          className="mt-2 inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-primary px-6 text-lg font-bold text-on-primary mv-btn-3d transition active:scale-[0.98]"
         >
           {t("start")}
           <Icon name="forward" className="size-5" />

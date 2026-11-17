@@ -44,7 +44,7 @@ describe("colour contrast (WCAG AA, 4.5:1 for body text)", () => {
     });
   }
   it("palette pills (aqua, gold) always use fixed navy text", () => {
-    for (const bg of ["#ffc93c", "#ffc93c", "#f3e3c3", light["coral-500"]!]) expect(contrast("#1f2340", bg)).toBeGreaterThanOrEqual(4.5);
+    for (const bg of ["#fcb46c", "#fcb46c", "#f3e3c3", light["coral-500"]!]) expect(contrast("#1f2340", bg)).toBeGreaterThanOrEqual(4.5);
   });
   it("child colours carry navy text", async () => {
     const { CHILD_COLORS } = await import("./children");

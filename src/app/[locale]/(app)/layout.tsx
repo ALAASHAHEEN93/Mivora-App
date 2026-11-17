@@ -23,7 +23,7 @@ export default async function AppLayout({ children, params }: { children: React.
       <header className="sticky top-0 z-20 bg-[var(--kw-hero)]/90 backdrop-blur md:bg-bg/90">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-2.5">
           <Link href="/" className="flex items-center rounded-xl py-1">
-            <Logo className="text-[1.9rem]" />
+            <Logo className="text-[2.25rem]" />
           </Link>
           <MainNav variant="top" />
           <Link
