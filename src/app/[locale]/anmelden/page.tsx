@@ -102,7 +102,17 @@ export default async function SignInPage({
       )}
 
       <p className="text-center text-sm text-muted">{t("privacy")}</p>
-      {process.env.NODE_ENV === "development" && <p className="text-center text-xs text-muted">{t("devMailHint")}</p>}
+      {process.env.NODE_ENV === "development" && (
+        <div className="flex flex-col items-center gap-2 rounded-2xl border-2 border-dashed border-line p-4 text-center text-sm">
+          <p>{t("devMailHint")}</p>
+          {email && (
+            // Development only: codes never reach real inboxes until an email service is set up.
+            <a href="http://localhost:8025" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center rounded-full bg-sun-400 px-5 font-bold text-[#392f5a]">
+              {t("devMailOpen")}
+            </a>
+          )}
+        </div>
+      )}
     </main>
   );
 }

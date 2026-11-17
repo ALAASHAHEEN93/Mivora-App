@@ -216,8 +216,9 @@
     "invalidCode": "Il codice è errato o scaduto.",
     "noDatabase": "In questa anteprima gli account famiglia funzionano solo con il database locale.",
     "privacy": "Usiamo la tua email solo per l'accesso. Niente newsletter, nessuna condivisione.",
-    "devMailHint": "Sviluppo: tutte le email arrivano nella casella locale su localhost:8025.",
-    "mailFailed": "Non è stato possibile inviare l'email. Riprova tra poco."
+    "devMailHint": "Modalità sviluppo: i codici non arrivano ancora a caselle reali, ma a una casella di prova su questo computer.",
+    "mailFailed": "Non è stato possibile inviare l'email. Riprova tra poco.",
+    "devMailOpen": "Apri casella di prova"
   },
   "family": {
     "accountTitle": "Account famiglia",

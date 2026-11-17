@@ -216,8 +216,9 @@
     "invalidCode": "Kod yanlış veya süresi dolmuş.",
     "noDatabase": "Bu önizlemede aile hesapları yalnızca yerel veritabanıyla çalışır.",
     "privacy": "E-postanı yalnızca giriş için kullanırız. Bülten yok, paylaşım yok.",
-    "devMailHint": "Geliştirme: Tüm e-postalar localhost:8025 adresindeki yerel kutuya gider.",
-    "mailFailed": "E-posta şu anda gönderilemedi. Lütfen birazdan tekrar dene."
+    "devMailHint": "Geliştirme modu: Kodlar henüz gerçek posta kutularına değil, bu bilgisayardaki bir test kutusuna gider.",
+    "mailFailed": "E-posta şu anda gönderilemedi. Lütfen birazdan tekrar dene.",
+    "devMailOpen": "Test posta kutusunu aç"
   },
   "family": {
     "accountTitle": "Aile hesabı",

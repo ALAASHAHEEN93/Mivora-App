@@ -216,8 +216,9 @@
     "invalidCode": "Der Code stimmt nicht oder ist abgelaufen.",
     "noDatabase": "Familienkonten sind in dieser Vorschau nur mit der lokalen Datenbank verfügbar.",
     "privacy": "Wir nutzen deine E-Mail nur für die Anmeldung. Kein Newsletter, keine Weitergabe.",
-    "devMailHint": "Entwicklung: Alle E-Mails landen im lokalen Postfach unter localhost:8025.",
-    "mailFailed": "Die E-Mail konnte gerade nicht gesendet werden. Bitte versuche es gleich noch einmal."
+    "devMailHint": "Entwicklungsmodus: Codes gehen noch nicht an echte Postfächer, sondern in ein Test-Postfach auf diesem Computer.",
+    "mailFailed": "Die E-Mail konnte gerade nicht gesendet werden. Bitte versuche es gleich noch einmal.",
+    "devMailOpen": "Test-Postfach öffnen"
   },
   "family": {
     "accountTitle": "Familienkonto",

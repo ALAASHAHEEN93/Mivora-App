@@ -1,4 +1,3 @@
-import { Mascot } from "./illustrations/Mascot";
 import { Logo } from "./Logo";
 
 /**
@@ -8,9 +7,8 @@ import { Logo } from "./Logo";
 export function Splash({ tagline }: { tagline: string }) {
   return (
     <div aria-hidden="true" className="mv-splash fixed inset-0 z-[100] flex flex-col items-center justify-center gap-4 bg-[var(--kw-hero)]">
-      <Mascot className="mv-splash-logo size-28" />
       <span className="mv-splash-logo">
-        <Logo className="text-6xl" />
+        <Logo className="text-7xl" />
       </span>
       <p className="mv-splash-logo text-lg font-semibold text-muted">{tagline}</p>
     </div>

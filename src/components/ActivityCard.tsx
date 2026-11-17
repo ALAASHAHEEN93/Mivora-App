@@ -30,8 +30,8 @@ export function ActivityCard({
         className={`w-full transition duration-500 group-hover:scale-105 ${size === "lg" ? "aspect-[16/10]" : "aspect-[4/3]"}`}
       />
 
-      <div className="absolute start-3 top-3 flex items-center gap-1.5 rounded-full bg-white/90 py-1 pe-3 ps-1 text-sm font-bold text-[#1d3557] shadow-sm">
-        <span aria-hidden="true" className="grid size-7 place-items-center rounded-full bg-[#a8dadc] text-xs text-[#1d3557]">
+      <div className="absolute start-3 top-3 flex items-center gap-1.5 rounded-full bg-white/90 py-1 pe-3 ps-1 text-sm font-bold text-[#392f5a] shadow-sm">
+        <span aria-hidden="true" className="grid size-7 place-items-center rounded-full bg-[#ffb3ba] text-xs text-[#392f5a]">
           {activity.provider.name.charAt(0)}
         </span>
         {t("common.ageShort", { min: activity.ageMin, max: activity.ageMax })}
@@ -55,7 +55,7 @@ export function ActivityCard({
             <Icon name="pin" className="size-4" />
             {activity.venue.district}
           </span>
-          <span className="ms-auto rounded-full bg-[#d9bf77] px-2.5 py-0.5 font-bold text-[#1d3557] [text-shadow:none]">
+          <span className="ms-auto rounded-full bg-[#f8b400] px-2.5 py-0.5 font-bold text-[#392f5a] [text-shadow:none]">
             {amount ?? t("common.free")}
           </span>
         </p>

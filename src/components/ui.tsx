@@ -43,6 +43,6 @@ export function EmptyState({ title, text, action }: { title: string; text: strin
 }
 
 export const buttonPrimary =
-  "inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 font-extrabold text-on-primary shadow-[0_8px_20px_-8px_rgba(69,123,157,0.6)] transition hover:-translate-y-0.5";
+  "inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 font-extrabold text-on-primary shadow-[0_8px_20px_-8px_rgba(57,47,90,0.6)] transition hover:-translate-y-0.5";
 export const buttonSecondary =
   "inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-surface px-5 font-bold shadow-[0_4px_14px_-8px_rgba(42,47,58,0.5)] ring-2 ring-line transition hover:-translate-y-0.5";

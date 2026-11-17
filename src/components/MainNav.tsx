@@ -57,7 +57,7 @@ export function MainNav({ variant }: { variant: "bottom" | "top" }) {
               >
                 <span
                   className={`grid place-items-center rounded-full transition ${
-                    active ? "-mt-7 size-13 bg-primary text-on-primary shadow-[0_8px_18px_-6px_rgba(69,123,157,0.7)] ring-4 ring-bg" : "size-7"
+                    active ? "-mt-7 size-13 bg-primary text-on-primary shadow-[0_8px_18px_-6px_rgba(57,47,90,0.7)] ring-4 ring-bg" : "size-7"
                   }`}
                 >
                   <Icon name={item.icon} filled={active && item.icon === "heart"} className="mv-tab-icon size-6" />

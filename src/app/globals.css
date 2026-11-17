@@ -6,47 +6,47 @@
  * Contrast of text/background pairs is checked in src/domain/contrast.test.ts.
  */
 :root {
-  --kw-bg: #f1faee; /* mint white */
+  --kw-bg: #fff7f8;
   --kw-surface: #ffffff;
-  --kw-ink: #1d3557; /* navy */
-  --kw-muted: #4a5d73;
-  --kw-line: #d7e8e4;
-  --kw-hero: #a8dadc; /* aqua */
+  --kw-ink: #392f5a; /* deep indigo */
+  --kw-muted: #6b6080;
+  --kw-line: #f3dce0;
+  --kw-hero: #ffb3ba; /* pink */
 
-  --kw-primary: #457b9d; /* steel blue: buttons, active tab (white text 4.6:1) */
+  --kw-primary: #392f5a; /* indigo buttons with white text (12:1) */
   --kw-on-primary: #ffffff;
-  --kw-accent: #34627f; /* steel blue, deepened for links on mint */
-  --kw-focus: #1d3557;
+  --kw-accent: #b02a46; /* deep coral for links and icons (coral #ff677d is too light for text) */
+  --kw-focus: #b02a46;
 
-  --kw-coral-100: #f6eed6; /* gold tint */
-  --kw-coral-500: #d9bf77; /* gold */
-  --kw-sun-100: #f6eed6;
-  --kw-sun-400: #d9bf77;
-  --kw-teal-100: #ddf0f0; /* aqua tint */
-  --kw-teal-700: #34627f;
-  --kw-lav-100: #e3ecf3;
-  --kw-lav-500: #457b9d;
+  --kw-coral-100: #ffe3e6;
+  --kw-coral-500: #ffb3ba; /* pink */
+  --kw-sun-100: #fff1cc;
+  --kw-sun-400: #f8b400; /* amber */
+  --kw-teal-100: #f4e4e4; /* dusty rose tint */
+  --kw-teal-700: #5b3f72;
+  --kw-lav-100: #ece8f4;
+  --kw-lav-500: #d4a5a5; /* dusty rose */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --kw-bg: #0f1c2e;
-    --kw-surface: #172a42;
-    --kw-ink: #f1faee;
-    --kw-muted: #b6c6d3;
-    --kw-line: #2a3f5a;
-    --kw-hero: #1d3557;
+    --kw-bg: #1c1729;
+    --kw-surface: #262036;
+    --kw-ink: #f8eef0;
+    --kw-muted: #c4b9cf;
+    --kw-line: #3a3150;
+    --kw-hero: #3a2236;
 
-    --kw-primary: #a8dadc;
-    --kw-on-primary: #0f1c2e;
-    --kw-accent: #a8dadc;
-    --kw-focus: #d9bf77;
+    --kw-primary: #ff8fa0;
+    --kw-on-primary: #1c1729;
+    --kw-accent: #ffb3ba;
+    --kw-focus: #f8b400;
 
-    --kw-coral-100: #3a321c;
-    --kw-sun-100: #3a321c;
-    --kw-teal-100: #18363d;
-    --kw-teal-700: #a8dadc;
-    --kw-lav-100: #1f3150;
+    --kw-coral-100: #3a2236;
+    --kw-sun-100: #3a3014;
+    --kw-teal-100: #2e2338;
+    --kw-teal-700: #ffb3ba;
+    --kw-lav-100: #2c2542;
   }
 }
 
@@ -198,7 +198,7 @@ body {
 }
 @keyframes mv-logo-spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: no-preference) {
-  .mv-logo-animate .mv-logo-swoosh { stroke-dasharray: 100; animation: mv-logo-swoosh 0.9s 0.35s ease-out both; }
+  .mv-logo-animate .mv-logo-swoosh { stroke-dasharray: 100 400; animation: mv-logo-swoosh 0.9s 0.35s ease-out both; }
   .mv-logo-animate .mv-logo-star {
     animation: mv-logo-star-pop 0.6s 0.1s cubic-bezier(0.34, 1.56, 0.64, 1) both, mv-logo-twinkle 5s 1.5s ease-in-out infinite;
   }

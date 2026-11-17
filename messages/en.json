@@ -216,8 +216,9 @@
     "invalidCode": "The code is wrong or has expired.",
     "noDatabase": "Family accounts in this preview only work with the local database.",
     "privacy": "We only use your email to sign you in. No newsletter, no sharing.",
-    "devMailHint": "Development: all emails go to the local inbox at localhost:8025.",
-    "mailFailed": "We couldn't send the email right now. Please try again in a moment."
+    "devMailHint": "Development mode: codes don't go to real inboxes yet – they land in a test mailbox on this computer.",
+    "mailFailed": "We couldn't send the email right now. Please try again in a moment.",
+    "devMailOpen": "Open test mailbox"
   },
   "family": {
     "accountTitle": "Family account",

@@ -216,8 +216,9 @@
     "invalidCode": "El código es incorrecto o ha caducado.",
     "noDatabase": "En esta vista previa, las cuentas familiares solo funcionan con la base de datos local.",
     "privacy": "Solo usamos tu correo para iniciar sesión. Sin boletines ni cesión de datos.",
-    "devMailHint": "Desarrollo: todos los correos llegan al buzón local en localhost:8025.",
-    "mailFailed": "No se pudo enviar el correo ahora. Inténtalo de nuevo en un momento."
+    "devMailHint": "Modo desarrollo: los códigos aún no llegan a buzones reales, sino a un buzón de prueba en este ordenador.",
+    "mailFailed": "No se pudo enviar el correo ahora. Inténtalo de nuevo en un momento.",
+    "devMailOpen": "Abrir buzón de prueba"
   },
   "family": {
     "accountTitle": "Cuenta familiar",

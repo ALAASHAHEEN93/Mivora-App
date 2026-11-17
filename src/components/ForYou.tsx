@@ -53,7 +53,7 @@ export async function ForYou({ now }: { now: Date }) {
               <div className="flex min-w-0 items-center gap-3">
                 <span
                   aria-hidden="true"
-                  className="grid size-12 shrink-0 place-items-center rounded-full text-lg font-bold text-[#1d3557] shadow-[0_6px_16px_-10px_rgba(36,48,77,0.5)]"
+                  className="grid size-12 shrink-0 place-items-center rounded-full text-lg font-bold text-[#392f5a] shadow-[0_6px_16px_-10px_rgba(36,48,77,0.5)]"
                   style={{ background: childColor(i) }}
                 >
                   {name.charAt(0).toUpperCase()}

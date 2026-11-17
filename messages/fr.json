@@ -216,8 +216,9 @@
     "invalidCode": "Le code est incorrect ou a expiré.",
     "noDatabase": "Dans cet aperçu, les comptes famille ne fonctionnent qu'avec la base de données locale.",
     "privacy": "Ton e-mail sert uniquement à la connexion. Pas de newsletter, aucun partage.",
-    "devMailHint": "Développement : tous les e-mails arrivent dans la boîte locale sur localhost:8025.",
-    "mailFailed": "L'e-mail n'a pas pu être envoyé. Réessaie dans un instant."
+    "devMailHint": "Mode développement : les codes n'arrivent pas encore dans de vraies boîtes mail, mais dans une boîte de test sur cet ordinateur.",
+    "mailFailed": "L'e-mail n'a pas pu être envoyé. Réessaie dans un instant.",
+    "devMailOpen": "Ouvrir la boîte de test"
   },
   "family": {
     "accountTitle": "Compte famille",
