@@ -212,7 +212,8 @@
     "start": "¡Vamos!",
     "changeCity": "Cambiar ciudad (actual: {city})",
     "agesQuestion": "¿Qué edad tienen tus hijos? (opcional)",
-    "agesHint": "Se queda solo en este dispositivo. Te mostraremos actividades adecuadas al momento."
+    "agesHint": "Se queda solo en este dispositivo. Te mostraremos actividades adecuadas al momento.",
+    "changeCityShort": "cambiar de ciudad"
   },
   "auth": {
     "title": "Iniciar sesión",

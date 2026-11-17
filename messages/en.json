@@ -212,7 +212,8 @@
     "start": "Let's go",
     "changeCity": "Change city (current: {city})",
     "agesQuestion": "How old are your children? (optional)",
-    "agesHint": "Stays on this device only. We'll show matching activities right away."
+    "agesHint": "Stays on this device only. We'll show matching activities right away.",
+    "changeCityShort": "change city"
   },
   "auth": {
     "title": "Sign in",

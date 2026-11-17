@@ -21,7 +21,8 @@
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
     "dev:preview": "NEXT_DIST_DIR=.next-preview next dev --turbopack",
-    "jobs:daily": "tsx scripts/daily-jobs.ts"
+    "jobs:daily": "tsx scripts/daily-jobs.ts",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@prisma/adapter-pg": "7.10.1",
@@ -36,6 +37,8 @@
     "sharp": "0.35.5"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.65.1",
     "@tailwindcss/postcss": "^4.1.0",
     "@types/leaflet": "^1.9.22",
     "@types/node": "^22.0.0",

@@ -212,7 +212,8 @@
     "start": "Hadi başlayalım",
     "changeCity": "Şehri değiştir (şu an: {city})",
     "agesQuestion": "Çocukların kaç yaşında? (isteğe bağlı)",
-    "agesHint": "Yalnızca bu cihazda kalır. Uygun etkinlikleri hemen gösteririz."
+    "agesHint": "Yalnızca bu cihazda kalır. Uygun etkinlikleri hemen gösteririz.",
+    "changeCityShort": "şehri değiştir"
   },
   "auth": {
     "title": "Giriş yap",

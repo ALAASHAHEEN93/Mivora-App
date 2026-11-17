@@ -212,7 +212,8 @@
     "start": "Los geht's",
     "changeCity": "Stadt ändern (aktuell: {city})",
     "agesQuestion": "Wie alt sind deine Kinder? (optional)",
-    "agesHint": "Bleibt nur auf diesem Gerät. Dann zeigen wir dir sofort passende Angebote."
+    "agesHint": "Bleibt nur auf diesem Gerät. Dann zeigen wir dir sofort passende Angebote.",
+    "changeCityShort": "Stadt ändern"
   },
   "auth": {
     "title": "Anmelden",

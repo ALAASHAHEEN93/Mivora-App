@@ -212,7 +212,8 @@
     "start": "Zaczynamy",
     "changeCity": "Zmień miasto (obecnie: {city})",
     "agesQuestion": "Ile lat mają twoje dzieci? (opcjonalnie)",
-    "agesHint": "Zostaje tylko na tym urządzeniu. Od razu pokażemy pasujące zajęcia."
+    "agesHint": "Zostaje tylko na tym urządzeniu. Od razu pokażemy pasujące zajęcia.",
+    "changeCityShort": "zmień miasto"
   },
   "auth": {
     "title": "Zaloguj się",

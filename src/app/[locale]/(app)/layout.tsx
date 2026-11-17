@@ -28,12 +28,15 @@ export default async function AppLayout({ children, params }: { children: React.
           <MainNav variant="top" />
           <Link
             href="/willkommen"
-            aria-label={t("welcome.changeCity", { city: city ? cityName(city.slug, locale) : "–" })}
             className="inline-flex min-h-10 max-w-[45%] items-center gap-1 rounded-full bg-surface px-3 text-sm font-bold shadow-[0_4px_14px_-8px_rgba(42,47,58,0.45)]"
           >
             <Icon name="pin" className="size-4 shrink-0 text-accent" />
             <span className="truncate">{city ? cityName(city.slug, locale) : t("welcome.cityPlaceholder")}</span>
-            <span aria-hidden="true" className="text-muted">▾</span>
+            {/* Spoken as "Köln – Stadt ändern": starts with the visible text (voice control friendly). */}
+            <span className="sr-only"> – {t("welcome.changeCityShort")}</span>
+            <span aria-hidden="true" className="text-muted">
+              ▾
+            </span>
           </Link>
         </div>
       </header>

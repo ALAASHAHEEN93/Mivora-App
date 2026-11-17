@@ -212,7 +212,8 @@
     "start": "C'est parti",
     "changeCity": "Changer de ville (actuelle : {city})",
     "agesQuestion": "Quel âge ont tes enfants ? (facultatif)",
-    "agesHint": "Reste uniquement sur cet appareil. Nous te montrons tout de suite des activités adaptées."
+    "agesHint": "Reste uniquement sur cet appareil. Nous te montrons tout de suite des activités adaptées.",
+    "changeCityShort": "changer de ville"
   },
   "auth": {
     "title": "Se connecter",

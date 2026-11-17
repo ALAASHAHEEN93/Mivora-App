@@ -212,7 +212,8 @@
     "start": "Iniziamo",
     "changeCity": "Cambia città (attuale: {city})",
     "agesQuestion": "Quanti anni hanno i tuoi figli? (facoltativo)",
-    "agesHint": "Resta solo su questo dispositivo. Ti mostriamo subito attività adatte."
+    "agesHint": "Resta solo su questo dispositivo. Ti mostriamo subito attività adatte.",
+    "changeCityShort": "cambia città"
   },
   "auth": {
     "title": "Accedi",

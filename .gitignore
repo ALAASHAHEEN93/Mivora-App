@@ -12,3 +12,6 @@ next-env.d.ts
 src/generated/
 storage/
 .next-preview/
+.next-e2e/
+test-results/
+playwright-report/
