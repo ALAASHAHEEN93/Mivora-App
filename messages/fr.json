@@ -349,5 +349,14 @@
     "approved": "Validée – l'annonce est maintenant visible.",
     "rejected": "Refusée – l'organisateur voit le motif.",
     "failed": "Échec. Déjà traitée ?"
+  },
+  "system": {
+    "notFoundTitle": "Oups, cette page n'existe pas",
+    "notFoundText": "Peut-être une faute de frappe dans l'adresse ? Continue ici :",
+    "toHome": "Accueil",
+    "toExplore": "Découvrir les activités",
+    "errorTitle": "Un problème est survenu",
+    "errorText": "Ce n'est pas de ta faute. Réessaie dans un instant.",
+    "retry": "Réessayer"
   }
 }

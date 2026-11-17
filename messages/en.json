@@ -349,5 +349,14 @@
     "approved": "Approved – the listing is now visible.",
     "rejected": "Declined – the provider can see the reason.",
     "failed": "That didn't work. Was it already handled?"
+  },
+  "system": {
+    "notFoundTitle": "Oops, this page doesn't exist",
+    "notFoundText": "Maybe a typo in the address? Here's where to go:",
+    "toHome": "Go home",
+    "toExplore": "Explore activities",
+    "errorTitle": "Something went wrong",
+    "errorText": "It wasn't you. Please try again in a moment.",
+    "retry": "Try again"
   }
 }

@@ -349,5 +349,14 @@
     "approved": "Onaylandı – ilan artık görünüyor.",
     "rejected": "Reddedildi – sağlayıcı nedeni görür.",
     "failed": "Olmadı. Zaten işlendi mi?"
+  },
+  "system": {
+    "notFoundTitle": "Hoppala, bu sayfa yok",
+    "notFoundText": "Adreste bir yazım hatası olabilir mi? Buradan devam et:",
+    "toHome": "Ana sayfaya",
+    "toExplore": "Etkinlikleri keşfet",
+    "errorTitle": "Bir şeyler ters gitti",
+    "errorText": "Senin hatan değil. Lütfen birazdan tekrar dene.",
+    "retry": "Tekrar dene"
   }
 }

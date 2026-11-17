@@ -349,5 +349,14 @@
     "approved": "Approvato – l'annuncio ora è visibile.",
     "rejected": "Rifiutato – l'organizzatore vede il motivo.",
     "failed": "Non è riuscito. Era già stato gestito?"
+  },
+  "system": {
+    "notFoundTitle": "Ops, questa pagina non esiste",
+    "notFoundText": "Forse un errore nell'indirizzo? Continua da qui:",
+    "toHome": "Vai alla home",
+    "toExplore": "Scopri le attività",
+    "errorTitle": "Qualcosa è andato storto",
+    "errorText": "Non è colpa tua. Riprova tra un momento.",
+    "retry": "Riprova"
   }
 }

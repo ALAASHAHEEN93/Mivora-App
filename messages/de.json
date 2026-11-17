@@ -349,5 +349,14 @@
     "approved": "Freigegeben – das Angebot ist jetzt sichtbar.",
     "rejected": "Abgelehnt – der Anbieter sieht den Grund.",
     "failed": "Das hat nicht geklappt. Wurde es schon bearbeitet?"
+  },
+  "system": {
+    "notFoundTitle": "Hoppla, diese Seite gibt es nicht",
+    "notFoundText": "Vielleicht ein Tippfehler in der Adresse? Hier geht's weiter:",
+    "toHome": "Zur Startseite",
+    "toExplore": "Angebote entdecken",
+    "errorTitle": "Da ist etwas schiefgelaufen",
+    "errorText": "Das lag nicht an dir. Versuch es bitte gleich noch einmal.",
+    "retry": "Nochmal versuchen"
   }
 }

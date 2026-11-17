@@ -349,5 +349,14 @@
     "approved": "Zatwierdzono – oferta jest teraz widoczna.",
     "rejected": "Odrzucono – organizator widzi powód.",
     "failed": "Nie udało się. Czy już to obsłużono?"
+  },
+  "system": {
+    "notFoundTitle": "Ups, ta strona nie istnieje",
+    "notFoundText": "Może literówka w adresie? Tu możesz przejść dalej:",
+    "toHome": "Na stronę główną",
+    "toExplore": "Odkrywaj zajęcia",
+    "errorTitle": "Coś poszło nie tak",
+    "errorText": "To nie twoja wina. Spróbuj ponownie za chwilę.",
+    "retry": "Spróbuj ponownie"
   }
 }
