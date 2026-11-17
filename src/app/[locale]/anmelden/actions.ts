@@ -10,6 +10,7 @@ import { createLoginCode, verifyLoginCode } from "@/server/auth/service";
 import { accountsAvailable, setSessionCookie } from "@/server/auth/session";
 import { sendLoginCodeEmail } from "@/server/mail";
 import { PENDING_COOKIE } from "@/server/auth/pending";
+import { DEV_CODE_COOKIE, usesLocalTestMailbox } from "@/server/auth/dev-mailbox";
 
 
 function localeOf(formData: FormData) {
@@ -33,6 +34,10 @@ export async function requestCode(formData: FormData) {
     redirect(`${base}?fehler=mail`);
   }
 
+  if (usesLocalTestMailbox()) {
+    // Local development only: the code can't reach a real inbox, so remember it for the code screen.
+    (await cookies()).set(DEV_CODE_COOKIE, result.code, { httpOnly: true, sameSite: "lax", path: "/", maxAge: CODE_TTL_MS / 1000 });
+  }
   (await cookies()).set(PENDING_COOKIE, email, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
@@ -56,6 +61,7 @@ export async function confirmCode(formData: FormData) {
   if (!result.ok) redirect(`${base}?schritt=code&fehler=code`);
 
   store.delete(PENDING_COOKIE);
+  store.delete(DEV_CODE_COOKIE);
   await setSessionCookie(result.token);
   redirect(`/${locale}/profil`);
 }

@@ -218,7 +218,8 @@
     "privacy": "Solo usamos tu correo para iniciar sesión. Sin boletines ni cesión de datos.",
     "devMailHint": "Modo desarrollo: los códigos aún no llegan a buzones reales, sino a un buzón de prueba en este ordenador.",
     "mailFailed": "No se pudo enviar el correo ahora. Inténtalo de nuevo en un momento.",
-    "devMailOpen": "Abrir buzón de prueba"
+    "devMailOpen": "Abrir buzón de prueba",
+    "devCode": "Tu código (visible solo durante el desarrollo):"
   },
   "family": {
     "accountTitle": "Cuenta familiar",

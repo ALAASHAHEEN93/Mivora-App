@@ -5,6 +5,8 @@ import { Icon } from "@/components/Icon";
 import { Mascot } from "@/components/illustrations/Mascot";
 import { accountsAvailable, getCurrentUser } from "@/server/auth/session";
 import { pendingEmail } from "@/server/auth/pending";
+import { DEV_CODE_COOKIE, usesLocalTestMailbox } from "@/server/auth/dev-mailbox";
+import { cookies } from "next/headers";
 import { confirmCode, requestCode, restartSignIn } from "./actions";
 
 export const dynamic = "force-dynamic";
@@ -34,6 +36,7 @@ export default async function SignInPage({
   if (await getCurrentUser()) redirect({ href: "/profil", locale });
 
   const email = schritt === "code" ? await pendingEmail() : null;
+  const devCode = email && usesLocalTestMailbox() ? (await cookies()).get(DEV_CODE_COOKIE)?.value : undefined;
   const errorKey =
     fehler === "email" ? "invalidEmail" : fehler === "zu-viele" ? "rateLimited" : fehler === "code" ? "invalidCode" : fehler === "keine-db" ? "noDatabase" : fehler === "mail" ? "mailFailed" : null;
 
@@ -51,6 +54,15 @@ export default async function SignInPage({
         <h1 className="font-display text-3xl font-bold">{email ? t("codeTitle") : t("title")}</h1>
         <p className="text-muted">{email ? t("codeSent", { email }) : t("intro")}</p>
       </div>
+
+      {devCode && (
+        <p role="status" className="flex flex-col items-center gap-1 rounded-2xl bg-sun-100 px-4 py-3 text-center text-sm font-bold">
+          {t("devCode")}
+          <span dir="ltr" className="font-mono text-3xl tracking-[0.3em]">
+            {devCode}
+          </span>
+        </p>
+      )}
 
       {errorKey && (
         <p role="alert" className="rounded-2xl bg-coral-100 px-4 py-3 font-bold">
@@ -105,6 +117,7 @@ export default async function SignInPage({
       {process.env.NODE_ENV === "development" && (
         <div className="flex flex-col items-center gap-2 rounded-2xl border-2 border-dashed border-line p-4 text-center text-sm">
           <p>{t("devMailHint")}</p>
+
           {email && (
             // Development only: codes never reach real inboxes until an email service is set up.
             <a href="http://localhost:8025" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center rounded-full bg-sun-400 px-5 font-bold text-[#1f2340]">

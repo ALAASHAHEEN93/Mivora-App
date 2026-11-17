@@ -218,7 +218,8 @@
     "privacy": "Wir nutzen deine E-Mail nur für die Anmeldung. Kein Newsletter, keine Weitergabe.",
     "devMailHint": "Entwicklungsmodus: Codes gehen noch nicht an echte Postfächer, sondern in ein Test-Postfach auf diesem Computer.",
     "mailFailed": "Die E-Mail konnte gerade nicht gesendet werden. Bitte versuche es gleich noch einmal.",
-    "devMailOpen": "Test-Postfach öffnen"
+    "devMailOpen": "Test-Postfach öffnen",
+    "devCode": "Dein Code (nur in der Entwicklung sichtbar):"
   },
   "family": {
     "accountTitle": "Familienkonto",

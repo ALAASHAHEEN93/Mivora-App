@@ -218,7 +218,8 @@
     "privacy": "E-postanı yalnızca giriş için kullanırız. Bülten yok, paylaşım yok.",
     "devMailHint": "Geliştirme modu: Kodlar henüz gerçek posta kutularına değil, bu bilgisayardaki bir test kutusuna gider.",
     "mailFailed": "E-posta şu anda gönderilemedi. Lütfen birazdan tekrar dene.",
-    "devMailOpen": "Test posta kutusunu aç"
+    "devMailOpen": "Test posta kutusunu aç",
+    "devCode": "Kodun (yalnızca geliştirme sırasında görünür):"
   },
   "family": {
     "accountTitle": "Aile hesabı",

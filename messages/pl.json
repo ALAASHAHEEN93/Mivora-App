@@ -218,7 +218,8 @@
     "privacy": "E-mail służy tylko do logowania. Bez newslettera i udostępniania.",
     "devMailHint": "Tryb deweloperski: kody nie trafiają jeszcze do prawdziwych skrzynek, tylko do testowej skrzynki na tym komputerze.",
     "mailFailed": "Nie udało się teraz wysłać e-maila. Spróbuj ponownie za chwilę.",
-    "devMailOpen": "Otwórz testową skrzynkę"
+    "devMailOpen": "Otwórz testową skrzynkę",
+    "devCode": "Twój kod (widoczny tylko podczas tworzenia):"
   },
   "family": {
     "accountTitle": "Konto rodzinne",

@@ -218,7 +218,8 @@
     "privacy": "Ton e-mail sert uniquement à la connexion. Pas de newsletter, aucun partage.",
     "devMailHint": "Mode développement : les codes n'arrivent pas encore dans de vraies boîtes mail, mais dans une boîte de test sur cet ordinateur.",
     "mailFailed": "L'e-mail n'a pas pu être envoyé. Réessaie dans un instant.",
-    "devMailOpen": "Ouvrir la boîte de test"
+    "devMailOpen": "Ouvrir la boîte de test",
+    "devCode": "Ton code (visible uniquement en développement) :"
   },
   "family": {
     "accountTitle": "Compte famille",
