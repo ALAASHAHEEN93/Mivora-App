@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Nunito, Noto_Sans_Arabic, Playfair_Display } from "next/font/google";
+import { Baloo_2, Nunito, Noto_Sans_Arabic, Playfair_Display } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -9,6 +9,8 @@ import "../globals.css";
 
 const nunito = Nunito({ subsets: ["latin", "latin-ext", "cyrillic"], variable: "--font-nunito", display: "swap" });
 const playfair = Playfair_Display({ subsets: ["latin", "latin-ext", "cyrillic"], variable: "--font-playfair", display: "swap" });
+// Logo lettering only (weight 800, Latin).
+const baloo = Baloo_2({ subsets: ["latin"], weight: "800", variable: "--font-baloo", display: "swap" });
 const arabic = Noto_Sans_Arabic({ subsets: ["arabic"], variable: "--font-arabic", display: "swap" });
 
 export function generateStaticParams() {
@@ -51,7 +53,7 @@ export default async function LocaleLayout({
   const dir = rtlLocales.includes(locale as Locale) ? "rtl" : "ltr";
 
   return (
-    <html lang={locale} dir={dir} className={`${nunito.variable} ${playfair.variable} ${arabic.variable}`}>
+    <html lang={locale} dir={dir} className={`${nunito.variable} ${playfair.variable} ${baloo.variable} ${arabic.variable}`}>
       {/* suppressHydrationWarning: browser extensions (e.g. ColorZilla) add attributes to <body>; only affects this element */}
       <body className="min-h-dvh bg-bg font-sans text-ink" suppressHydrationWarning>
         <NextIntlClientProvider>

@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { MainNav } from "@/components/MainNav";
 import { Icon } from "@/components/Icon";
-import { Mascot } from "@/components/illustrations/Mascot";
+import { Logo } from "@/components/Logo";
 import { CITY_COOKIE, cityName, findCity } from "@/domain/cities";
 import { AccountSync } from "@/components/AccountSync";
 import { getCurrentUser } from "@/server/auth/session";
@@ -22,9 +22,8 @@ export default async function AppLayout({ children, params }: { children: React.
       </p>
       <header className="sticky top-0 z-20 bg-[var(--kw-hero)]/90 backdrop-blur md:bg-bg/90">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-2.5">
-          <Link href="/" className="flex items-center gap-1.5 font-display text-2xl font-bold">
-            <Mascot className="size-9" />
-            Mivora
+          <Link href="/" className="flex items-center rounded-xl py-1">
+            <Logo className="text-[1.9rem]" />
           </Link>
           <MainNav variant="top" />
           <Link

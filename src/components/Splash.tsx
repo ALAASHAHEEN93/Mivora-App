@@ -1,4 +1,5 @@
 import { Mascot } from "./illustrations/Mascot";
+import { Logo } from "./Logo";
 
 /**
  * Launch splash: shown on a cold start (full page load), then fades away by itself.
@@ -8,7 +9,9 @@ export function Splash({ tagline }: { tagline: string }) {
   return (
     <div aria-hidden="true" className="mv-splash fixed inset-0 z-[100] flex flex-col items-center justify-center gap-4 bg-[var(--kw-hero)]">
       <Mascot className="mv-splash-logo size-28" />
-      <p className="mv-splash-logo font-display text-5xl font-bold text-ink">Mivora</p>
+      <span className="mv-splash-logo">
+        <Logo className="text-6xl" />
+      </span>
       <p className="mv-splash-logo text-lg font-semibold text-muted">{tagline}</p>
     </div>
   );
