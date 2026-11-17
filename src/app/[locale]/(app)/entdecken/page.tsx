@@ -5,7 +5,7 @@ import { parseFilters, countActiveFilters } from "@/domain/parse-filters";
 import { ACCESSIBILITY_TAGS, CATEGORY_SLUGS } from "@/domain/types";
 import { locales } from "@/i18n/routing";
 import { languageName } from "@/domain/localize";
-import { ActivityCard } from "@/components/ActivityCard";
+import { ExploreResults } from "@/components/ExploreResults";
 import { ChipLink, EmptyState, buttonPrimary, buttonSecondary } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
 import { Icon } from "@/components/Icon";
@@ -211,13 +211,7 @@ export default async function ExplorePage({
               }
             />
           ) : (
-            <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {results.map(({ activity, sessions }) => (
-                <li key={activity.id}>
-                  <ActivityCard activity={activity} nextSession={sessions[0]!} />
-                </li>
-              ))}
-            </ul>
+            <ExploreResults results={results} />
           )}
         </section>
       </div>

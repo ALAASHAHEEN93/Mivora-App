@@ -94,7 +94,19 @@
     "reset": "Réinitialiser",
     "emptyTitle": "Aucun résultat",
     "emptyText": "Essayez une autre période ou moins de filtres.",
-    "resetFilters": "Réinitialiser les filtres"
+    "resetFilters": "Réinitialiser les filtres",
+    "viewLabel": "Affichage",
+    "list": "Liste",
+    "map": "Carte",
+    "nearMe": "Près de moi",
+    "locating": "Localisation en cours …",
+    "nearMeActive": "Trié par distance. Ta position reste sur ton appareil.",
+    "locationError": "Position indisponible. Autorise l'accès dans ton navigateur.",
+    "locationPrivacy": "Ta position n'est utilisée que sur ton appareil.",
+    "mapConsentTitle": "Afficher la carte ?",
+    "mapConsentText": "La carte est chargée depuis OpenStreetMap, qui reçoit ton adresse IP.",
+    "mapLoad": "Charger la carte",
+    "you": "Tu es ici"
   },
   "access": {
     "wheelchair": "Accessible en fauteuil roulant",

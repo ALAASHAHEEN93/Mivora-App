@@ -227,3 +227,9 @@ body {
 @media (prefers-reduced-motion: no-preference) {
   .mv-star-twinkle { transform-box: fill-box; transform-origin: center; animation: mv-star-twinkle 5s ease-in-out infinite; }
 }
+
+/* Map pins (Leaflet divIcons) */
+.mv-map-pin, .mv-map-me { display: block; width: 26px; height: 26px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 3px solid #1f2340; }
+.mv-map-pin { background: #fcb46c; }
+.mv-map-me { background: #f09c9c; border-radius: 50%; transform: none; }
+.mv-map-title { display: block; font-weight: 700; color: #1f2340; margin-bottom: 2px; }

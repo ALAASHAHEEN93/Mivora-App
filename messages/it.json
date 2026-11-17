@@ -94,7 +94,19 @@
     "reset": "Reimposta",
     "emptyTitle": "Nessun risultato",
     "emptyText": "Prova un altro periodo o meno filtri.",
-    "resetFilters": "Reimposta filtri"
+    "resetFilters": "Reimposta filtri",
+    "viewLabel": "Vista",
+    "list": "Elenco",
+    "map": "Mappa",
+    "nearMe": "Vicino a me",
+    "locating": "Rilevamento posizione …",
+    "nearMeActive": "Ordinato per distanza. La tua posizione resta sul dispositivo.",
+    "locationError": "Posizione non disponibile. Consenti l'accesso nel browser.",
+    "locationPrivacy": "La tua posizione è usata solo sul tuo dispositivo.",
+    "mapConsentTitle": "Mostrare la mappa?",
+    "mapConsentText": "La mappa viene caricata da OpenStreetMap, che riceve il tuo indirizzo IP.",
+    "mapLoad": "Carica mappa",
+    "you": "Sei qui"
   },
   "access": {
     "wheelchair": "Accessibile in sedia a rotelle",

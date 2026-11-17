@@ -94,7 +94,19 @@
     "reset": "Sıfırla",
     "emptyTitle": "Sonuç bulunamadı",
     "emptyText": "Başka bir zaman aralığı veya daha az filtre deneyin.",
-    "resetFilters": "Filtreleri sıfırla"
+    "resetFilters": "Filtreleri sıfırla",
+    "viewLabel": "Görünüm",
+    "list": "Liste",
+    "map": "Harita",
+    "nearMe": "Yakınımda",
+    "locating": "Konumun belirleniyor …",
+    "nearMeActive": "Uzaklığa göre sıralandı. Konumun cihazında kalır.",
+    "locationError": "Konum kullanılamıyor. Lütfen tarayıcıda izin ver.",
+    "locationPrivacy": "Konumun yalnızca cihazında kullanılır.",
+    "mapConsentTitle": "Harita gösterilsin mi?",
+    "mapConsentText": "Harita OpenStreetMap'ten yüklenir; IP adresin OpenStreetMap'e iletilir.",
+    "mapLoad": "Haritayı yükle",
+    "you": "Buradasın"
   },
   "access": {
     "wheelchair": "Tekerlekli sandalyeye uygun",

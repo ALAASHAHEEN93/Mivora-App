@@ -94,7 +94,19 @@
     "reset": "Reset",
     "emptyTitle": "Nothing found",
     "emptyText": "Try a different time or fewer filters.",
-    "resetFilters": "Reset filters"
+    "resetFilters": "Reset filters",
+    "viewLabel": "View",
+    "list": "List",
+    "map": "Map",
+    "nearMe": "Near me",
+    "locating": "Finding your location …",
+    "nearMeActive": "Sorted by distance. Your location stays on your device.",
+    "locationError": "Location not available. Please allow access in your browser.",
+    "locationPrivacy": "Your location is only used on your device.",
+    "mapConsentTitle": "Show the map?",
+    "mapConsentText": "The map is loaded from OpenStreetMap, which receives your IP address.",
+    "mapLoad": "Load map",
+    "you": "You are here"
   },
   "access": {
     "wheelchair": "Wheelchair accessible",

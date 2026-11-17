@@ -12,10 +12,13 @@ export function ActivityCard({
   activity,
   nextSession,
   size = "md",
+  distance,
 }: {
   activity: Activity;
   nextSession: Session;
   size?: "md" | "lg";
+  /** Already formatted, e.g. "1,2 km" (only with "near me"). */
+  distance?: string;
 }) {
   const locale = useLocale();
   const t = useTranslations();
@@ -54,6 +57,7 @@ export function ActivityCard({
           <span className="inline-flex items-center gap-1">
             <Icon name="pin" className="size-4" />
             {activity.venue.district}
+            {distance && <span className="font-bold"> · {distance}</span>}
           </span>
           <span className="ms-auto rounded-full bg-[#fcb46c] px-2.5 py-0.5 font-bold text-[#1f2340] [text-shadow:none]">
             {amount ?? t("common.free")}
