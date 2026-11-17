@@ -219,3 +219,11 @@ body {
 /* Chunky "pressable" main buttons */
 .mv-btn-3d { box-shadow: 0 4px 0 #d98a3f; transition: transform 0.12s ease, box-shadow 0.12s ease; }
 .mv-btn-3d:active { transform: translateY(3px); box-shadow: 0 1px 0 #d98a3f; }
+/* Star badge: a small twinkle every few seconds */
+@keyframes mv-star-twinkle {
+  0%, 88%, 100% { transform: scale(1) rotate(0deg); }
+  94% { transform: scale(1.14) rotate(12deg); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mv-star-twinkle { transform-box: fill-box; transform-origin: center; animation: mv-star-twinkle 5s ease-in-out infinite; }
+}

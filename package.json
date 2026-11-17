@@ -19,7 +19,8 @@
     "db:up": "docker compose up -d db mail",
     "db:migrate": "prisma migrate dev",
     "db:seed": "prisma db seed",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "dev:preview": "NEXT_DIST_DIR=.next-preview next dev --turbopack"
   },
   "dependencies": {
     "@prisma/adapter-pg": "7.10.1",
