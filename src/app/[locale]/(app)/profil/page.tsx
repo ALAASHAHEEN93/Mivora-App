@@ -252,9 +252,15 @@ export default async function ProfilePage({
 
       <section className="flex flex-col gap-1 rounded-2xl bg-surface p-4 text-sm text-muted">
         <h2 className="mb-1 font-bold text-ink">{t("profile.legalTitle")}</h2>
-        <span>{t("footer.imprint")}</span>
-        <span>{t("footer.privacy")}</span>
-        <span>{t("footer.terms")}</span>
+        <Link href="/rechtliches/impressum" className="min-h-10 py-2 font-bold text-ink underline underline-offset-4">
+          {t("footer.imprint")}
+        </Link>
+        <Link href="/rechtliches/datenschutz" className="min-h-10 py-2 font-bold text-ink underline underline-offset-4">
+          {t("footer.privacy")}
+        </Link>
+        <Link href="/rechtliches/agb" className="min-h-10 py-2 font-bold text-ink underline underline-offset-4">
+          {t("footer.terms")}
+        </Link>
         <span className="mt-1 text-xs">{t("footer.demoNote")}</span>
       </section>
     </div>

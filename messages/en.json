@@ -448,5 +448,18 @@
     "intro": "Hello! Please quickly check that your listing “{title}” is still correct (dates, price, place).",
     "action": "Confirm or edit: {url}",
     "why": "Families trust Mivora because listings are up to date. Thanks for helping!"
+  },
+  "legal": {
+    "pending": "This text will be written by a lawyer before launch. Until then, Mivora is a preview with demo data.",
+    "summaryTitle": "In short and honestly: what we store",
+    "summary": {
+      "account": "For your account only your email address and language – no password.",
+      "children": "For child profiles only a nickname (optional), birth year and interests – no real names, no photos.",
+      "lists": "Saved activities and calendar entries, so they're the same on all your devices.",
+      "requests": "Requests to providers – we share your email address only with your consent.",
+      "device": "City, children's ages (if given) and map consent stay on your device. No tracking, no ads.",
+      "map": "Your location for “Near me” stays on your device. The map loads only after you agree."
+    },
+    "notLegal": "This overview isn't a legal text and doesn't replace the privacy policy."
   }
 }

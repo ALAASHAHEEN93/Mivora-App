@@ -448,5 +448,18 @@
     "intro": "Ciao! Controlla velocemente che il tuo annuncio «{title}» sia ancora corretto (date, prezzo, luogo).",
     "action": "Conferma o modifica: {url}",
     "why": "Le famiglie si fidano di Mivora perché i dati sono aggiornati. Grazie per l'aiuto!"
+  },
+  "legal": {
+    "pending": "Questo testo sarà redatto da un avvocato prima del lancio. Fino ad allora Mivora è un'anteprima con dati dimostrativi.",
+    "summaryTitle": "In breve e onestamente: cosa salviamo",
+    "summary": {
+      "account": "Per il tuo account solo l'email e la lingua – nessuna password.",
+      "children": "Per i profili dei bambini solo soprannome (facoltativo), anno di nascita e interessi – niente nomi veri né foto.",
+      "lists": "Attività salvate e voci del calendario, così sono uguali su tutti i tuoi dispositivi.",
+      "requests": "Richieste agli organizzatori – condividiamo la tua email solo con il tuo consenso.",
+      "device": "Città, età dei bambini (se indicate) e consenso alla mappa restano sul tuo dispositivo. Niente tracciamento, niente pubblicità.",
+      "map": "La tua posizione per «Vicino a me» resta sul tuo dispositivo. La mappa si carica solo dopo il tuo consenso."
+    },
+    "notLegal": "Questa panoramica non è un testo legale e non sostituisce l'informativa sulla privacy."
   }
 }

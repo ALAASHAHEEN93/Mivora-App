@@ -448,5 +448,18 @@
     "intro": "Merhaba! Lütfen “{title}” ilanının hâlâ doğru olduğunu kısaca kontrol et (tarihler, fiyat, yer).",
     "action": "Onayla veya düzenle: {url}",
     "why": "Aileler, bilgiler güncel olduğu için Mivora'ya güveniyor. Yardımın için teşekkürler!"
+  },
+  "legal": {
+    "pending": "Bu metin lansmandan önce bir avukat tarafından yazılacak. O zamana kadar Mivora demo verili bir önizlemedir.",
+    "summaryTitle": "Kısaca ve dürüstçe: ne saklıyoruz",
+    "summary": {
+      "account": "Hesabın için yalnızca e-posta adresin ve dilin – şifre yok.",
+      "children": "Çocuk profilleri için yalnızca takma ad (isteğe bağlı), doğum yılı ve ilgi alanları – gerçek isim yok, fotoğraf yok.",
+      "lists": "Kaydedilen etkinlikler ve takvim kayıtları, tüm cihazlarında aynı olsun diye.",
+      "requests": "Sağlayıcılara talepler – e-posta adresini yalnızca onayınla paylaşırız.",
+      "device": "Şehir, çocukların yaşları (verdiysen) ve harita onayı cihazında kalır. Takip yok, reklam yok.",
+      "map": "“Yakınımda” için konumun cihazında kalır. Harita yalnızca onayından sonra yüklenir."
+    },
+    "notLegal": "Bu özet hukuki bir metin değildir ve gizlilik politikasının yerini tutmaz."
   }
 }

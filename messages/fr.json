@@ -448,5 +448,18 @@
     "intro": "Bonjour ! Vérifie rapidement que ton annonce « {title} » est toujours correcte (dates, prix, lieu).",
     "action": "Confirmer ou modifier : {url}",
     "why": "Les familles font confiance à Mivora parce que les infos sont à jour. Merci de ton aide !"
+  },
+  "legal": {
+    "pending": "Ce texte sera rédigé par un avocat avant le lancement. D'ici là, Mivora est un aperçu avec des données de démonstration.",
+    "summaryTitle": "En bref et honnêtement : ce que nous enregistrons",
+    "summary": {
+      "account": "Pour ton compte, uniquement ton e-mail et ta langue – pas de mot de passe.",
+      "children": "Pour les profils d'enfants, uniquement un surnom (facultatif), l'année de naissance et les centres d'intérêt – pas de vrais prénoms, pas de photos.",
+      "lists": "Activités enregistrées et entrées du calendrier, pour qu'elles soient identiques sur tous tes appareils.",
+      "requests": "Demandes aux organisateurs – nous ne transmettons ton e-mail qu'avec ton accord.",
+      "device": "Ville, âges des enfants (si indiqués) et accord pour la carte restent sur ton appareil. Pas de suivi, pas de publicité.",
+      "map": "Ta position pour « Près de moi » reste sur ton appareil. La carte ne se charge qu'après ton accord."
+    },
+    "notLegal": "Cette synthèse n'est pas un texte juridique et ne remplace pas la politique de confidentialité."
   }
 }

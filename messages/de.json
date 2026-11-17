@@ -448,5 +448,18 @@
     "intro": "Hallo! Bitte prüf kurz, ob dein Angebot „{title}“ noch stimmt (Termine, Preis, Ort).",
     "action": "Bestätigen oder bearbeiten: {url}",
     "why": "Familien vertrauen Mivora, weil die Angaben aktuell sind. Danke für deine Hilfe!"
+  },
+  "legal": {
+    "pending": "Dieser Text wird vor dem Start von einer Anwältin oder einem Anwalt erstellt. Bis dahin ist Mivora eine Vorschau mit Demo-Daten.",
+    "summaryTitle": "Kurz und ehrlich: was wir speichern",
+    "summary": {
+      "account": "Für dein Konto nur deine E-Mail-Adresse und Sprache – kein Passwort.",
+      "children": "Für Kinderprofile nur Spitzname (freiwillig), Geburtsjahr und Interessen – keine echten Namen, keine Fotos.",
+      "lists": "Gemerkte Angebote und Kalendereinträge, damit sie auf all deinen Geräten gleich sind.",
+      "requests": "Anfragen an Anbieter – deine E-Mail-Adresse geben wir nur mit deiner Zustimmung weiter.",
+      "device": "Stadt, Alter der Kinder (falls angegeben) und Kartenzustimmung bleiben auf deinem Gerät. Kein Tracking, keine Werbung.",
+      "map": "Dein Standort für „In meiner Nähe“ bleibt auf deinem Gerät. Die Karte lädt erst nach deiner Zustimmung."
+    },
+    "notLegal": "Diese Übersicht ist kein Rechtstext und ersetzt die Datenschutzerklärung nicht."
   }
 }

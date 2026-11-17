@@ -448,5 +448,18 @@
     "intro": "¡Hola! Comprueba rápidamente que tu anuncio «{title}» sigue siendo correcto (fechas, precio, lugar).",
     "action": "Confirmar o editar: {url}",
     "why": "Las familias confían en Mivora porque los datos están al día. ¡Gracias por ayudar!"
+  },
+  "legal": {
+    "pending": "Este texto lo redactará un abogado antes del lanzamiento. Hasta entonces, Mivora es una vista previa con datos de demostración.",
+    "summaryTitle": "En resumen y con honestidad: qué guardamos",
+    "summary": {
+      "account": "Para tu cuenta solo tu correo y tu idioma, sin contraseña.",
+      "children": "Para los perfiles infantiles solo un apodo (opcional), año de nacimiento e intereses: sin nombres reales ni fotos.",
+      "lists": "Actividades guardadas y entradas del calendario, para que sean iguales en todos tus dispositivos.",
+      "requests": "Solicitudes a organizadores: solo compartimos tu correo con tu consentimiento.",
+      "device": "Ciudad, edades de los niños (si las indicas) y el permiso del mapa se quedan en tu dispositivo. Sin seguimiento ni publicidad.",
+      "map": "Tu ubicación para «Cerca de mí» se queda en tu dispositivo. El mapa solo se carga tras tu permiso."
+    },
+    "notLegal": "Este resumen no es un texto legal y no sustituye la política de privacidad."
   }
 }

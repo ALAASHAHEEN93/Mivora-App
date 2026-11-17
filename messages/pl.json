@@ -448,5 +448,18 @@
     "intro": "Cześć! Sprawdź proszę, czy oferta „{title}” jest nadal poprawna (terminy, cena, miejsce).",
     "action": "Potwierdź lub edytuj: {url}",
     "why": "Rodziny ufają Mivora, bo dane są aktualne. Dziękujemy za pomoc!"
+  },
+  "legal": {
+    "pending": "Ten tekst przed startem przygotuje prawnik. Do tego czasu Mivora jest wersją podglądową z danymi demonstracyjnymi.",
+    "summaryTitle": "Krótko i szczerze: co zapisujemy",
+    "summary": {
+      "account": "Dla konta tylko twój adres e-mail i język – bez hasła.",
+      "children": "Dla profili dzieci tylko pseudonim (opcjonalnie), rok urodzenia i zainteresowania – bez prawdziwych imion i zdjęć.",
+      "lists": "Zapisane zajęcia i wpisy w kalendarzu, aby były takie same na wszystkich urządzeniach.",
+      "requests": "Zapytania do organizatorów – twój e-mail przekazujemy tylko za twoją zgodą.",
+      "device": "Miasto, wiek dzieci (jeśli podany) i zgoda na mapę zostają na urządzeniu. Bez śledzenia i reklam.",
+      "map": "Twoja lokalizacja dla „W pobliżu” zostaje na urządzeniu. Mapa ładuje się dopiero po twojej zgodzie."
+    },
+    "notLegal": "To zestawienie nie jest tekstem prawnym i nie zastępuje polityki prywatności."
   }
 }
