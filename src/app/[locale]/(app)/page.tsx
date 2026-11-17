@@ -19,8 +19,8 @@ import { CITY_COOKIE, cityName, findCity } from "@/domain/cities";
 /** Depends on the chosen city (cookie) and today's date. */
 export const dynamic = "force-dynamic";
 
-/** Palette bubbles behind the category icons: pink, amber, dusty rose, coral, lavender. */
-const BUBBLES = ["bg-[#ffb3ba]", "bg-[#f8b400]", "bg-[#d4a5a5]", "bg-[#ff677d]", "bg-[#e2d9f3]"];
+/** One calm colour for all category bubbles: the icons carry the meaning. */
+const BUBBLES = ["bg-[#fff1cc]"];
 
 function Rail({ items, empty }: { items: ActivityResult[]; empty: string }) {
   if (items.length === 0) return <p className="text-muted">{empty}</p>;
@@ -99,7 +99,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             name="q"
             type="search"
             placeholder={t("home.searchPlaceholder")}
-            className="min-h-13 w-full rounded-full border-0 bg-surface px-5 text-base shadow-[0_6px_20px_-10px_rgba(42,47,58,0.4)] placeholder:text-muted focus:outline-none focus-visible:ring-4 focus-visible:ring-[#ff677d]"
+            className="min-h-13 w-full rounded-full border-0 bg-surface px-5 text-base shadow-[0_6px_20px_-10px_rgba(42,47,58,0.4)] placeholder:text-muted focus:outline-none focus-visible:ring-4 focus-visible:ring-[#ff6b57]"
           />
           <button type="submit" className="grid min-h-13 min-w-13 place-items-center rounded-full bg-primary text-on-primary shadow-md">
             <Icon name="search" />
@@ -146,7 +146,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 href={{ pathname: "/entdecken", query: { kategorie: c } }}
                 className="mv-wiggle-on-touch group flex flex-col items-center gap-1.5 rounded-2xl py-1 text-center"
               >
-                <span className={`grid size-16 place-items-center rounded-full text-[#392f5a] shadow-[0_6px_16px_-10px_rgba(36,48,77,0.5)] transition group-hover:-translate-y-0.5 group-active:scale-95 ${BUBBLES[i % BUBBLES.length]}`}>
+                <span className={`grid size-16 place-items-center rounded-full text-[#1f2340] shadow-[0_6px_16px_-10px_rgba(36,48,77,0.5)] transition group-hover:-translate-y-0.5 group-active:scale-95 ${BUBBLES[i % BUBBLES.length]}`}>
                   <CategoryIcon category={c} className="mv-wiggle-target size-7" />
                 </span>
                 <span className="line-clamp-2 text-xs font-bold leading-tight">{t(`categories.${c}`)}</span>

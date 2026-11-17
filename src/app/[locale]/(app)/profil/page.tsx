@@ -134,7 +134,7 @@ export default async function ProfilePage({
             {children.length === 0 && <p className="text-muted">{t("family.noChildren")}</p>}
             <ul className="flex flex-col gap-3">
               {children.map((c, i) => (
-                <li key={c.id} className="rounded-2xl p-4 text-[#392f5a]" style={{ background: childColor(i) }}>
+                <li key={c.id} className="rounded-2xl p-4 text-[#1f2340]" style={{ background: childColor(i) }}>
                   <div className="flex items-center gap-3">
                     <span aria-hidden="true" className="grid size-11 shrink-0 place-items-center rounded-full bg-surface text-lg font-bold">
                       {(c.nickname ?? "★").charAt(0).toUpperCase()}

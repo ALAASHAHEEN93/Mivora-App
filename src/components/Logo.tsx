@@ -12,13 +12,13 @@ export function Logo({ className = "text-3xl", animate = true }: { className?: s
         <span className="relative mx-[0.04em] inline-block">
           {"ı"}
           <svg viewBox="-12 -12 24 24" className="mv-logo-star absolute left-1/2 top-[0.08em] h-[0.38em] w-[0.38em] -translate-x-1/2 overflow-visible">
-            <path d="M0 -10 L2.9 -3.2 L10 -3.1 L4.4 1.5 L6.4 9 L0 4.6 L-6.4 9 L-4.4 1.5 L-10 -3.1 L-2.9 -3.2 Z" fill="#f8b400" stroke="#c98f00" strokeWidth="1" strokeLinejoin="round" />
+            <path d="M0 -10 L2.9 -3.2 L10 -3.1 L4.4 1.5 L6.4 9 L0 4.6 L-6.4 9 L-4.4 1.5 L-10 -3.1 L-2.9 -3.2 Z" fill="#ffc93c" stroke="#d9a21b" strokeWidth="1" strokeLinejoin="round" />
           </svg>
         </span>
         vora
       </span>
       <svg aria-hidden="true" viewBox="0 0 100 12" preserveAspectRatio="none" className="-mt-[0.12em] h-[0.26em] w-full overflow-visible">
-        <path className="mv-logo-swoosh" d="M4 6 Q50 13 96 3" fill="none" stroke="#ff677d" strokeWidth="3.2" strokeLinecap="round" pathLength={100} vectorEffect="non-scaling-stroke" />
+        <path className="mv-logo-swoosh" d="M4 6 Q50 13 96 3" fill="none" stroke="#ff6b57" strokeWidth="3.2" strokeLinecap="round" pathLength={100} vectorEffect="non-scaling-stroke" />
       </svg>
     </span>
   );

@@ -10,7 +10,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ size: s
   const src = `data:image/svg+xml;utf8,${encodeURIComponent(appIconSvg())}`;
   return new ImageResponse(
     (
-      <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", background: "#392f5a" }}>
+      <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", background: "#1f2340" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={src} width={size} height={size} alt="" />
       </div>

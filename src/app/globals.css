@@ -6,47 +6,47 @@
  * Contrast of text/background pairs is checked in src/domain/contrast.test.ts.
  */
 :root {
-  --kw-bg: #fff7f8;
+  --kw-bg: #fffbf2; /* cream */
   --kw-surface: #ffffff;
-  --kw-ink: #392f5a; /* deep indigo */
-  --kw-muted: #6b6080;
-  --kw-line: #f3dce0;
-  --kw-hero: #ffb3ba; /* pink */
+  --kw-ink: #1f2340; /* ink */
+  --kw-muted: #5b5f73;
+  --kw-line: #efe6d3;
+  --kw-hero: #fff4d9; /* soft butter, calm header */
 
-  --kw-primary: #392f5a; /* indigo buttons with white text (12:1) */
-  --kw-on-primary: #ffffff;
-  --kw-accent: #b02a46; /* deep coral for links and icons (coral #ff677d is too light for text) */
-  --kw-focus: #b02a46;
+  --kw-primary: #ffc93c; /* sunny yellow: main buttons, active tab (ink text 10:1) */
+  --kw-on-primary: #1f2340;
+  --kw-accent: #b8402c; /* deep coral for links and icons */
+  --kw-focus: #1f2340;
 
-  --kw-coral-100: #ffe3e6;
-  --kw-coral-500: #ffb3ba; /* pink */
+  --kw-coral-100: #ffe5df;
+  --kw-coral-500: #ff6b57; /* coral spark: hearts, today */
   --kw-sun-100: #fff1cc;
-  --kw-sun-400: #f8b400; /* amber */
-  --kw-teal-100: #f4e4e4; /* dusty rose tint */
-  --kw-teal-700: #5b3f72;
-  --kw-lav-100: #ece8f4;
-  --kw-lav-500: #d4a5a5; /* dusty rose */
+  --kw-sun-400: #ffc93c;
+  --kw-teal-100: #f3eee2; /* warm neutral tint */
+  --kw-teal-700: #3d4466;
+  --kw-lav-100: #eef0f7;
+  --kw-lav-500: #6b7194;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --kw-bg: #1c1729;
-    --kw-surface: #262036;
-    --kw-ink: #f8eef0;
-    --kw-muted: #c4b9cf;
-    --kw-line: #3a3150;
-    --kw-hero: #3a2236;
+    --kw-bg: #15172a;
+    --kw-surface: #1f2238;
+    --kw-ink: #fff6e5;
+    --kw-muted: #c9c3b4;
+    --kw-line: #33364f;
+    --kw-hero: #1f2238;
 
-    --kw-primary: #ff8fa0;
-    --kw-on-primary: #1c1729;
-    --kw-accent: #ffb3ba;
-    --kw-focus: #f8b400;
+    --kw-primary: #ffc93c;
+    --kw-on-primary: #1f2340;
+    --kw-accent: #ff9c8c;
+    --kw-focus: #ffc93c;
 
-    --kw-coral-100: #3a2236;
+    --kw-coral-100: #3a2420;
     --kw-sun-100: #3a3014;
-    --kw-teal-100: #2e2338;
-    --kw-teal-700: #ffb3ba;
-    --kw-lav-100: #2c2542;
+    --kw-teal-100: #26283f;
+    --kw-teal-700: #ffd978;
+    --kw-lav-100: #26283f;
   }
 }
 

@@ -121,7 +121,7 @@ export function Calendar({ activities, today, nowIso, note }: { activities: Acti
         {items.map((p, i) => {
           const first = childrenOf(encodePlanned(p))[0];
           return first && !active ? (
-            <span key={i} className="size-1.5 rounded-full ring-1 ring-[#392f5a]/40" style={{ background: childColor(first) }} />
+            <span key={i} className="size-1.5 rounded-full ring-1 ring-[#1f2340]/40" style={{ background: childColor(first) }} />
           ) : (
             <span key={i} className={`size-1.5 rounded-full ${active ? "bg-on-primary" : "bg-primary"}`} />
           );
@@ -146,7 +146,7 @@ export function Calendar({ activities, today, nowIso, note }: { activities: Acti
         aria-label={`${fmt({ weekday: "long", day: "numeric", month: "long" }).format(asDate(day))}, ${t("dayPlanned", { count: n })}`}
         className={`flex aspect-square w-full flex-col items-center justify-center gap-0.5 rounded-full text-base font-bold transition ${
           active
-            ? "bg-primary text-on-primary shadow-[0_8px_18px_-6px_rgba(57,47,90,0.7)]"
+            ? "bg-primary text-on-primary shadow-[0_8px_18px_-6px_rgba(31,35,64,0.7)]"
             : `bg-surface shadow-[0_3px_10px_-6px_rgba(42,47,58,0.35)] hover:-translate-y-0.5 ${past ? "text-muted" : ""}`
         } ${isToday && !active ? "ring-2 ring-accent" : ""}`}
       >
@@ -215,8 +215,8 @@ export function Calendar({ activities, today, nowIso, note }: { activities: Acti
               >
                 <span
                   aria-hidden="true"
-                  className="grid size-8 place-items-center rounded-full text-sm text-[#392f5a]"
-                  style={{ background: isAll ? "#fff7f8" : childColor(c.id) }}
+                  className="grid size-8 place-items-center rounded-full text-sm text-[#1f2340]"
+                  style={{ background: isAll ? "#fffbf2" : childColor(c.id) }}
                 >
                   {isAll ? "★" : childName(c.id).charAt(0).toUpperCase()}
                 </span>
@@ -339,7 +339,7 @@ export function Calendar({ activities, today, nowIso, note }: { activities: Acti
                                 aria-pressed={on}
                                 onClick={() => toggleChild(encodePlanned(p), c.id)}
                                 className={`mv-press inline-flex min-h-9 items-center gap-1 rounded-full px-2.5 text-xs font-bold transition ${
-                                  on ? "text-[#392f5a] ring-2 ring-[#392f5a]" : "text-muted ring-1 ring-line"
+                                  on ? "text-[#1f2340] ring-2 ring-[#1f2340]" : "text-muted ring-1 ring-line"
                                 }`}
                                 style={{ background: on ? childColor(c.id) : "transparent" }}
                               >
