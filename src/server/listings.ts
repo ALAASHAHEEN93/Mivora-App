@@ -160,8 +160,11 @@ export async function updateSubmission(
   now = new Date(),
   newPhotoId: string | null = null,
   publishAs: Actor | null = null,
+  editor: Actor | null = null,
 ) {
-  const existing = await db.activity.findFirst({ where: { id: activityId, submittedById: userId }, select: { id: true, slug: true, providerId: true, venueId: true, photoSrc: true } });
+  // Admins (checked here, not trusted from the form) may edit every listing, including demo ones.
+  const anyOwner = Boolean(editor && editor.id === userId && isAdmin(editor.email));
+  const existing = await db.activity.findFirst({ where: anyOwner ? { id: activityId } : { id: activityId, submittedById: userId }, select: { id: true, slug: true, providerId: true, venueId: true, photoSrc: true } });
   if (!existing) return null;
   const publishNow = Boolean(publishAs && publishAs.id === userId && isAdmin(publishAs.email));
   const last = input.sessions[input.sessions.length - 1]!;
@@ -216,10 +219,11 @@ export async function updateSubmission(
   return { slug: existing.slug, published: publishNow };
 }
 
-/** The provider's own listing as form values, for the edit screen. */
-export async function submissionFormValues(db: PrismaClient, userId: string, activityId: string, now = new Date()) {
+/** A listing as form values, for the edit screen: the provider's own, or any listing for an admin. */
+export async function submissionFormValues(db: PrismaClient, userId: string, activityId: string, now = new Date(), editor: Actor | null = null) {
+  const anyOwner = Boolean(editor && editor.id === userId && isAdmin(editor.email));
   const a = await db.activity.findFirst({
-    where: { id: activityId, submittedById: userId },
+    where: anyOwner ? { id: activityId } : { id: activityId, submittedById: userId },
     include: { provider: true, venue: true, translations: true, sessions: { where: { startsAt: { gte: now } }, orderBy: { startsAt: "asc" } } },
   });
   if (!a) return null;
@@ -257,4 +261,35 @@ export async function submissionFormValues(db: PrismaClient, userId: string, act
     cancellation: de?.cancellation ?? a.cancellationPolicy,
   };
   return { values, status: a.status, photoSrc: a.photoSrc };
+}
+
+/** Every listing, newest change first, for the admin dashboard. */
+export async function listAllActivities(db: PrismaClient, actor: Actor) {
+  if (!isAdmin(actor.email)) throw new Error("forbidden");
+  return db.activity.findMany({
+    orderBy: { updatedAt: "desc" },
+    select: {
+      id: true,
+      slug: true,
+      status: true,
+      lastVerifiedAt: true,
+      expiresAt: true,
+      submittedById: true,
+      provider: { select: { name: true } },
+      translations: { where: { locale: "de" }, select: { title: true } },
+      sessions: { where: { startsAt: { gte: new Date() } }, orderBy: { startsAt: "asc" }, take: 1, select: { startsAt: true } },
+    },
+  });
+}
+
+/** Headline numbers for the admin dashboard. */
+export async function adminStats(db: PrismaClient, actor: Actor, now = new Date()) {
+  if (!isAdmin(actor.email)) throw new Error("forbidden");
+  const [live, pending, reports, accounts] = await Promise.all([
+    db.activity.count({ where: { status: "published", expiresAt: { gt: now } } }),
+    db.activity.count({ where: { status: "pending" } }),
+    db.report.count({ where: { resolvedAt: null } }),
+    db.user.count(),
+  ]);
+  return { live, pending, reports, accounts };
 }

@@ -16,7 +16,10 @@
     "verified": "Organisateur vérifié",
     "unverified": "Pas encore vérifié",
     "languageLabel": "Langue",
-    "skipToContent": "Aller au contenu"
+    "skipToContent": "Aller au contenu",
+    "share": "Partager",
+    "linkCopied": "Lien copié !",
+    "shareText": "Regarde ce que j'ai trouvé sur Mivora :"
   },
   "nav": {
     "mainNav": "Navigation principale",
@@ -49,7 +52,19 @@
     "forYouPitch": "Ajoute un profil d'enfant – juste un surnom et l'année de naissance. Nous t'afficherons ici des activités adaptées à son âge.",
     "forChild": "Pour {name}",
     "forChildEmpty": "Rien ne convient à {name} pour l'instant. Reviens bientôt !",
-    "forAgeChild": "Pour ton enfant ({age})"
+    "forAgeChild": "Pour ton enfant ({age})",
+    "rainToday": "Il pleut à Cologne aujourd'hui – voici des idées à l'intérieur",
+    "rainTomorrow": "Il va pleuvoir à Cologne demain – voici des idées à l'intérieur",
+    "rainEmpty": "Pas d'activité en intérieur ce jour-là pour le moment.",
+    "weatherSource": "Données météo : Deutscher Wetterdienst",
+    "pickerTitle": "On fait quoi aujourd'hui ?",
+    "pickerHint": "Appuie sur le bouton et laisse-toi surprendre !",
+    "pickerButton": "Surprends-nous !",
+    "pickerAgain": "Encore !",
+    "pickerOpen": "Voir",
+    "pickerSpinning": "Mivora choisit …",
+    "pickerResult": "Et si on faisait :",
+    "pickerEmpty": "Plus rien aujourd'hui. Regarde les prochains jours !"
   },
   "date": {
     "today": "Aujourd'hui",
@@ -203,7 +218,7 @@
   "welcome": {
     "title": "Bienvenue sur Mivora",
     "subtitle": "Découvre des cours, des sorties et des activités de vacances pour enfants dans ta ville.",
-    "tagline": "Plus de moments ensemble",
+    "tagline": "Découvrir. Jouer. Grandir.",
     "cityQuestion": "Dans quelle ville habites-tu ?",
     "cityPlaceholder": "Choisir une ville",
     "cityHint": "Tu peux changer de ville à tout moment en haut de l'app.",
@@ -370,7 +385,7 @@
     "confirmedDone": "Merci ! Ton annonce est confirmée comme actuelle."
   },
   "admin": {
-    "title": "Vérification",
+    "title": "Tableau de bord admin",
     "empty": "Aucune demande en attente.",
     "approve": "Valider",
     "reject": "Refuser",
@@ -381,7 +396,21 @@
     "failed": "Échec. Déjà traitée ?",
     "reportsTitle": "Signalements",
     "noReports": "Aucun signalement ouvert.",
-    "resolve": "Traité"
+    "resolve": "Traité",
+    "addTitle": "Ajouter une activité",
+    "addHint": "En ligne tout de suite – sans vérification",
+    "pendingTitle": "En attente de vérification",
+    "addIntro": "En tant qu'admin, ton activité est publiée tout de suite. Remplis tout comme les familles doivent le voir. Si tu décoches la case en bas, elle passe d'abord en vérification.",
+    "profileCta": "Ajouter, modifier et vérifier les activités",
+    "statLive": "En ligne",
+    "statPending": "En attente de vérification",
+    "statReports": "Signalements ouverts",
+    "statAccounts": "Comptes",
+    "allTitle": "Toutes les activités",
+    "allEmpty": "Aucune activité pour l'instant.",
+    "noUpcoming": "Aucune date à venir",
+    "saved": "Enregistré – l'activité attend la vérification.",
+    "expired": "Expiré"
   },
   "system": {
     "notFoundTitle": "Oups, cette page n'existe pas",

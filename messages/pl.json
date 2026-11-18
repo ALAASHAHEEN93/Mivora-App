@@ -16,7 +16,10 @@
     "verified": "Zweryfikowany organizator",
     "unverified": "Jeszcze niezweryfikowany",
     "languageLabel": "Język",
-    "skipToContent": "Przejdź do treści"
+    "skipToContent": "Przejdź do treści",
+    "share": "Udostępnij",
+    "linkCopied": "Link skopiowany!",
+    "shareText": "Zobacz, co jest na Mivora:"
   },
   "nav": {
     "mainNav": "Nawigacja główna",
@@ -49,7 +52,19 @@
     "forYouPitch": "Dodaj profil dziecka – tylko pseudonim i rok urodzenia. Pokażemy tu zajęcia w odpowiednim wieku.",
     "forChild": "Dla {name}",
     "forChildEmpty": "Teraz nie ma nic dla {name}. Zajrzyj wkrótce!",
-    "forAgeChild": "Dla twojego dziecka ({age})"
+    "forAgeChild": "Dla twojego dziecka ({age})",
+    "rainToday": "Dziś w Kolonii pada – oto pomysły pod dachem",
+    "rainTomorrow": "Jutro w Kolonii będzie padać – oto pomysły pod dachem",
+    "rainEmpty": "Na ten dzień nie ma teraz zajęć pod dachem.",
+    "weatherSource": "Dane pogodowe: Deutscher Wetterdienst",
+    "pickerTitle": "Co dziś robimy?",
+    "pickerHint": "Naciśnij przycisk i daj się zaskoczyć!",
+    "pickerButton": "Zaskocz nas!",
+    "pickerAgain": "Jeszcze raz!",
+    "pickerOpen": "Zobacz",
+    "pickerSpinning": "Mivora wybiera …",
+    "pickerResult": "Może to:",
+    "pickerEmpty": "Dziś nic więcej się nie dzieje. Zajrzyj na kolejne dni!"
   },
   "date": {
     "today": "Dziś",
@@ -203,7 +218,7 @@
   "welcome": {
     "title": "Witaj w Mivora",
     "subtitle": "Odkrywaj zajęcia, wycieczki i oferty wakacyjne dla dzieci w swoim mieście.",
-    "tagline": "Więcej przeżyć razem",
+    "tagline": "Odkrywaj. Baw się. Rośnij.",
     "cityQuestion": "W jakim mieście mieszkasz?",
     "cityPlaceholder": "Wybierz miasto",
     "cityHint": "Miasto możesz zmienić w każdej chwili u góry aplikacji.",
@@ -370,7 +385,7 @@
     "confirmedDone": "Dziękujemy! Oferta potwierdzona jako aktualna."
   },
   "admin": {
-    "title": "Sprawdzanie",
+    "title": "Panel administratora",
     "empty": "Brak otwartych zgłoszeń.",
     "approve": "Zatwierdź",
     "reject": "Odrzuć",
@@ -381,7 +396,21 @@
     "failed": "Nie udało się. Czy już to obsłużono?",
     "reportsTitle": "Zgłoszenia",
     "noReports": "Brak otwartych zgłoszeń.",
-    "resolve": "Załatwione"
+    "resolve": "Załatwione",
+    "addTitle": "Dodaj zajęcia",
+    "addHint": "Od razu online – bez weryfikacji",
+    "pendingTitle": "Czekają na weryfikację",
+    "addIntro": "Jako administrator publikujesz zajęcia od razu. Wypełnij wszystko tak, jak mają to widzieć rodziny. Jeśli odznaczysz pole na dole, zajęcia najpierw trafią do weryfikacji.",
+    "profileCta": "Dodawaj, edytuj i sprawdzaj zajęcia",
+    "statLive": "Opublikowane",
+    "statPending": "Czekają na weryfikację",
+    "statReports": "Otwarte zgłoszenia",
+    "statAccounts": "Konta",
+    "allTitle": "Wszystkie zajęcia",
+    "allEmpty": "Brak zajęć.",
+    "noUpcoming": "Brak nadchodzących terminów",
+    "saved": "Zapisano – zajęcia czekają na weryfikację.",
+    "expired": "Wygasło"
   },
   "system": {
     "notFoundTitle": "Ups, ta strona nie istnieje",

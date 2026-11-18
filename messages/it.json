@@ -16,7 +16,10 @@
     "verified": "Organizzatore verificato",
     "unverified": "Non ancora verificato",
     "languageLabel": "Lingua",
-    "skipToContent": "Vai al contenuto"
+    "skipToContent": "Vai al contenuto",
+    "share": "Condividi",
+    "linkCopied": "Link copiato!",
+    "shareText": "Guarda cosa ho trovato su Mivora:"
   },
   "nav": {
     "mainNav": "Navigazione principale",
@@ -49,7 +52,19 @@
     "forYouPitch": "Aggiungi un profilo bambino – solo soprannome e anno di nascita. Qui ti mostreremo attività adatte alla sua età.",
     "forChild": "Per {name}",
     "forChildEmpty": "Al momento non c'è niente per {name}. Torna presto!",
-    "forAgeChild": "Per tuo figlio ({age})"
+    "forAgeChild": "Per tuo figlio ({age})",
+    "rainToday": "Oggi a Colonia piove – ecco idee al coperto",
+    "rainTomorrow": "Domani a Colonia pioverà – ecco idee al coperto",
+    "rainEmpty": "Al momento non ci sono attività al coperto per quel giorno.",
+    "weatherSource": "Dati meteo: Deutscher Wetterdienst",
+    "pickerTitle": "Cosa facciamo oggi?",
+    "pickerHint": "Tocca il pulsante e lasciati sorprendere!",
+    "pickerButton": "Sorprendici!",
+    "pickerAgain": "Ancora!",
+    "pickerOpen": "Guarda",
+    "pickerSpinning": "Mivora sta scegliendo …",
+    "pickerResult": "Che ne dici di:",
+    "pickerEmpty": "Oggi non c'è più niente. Guarda i prossimi giorni!"
   },
   "date": {
     "today": "Oggi",
@@ -203,7 +218,7 @@
   "welcome": {
     "title": "Benvenuto su Mivora",
     "subtitle": "Scopri corsi, gite e attività per le vacanze per bambini nella tua città.",
-    "tagline": "Più esperienze insieme",
+    "tagline": "Scopri. Gioca. Cresci.",
     "cityQuestion": "In quale città vivi?",
     "cityPlaceholder": "Scegli una città",
     "cityHint": "Puoi cambiare città in qualsiasi momento in alto nell'app.",
@@ -370,7 +385,7 @@
     "confirmedDone": "Grazie! Il tuo annuncio è confermato come attuale."
   },
   "admin": {
-    "title": "Controllo",
+    "title": "Pannello admin",
     "empty": "Nessuna richiesta aperta.",
     "approve": "Approva",
     "reject": "Rifiuta",
@@ -381,7 +396,21 @@
     "failed": "Non è riuscito. Era già stato gestito?",
     "reportsTitle": "Segnalazioni",
     "noReports": "Nessuna segnalazione aperta.",
-    "resolve": "Fatto"
+    "resolve": "Fatto",
+    "addTitle": "Aggiungi attività",
+    "addHint": "Online subito – senza verifica",
+    "pendingTitle": "In attesa di verifica",
+    "addIntro": "Come admin, la tua attività viene pubblicata subito. Compila tutto come devono vederlo le famiglie. Se togli la spunta in fondo, passa prima alla verifica.",
+    "profileCta": "Aggiungi, modifica e verifica le attività",
+    "statLive": "Online",
+    "statPending": "In attesa di verifica",
+    "statReports": "Segnalazioni aperte",
+    "statAccounts": "Account",
+    "allTitle": "Tutte le attività",
+    "allEmpty": "Ancora nessuna attività.",
+    "noUpcoming": "Nessuna data in arrivo",
+    "saved": "Salvato – l'attività è in attesa di verifica.",
+    "expired": "Scaduta"
   },
   "system": {
     "notFoundTitle": "Ops, questa pagina non esiste",

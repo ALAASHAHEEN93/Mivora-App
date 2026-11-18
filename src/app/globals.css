@@ -6,47 +6,66 @@
  * Contrast of text/background pairs is checked in src/domain/contrast.test.ts.
  */
 :root {
-  --kw-bg: #fffbf2; /* cream */
+  --kw-bg: #fff7f1; /* brand cream */
   --kw-surface: #ffffff;
-  --kw-ink: #1f2340; /* ink */
-  --kw-muted: #5b5f73;
-  --kw-line: #efe6d3;
-  --kw-hero: #fff1e3; /* soft peach-cream, calm header */
+  --kw-ink: #263847; /* midnight blue */
+  --kw-muted: #55606b;
+  --kw-line: #f0e2d6;
+  --kw-hero: #fff3ea; /* cream, calm header */
 
-  --kw-primary: #fcb46c; /* apricot: main buttons, active tab (ink text 8.7:1) */
-  --kw-on-primary: #1f2340;
-  --kw-accent: #b03a4f; /* deep rose for links and icons */
-  --kw-focus: #1f2340;
+  --kw-primary: #f2a68a; /* coral: main buttons, active tab (midnight text 6.1:1) */
+  --kw-on-primary: #263847;
+  --kw-accent: #a8432a; /* deep coral for links and icons (5.7:1 on cream) */
+  --kw-focus: #263847;
 
-  --kw-coral-100: #ffe5df;
-  --kw-coral-500: #f09c9c; /* pink: hearts, today, highlights */
-  --kw-sun-100: #ffead4;
-  --kw-sun-400: #fcb46c;
-  --kw-teal-100: #f3eee2; /* warm neutral tint */
-  --kw-teal-700: #3d4466;
-  --kw-lav-100: #eef0f7;
-  --kw-lav-500: #6b7194;
+  --kw-coral-100: #fde3d8;
+  --kw-coral-500: #f2a68a; /* coral: hearts, today, highlights */
+  --kw-sun-100: #fbefc9;
+  --kw-sun-400: #f3d077;
+  --kw-teal-100: #f5ece3; /* warm neutral tint */
+  --kw-teal-700: #3e5260;
+  --kw-lav-100: #ebe5f6;
+  --kw-lav-500: #6d5fa6;
+
+  /* Home hero sky */
+  --kw-sky: #d3ece8;
+  --kw-cloud: rgb(255 255 255 / 0.92);
+  --kw-hill-1: #fff3ea;
+  --kw-hill-2: #fbefc9;
+  --kw-sky-low: #e4f3f0;
+  --kw-meadow-far: #b9dfd5;
+  --kw-meadow-near: #9fd2c6;
+  --kw-stream: #d6ecf0;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --kw-bg: #15172a;
-    --kw-surface: #1f2238;
-    --kw-ink: #fff6e5;
+    --kw-bg: #17232c;
+    --kw-surface: #203240;
+    --kw-ink: #fff3ea;
     --kw-muted: #c9c3b4;
-    --kw-line: #33364f;
-    --kw-hero: #1f2238;
+    --kw-line: #34495a;
+    --kw-hero: #203240;
 
-    --kw-primary: #fcb46c;
-    --kw-on-primary: #1f2340;
-    --kw-accent: #f5b3b3;
-    --kw-focus: #fcb46c;
+    --kw-primary: #f2a68a;
+    --kw-on-primary: #263847;
+    --kw-accent: #f6b9a3;
+    --kw-focus: #f3d077;
 
-    --kw-coral-100: #3a2420;
-    --kw-sun-100: #3a3014;
-    --kw-teal-100: #26283f;
-    --kw-teal-700: #fcb46c;
-    --kw-lav-100: #26283f;
+    --kw-coral-100: #3a2a26;
+    --kw-sun-100: #3a3418;
+    --kw-teal-100: #24343f;
+    --kw-teal-700: #f3d077;
+    --kw-lav-100: #24343f;
+
+    --kw-sky: #1c3440;
+    --kw-cloud: rgb(255 255 255 / 0.09);
+    --kw-hill-1: #203240;
+    --kw-hill-2: #24394a;
+    --kw-sky-low: #1f3a44;
+    --kw-meadow-far: #22494a;
+    --kw-meadow-near: #2a5a56;
+    --kw-stream: #33617a;
   }
 }
 
@@ -211,14 +230,14 @@ body {
 .mv-sticker {
   font-family: var(--font-logo);
   font-weight: 700;
-  -webkit-text-stroke: 0.13em #3b2f3a;
+  -webkit-text-stroke: 0.13em #263847;
   paint-order: stroke fill;
   text-shadow: 0 0.09em 0 rgb(59 47 58 / 0.22);
   letter-spacing: 0.01em;
 }
 /* Chunky "pressable" main buttons */
-.mv-btn-3d { box-shadow: 0 4px 0 #d98a3f; transition: transform 0.12s ease, box-shadow 0.12s ease; }
-.mv-btn-3d:active { transform: translateY(3px); box-shadow: 0 1px 0 #d98a3f; }
+.mv-btn-3d { box-shadow: 0 4px 0 #c9785c; transition: transform 0.12s ease, box-shadow 0.12s ease; }
+.mv-btn-3d:active { transform: translateY(3px); box-shadow: 0 1px 0 #c9785c; }
 /* Star badge: a small twinkle every few seconds */
 @keyframes mv-star-twinkle {
   0%, 88%, 100% { transform: scale(1) rotate(0deg); }
@@ -229,7 +248,99 @@ body {
 }
 
 /* Map pins (Leaflet divIcons) */
-.mv-map-pin, .mv-map-me { display: block; width: 26px; height: 26px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 3px solid #1f2340; }
-.mv-map-pin { background: #fcb46c; }
-.mv-map-me { background: #f09c9c; border-radius: 50%; transform: none; }
-.mv-map-title { display: block; font-weight: 700; color: #1f2340; margin-bottom: 2px; }
+.mv-map-pin, .mv-map-me { display: block; width: 26px; height: 26px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 3px solid #263847; }
+.mv-map-pin { background: #f3d077; }
+.mv-map-me { background: #f2a68a; border-radius: 50%; transform: none; }
+.mv-map-title { display: block; font-weight: 700; color: #263847; margin-bottom: 2px; }
+
+/* ---------- Home: drifting clouds, bobbing balloon, twinkling stars, drawn underline, scroll pop-in ---------- */
+@keyframes mv-drift {
+  from { transform: translateX(-12px); }
+  to { transform: translateX(16px); }
+}
+@keyframes mv-float {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
+}
+@keyframes mv-twinkle {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.6); opacity: 0.55; }
+}
+@keyframes mv-draw { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+/* Transform only: fading would leave off-screen text "invisible" to screen checks. */
+@keyframes mv-rise {
+  from { transform: translateY(32px) scale(0.97); }
+  to { transform: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mv-drift { animation: mv-drift 9s ease-in-out infinite alternate; }
+  .mv-drift-slow { animation: mv-drift 13s ease-in-out infinite alternate-reverse; }
+  .mv-float { animation: mv-float 4.5s ease-in-out infinite; transform-origin: 50% 90%; }
+  .mv-twinkle { display: inline-block; animation: mv-twinkle 2.8s ease-in-out infinite; animation-delay: calc(var(--i, 0) * 0.7s); }
+  .mv-draw { stroke-dasharray: 100 400; animation: mv-draw 0.9s 0.4s ease-out both; }
+  /* Sections rise in as they scroll into view (browsers without scroll timelines just show them). */
+  @supports (animation-timeline: view()) {
+    .mv-reveal { animation: mv-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 40%; }
+  }
+}
+
+/* Home: the top bar takes the sky colour so it flows into the hero. */
+@media (max-width: 767px) {
+  :root:has(#mv-home-hero) .mv-app-header { background-color: color-mix(in srgb, var(--kw-sky) 92%, transparent); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  h2:hover > .mv-badge, section:active .mv-badge { animation: mv-wiggle 0.5s ease-in-out; }
+}
+
+/* Heart sparkle, shooting star, star waving hello */
+@keyframes mv-burst {
+  from { transform: scale(0.35); opacity: 1; }
+  to { transform: scale(1.35); opacity: 0; }
+}
+@keyframes mv-shoot {
+  0%, 82% { transform: translate(0, 0) rotate(18deg); opacity: 0; }
+  84% { opacity: 1; }
+  94%, 100% { transform: translate(115vw, 38vw) rotate(18deg); opacity: 0; }
+}
+.mv-burst { position: absolute; left: 50%; top: 50%; width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 9999px; pointer-events: none; opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .mv-burst {
+    box-shadow: 0 -20px 0 #f2a68a, 17px -10px 0 #f3d077, 17px 10px 0 #f2a68a, 0 20px 0 #f3d077, -17px 10px 0 #f2a68a, -17px -10px 0 #f3d077;
+    animation: mv-burst 0.55s ease-out both;
+  }
+  .mv-shoot { animation: mv-shoot 11s 2s ease-in infinite; }
+  .mv-hello { transform-origin: 50% 80%; animation: mv-wiggle 0.6s 0.5s ease-in-out 2; }
+}
+
+/* Picker star spins while choosing; gentle rain lines on the rainy-day card */
+@keyframes mv-spin { to { transform: rotate(360deg); } }
+@keyframes mv-rain-fall { from { background-position: 0 0; } to { background-position: -40px 120px; } }
+.mv-rain {
+  background-image: repeating-linear-gradient(105deg, transparent 0 18px, rgb(61 68 102 / 0.08) 18px 20px);
+  background-size: 40px 120px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mv-spin { animation: mv-spin 0.6s linear infinite; }
+  .mv-rain { animation: mv-rain-fall 1.4s linear infinite; }
+}
+
+/* Meadow soap bubbles drift up and wobble */
+@keyframes mv-bubble {
+  0% { transform: translate(0, 0) scale(0.9); opacity: 0; }
+  15% { opacity: 1; }
+  100% { transform: translate(14px, -90px) scale(1.15); opacity: 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mv-bubble { animation: mv-bubble 6s ease-in infinite; animation-delay: calc(var(--i, 0) * 1.4s); }
+}
+
+/* Splash, welcome and not-found always show the daytime meadow (the sticker logo needs a light sky). */
+.mv-daylight {
+  --kw-sky: #d3ece8;
+  --kw-sky-low: #e4f3f0;
+  --kw-cloud: rgb(255 255 255 / 0.92);
+  --kw-meadow-far: #b9dfd5;
+  --kw-meadow-near: #9fd2c6;
+  --kw-stream: #d6ecf0;
+  --kw-bg: #fff7f1;
+}

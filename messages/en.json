@@ -16,7 +16,10 @@
     "verified": "Verified provider",
     "unverified": "Not verified yet",
     "languageLabel": "Language",
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "share": "Share",
+    "linkCopied": "Link copied!",
+    "shareText": "Look what I found on Mivora:"
   },
   "nav": {
     "mainNav": "Main navigation",
@@ -49,7 +52,19 @@
     "forYouPitch": "Add a child profile – just a nickname and birth year. Then we'll show activities for the right age here.",
     "forChild": "For {name}",
     "forChildEmpty": "Nothing fits {name} right now. Check back soon!",
-    "forAgeChild": "For your child ({age})"
+    "forAgeChild": "For your child ({age})",
+    "rainToday": "It's raining in Cologne today – here are indoor ideas",
+    "rainTomorrow": "It's going to rain in Cologne tomorrow – here are indoor ideas",
+    "rainEmpty": "No indoor activities for that day right now.",
+    "weatherSource": "Weather data: Deutscher Wetterdienst",
+    "pickerTitle": "What shall we do today?",
+    "pickerHint": "Tap the button and get surprised!",
+    "pickerButton": "Surprise us!",
+    "pickerAgain": "Again!",
+    "pickerOpen": "Take a look",
+    "pickerSpinning": "Mivora is choosing …",
+    "pickerResult": "How about:",
+    "pickerEmpty": "Nothing else is on today. Have a look at the next few days!"
   },
   "date": {
     "today": "Today",
@@ -203,7 +218,7 @@
   "welcome": {
     "title": "Welcome to Mivora",
     "subtitle": "Discover classes, outings and holiday activities for kids in your city.",
-    "tagline": "More fun together",
+    "tagline": "Discover. Play. Grow.",
     "cityQuestion": "Which city do you live in?",
     "cityPlaceholder": "Choose a city",
     "cityHint": "You can change the city any time at the top of the app.",
@@ -370,7 +385,7 @@
     "confirmedDone": "Thanks! Your listing is confirmed as current."
   },
   "admin": {
-    "title": "Review",
+    "title": "Admin dashboard",
     "empty": "No open submissions.",
     "approve": "Approve",
     "reject": "Decline",
@@ -381,7 +396,21 @@
     "failed": "That didn't work. Was it already handled?",
     "reportsTitle": "Reports",
     "noReports": "No open reports.",
-    "resolve": "Done"
+    "resolve": "Done",
+    "addTitle": "Add activity",
+    "addHint": "Goes live right away – no review",
+    "pendingTitle": "Waiting for review",
+    "addIntro": "As an admin, your activity is published right away. Fill everything in the way families should see it. If you untick the box at the bottom, it goes to review first.",
+    "profileCta": "Add, edit and review activities",
+    "statLive": "Live",
+    "statPending": "Waiting for review",
+    "statReports": "Open reports",
+    "statAccounts": "Accounts",
+    "allTitle": "All activities",
+    "allEmpty": "No activities yet.",
+    "noUpcoming": "No upcoming dates",
+    "saved": "Saved – the activity is waiting for review.",
+    "expired": "Expired"
   },
   "system": {
     "notFoundTitle": "Oops, this page doesn't exist",

@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { ACCESSIBILITY_TAGS, CATEGORY_SLUGS } from "@/domain/types";
 import { KOELN_DISTRICTS, MAX_REPEAT_WEEKS } from "@/domain/submission";
 import { localeNames, locales } from "@/i18n/routing";
-import { submitListing, type SubmitState } from "./actions";
+import { submitListing, type SubmitState } from "./listing-actions";
 
 const field =
   "min-h-12 w-full rounded-2xl border-2 border-line bg-surface px-4 font-semibold focus:border-accent focus:outline-none aria-[invalid=true]:border-[#b3261e]";

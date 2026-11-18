@@ -9,7 +9,6 @@ const PAGES = [
   ["activity", "/de/aktivitaet/familien-yoga-ehrenfeld"],
   ["calendar", "/de/meine-woche"],
   ["sign in", "/de/anmelden"],
-  ["list an activity", "/de/anbieten"],
   ["arabic home", "/ar"],
 ] as const;
 

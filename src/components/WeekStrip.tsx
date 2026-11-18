@@ -16,6 +16,7 @@ export function WeekStrip({ locale, now, selected, label }: { locale: string; no
         {days.map((d) => {
           const date = new Date(`${d}T12:00:00Z`);
           const isActive = d === active;
+          const weekend = [0, 6].includes(date.getUTCDay());
           return (
             <li key={d}>
               <Link
@@ -23,8 +24,10 @@ export function WeekStrip({ locale, now, selected, label }: { locale: string; no
                 aria-current={isActive ? "date" : undefined}
                 className={`flex min-h-16 flex-col items-center justify-center rounded-full py-2 transition ${
                   isActive
-                    ? "bg-surface text-ink shadow-[0_8px_20px_-8px_rgba(31,35,64,0.45)] ring-2 ring-[#f09c9c]"
-                    : "text-muted hover:bg-surface/70"
+                    ? "bg-surface text-ink shadow-[0_8px_20px_-8px_rgba(31,35,64,0.45)] ring-2 ring-[#f2a68a]"
+                    : weekend
+                      ? "bg-coral-100 text-ink hover:bg-surface/70"
+                      : "text-muted hover:bg-surface/70"
                 }`}
               >
                 <span className="text-xs font-semibold">{fmtDay.format(date)}</span>

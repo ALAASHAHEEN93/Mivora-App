@@ -68,7 +68,7 @@ export function ExploreResults({ results }: { results: ActivityResult[] }) {
           onClick={nearMe}
           aria-pressed={Boolean(me)}
           disabled={locating}
-          className={`inline-flex min-h-12 items-center gap-2 rounded-full px-4 font-bold shadow-[0_4px_14px_-8px_rgba(42,47,58,0.35)] ${me ? "bg-coral-500 text-[#1f2340]" : "bg-surface"}`}
+          className={`inline-flex min-h-12 items-center gap-2 rounded-full px-4 font-bold shadow-[0_4px_14px_-8px_rgba(42,47,58,0.35)] ${me ? "bg-coral-500 text-[#263847]" : "bg-surface"}`}
         >
           <Icon name="pin" className="size-5" />
           {locating ? t("locating") : t("nearMe")}

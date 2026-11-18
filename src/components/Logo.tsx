@@ -4,8 +4,8 @@
  * Animations live in globals.css (.mv-logo-*), off for people who prefer reduced motion.
  * The visible letters are decorative; the accessible name is "Mivora".
  */
-const PINK = "#f09c9c";
-const APRICOT = "#fcb46c";
+const PINK = "#f2a68a";
+const APRICOT = "#f3d077";
 
 export function Logo({ className = "text-3xl", animate = true }: { className?: string; animate?: boolean }) {
   return (
@@ -15,7 +15,7 @@ export function Logo({ className = "text-3xl", animate = true }: { className?: s
         <span className="relative mx-[0.03em] inline-block" style={{ color: APRICOT }}>
           {"ı"}
           <svg viewBox="-12 -12 24 24" className="mv-logo-star absolute left-1/2 top-[0.02em] h-[0.42em] w-[0.42em] -translate-x-1/2 overflow-visible">
-            <path d="M0 -10 L2.9 -3.2 L10 -3.1 L4.4 1.5 L6.4 9 L0 4.6 L-6.4 9 L-4.4 1.5 L-10 -3.1 L-2.9 -3.2 Z" fill={APRICOT} stroke="#3b2f3a" strokeWidth="2.6" strokeLinejoin="round" />
+            <path d="M0 -10 L2.9 -3.2 L10 -3.1 L4.4 1.5 L6.4 9 L0 4.6 L-6.4 9 L-4.4 1.5 L-10 -3.1 L-2.9 -3.2 Z" fill={APRICOT} stroke="#263847" strokeWidth="2.6" strokeLinejoin="round" />
           </svg>
         </span>
         <span style={{ color: APRICOT }}>v</span>

@@ -17,10 +17,10 @@ export default async function AppLayout({ children, params }: { children: React.
 
   return (
     <>
-      <p role="note" className="bg-sun-400 px-4 pb-1 pt-[max(0.25rem,env(safe-area-inset-top))] text-center text-xs font-bold text-[#1f2340]">
+      <p role="note" className="bg-sun-400 px-4 pb-1 pt-[max(0.25rem,env(safe-area-inset-top))] text-center text-xs font-bold text-[#263847]">
         {t("common.demoBanner")}
       </p>
-      <header className="sticky top-0 z-20 bg-[var(--kw-hero)]/90 backdrop-blur md:bg-bg/90">
+      <header className="mv-app-header sticky top-0 z-20 bg-[var(--kw-hero)]/90 backdrop-blur md:bg-bg/90">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-2.5">
           <Link href="/" className="flex items-center rounded-xl py-1">
             <Logo className="text-[2.25rem]" />

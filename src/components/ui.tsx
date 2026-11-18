@@ -18,10 +18,30 @@ export function ChipLink({ href, active, children }: { href: Href; active?: bool
   );
 }
 
-export function SectionHeader({ title, href, linkLabel }: { title: string; href?: Href; linkLabel?: string }) {
+export function SectionHeader({
+  title,
+  href,
+  linkLabel,
+  id,
+  badge,
+}: {
+  title: string;
+  href?: Href;
+  linkLabel?: string;
+  id?: string;
+  /** Small sticker bubble before the title (decorative). */
+  badge?: { icon: ReactNode; bg: string };
+}) {
   return (
     <div className="mb-4 flex items-end justify-between gap-4">
-      <h2 className="font-display text-2xl font-bold md:text-3xl">{title}</h2>
+      <h2 id={id} className="flex items-center gap-2.5 font-display text-2xl font-bold md:text-3xl">
+        {badge && (
+          <span aria-hidden="true" className={`mv-badge grid size-10 shrink-0 -rotate-6 place-items-center rounded-2xl border-2 border-[#263847] text-[#263847] shadow-[0_3px_0_#263847] ${badge.bg}`}>
+            {badge.icon}
+          </span>
+        )}
+        {title}
+      </h2>
       {href && linkLabel && (
         <Link href={href} className="shrink-0 font-bold underline decoration-2 underline-offset-4 hover:text-accent">
           {linkLabel}

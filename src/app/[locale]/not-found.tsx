@@ -22,9 +22,6 @@ export default function NotFound() {
           <Link href="/entdecken" className="inline-flex min-h-12 items-center justify-center rounded-full bg-surface px-6 font-bold shadow-sm">
             {t("system.toExplore")}
           </Link>
-          <Link href="/anbieten" className="inline-flex min-h-12 items-center justify-center rounded-full bg-surface px-6 font-bold shadow-sm">
-            {t("provider.title")}
-          </Link>
         </div>
       </div>
     </main>

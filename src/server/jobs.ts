@@ -88,7 +88,7 @@ export async function sendRecheckRequests(db: PrismaClient, send: Send, appUrl: 
     await send({
       to: a.submittedBy!.email,
       subject: t("subject", { title }),
-      text: [t("intro", { title }), "", t("action", { url: `${appUrl}/${a.submittedBy!.locale}/anbieten` }), "", t("why"), "– Mivora"].join("\n"),
+      text: [t("intro", { title }), "", t("action", { url: `${appUrl}/${a.submittedBy!.locale}/admin` }), "", t("why"), "– Mivora"].join("\n"),
     });
     await db.activity.update({ where: { id: a.id }, data: { recheckSentAt: now } });
   }

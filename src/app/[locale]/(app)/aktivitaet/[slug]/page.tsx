@@ -7,6 +7,7 @@ import { languageName, pickContent } from "@/domain/localize";
 import { ListingPicture } from "@/components/ListingPicture";
 import { PriceTag } from "@/components/PriceTag";
 import { SaveButton } from "@/components/SaveButton";
+import { ShareButton } from "@/components/ShareButton";
 import { PlanButton } from "@/components/PlanButton";
 import { Icon } from "@/components/Icon";
 import { Link } from "@/i18n/navigation";
@@ -236,6 +237,7 @@ export default async function ActivityPage({ params, searchParams }: { params: P
               </a>
             )}
             <SaveButton id={activity.id} title={text.title} size="lg" />
+            <ShareButton title={text.title} />
           </div>
         </aside>
       </div>

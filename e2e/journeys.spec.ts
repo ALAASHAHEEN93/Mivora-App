@@ -28,8 +28,8 @@ test("unknown address shows the friendly not-found page", async ({ page }) => {
   const res = await page.goto("/de/anbiete");
   expect(res?.status()).toBe(404);
   await expect(page.getByRole("heading", { name: /diese Seite gibt es nicht/ })).toBeVisible();
-  await page.getByRole("link", { name: "Angebot eintragen" }).click();
-  await expect(page).toHaveURL(/\/de\/anbieten$/);
+  await page.getByRole("link", { name: "Angebote entdecken" }).click();
+  await expect(page).toHaveURL(/\/de\/entdecken$/);
 });
 
 test("sign in with the emailed code (shown on screen in development)", async ({ page }) => {

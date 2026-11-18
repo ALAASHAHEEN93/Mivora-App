@@ -9,7 +9,7 @@ import { addChild, deleteAccount, exportAccount, listChildren, removeChild, upda
 import { createLoginCode, endSession, userForSessionToken, verifyLoginCode } from "./auth/service";
 import { hashToken, MAX_CODE_ATTEMPTS } from "./auth/crypto";
 import { addToList, assignChildren, getLists, mergeLists, removeFromList } from "./lists";
-import { approveSubmission, createSubmission, listOwnSubmissions, listPending, photoAccess, rejectSubmission, submissionFormValues, updateSubmission } from "./listings";
+import { adminStats, approveSubmission, createSubmission, listAllActivities, listOwnSubmissions, listPending, photoAccess, rejectSubmission, submissionFormValues, updateSubmission } from "./listings";
 import { readPhoto, savePhoto } from "./photos";
 import { createReport, listOpenReports, resolveReport } from "./reports";
 import { createInquiry } from "./inquiries";
@@ -310,6 +310,32 @@ describe.skipIf(!url)("accounts & family (database)", () => {
 
       const values = await submissionFormValues(db, provider.userId, res.id, now);
       expect(values?.values).toMatchObject({ title: "Kinderturnen am Donnerstag", district: "Kalk", startTime: "16:00", repeatWeeks: "4" });
+    });
+
+    it("an admin can see, edit and publish any listing; a non-admin editor flag is ignored", async () => {
+      const admin = await signIn(ADMIN);
+      const me = { id: admin.userId, email: ADMIN };
+      const provider = await signIn("anbieter@example.invalid");
+      const other = await signIn("andere@example.invalid");
+      const res = await createSubmission(db, provider.userId, input(), now);
+      if (!res.ok) throw new Error();
+      const changed = parseSubmission(validSubmissionForm({ title: "Vom Admin korrigiert" }), now);
+      if (!changed.ok) throw new Error();
+
+      // Pretending to be an admin without being one changes nothing.
+      const fake = { id: other.userId, email: "andere@example.invalid" };
+      expect(await updateSubmission(db, other.userId, res.id, changed.value, now, null, fake, fake)).toBeNull();
+      expect(await submissionFormValues(db, other.userId, res.id, now, fake)).toBeNull();
+      await expect(listAllActivities(db, fake)).rejects.toThrow("forbidden");
+      await expect(adminStats(db, fake)).rejects.toThrow("forbidden");
+
+      expect(await submissionFormValues(db, admin.userId, res.id, now, me)).not.toBeNull();
+      expect(await updateSubmission(db, admin.userId, res.id, changed.value, now, null, me, me)).toMatchObject({ published: true });
+      const row = await db.activity.findUniqueOrThrow({ where: { id: res.id }, include: { translations: true } });
+      expect(row.status).toBe("published");
+      expect(row.translations.find((x) => x.locale === "de")?.title).toBe("Vom Admin korrigiert");
+      expect((await listAllActivities(db, me)).map((a) => a.id)).toContain(res.id);
+      expect(await adminStats(db, me, now)).toMatchObject({ pending: 0, live: expect.any(Number), accounts: expect.any(Number) });
     });
 
     it("limits open submissions per provider", async () => {

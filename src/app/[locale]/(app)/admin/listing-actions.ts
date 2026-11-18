@@ -5,7 +5,7 @@ import { hasLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { getPrisma } from "@/data/db/client";
 import { parseSubmission } from "@/domain/submission";
-import { createSubmission, updateSubmission } from "@/server/listings";
+import { createSubmission, isAdmin, updateSubmission } from "@/server/listings";
 import { confirmListing } from "@/server/jobs";
 import { deletePhoto, processPhoto, savePhoto } from "@/server/photos";
 import { getCurrentUser } from "@/server/auth/session";
@@ -30,6 +30,7 @@ export async function submitListing(_prev: SubmitState, formData: FormData): Pro
   const locale = hasLocale(routing.locales, l) ? l : routing.defaultLocale;
   const user = await getCurrentUser();
   if (!user) redirect(`/${locale}/anmelden`);
+  if (!isAdmin(user.email)) redirect(`/${locale}`);
 
   const file = formData.get("photo");
   const photo = file instanceof File && file.size > 0 ? file : null;
@@ -46,19 +47,20 @@ export async function submitListing(_prev: SubmitState, formData: FormData): Pro
   const wantsPublish = formData.get("publishNow") === "yes";
   const editId = String(formData.get("editId") ?? "");
   if (editId) {
-    const upd = await updateSubmission(getPrisma(), user.id, editId, parsed.value, new Date(), photoId, wantsPublish ? { id: user.id, email: user.email } : null);
+    const me = { id: user.id, email: user.email };
+    const upd = await updateSubmission(getPrisma(), user.id, editId, parsed.value, new Date(), photoId, wantsPublish ? me : null, me);
     if (!upd) {
       if (photoId) await deletePhoto(photoId);
-      redirect(`/${locale}/anbieten`);
+      redirect(`/${locale}/admin`);
     }
-    redirect(upd.published ? `/${locale}/aktivitaet/${upd.slug}?neu=1` : `/${locale}/anbieten?geaendert=1`);
+    redirect(upd.published ? `/${locale}/aktivitaet/${upd.slug}?neu=1` : `/${locale}/admin?ergebnis=gespeichert`);
   }
   const res = await createSubmission(getPrisma(), user.id, parsed.value, new Date(), photoId, wantsPublish ? { id: user.id, email: user.email } : null);
   if (!res.ok) {
     if (photoId) await deletePhoto(photoId);
     return { errors: {}, values: valuesOf(formData), limit: true, hadPhoto: Boolean(photo) };
   }
-  redirect(res.published ? `/${locale}/aktivitaet/${res.slug}?neu=1` : `/${locale}/anbieten?eingereicht=1`);
+  redirect(res.published ? `/${locale}/aktivitaet/${res.slug}?neu=1` : `/${locale}/admin?ergebnis=gespeichert`);
 }
 
 export async function confirmCurrentAction(formData: FormData) {
@@ -66,6 +68,7 @@ export async function confirmCurrentAction(formData: FormData) {
   const locale = hasLocale(routing.locales, l) ? l : routing.defaultLocale;
   const user = await getCurrentUser();
   if (!user) redirect(`/${locale}/anmelden`);
+  if (!isAdmin(user.email)) redirect(`/${locale}`);
   await confirmListing(getPrisma(), user.id, String(formData.get("id") ?? ""));
-  redirect(`/${locale}/anbieten?bestaetigt=1`);
+  redirect(`/${locale}/admin?ergebnis=bestaetigt&tab=alle`);
 }

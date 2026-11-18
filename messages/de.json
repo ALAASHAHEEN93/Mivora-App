@@ -16,7 +16,10 @@
     "verified": "Verifizierter Anbieter",
     "unverified": "Noch nicht verifiziert",
     "languageLabel": "Sprache",
-    "skipToContent": "Zum Inhalt springen"
+    "skipToContent": "Zum Inhalt springen",
+    "share": "Teilen",
+    "linkCopied": "Link kopiert!",
+    "shareText": "Schau mal, das habe ich auf Mivora gefunden:"
   },
   "nav": {
     "mainNav": "Hauptnavigation",
@@ -49,7 +52,19 @@
     "forYouPitch": "Lege ein Kinderprofil an – nur Spitzname und Geburtsjahr. Dann zeigen wir dir hier Angebote im richtigen Alter.",
     "forChild": "Für {name}",
     "forChildEmpty": "Gerade gibt es nichts Passendes für {name}. Schau bald wieder vorbei!",
-    "forAgeChild": "Für dein Kind ({age})"
+    "forAgeChild": "Für dein Kind ({age})",
+    "rainToday": "Heute regnet es in Köln – hier sind Indoor-Ideen",
+    "rainTomorrow": "Morgen regnet es in Köln – hier sind Indoor-Ideen",
+    "rainEmpty": "Für diesen Tag gibt es gerade keine Indoor-Angebote.",
+    "weatherSource": "Wetterdaten: Deutscher Wetterdienst",
+    "pickerTitle": "Was machen wir heute?",
+    "pickerHint": "Tippe auf den Knopf und lass dich überraschen!",
+    "pickerButton": "Überrasch uns!",
+    "pickerAgain": "Nochmal!",
+    "pickerOpen": "Ansehen",
+    "pickerSpinning": "Mivora sucht etwas aus …",
+    "pickerResult": "Wie wäre es mit:",
+    "pickerEmpty": "Heute ist leider nichts mehr los. Schau doch in die nächsten Tage!"
   },
   "date": {
     "today": "Heute",
@@ -203,7 +218,7 @@
   "welcome": {
     "title": "Willkommen bei Mivora",
     "subtitle": "Entdecke Kurse, Ausflüge und Ferienangebote für Kinder in deiner Stadt.",
-    "tagline": "Gemeinsam mehr erleben",
+    "tagline": "Entdecken. Spielen. Wachsen.",
     "cityQuestion": "In welcher Stadt wohnst du?",
     "cityPlaceholder": "Stadt wählen",
     "cityHint": "Du kannst die Stadt jederzeit oben im App-Kopf ändern.",
@@ -370,7 +385,7 @@
     "confirmedDone": "Danke! Dein Angebot ist als aktuell bestätigt."
   },
   "admin": {
-    "title": "Prüfung",
+    "title": "Admin-Dashboard",
     "empty": "Keine offenen Einreichungen.",
     "approve": "Freigeben",
     "reject": "Ablehnen",
@@ -381,7 +396,21 @@
     "failed": "Das hat nicht geklappt. Wurde es schon bearbeitet?",
     "reportsTitle": "Meldungen",
     "noReports": "Keine offenen Meldungen.",
-    "resolve": "Erledigt"
+    "resolve": "Erledigt",
+    "addTitle": "Aktivität hinzufügen",
+    "addHint": "Geht sofort online – ohne Prüfung",
+    "pendingTitle": "Warten auf Prüfung",
+    "addIntro": "Als Admin wird deine Aktivität sofort veröffentlicht. Fülle alles so aus, wie Familien es sehen sollen. Wenn du das Häkchen unten entfernst, landet sie erst in der Prüfung.",
+    "profileCta": "Aktivitäten hinzufügen, bearbeiten und prüfen",
+    "statLive": "Online",
+    "statPending": "Warten auf Prüfung",
+    "statReports": "Offene Meldungen",
+    "statAccounts": "Konten",
+    "allTitle": "Alle Aktivitäten",
+    "allEmpty": "Noch keine Aktivitäten.",
+    "noUpcoming": "Keine kommenden Termine",
+    "saved": "Gespeichert – die Aktivität wartet in der Prüfung.",
+    "expired": "Abgelaufen"
   },
   "system": {
     "notFoundTitle": "Hoppla, diese Seite gibt es nicht",

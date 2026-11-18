@@ -14,6 +14,9 @@ const PATHS = {
   forward: "m9 18 6-6-6-6",
   download: "M12 4v11m0 0 4.5-4.5M12 15l-4.5-4.5M5 20h14",
   alert: "M12 4 2.5 20h19L12 4Zm0 6v4.5m0 3v.5",
+  share: "M12 15V4m0 0L7.5 8.5M12 4l4.5 4.5M5 13v7h14v-7",
+  umbrella: "M3 12a9 9 0 0 1 18 0H3Zm9 0v6a2 2 0 0 1-4 0M12 3v0",
+  shuffle: "M4 7h3l10 10h3M4 17h3l3-3m4-4 3-3h3m-2-2 2 2-2 2m0 8 2 2-2 2",
 } as const;
 
 export type IconName = keyof typeof PATHS;

@@ -39,12 +39,13 @@ export default async function WelcomePage({
       className="mx-auto flex min-h-dvh max-w-md flex-col bg-bg px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))]"
     >
       {/* Sky hero: big sticker logo above the waving kids */}
-      <section className="-mx-5 flex flex-col bg-[#cfeaf5] px-5 pt-[max(1rem,env(safe-area-inset-top))]">
+      <section className="mv-daylight -mx-5 flex flex-col bg-[var(--kw-sky)] px-5 pt-[max(1rem,env(safe-area-inset-top))]">
         <div className="flex justify-end">
           <LanguageSwitcher />
         </div>
-        <div className="mt-2 flex justify-center">
+        <div className="mt-2 flex flex-col items-center gap-1">
           <Logo className="text-[3.6rem]" />
+          <p className="mv-sticker text-xl text-[#fff3ea]">{t("tagline")}</p>
         </div>
         <WelcomeScene className="-mx-5 -mt-4 w-[calc(100%+2.5rem)]" />
       </section>
@@ -90,7 +91,7 @@ export default async function WelcomePage({
           <legend className="mb-1 text-start font-bold">{t("agesQuestion")}</legend>
           <div className="flex flex-wrap gap-2">
             {Array.from({ length: 16 }, (_, a) => (
-              <label key={a} className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full border-2 border-line bg-surface px-3 font-bold has-[:checked]:border-[#1f2340] has-[:checked]:bg-primary has-[:checked]:text-on-primary">
+              <label key={a} className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full border-2 border-line bg-surface px-3 font-bold has-[:checked]:border-[#263847] has-[:checked]:bg-primary has-[:checked]:text-on-primary">
                 <input type="checkbox" name="ages" value={a} defaultChecked={savedAges.includes(a)} className="sr-only" />
                 {a}
               </label>

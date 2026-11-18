@@ -31,14 +31,18 @@ export async function ForYou({ now }: { now: Date }) {
   if (children.length === 0) {
     if (!accountsAvailable()) return null;
     return (
-      <section className="flex items-center gap-4 rounded-3xl bg-surface p-5 shadow-[0_8px_24px_-14px_rgba(42,47,58,0.4)]">
-        <Mascot className="size-16 shrink-0" mood="wow" />
-        <div className="flex flex-col gap-2">
+      <section className="mv-reveal relative flex items-center gap-4 overflow-hidden rounded-[2rem] border-2 border-[#263847] bg-[#fde3d8] p-5 text-[#263847] shadow-[0_4px_0_#263847]">
+        <span aria-hidden="true" className="absolute -end-8 -top-8 size-28 rounded-full bg-white/45" />
+        <span aria-hidden="true" className="absolute -bottom-10 end-16 size-20 rounded-full bg-[#fbefc9]/80" />
+        <span aria-hidden="true" className="mv-float relative grid size-20 shrink-0 place-items-center rounded-full bg-white shadow-md">
+          <Mascot className="size-14" mood="wow" />
+        </span>
+        <div className="relative flex flex-col gap-2">
           <h2 className="font-display text-xl font-bold">{t("home.forYouTitle")}</h2>
-          <p className="text-sm text-muted">{t("home.forYouPitch")}</p>
+          <p className="text-sm text-[#3e5260]">{t("home.forYouPitch")}</p>
           <Link
             href={user ? "/profil" : "/anmelden"}
-            className="inline-flex min-h-11 w-fit items-center rounded-full bg-primary px-5 font-bold text-on-primary transition active:scale-[0.98]"
+            className="mv-btn-3d inline-flex min-h-11 w-fit items-center rounded-full bg-primary px-5 font-bold text-on-primary"
           >
             {user ? t("family.addChild") : t("family.signIn")}
           </Link>
@@ -62,7 +66,7 @@ export async function ForYou({ now }: { now: Date }) {
               <div className="flex min-w-0 items-center gap-3">
                 <span
                   aria-hidden="true"
-                  className="grid size-12 shrink-0 place-items-center rounded-full text-lg font-bold text-[#1f2340] shadow-[0_6px_16px_-10px_rgba(36,48,77,0.5)]"
+                  className="grid size-12 shrink-0 place-items-center rounded-full text-lg font-bold text-[#263847] shadow-[0_6px_16px_-10px_rgba(36,48,77,0.5)]"
                   style={{ background: childColor(i) }}
                 >
                   {name.charAt(0).toUpperCase()}
@@ -105,12 +109,12 @@ export async function ForYou({ now }: { now: Date }) {
 /** "Für Maus": the words in pink, the child's name in apricot (works for any word order). */
 function StickerName({ text, name }: { text: string; name: string }) {
   const i = text.indexOf(name);
-  if (i < 0) return <span className="text-[#f09c9c]">{text}</span>;
+  if (i < 0) return <span className="text-[#f2a68a]">{text}</span>;
   return (
     <>
-      <span className="text-[#f09c9c]">{text.slice(0, i)}</span>
-      <span className="text-[#fcb46c]">{name}</span>
-      <span className="text-[#f09c9c]">{text.slice(i + name.length)}</span>
+      <span className="text-[#f2a68a]">{text.slice(0, i)}</span>
+      <span className="text-[#f3d077]">{name}</span>
+      <span className="text-[#f2a68a]">{text.slice(i + name.length)}</span>
     </>
   );
 }

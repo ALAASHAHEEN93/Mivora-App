@@ -120,7 +120,7 @@ export default async function SignInPage({
 
           {email && (
             // Development only: codes never reach real inboxes until an email service is set up.
-            <a href="http://localhost:8025" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center rounded-full bg-sun-400 px-5 font-bold text-[#1f2340]">
+            <a href="http://localhost:8025" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center rounded-full bg-sun-400 px-5 font-bold text-[#263847]">
               {t("devMailOpen")}
             </a>
           )}

@@ -12,7 +12,7 @@ export function Splash({ tagline }: { tagline: string }) {
       <span className="mv-splash-logo relative">
         <Logo className="text-7xl" />
       </span>
-      <p className="mv-splash-logo mv-sticker relative text-2xl text-[#fff1e3]">{tagline}</p>
+      <p className="mv-splash-logo mv-sticker relative text-2xl text-[#fff3ea]">{tagline}</p>
     </div>
   );
 }

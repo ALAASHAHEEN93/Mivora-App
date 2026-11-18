@@ -121,7 +121,7 @@ export function Calendar({ activities, today, nowIso, note }: { activities: Acti
         {items.map((p, i) => {
           const first = childrenOf(encodePlanned(p))[0];
           return first && !active ? (
-            <span key={i} className="size-1.5 rounded-full ring-1 ring-[#1f2340]/40" style={{ background: childColor(first) }} />
+            <span key={i} className="size-1.5 rounded-full ring-1 ring-[#263847]/40" style={{ background: childColor(first) }} />
           ) : (
             <span key={i} className={`size-1.5 rounded-full ${active ? "bg-on-primary" : "bg-primary"}`} />
           );
@@ -215,8 +215,8 @@ export function Calendar({ activities, today, nowIso, note }: { activities: Acti
               >
                 <span
                   aria-hidden="true"
-                  className="grid size-8 place-items-center rounded-full text-sm text-[#1f2340]"
-                  style={{ background: isAll ? "#fffbf2" : childColor(c.id) }}
+                  className="grid size-8 place-items-center rounded-full text-sm text-[#263847]"
+                  style={{ background: isAll ? "#fff7f1" : childColor(c.id) }}
                 >
                   {isAll ? "★" : childName(c.id).charAt(0).toUpperCase()}
                 </span>
@@ -339,7 +339,7 @@ export function Calendar({ activities, today, nowIso, note }: { activities: Acti
                                 aria-pressed={on}
                                 onClick={() => toggleChild(encodePlanned(p), c.id)}
                                 className={`mv-press inline-flex min-h-9 items-center gap-1 rounded-full px-2.5 text-xs font-bold transition ${
-                                  on ? "text-[#1f2340] ring-2 ring-[#1f2340]" : "text-muted ring-1 ring-line"
+                                  on ? "text-[#263847] ring-2 ring-[#263847]" : "text-muted ring-1 ring-line"
                                 }`}
                                 style={{ background: on ? childColor(c.id) : "transparent" }}
                               >

@@ -16,7 +16,10 @@
     "verified": "Doğrulanmış sağlayıcı",
     "unverified": "Henüz doğrulanmadı",
     "languageLabel": "Dil",
-    "skipToContent": "İçeriğe geç"
+    "skipToContent": "İçeriğe geç",
+    "share": "Paylaş",
+    "linkCopied": "Bağlantı kopyalandı!",
+    "shareText": "Bak, Mivora'da ne buldum:"
   },
   "nav": {
     "mainNav": "Ana menü",
@@ -49,7 +52,19 @@
     "forYouPitch": "Bir çocuk profili ekle – sadece takma ad ve doğum yılı. Burada yaşına uygun etkinlikleri gösteririz.",
     "forChild": "{name} için",
     "forChildEmpty": "Şu an {name} için uygun bir şey yok. Yakında tekrar bak!",
-    "forAgeChild": "Çocuğun için ({age})"
+    "forAgeChild": "Çocuğun için ({age})",
+    "rainToday": "Bugün Köln'de yağmur var – işte kapalı alan fikirleri",
+    "rainTomorrow": "Yarın Köln'de yağmur bekleniyor – işte kapalı alan fikirleri",
+    "rainEmpty": "O gün için şu an kapalı alan etkinliği yok.",
+    "weatherSource": "Hava durumu verileri: Deutscher Wetterdienst",
+    "pickerTitle": "Bugün ne yapalım?",
+    "pickerHint": "Düğmeye dokun ve sürprizini gör!",
+    "pickerButton": "Bizi şaşırt!",
+    "pickerAgain": "Bir daha!",
+    "pickerOpen": "Göz at",
+    "pickerSpinning": "Mivora seçiyor …",
+    "pickerResult": "Buna ne dersin:",
+    "pickerEmpty": "Bugün başka etkinlik yok. Önümüzdeki günlere bak!"
   },
   "date": {
     "today": "Bugün",
@@ -203,7 +218,7 @@
   "welcome": {
     "title": "Mivora'ya hoş geldin",
     "subtitle": "Şehrindeki çocuklar için kursları, gezileri ve tatil etkinliklerini keşfet.",
-    "tagline": "Birlikte daha çok deneyim",
+    "tagline": "Keşfet. Oyna. Büyü.",
     "cityQuestion": "Hangi şehirde yaşıyorsun?",
     "cityPlaceholder": "Şehir seç",
     "cityHint": "Şehri istediğin zaman uygulamanın üst kısmından değiştirebilirsin.",
@@ -370,7 +385,7 @@
     "confirmedDone": "Teşekkürler! İlanın güncel olarak onaylandı."
   },
   "admin": {
-    "title": "Kontrol",
+    "title": "Yönetim paneli",
     "empty": "Açık başvuru yok.",
     "approve": "Onayla",
     "reject": "Reddet",
@@ -381,7 +396,21 @@
     "failed": "Olmadı. Zaten işlendi mi?",
     "reportsTitle": "Bildirimler",
     "noReports": "Açık bildirim yok.",
-    "resolve": "Tamamlandı"
+    "resolve": "Tamamlandı",
+    "addTitle": "Etkinlik ekle",
+    "addHint": "Hemen yayına girer – inceleme yok",
+    "pendingTitle": "İnceleme bekleyenler",
+    "addIntro": "Yönetici olarak etkinliğin hemen yayınlanır. Her şeyi ailelerin görmesi gerektiği gibi doldur. Alttaki işareti kaldırırsan önce incelemeye gider.",
+    "profileCta": "Etkinlik ekle, düzenle ve incele",
+    "statLive": "Yayında",
+    "statPending": "İnceleme bekleyenler",
+    "statReports": "Açık bildirimler",
+    "statAccounts": "Hesaplar",
+    "allTitle": "Tüm etkinlikler",
+    "allEmpty": "Henüz etkinlik yok.",
+    "noUpcoming": "Yaklaşan tarih yok",
+    "saved": "Kaydedildi – etkinlik incelemeyi bekliyor.",
+    "expired": "Süresi doldu"
   },
   "system": {
     "notFoundTitle": "Hoppala, bu sayfa yok",

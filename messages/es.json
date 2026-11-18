@@ -16,7 +16,10 @@
     "verified": "Organizador verificado",
     "unverified": "Aún no verificado",
     "languageLabel": "Idioma",
-    "skipToContent": "Ir al contenido"
+    "skipToContent": "Ir al contenido",
+    "share": "Compartir",
+    "linkCopied": "¡Enlace copiado!",
+    "shareText": "Mira lo que encontré en Mivora:"
   },
   "nav": {
     "mainNav": "Navegación principal",
@@ -49,7 +52,19 @@
     "forYouPitch": "Añade un perfil infantil: solo apodo y año de nacimiento. Aquí verás actividades para su edad.",
     "forChild": "Para {name}",
     "forChildEmpty": "Ahora no hay nada para {name}. ¡Vuelve pronto!",
-    "forAgeChild": "Para tu hijo ({age})"
+    "forAgeChild": "Para tu hijo ({age})",
+    "rainToday": "Hoy llueve en Colonia – aquí tienes ideas bajo techo",
+    "rainTomorrow": "Mañana lloverá en Colonia – aquí tienes ideas bajo techo",
+    "rainEmpty": "Ahora mismo no hay actividades bajo techo para ese día.",
+    "weatherSource": "Datos meteorológicos: Deutscher Wetterdienst",
+    "pickerTitle": "¿Qué hacemos hoy?",
+    "pickerHint": "¡Pulsa el botón y déjate sorprender!",
+    "pickerButton": "¡Sorpréndenos!",
+    "pickerAgain": "¡Otra vez!",
+    "pickerOpen": "Ver",
+    "pickerSpinning": "Mivora está eligiendo …",
+    "pickerResult": "¿Qué tal esto?:",
+    "pickerEmpty": "Hoy ya no hay nada más. ¡Mira los próximos días!"
   },
   "date": {
     "today": "Hoy",
@@ -203,7 +218,7 @@
   "welcome": {
     "title": "Bienvenido a Mivora",
     "subtitle": "Descubre cursos, excursiones y actividades de vacaciones para niños en tu ciudad.",
-    "tagline": "Más experiencias juntos",
+    "tagline": "Descubre. Juega. Crece.",
     "cityQuestion": "¿En qué ciudad vives?",
     "cityPlaceholder": "Elige una ciudad",
     "cityHint": "Puedes cambiar la ciudad cuando quieras en la parte superior de la app.",
@@ -370,7 +385,7 @@
     "confirmedDone": "¡Gracias! Tu anuncio está confirmado como vigente."
   },
   "admin": {
-    "title": "Revisión",
+    "title": "Panel de administración",
     "empty": "No hay envíos pendientes.",
     "approve": "Aprobar",
     "reject": "Rechazar",
@@ -381,7 +396,21 @@
     "failed": "No funcionó. ¿Ya se había gestionado?",
     "reportsTitle": "Avisos",
     "noReports": "No hay avisos abiertos.",
-    "resolve": "Resuelto"
+    "resolve": "Resuelto",
+    "addTitle": "Añadir actividad",
+    "addHint": "Se publica al instante – sin revisión",
+    "pendingTitle": "Pendientes de revisión",
+    "addIntro": "Como admin, tu actividad se publica al instante. Rellena todo como deben verlo las familias. Si desmarcas la casilla de abajo, pasará primero a revisión.",
+    "profileCta": "Añadir, editar y revisar actividades",
+    "statLive": "Publicadas",
+    "statPending": "Pendientes de revisión",
+    "statReports": "Avisos abiertos",
+    "statAccounts": "Cuentas",
+    "allTitle": "Todas las actividades",
+    "allEmpty": "Aún no hay actividades.",
+    "noUpcoming": "Sin fechas próximas",
+    "saved": "Guardado – la actividad está pendiente de revisión.",
+    "expired": "Caducada"
   },
   "system": {
     "notFoundTitle": "Vaya, esta página no existe",

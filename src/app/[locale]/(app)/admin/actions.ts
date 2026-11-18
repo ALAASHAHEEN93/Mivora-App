@@ -34,5 +34,5 @@ export async function rejectAction(formData: FormData) {
 export async function resolveReportAction(formData: FormData) {
   const user = await requireAdmin();
   await resolveReport(getPrisma(), user, String(formData.get("id")));
-  redirect(`/${localeOf(formData)}/admin#meldungen`);
+  redirect(`/${localeOf(formData)}/admin?tab=meldungen`);
 }
