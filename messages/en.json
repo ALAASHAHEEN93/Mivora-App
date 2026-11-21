@@ -26,7 +26,13 @@
     "themeLight": "Light",
     "themeDark": "Dark",
     "themeHint": "“Automatic” follows your device setting.",
-    "themeDarkToggle": "Dark mode"
+    "themeDarkToggle": "Dark mode",
+    "installTitle": "Install the app",
+    "installText": "Put Mivora on your home screen: it starts faster and without the browser bar – like a real app.",
+    "installButton": "Install now",
+    "installIos": "Tap “Share” (□↑) at the bottom, then “Add to Home Screen”.",
+    "installOther": "Open your browser menu and choose “Install app” or “Add to Home screen”.",
+    "installDone": "Mivora is installed on this device. 🎉"
   },
   "nav": {
     "mainNav": "Main navigation",

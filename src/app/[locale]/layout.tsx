@@ -6,6 +6,7 @@ import { getMessages, getTranslations, setRequestLocale } from "next-intl/server
 import { pickNamespaces } from "@/i18n/client-namespaces";
 import { routing, rtlLocales, type Locale } from "@/i18n/routing";
 import { Splash } from "@/components/Splash";
+import { ServiceWorkerSetup } from "@/components/AppInstall";
 import { cookies } from "next/headers";
 import { THEME_COLOR, THEME_COOKIE, parseTheme } from "@/domain/theme";
 import "../globals.css";
@@ -76,6 +77,7 @@ export default async function LocaleLayout({
             {t("common.skipToContent")}
           </a>
           <Splash tagline={t("welcome.tagline")} />
+          <ServiceWorkerSetup />
           {children}
         </NextIntlClientProvider>
       </body>

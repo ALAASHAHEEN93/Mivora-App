@@ -26,7 +26,13 @@
     "themeLight": "Claro",
     "themeDark": "Oscuro",
     "themeHint": "«Automático» sigue el ajuste de tu dispositivo.",
-    "themeDarkToggle": "Modo oscuro"
+    "themeDarkToggle": "Modo oscuro",
+    "installTitle": "Instalar la app",
+    "installText": "Pon Mivora en tu pantalla de inicio: se abre más rápido y sin la barra del navegador, como una app de verdad.",
+    "installButton": "Instalar ahora",
+    "installIos": "Toca «Compartir» (□↑) abajo y luego «Añadir a pantalla de inicio».",
+    "installOther": "Abre el menú del navegador y elige «Instalar app» o «Añadir a la pantalla de inicio».",
+    "installDone": "Mivora está instalada en este dispositivo. 🎉"
   },
   "nav": {
     "mainNav": "Navegación principal",

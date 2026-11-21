@@ -26,7 +26,13 @@
     "themeLight": "Jasny",
     "themeDark": "Ciemny",
     "themeHint": "„Automatycznie” – zgodnie z ustawieniem urządzenia.",
-    "themeDarkToggle": "Tryb ciemny"
+    "themeDarkToggle": "Tryb ciemny",
+    "installTitle": "Zainstaluj aplikację",
+    "installText": "Dodaj Mivora do ekranu głównego: uruchamia się szybciej, bez paska przeglądarki – jak prawdziwa aplikacja.",
+    "installButton": "Zainstaluj teraz",
+    "installIos": "Stuknij na dole „Udostępnij” (□↑), a potem „Do ekranu początkowego”.",
+    "installOther": "Otwórz menu przeglądarki i wybierz „Zainstaluj aplikację” lub „Dodaj do ekranu głównego”.",
+    "installDone": "Mivora jest zainstalowana na tym urządzeniu. 🎉"
   },
   "nav": {
     "mainNav": "Nawigacja główna",

@@ -26,7 +26,13 @@
     "themeLight": "Chiaro",
     "themeDark": "Scuro",
     "themeHint": "“Automatico” segue l’impostazione del dispositivo.",
-    "themeDarkToggle": "Modalità scura"
+    "themeDarkToggle": "Modalità scura",
+    "installTitle": "Installa l’app",
+    "installText": "Aggiungi Mivora alla schermata Home: si apre più in fretta e senza barra del browser, come una vera app.",
+    "installButton": "Installa ora",
+    "installIos": "Tocca «Condividi» (□↑) in basso, poi «Aggiungi alla schermata Home».",
+    "installOther": "Apri il menu del browser e scegli «Installa app» o «Aggiungi alla schermata Home».",
+    "installDone": "Mivora è installata su questo dispositivo. 🎉"
   },
   "nav": {
     "mainNav": "Navigazione principale",

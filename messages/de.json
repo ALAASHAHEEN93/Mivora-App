@@ -26,7 +26,13 @@
     "themeLight": "Hell",
     "themeDark": "Dunkel",
     "themeHint": "„Automatisch“ folgt der Einstellung deines Geräts.",
-    "themeDarkToggle": "Dunkler Modus"
+    "themeDarkToggle": "Dunkler Modus",
+    "installTitle": "App installieren",
+    "installText": "Mivora auf den Startbildschirm legen: startet schneller, ohne Browserleiste – wie eine echte App.",
+    "installButton": "Jetzt installieren",
+    "installIos": "Tippe unten auf „Teilen“ (□↑) und dann auf „Zum Home-Bildschirm“.",
+    "installOther": "Öffne das Menü deines Browsers und wähle „App installieren“ oder „Zum Startbildschirm hinzufügen“.",
+    "installDone": "Mivora ist auf diesem Gerät installiert. 🎉"
   },
   "nav": {
     "mainNav": "Hauptnavigation",

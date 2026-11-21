@@ -25,7 +25,11 @@ const nextConfig: NextConfig = {
   // Lets `pnpm build:check` build next to a running dev server without clobbering .next
   distDir: process.env.NEXT_DIST_DIR || ".next",
   async headers() {
-    return [{ source: "/(.*)", headers: securityHeaders }];
+    return [
+      { source: "/(.*)", headers: securityHeaders },
+      // The service worker must always be re-checked so app updates reach installed phones.
+      { source: "/sw.js", headers: [{ key: "Cache-Control", value: "no-cache" }] },
+    ];
   },
 };
 

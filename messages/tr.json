@@ -26,7 +26,13 @@
     "themeLight": "Açık",
     "themeDark": "Koyu",
     "themeHint": "“Otomatik”, cihazınızın ayarını izler.",
-    "themeDarkToggle": "Koyu mod"
+    "themeDarkToggle": "Koyu mod",
+    "installTitle": "Uygulamayı yükle",
+    "installText": "Mivora’yı ana ekrana ekleyin: daha hızlı açılır, tarayıcı çubuğu olmadan – gerçek bir uygulama gibi.",
+    "installButton": "Şimdi yükle",
+    "installIos": "Alttaki “Paylaş” (□↑) düğmesine, ardından “Ana Ekrana Ekle”ye dokunun.",
+    "installOther": "Tarayıcı menüsünü açıp “Uygulamayı yükle” veya “Ana ekrana ekle”yi seçin.",
+    "installDone": "Mivora bu cihaza yüklendi. 🎉"
   },
   "nav": {
     "mainNav": "Ana menü",

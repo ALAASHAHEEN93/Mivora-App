@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { ThemeChoice } from "@/components/ThemeChoice";
+import { InstallCard } from "@/components/AppInstall";
 import { cookies } from "next/headers";
 import { THEME_COOKIE, parseTheme } from "@/domain/theme";
 import { Icon } from "@/components/Icon";
@@ -197,6 +198,8 @@ export default async function ProfilePage({
           </form>
         </section>
       )}
+
+      <InstallCard />
 
       <section className={card}>
         <ThemeChoice initial={parseTheme((await cookies()).get(THEME_COOKIE)?.value)} />
