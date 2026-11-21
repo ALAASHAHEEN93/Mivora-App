@@ -66,7 +66,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   ]);
   const indoor = rain ? await activityRepository.search({ day: rain.day, setting: "indoor" }, now) : [];
 
-  const pickerItems: PickerItem[] = today.slice(0, 20).map(({ activity, sessions }) => {
+  // Nothing left today (e.g. in the evening)? Suggest the coming days instead of an empty card.
+  const pickToday = today.length > 0;
+  const pickerSource = pickToday ? today : upcoming;
+  const pickerItems: PickerItem[] = pickerSource.slice(0, 20).map(({ activity, sessions }) => {
     const { text, lang } = pickContent(activity, locale);
     return {
       slug: activity.slug,
@@ -169,7 +172,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         items={pickerItems}
         texts={{
           title: t("home.pickerTitle"),
-          hint: t("home.pickerHint"),
+          hint: pickToday ? t("home.pickerHint") : t("home.pickerHintSoon"),
           button: t("home.pickerButton"),
           again: t("home.pickerAgain"),
           open: t("home.pickerOpen"),

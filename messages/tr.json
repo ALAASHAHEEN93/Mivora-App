@@ -80,7 +80,8 @@
     "pickerEmpty": "Bugün başka etkinlik yok. Önümüzdeki günlere bak!",
     "moreTitle": "Mivora hakkında",
     "aboutShort": "Mivora hakkında",
-    "providersShort": "Sağlayıcılar için"
+    "providersShort": "Sağlayıcılar için",
+    "pickerHintSoon": "Bugün başka etkinlik yok – önümüzdeki günler için bir fikir almak için dokun!"
   },
   "date": {
     "today": "Bugün",

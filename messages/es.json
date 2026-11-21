@@ -80,7 +80,8 @@
     "pickerEmpty": "Hoy ya no hay nada más. ¡Mira los próximos días!",
     "moreTitle": "Más sobre Mivora",
     "aboutShort": "Sobre Mivora",
-    "providersShort": "Para organizadores"
+    "providersShort": "Para organizadores",
+    "pickerHintSoon": "Hoy ya no hay nada – ¡pulsa para una idea para los próximos días!"
   },
   "date": {
     "today": "Hoy",

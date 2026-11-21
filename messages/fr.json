@@ -80,7 +80,8 @@
     "pickerEmpty": "Plus rien aujourd'hui. Regarde les prochains jours !",
     "moreTitle": "En savoir plus",
     "aboutShort": "À propos",
-    "providersShort": "Organisateurs"
+    "providersShort": "Organisateurs",
+    "pickerHintSoon": "Plus rien aujourd’hui – appuie pour une idée pour les prochains jours !"
   },
   "date": {
     "today": "Aujourd'hui",

@@ -80,7 +80,8 @@
     "pickerEmpty": "Nothing else is on today. Have a look at the next few days!",
     "moreTitle": "More about Mivora",
     "aboutShort": "About Mivora",
-    "providersShort": "For providers"
+    "providersShort": "For providers",
+    "pickerHintSoon": "Nothing left today – tap for an idea for the next few days!"
   },
   "date": {
     "today": "Today",

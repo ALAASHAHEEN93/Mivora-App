@@ -80,7 +80,8 @@
     "pickerEmpty": "Oggi non c'è più niente. Guarda i prossimi giorni!",
     "moreTitle": "Scopri Mivora",
     "aboutShort": "Chi è Mivora",
-    "providersShort": "Organizzatori"
+    "providersShort": "Organizzatori",
+    "pickerHintSoon": "Oggi non c’è più niente – tocca per un’idea per i prossimi giorni!"
   },
   "date": {
     "today": "Oggi",

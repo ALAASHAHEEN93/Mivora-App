@@ -80,7 +80,8 @@
     "pickerEmpty": "Heute ist leider nichts mehr los. Schau doch in die nächsten Tage!",
     "moreTitle": "Mehr über Mivora",
     "aboutShort": "Über Mivora",
-    "providersShort": "Für Anbieter"
+    "providersShort": "Für Anbieter",
+    "pickerHintSoon": "Heute ist nichts mehr los – tippe für eine Idee in den nächsten Tagen!"
   },
   "date": {
     "today": "Heute",
