@@ -48,7 +48,7 @@ export function HeroSky() {
       <span className="mv-shoot absolute left-[-15%] top-[10%] h-0.5 w-16 rounded-full bg-[linear-gradient(90deg,transparent,#fff_70%,#f3d077)] opacity-0" />
 
       {/* hot-air balloon */}
-      <svg viewBox="0 0 60 84" className="mv-float absolute end-3 top-3 w-12 md:end-10 md:top-6 md:w-16">
+      <svg viewBox="0 0 60 84" className="mv-float absolute end-3 top-3 w-12 md:end-10 md:top-6 md:w-16 lg:end-[460px]">
         <path d="M30 4C14 4 6 16 6 28c0 14 14 24 20 32h8c6-8 20-18 20-32C54 16 46 4 30 4Z" fill="#f2a68a" stroke="#263847" strokeWidth="3" strokeLinejoin="round" />
         <path d="M30 4c-9 12-8 42-3 56h6c5-14 6-44-3-56Z" fill="#f3d077" stroke="#263847" strokeWidth="2.5" strokeLinejoin="round" />
         <path d="M17 16q4-6 10-7" fill="none" stroke="#fff6ee" strokeWidth="3" strokeLinecap="round" opacity="0.9" />

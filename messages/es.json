@@ -561,5 +561,15 @@
     "ctaCaseStudy": "Ir a la página del proyecto",
     "mailSubject": "Mivora – proponer una actividad",
     "aboutLink": "Más sobre Mivora"
+  },
+  "getApp": {
+    "title": "Mivora está hecha para tu móvil",
+    "step1": "Escanea el código QR con la cámara del móvil.",
+    "step2": "«Añadir a pantalla de inicio»: ¡listo!",
+    "note": "No hace falta tienda de apps.",
+    "footerTitle": "App",
+    "footerText": "Escanea y lleva Mivora en tu móvil.",
+    "qrAlt": "Código QR a la app Mivora",
+    "previewAlt": "Mivora en un móvil: inicio"
   }
 }

@@ -561,5 +561,15 @@
     "ctaCaseStudy": "Vers la page du projet",
     "mailSubject": "Mivora – proposer une activité",
     "aboutLink": "En savoir plus sur Mivora"
+  },
+  "getApp": {
+    "title": "Mivora est faite pour ton téléphone",
+    "step1": "Scanne le code QR avec l’appareil photo.",
+    "step2": "« Sur l’écran d’accueil » – c’est fait !",
+    "note": "Pas besoin de store.",
+    "footerTitle": "Appli",
+    "footerText": "Scanne pour avoir Mivora sur ton téléphone.",
+    "qrAlt": "Code QR vers l’appli Mivora",
+    "previewAlt": "Mivora sur un téléphone : accueil"
   }
 }

@@ -561,5 +561,15 @@
     "ctaCaseStudy": "Zur Projektseite",
     "mailSubject": "Mivora – Angebot vorschlagen",
     "aboutLink": "Mehr über Mivora"
+  },
+  "getApp": {
+    "title": "Mivora ist fürs Handy gemacht",
+    "step1": "QR-Code mit der Handykamera scannen.",
+    "step2": "„Zum Startbildschirm hinzufügen“ – fertig!",
+    "note": "Kein App-Store nötig.",
+    "footerTitle": "App",
+    "footerText": "Scannen und Mivora aufs Handy holen.",
+    "qrAlt": "QR-Code zur Mivora-App",
+    "previewAlt": "Mivora auf dem Handy: Startseite"
   }
 }

@@ -561,5 +561,15 @@
     "ctaCaseStudy": "Go to the project page",
     "mailSubject": "Mivora – suggest an activity",
     "aboutLink": "More about Mivora"
+  },
+  "getApp": {
+    "title": "Mivora is made for your phone",
+    "step1": "Scan the QR code with your phone camera.",
+    "step2": "“Add to Home Screen” – done!",
+    "note": "No app store needed.",
+    "footerTitle": "App",
+    "footerText": "Scan to get Mivora on your phone.",
+    "qrAlt": "QR code to the Mivora app",
+    "previewAlt": "Mivora on a phone: home screen"
   }
 }

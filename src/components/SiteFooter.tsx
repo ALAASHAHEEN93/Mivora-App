@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Logo } from "./Logo";
 import { StarFace } from "./illustrations/Mascot";
+import { GetTheApp } from "./GetTheApp";
 
 /**
  * Desktop footer: a little hill where the star mascot naps (snoring z's) and the party snail
@@ -41,7 +42,7 @@ export async function SiteFooter() {
       </div>
 
       <div className="bg-[var(--kw-footer)] pb-10">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-8 px-4 pt-2 md:grid-cols-[1.4fr_1fr_1fr] md:gap-10">
+        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-8 px-4 pt-2 md:grid-cols-[1.3fr_1fr_1fr_1.4fr] md:gap-10">
           <div className="col-span-2 flex flex-col gap-3 md:col-span-1">
             <Link href="/" className="w-fit rounded-xl">
               <Logo className="text-[2.4rem]" animate={false} />
@@ -84,6 +85,7 @@ export async function SiteFooter() {
               {t("footer.terms")}
             </Link>
           </nav>
+          <GetTheApp variant="footer" />
         </div>
 
         <div className="mx-auto mt-8 flex max-w-6xl flex-col gap-1 border-t border-white/15 px-4 pt-4 text-sm text-[#d9e3e8] md:flex-row md:justify-between">

@@ -16,6 +16,7 @@ import { Mascot } from "@/components/illustrations/Mascot";
 import { WeekStrip } from "@/components/WeekStrip";
 import { ForYou } from "@/components/ForYou";
 import { HeroSky } from "@/components/illustrations/HeroSky";
+import { GetTheApp } from "@/components/GetTheApp";
 import { SearchHintsInput } from "@/components/SearchHintsInput";
 import { Link } from "@/i18n/navigation";
 import { cookies } from "next/headers";
@@ -88,6 +89,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <div className="flex flex-col gap-10">
       <section id="mv-home-hero" aria-labelledby="hero" className="relative -mx-4 -mt-5 overflow-hidden rounded-b-[2.5rem] px-4 pb-32 pt-6 md:mx-0 md:mt-0 md:rounded-[2.5rem] md:px-10 md:pb-44 md:pt-10">
         <HeroSky />
+        {/* Desktop: invite visitors to put the app on their phone */}
+        <div className="absolute end-10 top-10 z-10 hidden lg:block">
+          <GetTheApp variant="hero" />
+        </div>
         <div className="relative">
           <div className="mv-pop-in flex items-center gap-3 pe-16">
             <span className="grid size-14 shrink-0 place-items-center rounded-full bg-surface shadow-md">

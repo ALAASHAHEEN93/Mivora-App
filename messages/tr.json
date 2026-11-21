@@ -561,5 +561,15 @@
     "ctaCaseStudy": "Proje sayfasına git",
     "mailSubject": "Mivora – etkinlik önerisi",
     "aboutLink": "Mivora hakkında daha fazlası"
+  },
+  "getApp": {
+    "title": "Mivora telefonun için yapıldı",
+    "step1": "QR kodunu telefon kamerasıyla tara.",
+    "step2": "“Ana Ekrana Ekle” – bu kadar!",
+    "note": "Uygulama mağazası gerekmez.",
+    "footerTitle": "Uygulama",
+    "footerText": "Tara ve Mivora’yı telefonuna al.",
+    "qrAlt": "Mivora uygulamasına QR kodu",
+    "previewAlt": "Telefonda Mivora: ana sayfa"
   }
 }
