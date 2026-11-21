@@ -204,7 +204,11 @@
     "imprint": "Künye (Impressum)",
     "privacy": "Gizlilik",
     "terms": "Koşullar",
-    "demoNote": "Yasal metinler lansmandan önce eklenecek ve hukuki olarak incelenecektir."
+    "demoNote": "Yasal metinler lansmandan önce eklenecek ve hukuki olarak incelenecektir.",
+    "legalTitle": "Yasal",
+    "contact": "İletişim",
+    "note": "Test aşamasındaki bağımsız bir proje – tüm etkinlikler örnek verilerdir. Köln Belediyesi ile bağlantılı değildir.",
+    "madeWith": "Aileler için ♥ ile yapıldı"
   },
   "calendar": {
     "title": "Takvim",

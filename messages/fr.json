@@ -204,7 +204,11 @@
     "imprint": "Mentions légales",
     "privacy": "Confidentialité",
     "terms": "CGU",
-    "demoNote": "Les textes juridiques seront ajoutés avant le lancement et vérifiés par un avocat."
+    "demoNote": "Les textes juridiques seront ajoutés avant le lancement et vérifiés par un avocat.",
+    "legalTitle": "Mentions légales",
+    "contact": "Contact",
+    "note": "Projet indépendant en phase de test – toutes les activités sont des données de démonstration. Sans lien avec la Ville de Cologne.",
+    "madeWith": "Fait avec ♥ pour les familles"
   },
   "calendar": {
     "title": "Calendrier",

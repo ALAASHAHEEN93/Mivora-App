@@ -7,6 +7,7 @@ import { Logo } from "@/components/Logo";
 import { CITY_COOKIE, cityName, findCity } from "@/domain/cities";
 import { AccountSync } from "@/components/AccountSync";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { SiteFooter } from "@/components/SiteFooter";
 import { getCurrentUser } from "@/server/auth/session";
 
 /** App shell: top bar with logo + chosen city, content, floating bottom tab bar. */
@@ -53,9 +54,10 @@ export default async function AppLayout({ children, params }: { children: React.
           </div>
         </div>
       </header>
-      <main id="main" className="mx-auto max-w-6xl px-4 pb-32 pt-5 md:pb-16">
+      <main id="main" className="mx-auto max-w-6xl px-4 pb-32 pt-5 md:pb-10">
         {children}
       </main>
+      <SiteFooter />
       <MainNav variant="bottom" />
       <AccountSync signedIn={Boolean(user)} />
     </>

@@ -204,7 +204,11 @@
     "imprint": "Legal notice",
     "privacy": "Privacy",
     "terms": "Terms",
-    "demoNote": "Legal texts will be added before launch and reviewed by a lawyer."
+    "demoNote": "Legal texts will be added before launch and reviewed by a lawyer.",
+    "legalTitle": "Legal",
+    "contact": "Contact",
+    "note": "An independent project in its test phase – all activities are demo data. Not affiliated with the City of Cologne.",
+    "madeWith": "Made with ♥ for families"
   },
   "calendar": {
     "title": "Calendar",

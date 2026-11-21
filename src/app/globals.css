@@ -37,6 +37,7 @@
   --kw-meadow-near: #9fd2c6;
   --kw-stream: #d6ecf0;
   --kw-line-art: #263847; /* birds, kite string */
+  --kw-footer: #263847;
 }
 
 /* Dark colours: used when the device is dark (unless the person picked "light" in the app),
@@ -70,6 +71,7 @@
     --kw-meadow-near: #2a5a56;
     --kw-stream: #33617a;
     --kw-line-art: #fff3ea;
+    --kw-footer: #0f1a21;
   }
 }
 :root[data-theme="dark"] {
@@ -100,6 +102,7 @@
   --kw-meadow-near: #2a5a56;
   --kw-stream: #33617a;
   --kw-line-art: #fff3ea;
+  --kw-footer: #0f1a21;
 }
 :root { color-scheme: light dark; }
 :root[data-theme="light"] { color-scheme: light; }

@@ -204,7 +204,11 @@
     "imprint": "Impressum",
     "privacy": "Datenschutz",
     "terms": "AGB",
-    "demoNote": "Rechtstexte folgen vor dem Start und werden rechtlich geprüft."
+    "demoNote": "Rechtstexte folgen vor dem Start und werden rechtlich geprüft.",
+    "legalTitle": "Rechtliches",
+    "contact": "Kontakt",
+    "note": "Unabhängiges Projekt in der Testphase – alle Angebote sind Beispieldaten. Nicht mit der Stadt Köln verbunden.",
+    "madeWith": "Mit ♥ für Familien gemacht"
   },
   "calendar": {
     "title": "Kalender",

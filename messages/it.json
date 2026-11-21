@@ -204,7 +204,11 @@
     "imprint": "Note legali",
     "privacy": "Privacy",
     "terms": "Condizioni",
-    "demoNote": "I testi legali saranno aggiunti prima del lancio e verificati da un avvocato."
+    "demoNote": "I testi legali saranno aggiunti prima del lancio e verificati da un avvocato.",
+    "legalTitle": "Note legali",
+    "contact": "Contatti",
+    "note": "Progetto indipendente in fase di test – tutte le attività sono dati di esempio. Non collegato alla città di Colonia.",
+    "madeWith": "Fatto con ♥ per le famiglie"
   },
   "calendar": {
     "title": "Calendario",

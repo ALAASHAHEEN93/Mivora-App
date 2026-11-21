@@ -204,7 +204,11 @@
     "imprint": "Nota prawna (Impressum)",
     "privacy": "Prywatność",
     "terms": "Regulamin",
-    "demoNote": "Teksty prawne zostaną dodane przed startem i sprawdzone przez prawnika."
+    "demoNote": "Teksty prawne zostaną dodane przed startem i sprawdzone przez prawnika.",
+    "legalTitle": "Informacje prawne",
+    "contact": "Kontakt",
+    "note": "Niezależny projekt w fazie testów – wszystkie zajęcia to dane przykładowe. Niezwiązany z miastem Kolonia.",
+    "madeWith": "Zrobione z ♥ dla rodzin"
   },
   "calendar": {
     "title": "Kalendarz",

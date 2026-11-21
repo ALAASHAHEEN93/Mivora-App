@@ -273,16 +273,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <Mascot className="size-10" mood="wow" />
         </span>
       </div>
-      <nav aria-label={t("home.moreTitle")} className="mv-reveal grid grid-cols-2 gap-3">
-        <Link href="/ueber" className="mv-press flex flex-col gap-2 rounded-[1.75rem] border-2 border-[#263847] bg-[#fbefc9] p-4 font-bold text-[#263847] shadow-[0_4px_0_#263847]">
-          <Mascot className="size-9" />
-          {t("home.aboutShort")}
-        </Link>
-        <Link href="/fuer-anbieter" className="mv-press flex flex-col gap-2 rounded-[1.75rem] border-2 border-[#263847] bg-[#ebe5f6] p-4 font-bold text-[#263847] shadow-[0_4px_0_#263847]">
-          <Icon name="home" className="size-9" />
-          {t("home.providersShort")}
-        </Link>
-      </nav>
     </div>
   );
 }

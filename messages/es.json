@@ -204,7 +204,11 @@
     "imprint": "Aviso legal",
     "privacy": "Privacidad",
     "terms": "Condiciones",
-    "demoNote": "Los textos legales se añadirán antes del lanzamiento y serán revisados por un abogado."
+    "demoNote": "Los textos legales se añadirán antes del lanzamiento y serán revisados por un abogado.",
+    "legalTitle": "Legal",
+    "contact": "Contacto",
+    "note": "Proyecto independiente en fase de prueba: todas las actividades son datos de ejemplo. Sin vínculo con la ciudad de Colonia.",
+    "madeWith": "Hecho con ♥ para las familias"
   },
   "calendar": {
     "title": "Calendario",
