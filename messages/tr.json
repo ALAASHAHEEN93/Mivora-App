@@ -19,7 +19,14 @@
     "skipToContent": "İçeriğe geç",
     "share": "Paylaş",
     "linkCopied": "Bağlantı kopyalandı!",
-    "shareText": "Bak, Mivora'da ne buldum:"
+    "shareText": "Bak, Mivora'da ne buldum:",
+    "demoBadge": "Demo",
+    "themeTitle": "Görünüm",
+    "themeSystem": "Otomatik",
+    "themeLight": "Açık",
+    "themeDark": "Koyu",
+    "themeHint": "“Otomatik”, cihazınızın ayarını izler.",
+    "themeDarkToggle": "Koyu mod"
   },
   "nav": {
     "mainNav": "Ana menü",
@@ -64,7 +71,10 @@
     "pickerOpen": "Göz at",
     "pickerSpinning": "Mivora seçiyor …",
     "pickerResult": "Buna ne dersin:",
-    "pickerEmpty": "Bugün başka etkinlik yok. Önümüzdeki günlere bak!"
+    "pickerEmpty": "Bugün başka etkinlik yok. Önümüzdeki günlere bak!",
+    "moreTitle": "Mivora hakkında",
+    "aboutShort": "Mivora hakkında",
+    "providersShort": "Sağlayıcılar için"
   },
   "date": {
     "today": "Bugün",
@@ -490,5 +500,55 @@
       "map": "“Yakınımda” için konumun cihazında kalır. Harita yalnızca onayından sonra yüklenir."
     },
     "notLegal": "Bu özet hukuki bir metin değildir ve gizlilik politikasının yerini tutmaz."
+  },
+  "about": {
+    "title": "Mivora hakkında",
+    "slogan": "Keşfet. Oyna. Büyü.",
+    "lead": "Mivora, Köln’deki ailelerin çocukları için etkinlik bulmasına ve planlamasına yardımcı olur – kendi dillerinde.",
+    "whatTitle": "Mivora nedir?",
+    "whatText": "Çocuklar için kurslar, atölyeler, tatil programları ve ücretsiz etkinlikler sunan bir uygulama. Ebeveynler yaşa, semte ve güne göre arar, etkinlikleri kaydeder ve her çocuk için ayrı bir takvimde planlar.",
+    "whyTitle": "Neden?",
+    "whyText": "Çocuk etkinlikleri birçok web sitesine dağılmış durumda ve çoğu yalnızca Almanca anlatılıyor. Mivora onları tek bir yerde toplar ve Köln’e yeni gelen aileler için de erişilebilir kılar.",
+    "principlesTitle": "Önem verdiklerimiz",
+    "p1": "Önce gizlilik: e-posta koduyla giriş, reklam yok, takip yok.",
+    "p2": "Çocuklar hakkında az veri: yalnızca takma ad, doğum yılı ve ilgi alanları – isteğe bağlı.",
+    "p3": "Etkinlikler yalnızca sağlayıcının onayıyla – başka sitelerden hiçbir şey kopyalanmaz.",
+    "p4": "Herkes için: 9 dil ve erişilebilir tasarım.",
+    "whoTitle": "Arkasında kim var?",
+    "whoText": "Mivora, Ala’a Shaheen tarafından geliştiriliyor (yazılım mühendisliği ve UX/UI tasarımı).",
+    "statusTitle": "Şu an neredeyiz",
+    "statusText": "Mivora test aşamasında. Uygulamadaki tüm etkinlikler örnek verilerdir. Mivora bağımsız bir projedir ve Köln Belediyesi ile bağlantılı değildir.",
+    "contactTitle": "İletişim",
+    "contactText": "Sorular, fikirler ya da çocuklar için bir etkinlik mi? Mesajınızı bekliyoruz.",
+    "contactMail": "E-posta gönder",
+    "contactCaseStudy": "Proje sayfasını gör",
+    "mailSubject": "Mivora – iletişim",
+    "providersLink": "Sağlayıcılar için: Etkinliğiniz uygulamaya nasıl eklenir"
+  },
+  "providersInfo": {
+    "title": "Sağlayıcılar için",
+    "lead": "Köln’de çocuklar için kurs, atölye, tatil programı ya da gezi mi sunuyorsunuz? Etkinliğiniz Mivora’ya şöyle eklenir.",
+    "benefitsTitle": "Size faydası",
+    "b1": "Aileler etkinliğinizi yaşa, semte ve güne göre bulur.",
+    "b2": "Uygulama 9 dilde kullanılabilir – Köln’e yeni gelen ailelere de ulaşırsınız.",
+    "b3": "Talepler doğrudan e-postanıza gelir ya da aileler kendi bağlantınızdan rezervasyon yapar.",
+    "b4": "Ebeveynler etkinliğinizi kaydedebilir, paylaşabilir ve takvimde planlayabilir.",
+    "stepsTitle": "Nasıl işler",
+    "s1Title": "Bize yazın",
+    "s1Text": "Kısa bir mesaj yeterli.",
+    "s2Title": "Bilgileri gönderin",
+    "s2Text": "Başlık, yaş grubu, yer, tarihler, ücret ve rezervasyon bağlantınız – haklarına sahip olduğunuz bir fotoğraf da olabilir.",
+    "s3Title": "Kontrol edip yayınlıyoruz",
+    "s3Text": "Etkinliğiniz ancak siz onay verdikten sonra görünür.",
+    "s4Title": "Güncel tutun",
+    "s4Text": "Her şeyin hâlâ doğru olup olmadığını düzenli olarak soruyoruz; değişiklikleri memnuniyetle yaparız.",
+    "promiseTitle": "Sözümüz",
+    "promiseText": "Başka sitelerden etkinlik kopyalamıyoruz. Neyin görüneceğine siz karar verirsiniz ve etkinliğinizi istediğiniz zaman değiştirebilir ya da kaldırtabilirsiniz.",
+    "testNote": "Mivora test aşamasında. Lansman sonrası koşullar henüz belli değil – bunları önceden sizinle konuşacağız.",
+    "ctaTitle": "İlgileniyor musunuz?",
+    "ctaMail": "Etkinlik önerin",
+    "ctaCaseStudy": "Proje sayfasına git",
+    "mailSubject": "Mivora – etkinlik önerisi",
+    "aboutLink": "Mivora hakkında daha fazlası"
   }
 }

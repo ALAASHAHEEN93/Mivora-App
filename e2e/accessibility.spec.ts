@@ -10,6 +10,9 @@ const PAGES = [
   ["calendar", "/de/meine-woche"],
   ["sign in", "/de/anmelden"],
   ["arabic home", "/ar"],
+  ["about", "/de/ueber"],
+  ["for providers", "/de/fuer-anbieter"],
+  ["arabic about", "/ar/ueber"],
 ] as const;
 
 for (const [name, path] of PAGES) {

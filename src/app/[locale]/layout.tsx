@@ -6,6 +6,8 @@ import { getMessages, getTranslations, setRequestLocale } from "next-intl/server
 import { pickNamespaces } from "@/i18n/client-namespaces";
 import { routing, rtlLocales, type Locale } from "@/i18n/routing";
 import { Splash } from "@/components/Splash";
+import { cookies } from "next/headers";
+import { THEME_COLOR, THEME_COOKIE, parseTheme } from "@/domain/theme";
 import "../globals.css";
 
 const nunito = Nunito({ subsets: ["latin", "latin-ext", "cyrillic"], variable: "--font-nunito", display: "swap" });
@@ -31,13 +33,19 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export const viewport: Viewport = {
-  viewportFit: "cover", // full-screen app layout; safe areas handled with env(safe-area-inset-*)
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fff3ea" },
-    { media: "(prefers-color-scheme: dark)", color: "#17232c" },
-  ],
-};
+export async function generateViewport(): Promise<Viewport> {
+  const theme = parseTheme((await cookies()).get(THEME_COOKIE)?.value);
+  return {
+    viewportFit: "cover", // full-screen app layout; safe areas handled with env(safe-area-inset-*)
+    themeColor:
+      theme === "system"
+        ? [
+            { media: "(prefers-color-scheme: light)", color: THEME_COLOR.light },
+            { media: "(prefers-color-scheme: dark)", color: THEME_COLOR.dark },
+          ]
+        : THEME_COLOR[theme],
+  };
+}
 
 export default async function LocaleLayout({
   children,
@@ -53,9 +61,11 @@ export default async function LocaleLayout({
   // Only the text groups interactive parts need go to the phone.
   const messages = (await getMessages()) as Record<string, unknown>;
   const dir = rtlLocales.includes(locale as Locale) ? "rtl" : "ltr";
+  // A light/dark choice made in the app is applied on the server, so the page never flickers.
+  const theme = parseTheme((await cookies()).get(THEME_COOKIE)?.value);
 
   return (
-    <html lang={locale} dir={dir} className={`${nunito.variable} ${fredoka.variable} ${arabic.variable}`}>
+    <html lang={locale} dir={dir} data-theme={theme === "system" ? undefined : theme} className={`${nunito.variable} ${fredoka.variable} ${arabic.variable}`}>
       {/* suppressHydrationWarning: browser extensions (e.g. ColorZilla) add attributes to <body>; only affects this element */}
       <body className="min-h-dvh bg-bg font-sans text-ink" suppressHydrationWarning>
         <NextIntlClientProvider messages={pickNamespaces(messages)}>

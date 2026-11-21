@@ -96,7 +96,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <h1 id="hero" className="font-display text-2xl font-bold leading-tight md:text-3xl">
                 {greeting}
               </h1>
-              <p className="text-sm font-semibold text-[#3e5260] dark:text-muted">{todayLabel}</p>
+              <p className="text-sm font-semibold text-muted">{todayLabel}</p>
             </div>
           </div>
 
@@ -143,11 +143,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       {rain && (
-        <section aria-labelledby="rain-h" className="mv-reveal relative overflow-hidden rounded-[2rem] bg-[#dcefea] p-5 text-[#263847]">
-          <span aria-hidden="true" className="mv-rain absolute inset-0" />
-          <div className="relative mb-4 flex items-center gap-3">
-            <span aria-hidden="true" className="mv-float grid size-12 shrink-0 place-items-center rounded-full bg-white shadow-sm">
-              <Icon name="umbrella" className="size-7 text-[#a8432a]" />
+        <section aria-labelledby="rain-h" className="mv-reveal">
+          <div className="mb-4 flex items-center gap-3">
+            <span aria-hidden="true" className="mv-float grid size-12 shrink-0 place-items-center rounded-full bg-surface shadow-sm">
+              <Icon name="umbrella" className="size-7 text-accent" />
             </span>
             <div>
               <h2 id="rain-h" className="font-display text-xl font-bold leading-tight">
@@ -161,10 +160,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </Link>
             </div>
           </div>
-          <div className="relative">
-            <Rail items={indoor} empty={t("home.rainEmpty")} />
-          </div>
-          <p className="relative text-xs text-[#3e5260]">{t("home.weatherSource")}</p>
+          <Rail items={indoor} empty={t("home.rainEmpty")} />
+          <p className="text-xs text-muted">{t("home.weatherSource")}</p>
         </section>
       )}
 
@@ -273,6 +270,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <Mascot className="size-10" mood="wow" />
         </span>
       </div>
+      <nav aria-label={t("home.moreTitle")} className="mv-reveal grid grid-cols-2 gap-3">
+        <Link href="/ueber" className="mv-press flex flex-col gap-2 rounded-[1.75rem] border-2 border-[#263847] bg-[#fbefc9] p-4 font-bold text-[#263847] shadow-[0_4px_0_#263847]">
+          <Mascot className="size-9" />
+          {t("home.aboutShort")}
+        </Link>
+        <Link href="/fuer-anbieter" className="mv-press flex flex-col gap-2 rounded-[1.75rem] border-2 border-[#263847] bg-[#ebe5f6] p-4 font-bold text-[#263847] shadow-[0_4px_0_#263847]">
+          <Icon name="home" className="size-9" />
+          {t("home.providersShort")}
+        </Link>
+      </nav>
     </div>
   );
 }

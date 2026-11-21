@@ -12,6 +12,8 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // `pnpm dev:present`: hide the Next.js dev badge while screen-sharing a demo.
+  ...(process.env.PRESENTATION_MODE === "1" ? { devIndicators: false as const } : {}),
   // Self-contained server bundle for the Docker image.
   output: "standalone",
   // Provider photo uploads go through a server action (5 MB photo + form fields).

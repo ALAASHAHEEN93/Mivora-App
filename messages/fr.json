@@ -19,7 +19,14 @@
     "skipToContent": "Aller au contenu",
     "share": "Partager",
     "linkCopied": "Lien copié !",
-    "shareText": "Regarde ce que j'ai trouvé sur Mivora :"
+    "shareText": "Regarde ce que j'ai trouvé sur Mivora :",
+    "demoBadge": "Démo",
+    "themeTitle": "Apparence",
+    "themeSystem": "Automatique",
+    "themeLight": "Clair",
+    "themeDark": "Sombre",
+    "themeHint": "« Automatique » suit le réglage de votre appareil.",
+    "themeDarkToggle": "Mode sombre"
   },
   "nav": {
     "mainNav": "Navigation principale",
@@ -64,7 +71,10 @@
     "pickerOpen": "Voir",
     "pickerSpinning": "Mivora choisit …",
     "pickerResult": "Et si on faisait :",
-    "pickerEmpty": "Plus rien aujourd'hui. Regarde les prochains jours !"
+    "pickerEmpty": "Plus rien aujourd'hui. Regarde les prochains jours !",
+    "moreTitle": "En savoir plus",
+    "aboutShort": "À propos",
+    "providersShort": "Organisateurs"
   },
   "date": {
     "today": "Aujourd'hui",
@@ -490,5 +500,55 @@
       "map": "Ta position pour « Près de moi » reste sur ton appareil. La carte ne se charge qu'après ton accord."
     },
     "notLegal": "Cette synthèse n'est pas un texte juridique et ne remplace pas la politique de confidentialité."
+  },
+  "about": {
+    "title": "À propos de Mivora",
+    "slogan": "Découvrir. Jouer. Grandir.",
+    "lead": "Mivora aide les familles de Cologne à trouver et planifier des activités pour leurs enfants – dans leur langue.",
+    "whatTitle": "Qu’est-ce que Mivora ?",
+    "whatText": "Une application de cours, d’ateliers, de stages de vacances et d’activités gratuites pour enfants. Les parents cherchent par âge, quartier et jour, enregistrent des activités et les planifient dans un calendrier – pour chaque enfant.",
+    "whyTitle": "Pourquoi ?",
+    "whyText": "Les activités pour enfants sont dispersées sur de nombreux sites et souvent décrites uniquement en allemand. Mivora les réunit en un seul endroit et les rend accessibles aussi aux familles nouvellement arrivées à Cologne.",
+    "principlesTitle": "Ce qui compte pour nous",
+    "p1": "La vie privée d’abord : connexion par code e-mail, sans publicité ni pistage.",
+    "p2": "Peu de données sur les enfants : un surnom, l’année de naissance et les centres d’intérêt – facultatif.",
+    "p3": "Des activités uniquement avec l’accord des organisateurs – rien n’est copié d’autres sites.",
+    "p4": "Pour tous : 9 langues et une conception accessible.",
+    "whoTitle": "Qui est derrière ?",
+    "whoText": "Mivora est développé par Ala’a Shaheen (génie logiciel et design UX/UI).",
+    "statusTitle": "Où nous en sommes",
+    "statusText": "Mivora est en phase de test. Toutes les activités de l’application sont des données de démonstration. Mivora est un projet indépendant, sans lien avec la Ville de Cologne.",
+    "contactTitle": "Contact",
+    "contactText": "Des questions, des idées ou une activité pour enfants ? Écrivez-nous.",
+    "contactMail": "Envoyer un e-mail",
+    "contactCaseStudy": "Voir la page du projet",
+    "mailSubject": "Mivora – contact",
+    "providersLink": "Pour les organisateurs : comment ajouter votre activité"
+  },
+  "providersInfo": {
+    "title": "Pour les organisateurs",
+    "lead": "Vous proposez des cours, ateliers, stages de vacances ou sorties pour enfants à Cologne ? Voici comment votre activité arrive sur Mivora.",
+    "benefitsTitle": "Ce que vous y gagnez",
+    "b1": "Les familles trouvent votre activité par âge, quartier et jour.",
+    "b2": "L’application fonctionne en 9 langues : vous touchez aussi les familles nouvellement arrivées à Cologne.",
+    "b3": "Les demandes vous arrivent directement par e-mail, ou les familles réservent via votre propre lien.",
+    "b4": "Les parents peuvent enregistrer votre activité, la partager et la planifier dans leur calendrier.",
+    "stepsTitle": "Comment ça marche",
+    "s1Title": "Écrivez-nous",
+    "s1Text": "Un court message suffit.",
+    "s2Title": "Envoyez les informations",
+    "s2Text": "Titre, tranche d’âge, lieu, dates, prix et lien de réservation – une photo dont vous détenez les droits est la bienvenue.",
+    "s3Title": "Nous vérifions et publions",
+    "s3Text": "Votre activité n’apparaît qu’après votre accord.",
+    "s4Title": "Rester à jour",
+    "s4Text": "Nous vous demandons régulièrement si tout est encore exact, et faisons volontiers les modifications.",
+    "promiseTitle": "Notre engagement",
+    "promiseText": "Nous ne copions jamais d’activités d’autres sites. Vous décidez de ce qui apparaît et pouvez faire modifier ou retirer votre activité à tout moment.",
+    "testNote": "Mivora est en phase de test. Les conditions après le lancement ne sont pas encore fixées – nous en parlerons d’abord avec vous.",
+    "ctaTitle": "Intéressé·e ?",
+    "ctaMail": "Proposer une activité",
+    "ctaCaseStudy": "Vers la page du projet",
+    "mailSubject": "Mivora – proposer une activité",
+    "aboutLink": "En savoir plus sur Mivora"
   }
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="363" height="160" viewBox="0 0 363 160">
+  <title>Mivora logo (text in Fredoka Bold – convert to outlines in Illustrator)</title>
+  <g id="outline">
+    <text x="20" y="106.8" font-family="Fredoka, sans-serif" font-weight="700" font-size="100" fill="#263847" stroke="#263847" stroke-width="13" stroke-linejoin="round">M</text>
+    <text x="104.9" y="106.8" font-family="Fredoka, sans-serif" font-weight="700" font-size="100" fill="#263847" stroke="#263847" stroke-width="13" stroke-linejoin="round">ı</text>
+    <text x="132.7" y="106.8" font-family="Fredoka, sans-serif" font-weight="700" font-size="100" fill="#263847" stroke="#263847" stroke-width="13" stroke-linejoin="round">v</text>
+    <text x="188.4" y="106.8" font-family="Fredoka, sans-serif" font-weight="700" font-size="100" fill="#263847" stroke="#263847" stroke-width="13" stroke-linejoin="round">ora</text>
+  </g>
+  <g id="letters">
+    <text x="20" y="106.8" font-family="Fredoka, sans-serif" font-weight="700" font-size="100" fill="#f2a68a">M</text>
+    <text x="104.9" y="106.8" font-family="Fredoka, sans-serif" font-weight="700" font-size="100" fill="#f3d077">ı</text>
+    <text x="132.7" y="106.8" font-family="Fredoka, sans-serif" font-weight="700" font-size="100" fill="#f3d077">v</text>
+    <text x="188.4" y="106.8" font-family="Fredoka, sans-serif" font-weight="700" font-size="100" fill="#f2a68a">ora</text>
+  </g>
+  <g id="star">
+    <path transform="translate(117.2 42.9) scale(1.75)" d="M0 -10 L2.9 -3.2 L10 -3.1 L4.4 1.5 L6.4 9 L0 4.6 L-6.4 9 L-4.4 1.5 L-10 -3.1 L-2.9 -3.2 Z" fill="#f3d077" stroke="#263847" stroke-width="2.6" stroke-linejoin="round"/>
+  </g>
+  <g id="swoosh">
+    <path d="M32.9 134.1 Q181.5 148.1 330.1 128.1" fill="none" stroke="#f2a68a" stroke-width="5.6" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -1,5 +1,8 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { ThemeChoice } from "@/components/ThemeChoice";
+import { cookies } from "next/headers";
+import { THEME_COOKIE, parseTheme } from "@/domain/theme";
 import { Icon } from "@/components/Icon";
 import { Mascot } from "@/components/illustrations/Mascot";
 import { Link } from "@/i18n/navigation";
@@ -196,6 +199,10 @@ export default async function ProfilePage({
       )}
 
       <section className={card}>
+        <ThemeChoice initial={parseTheme((await cookies()).get(THEME_COOKIE)?.value)} />
+      </section>
+
+      <section className={card}>
         <h2 className="font-display text-xl font-bold">{t("profile.languageLabel")}</h2>
         <div>
           <LanguageSwitcher />
@@ -245,6 +252,16 @@ export default async function ProfilePage({
           <Icon name="forward" className="ms-auto size-5 shrink-0" />
         </Link>
       )}
+
+      <section className="flex flex-col gap-1 rounded-2xl bg-surface p-4 text-sm text-muted">
+        <h2 className="mb-1 font-bold text-ink">{t("home.moreTitle")}</h2>
+        <Link href="/ueber" className="min-h-10 py-2 font-bold text-ink underline underline-offset-4">
+          {t("home.aboutShort")}
+        </Link>
+        <Link href="/fuer-anbieter" className="min-h-10 py-2 font-bold text-ink underline underline-offset-4">
+          {t("home.providersShort")}
+        </Link>
+      </section>
 
       <section className="flex flex-col gap-1 rounded-2xl bg-surface p-4 text-sm text-muted">
         <h2 className="mb-1 font-bold text-ink">{t("profile.legalTitle")}</h2>

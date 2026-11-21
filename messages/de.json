@@ -19,7 +19,14 @@
     "skipToContent": "Zum Inhalt springen",
     "share": "Teilen",
     "linkCopied": "Link kopiert!",
-    "shareText": "Schau mal, das habe ich auf Mivora gefunden:"
+    "shareText": "Schau mal, das habe ich auf Mivora gefunden:",
+    "demoBadge": "Demo",
+    "themeTitle": "Darstellung",
+    "themeSystem": "Automatisch",
+    "themeLight": "Hell",
+    "themeDark": "Dunkel",
+    "themeHint": "„Automatisch“ folgt der Einstellung deines Geräts.",
+    "themeDarkToggle": "Dunkler Modus"
   },
   "nav": {
     "mainNav": "Hauptnavigation",
@@ -64,7 +71,10 @@
     "pickerOpen": "Ansehen",
     "pickerSpinning": "Mivora sucht etwas aus …",
     "pickerResult": "Wie wäre es mit:",
-    "pickerEmpty": "Heute ist leider nichts mehr los. Schau doch in die nächsten Tage!"
+    "pickerEmpty": "Heute ist leider nichts mehr los. Schau doch in die nächsten Tage!",
+    "moreTitle": "Mehr über Mivora",
+    "aboutShort": "Über Mivora",
+    "providersShort": "Für Anbieter"
   },
   "date": {
     "today": "Heute",
@@ -490,5 +500,55 @@
       "map": "Dein Standort für „In meiner Nähe“ bleibt auf deinem Gerät. Die Karte lädt erst nach deiner Zustimmung."
     },
     "notLegal": "Diese Übersicht ist kein Rechtstext und ersetzt die Datenschutzerklärung nicht."
+  },
+  "about": {
+    "title": "Über Mivora",
+    "slogan": "Entdecken. Spielen. Wachsen.",
+    "lead": "Mivora hilft Familien in Köln, Aktivitäten für Kinder zu finden und zu planen – in ihrer Sprache.",
+    "whatTitle": "Was ist Mivora?",
+    "whatText": "Eine App für Kurse, Workshops, Ferienangebote und kostenlose Aktivitäten für Kinder. Eltern suchen nach Alter, Stadtteil und Tag, merken sich Angebote und planen sie im Kalender – für jedes Kind einzeln.",
+    "whyTitle": "Warum?",
+    "whyText": "Angebote für Kinder sind über viele Websites verteilt und meist nur auf Deutsch beschrieben. Mivora bringt sie an einen Ort und macht sie auch für Familien zugänglich, die neu in Köln sind.",
+    "principlesTitle": "Worauf wir achten",
+    "p1": "Datenschutz zuerst: Anmeldung per E-Mail-Code, keine Werbung, kein Tracking.",
+    "p2": "Wenig Daten über Kinder: nur Spitzname, Geburtsjahr und Interessen – freiwillig.",
+    "p3": "Angebote nur mit Zustimmung der Anbieter – nichts wird von anderen Websites kopiert.",
+    "p4": "Für alle: 9 Sprachen und eine barrierearme Gestaltung.",
+    "whoTitle": "Wer steckt dahinter?",
+    "whoText": "Mivora wird von Ala’a Shaheen entwickelt (Software Engineering und UX/UI Design).",
+    "statusTitle": "Wo wir stehen",
+    "statusText": "Mivora ist in der Testphase. Alle Angebote in der App sind Beispieldaten. Mivora ist ein unabhängiges Projekt und nicht mit der Stadt Köln verbunden.",
+    "contactTitle": "Kontakt",
+    "contactText": "Fragen, Ideen oder ein Angebot für Kinder? Wir freuen uns über eine Nachricht.",
+    "contactMail": "E-Mail schreiben",
+    "contactCaseStudy": "Projektseite ansehen",
+    "mailSubject": "Mivora – Kontakt",
+    "providersLink": "Für Anbieter: So kommt Ihr Angebot in die App"
+  },
+  "providersInfo": {
+    "title": "Für Anbieter",
+    "lead": "Sie bieten Kurse, Workshops, Ferienprogramme oder Ausflüge für Kinder in Köln an? So kommt Ihr Angebot zu Mivora.",
+    "benefitsTitle": "Was Sie davon haben",
+    "b1": "Familien finden Ihr Angebot nach Alter, Stadtteil und Tag.",
+    "b2": "Die App ist in 9 Sprachen nutzbar – so erreichen Sie auch neu zugezogene Familien.",
+    "b3": "Anfragen kommen direkt per E-Mail zu Ihnen, oder Familien buchen über Ihren eigenen Link.",
+    "b4": "Eltern können Ihr Angebot merken, teilen und im Kalender planen.",
+    "stepsTitle": "So funktioniert es",
+    "s1Title": "Schreiben Sie uns",
+    "s1Text": "Eine kurze Nachricht genügt.",
+    "s2Title": "Angaben schicken",
+    "s2Text": "Titel, Altersgruppe, Ort, Termine, Preis und Ihr Buchungslink – gern auch ein Foto, an dem Sie die Rechte haben.",
+    "s3Title": "Wir prüfen und veröffentlichen",
+    "s3Text": "Ihr Angebot erscheint erst, wenn Sie zugestimmt haben.",
+    "s4Title": "Aktuell halten",
+    "s4Text": "Wir fragen regelmäßig nach, ob alles noch stimmt. Änderungen übernehmen wir gern.",
+    "promiseTitle": "Unser Versprechen",
+    "promiseText": "Wir kopieren keine Angebote von anderen Websites. Sie entscheiden, was erscheint, und können Ihr Angebot jederzeit ändern oder entfernen lassen.",
+    "testNote": "Mivora ist in der Testphase. Bedingungen für die Zeit nach dem Start stehen noch nicht fest – darüber sprechen wir vorher mit Ihnen.",
+    "ctaTitle": "Interesse?",
+    "ctaMail": "Angebot vorschlagen",
+    "ctaCaseStudy": "Zur Projektseite",
+    "mailSubject": "Mivora – Angebot vorschlagen",
+    "aboutLink": "Mehr über Mivora"
   }
 }

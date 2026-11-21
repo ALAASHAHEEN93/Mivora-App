@@ -36,10 +36,13 @@
   --kw-meadow-far: #b9dfd5;
   --kw-meadow-near: #9fd2c6;
   --kw-stream: #d6ecf0;
+  --kw-line-art: #263847; /* birds, kite string */
 }
 
+/* Dark colours: used when the device is dark (unless the person picked "light" in the app),
+   or always when they picked "dark". The two blocks must stay identical (checked in contrast.test.ts). */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --kw-bg: #17232c;
     --kw-surface: #203240;
     --kw-ink: #fff3ea;
@@ -66,8 +69,41 @@
     --kw-meadow-far: #22494a;
     --kw-meadow-near: #2a5a56;
     --kw-stream: #33617a;
+    --kw-line-art: #fff3ea;
   }
 }
+:root[data-theme="dark"] {
+  --kw-bg: #17232c;
+  --kw-surface: #203240;
+  --kw-ink: #fff3ea;
+  --kw-muted: #c9c3b4;
+  --kw-line: #34495a;
+  --kw-hero: #203240;
+
+  --kw-primary: #f2a68a;
+  --kw-on-primary: #263847;
+  --kw-accent: #f6b9a3;
+  --kw-focus: #f3d077;
+
+  --kw-coral-100: #3a2a26;
+  --kw-sun-100: #3a3418;
+  --kw-teal-100: #24343f;
+  --kw-teal-700: #f3d077;
+  --kw-lav-100: #24343f;
+
+  --kw-sky: #1c3440;
+  --kw-cloud: rgb(255 255 255 / 0.09);
+  --kw-hill-1: #203240;
+  --kw-hill-2: #24394a;
+  --kw-sky-low: #1f3a44;
+  --kw-meadow-far: #22494a;
+  --kw-meadow-near: #2a5a56;
+  --kw-stream: #33617a;
+  --kw-line-art: #fff3ea;
+}
+:root { color-scheme: light dark; }
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
 
 @theme inline {
   --color-bg: var(--kw-bg);
@@ -312,16 +348,10 @@ body {
   .mv-hello { transform-origin: 50% 80%; animation: mv-wiggle 0.6s 0.5s ease-in-out 2; }
 }
 
-/* Picker star spins while choosing; gentle rain lines on the rainy-day card */
+/* Picker star spins while choosing */
 @keyframes mv-spin { to { transform: rotate(360deg); } }
-@keyframes mv-rain-fall { from { background-position: 0 0; } to { background-position: -40px 120px; } }
-.mv-rain {
-  background-image: repeating-linear-gradient(105deg, transparent 0 18px, rgb(61 68 102 / 0.08) 18px 20px);
-  background-size: 40px 120px;
-}
 @media (prefers-reduced-motion: no-preference) {
   .mv-spin { animation: mv-spin 0.6s linear infinite; }
-  .mv-rain { animation: mv-rain-fall 1.4s linear infinite; }
 }
 
 /* Meadow soap bubbles drift up and wobble */
@@ -343,4 +373,42 @@ body {
   --kw-meadow-near: #9fd2c6;
   --kw-stream: #d6ecf0;
   --kw-bg: #fff7f1;
+  --kw-line-art: #263847;
+}
+
+/* Arabic letters join and have fine details: the sticker outline makes them unreadable, so use solid deep coral (4.7:1 on the light sky). */
+:lang(ar) :not(.mv-logo) > .mv-sticker { -webkit-text-stroke: 0; letter-spacing: 0; text-shadow: none; font-weight: 700; color: #a8432a !important; }
+
+/* Meadow life: the kite sways, the swing swings, the birds flap */
+@keyframes mv-kite { from { transform: rotate(-7deg); } to { transform: rotate(6deg) translateY(-3px); } }
+@keyframes mv-swing { from { transform: rotate(-16deg); } to { transform: rotate(16deg); } }
+@keyframes mv-flap { from { transform: scaleY(1); } to { transform: scaleY(0.35); } }
+@media (prefers-reduced-motion: no-preference) {
+  .mv-kite { transform-box: fill-box; transform-origin: 50% 100%; animation: mv-kite 3.6s ease-in-out infinite alternate; }
+  .mv-swing { transform-box: fill-box; transform-origin: 50% 0; animation: mv-swing 2.2s ease-in-out infinite alternate; }
+  .mv-bird { transform-box: fill-box; transform-origin: center; animation: mv-flap 0.5s ease-in-out infinite alternate; animation-delay: calc(var(--i, 0) * 0.17s); }
+}
+
+/* Butterflies flutter and hover, ducks bob on the stream */
+@keyframes mv-flutter { from { transform: scaleX(1); } to { transform: scaleX(0.3); } }
+@keyframes mv-hover { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(3px, -4px); } }
+@keyframes mv-duck { from { transform: translateY(0) rotate(-3deg); } to { transform: translateY(0.8px) rotate(3deg); } }
+@media (prefers-reduced-motion: no-preference) {
+  .mv-flutter { transform-box: fill-box; transform-origin: center; animation: mv-flutter 0.35s ease-in-out infinite alternate; }
+  .mv-hover { animation: mv-hover 3.2s ease-in-out infinite; animation-delay: calc(var(--i, 0) * -1.3s); }
+  .mv-duck { transform-box: fill-box; transform-origin: center; animation: mv-duck 1.6s ease-in-out infinite alternate; animation-delay: calc(var(--i, 0) * -0.8s); }
+}
+
+/* Funny bits: snoring z's, the balloon passenger wiggles, the frog hops, the snail crawls, the worm peeks */
+@keyframes mv-zzz { 0% { opacity: 0; transform: translate(0, 4px); } 30% { opacity: 1; } 100% { opacity: 0; transform: translate(4px, -6px); } }
+@keyframes mv-passenger { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg); } }
+@keyframes mv-frog-hop { 0%, 70%, 100% { transform: translateY(0); } 80% { transform: translateY(-7px); } 90% { transform: translateY(-2px); } }
+@keyframes mv-crawl { from { transform: translateX(0); } to { transform: translateX(18px); } }
+@keyframes mv-peek { 0%, 35%, 100% { transform: translateY(5px); } 50%, 85% { transform: translateY(0); } }
+@media (prefers-reduced-motion: no-preference) {
+  .mv-zzz { animation: mv-zzz 2.4s ease-out infinite both; animation-delay: calc(var(--i, 0) * 0.8s); }
+  .mv-passenger { transform-box: fill-box; transform-origin: 50% 90%; animation: mv-passenger 2.6s ease-in-out infinite; }
+  .mv-frog { transform-box: fill-box; transform-origin: 50% 100%; animation: mv-frog-hop 3.2s ease-in-out infinite; }
+  .mv-snail { animation: mv-crawl 16s ease-in-out infinite alternate; }
+  .mv-worm { transform-box: fill-box; animation: mv-peek 4.5s ease-in-out infinite; }
 }

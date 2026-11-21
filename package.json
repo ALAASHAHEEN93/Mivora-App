@@ -21,6 +21,7 @@
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
     "dev:preview": "NEXT_DIST_DIR=.next-preview next dev --turbopack",
+    "dev:present": "PRESENTATION_MODE=1 next dev --turbopack",
     "jobs:daily": "tsx scripts/daily-jobs.ts",
     "test:e2e": "playwright test"
   },

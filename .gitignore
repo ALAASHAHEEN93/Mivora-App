@@ -15,3 +15,6 @@ storage/
 .next-e2e/
 test-results/
 playwright-report/
+
+# Pitch documents for meetings (personal, not part of the app)
+pitch/

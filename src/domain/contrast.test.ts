@@ -17,7 +17,8 @@ function tokens(block: string): Record<string, string> {
   return Object.fromEntries([...block.matchAll(/--kw-([\w-]+):\s*(#[0-9a-f]{6})/gi)].map((m) => [m[1]!, m[2]!]));
 }
 const light = tokens(css.split("@media (prefers-color-scheme: dark)")[0]!);
-const dark = { ...light, ...tokens(css.split("@media (prefers-color-scheme: dark)")[1]!.split("@theme")[0]!) };
+const darkArea = css.split("@media (prefers-color-scheme: dark)")[1]!.split("@theme")[0]!;
+const dark = { ...light, ...tokens(darkArea) };
 
 // [foreground, background] pairs actually used for text in the UI.
 const PAIRS: [string, string][] = [
@@ -36,6 +37,14 @@ const PAIRS: [string, string][] = [
   ["muted", "coral-100"],
   ["teal-700", "surface"],
 ];
+
+describe("dark mode switch", () => {
+  it("the device-dark and chosen-dark colour blocks are identical", () => {
+    const [deviceDark, chosenDark] = darkArea.split(':root[data-theme="dark"]');
+    expect(Object.keys(tokens(deviceDark!)).length).toBeGreaterThan(10);
+    expect(tokens(chosenDark!)).toEqual(tokens(deviceDark!));
+  });
+});
 
 describe("colour contrast (WCAG AA, 4.5:1 for body text)", () => {
   for (const [name, theme] of [["light", light], ["dark", dark]] as const) {

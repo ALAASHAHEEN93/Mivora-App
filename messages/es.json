@@ -19,7 +19,14 @@
     "skipToContent": "Ir al contenido",
     "share": "Compartir",
     "linkCopied": "¡Enlace copiado!",
-    "shareText": "Mira lo que encontré en Mivora:"
+    "shareText": "Mira lo que encontré en Mivora:",
+    "demoBadge": "Demo",
+    "themeTitle": "Apariencia",
+    "themeSystem": "Automático",
+    "themeLight": "Claro",
+    "themeDark": "Oscuro",
+    "themeHint": "«Automático» sigue el ajuste de tu dispositivo.",
+    "themeDarkToggle": "Modo oscuro"
   },
   "nav": {
     "mainNav": "Navegación principal",
@@ -64,7 +71,10 @@
     "pickerOpen": "Ver",
     "pickerSpinning": "Mivora está eligiendo …",
     "pickerResult": "¿Qué tal esto?:",
-    "pickerEmpty": "Hoy ya no hay nada más. ¡Mira los próximos días!"
+    "pickerEmpty": "Hoy ya no hay nada más. ¡Mira los próximos días!",
+    "moreTitle": "Más sobre Mivora",
+    "aboutShort": "Sobre Mivora",
+    "providersShort": "Para organizadores"
   },
   "date": {
     "today": "Hoy",
@@ -490,5 +500,55 @@
       "map": "Tu ubicación para «Cerca de mí» se queda en tu dispositivo. El mapa solo se carga tras tu permiso."
     },
     "notLegal": "Este resumen no es un texto legal y no sustituye la política de privacidad."
+  },
+  "about": {
+    "title": "Sobre Mivora",
+    "slogan": "Descubre. Juega. Crece.",
+    "lead": "Mivora ayuda a las familias de Colonia a encontrar y planificar actividades para sus hijos, en su propio idioma.",
+    "whatTitle": "¿Qué es Mivora?",
+    "whatText": "Una app con cursos, talleres, campamentos de vacaciones y actividades gratuitas para niños. Las familias buscan por edad, barrio y día, guardan actividades y las planifican en un calendario, para cada niño por separado.",
+    "whyTitle": "¿Por qué?",
+    "whyText": "Las actividades infantiles están repartidas en muchas webs y casi siempre solo en alemán. Mivora las reúne en un solo lugar y las acerca también a las familias recién llegadas a Colonia.",
+    "principlesTitle": "Lo que nos importa",
+    "p1": "Privacidad ante todo: acceso con un código por e-mail, sin publicidad ni rastreo.",
+    "p2": "Pocos datos sobre los niños: solo un apodo, el año de nacimiento y los intereses, de forma opcional.",
+    "p3": "Actividades solo con el consentimiento de los organizadores: no copiamos nada de otras webs.",
+    "p4": "Para todos: 9 idiomas y un diseño accesible.",
+    "whoTitle": "¿Quién está detrás?",
+    "whoText": "Mivora lo desarrolla Ala’a Shaheen (ingeniería de software y diseño UX/UI).",
+    "statusTitle": "Dónde estamos",
+    "statusText": "Mivora está en fase de prueba. Todas las actividades de la app son datos de ejemplo. Mivora es un proyecto independiente y no está vinculado a la ciudad de Colonia.",
+    "contactTitle": "Contacto",
+    "contactText": "¿Preguntas, ideas o una actividad para niños? Nos encantará leerte.",
+    "contactMail": "Enviar un e-mail",
+    "contactCaseStudy": "Ver la página del proyecto",
+    "mailSubject": "Mivora – contacto",
+    "providersLink": "Para organizadores: cómo llega tu actividad a la app"
+  },
+  "providersInfo": {
+    "title": "Para organizadores",
+    "lead": "¿Ofreces cursos, talleres, campamentos o excursiones para niños en Colonia? Así llega tu actividad a Mivora.",
+    "benefitsTitle": "Qué ganas",
+    "b1": "Las familias encuentran tu actividad por edad, barrio y día.",
+    "b2": "La app funciona en 9 idiomas: llegas también a familias recién llegadas a Colonia.",
+    "b3": "Las solicitudes te llegan directamente por e-mail, o las familias reservan con tu propio enlace.",
+    "b4": "Las familias pueden guardar tu actividad, compartirla y planificarla en su calendario.",
+    "stepsTitle": "Cómo funciona",
+    "s1Title": "Escríbenos",
+    "s1Text": "Basta con un mensaje corto.",
+    "s2Title": "Envía los datos",
+    "s2Text": "Título, edades, lugar, fechas, precio y tu enlace de reserva; también una foto de la que tengas los derechos.",
+    "s3Title": "Revisamos y publicamos",
+    "s3Text": "Tu actividad solo aparece cuando la has aprobado.",
+    "s4Title": "Siempre al día",
+    "s4Text": "Te preguntamos con regularidad si todo sigue igual y hacemos los cambios encantados.",
+    "promiseTitle": "Nuestro compromiso",
+    "promiseText": "Nunca copiamos actividades de otras webs. Tú decides qué aparece y puedes pedir cambios o retirarla cuando quieras.",
+    "testNote": "Mivora está en fase de prueba. Las condiciones tras el lanzamiento aún no están decididas; antes las hablaremos contigo.",
+    "ctaTitle": "¿Te interesa?",
+    "ctaMail": "Proponer una actividad",
+    "ctaCaseStudy": "Ir a la página del proyecto",
+    "mailSubject": "Mivora – proponer una actividad",
+    "aboutLink": "Más sobre Mivora"
   }
 }
