@@ -46,7 +46,7 @@ DATABASE_URL=postgresql://mivora:mivora_local_only@127.0.0.1:5432/mivora_test pn
 TEST_DATABASE_URL=postgresql://mivora:mivora_local_only@127.0.0.1:5432/mivora_test pnpm test
 ```
 
-**Provider listings:** `/de/anbieten` lets a signed-in provider submit a listing; it stays hidden until someone listed in `ADMIN_EMAILS` approves it at `/de/admin`. Every decision is written to the `AuditLog` table.
+**Listings:** admins (emails in `ADMIN_EMAILS`) create, edit, approve and decline listings at `/de/admin`. Every decision is written to the `AuditLog` table. (The provider self-submission page `/de/anbieten` was removed on 2026-11-18; see [docs/status.md](docs/status.md).)
 
 ## Structure
 ```
@@ -59,6 +59,8 @@ prisma/              schema, migrations, demo seed
 src/i18n/            next-intl routing/config
 docs/                product, research, tech and launch docs
 ```
+
+More: [docs/features.md](docs/features.md) · [docs/architecture.md](docs/architecture.md) · [docs/status.md](docs/status.md) · [CLAUDE.md](CLAUDE.md) · [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Notes
 - **Translations** other than German and English were written without native-speaker review. Have them checked before launch, starting with Arabic, Turkish and Ukrainian.
