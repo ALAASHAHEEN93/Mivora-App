@@ -13,7 +13,7 @@ describe("freshness rules", () => {
     const all = slugs(searchActivities(data, {}, NOW));
     expect(all).not.toContain("abgelaufenes-sommerfest");
     expect(all).not.toContain("entwurf-malkurs");
-    expect(all.length).toBe(13);
+    expect(all.length).toBe(32);
   });
 
   it("drops past and cancelled sessions", () => {

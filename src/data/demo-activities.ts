@@ -7,8 +7,14 @@ import type { Activity, LocalizedText, LanguageCode, Session } from "@/domain/ty
 import { addDays, berlinDate, weekday, TIME_ZONE } from "@/domain/time";
 import { DEMO_POLICIES, DEMO_TRANSLATIONS, type DemoPolicy } from "./demo-translations";
 import { DEMO_PHOTOS } from "./demo-photos";
+import { MORE_DEMO_SPECS, type DemoSpec } from "./demo-activities-more";
 
-const POLICY_BY_ID: Record<string, DemoPolicy> = { a4: "noSignup", a5: "dropIn", a11: "camp" };
+const POLICY_BY_ID: Record<string, DemoPolicy> = {
+  a4: "noSignup",
+  a5: "dropIn",
+  a11: "camp",
+  ...Object.fromEntries(MORE_DEMO_SPECS.filter((s) => s.policy).map((s) => [s.id, s.policy!])),
+};
 
 /** Adds the drafted translations and localized cancellation texts to a demo listing. */
 function withTranslations(activity: Activity): Activity {
@@ -394,5 +400,37 @@ export function buildDemoActivities(now: Date = new Date()): Activity[] {
       accent: "coral",
     },
   ];
-  return list.map(withTranslations);
+
+  const more = MORE_DEMO_SPECS.map((spec: DemoSpec): Activity => {
+    const [district, lat, lng, venueName] = spec.venue;
+    const [providerId, providerName, verified] = spec.provider;
+    const sessions: Session[] = spec.weekly
+      ? spec.weekly.flatMap(([wd, start, end], i) => weekly(`${spec.id}-${i}`, today, wd, start, end))
+      : Array.from({ length: spec.campDays ?? 5 }, (_, i) => {
+          const d = addDays(nextWeekday(addDays(today, 35), 1), i);
+          return { id: `${spec.id}-camp-${i}`, startsAt: at(d, "09:00"), endsAt: at(d, "14:00"), status: "scheduled" as const };
+        });
+    return {
+      ...base,
+      id: spec.id,
+      slug: spec.slug,
+      categories: spec.categories,
+      ageMin: spec.ageMin,
+      ageMax: spec.ageMax,
+      price: spec.price,
+      languages: spec.languages,
+      setting: spec.setting,
+      accessibility: spec.accessibility ?? [],
+      accessibilitySource: spec.accessibilitySource ?? "provider",
+      bookingMode: spec.bookingMode ?? "external_link",
+      ...(spec.bookingMode === "inquiry" ? {} : { externalUrl: `https://example.org/demo/${spec.slug}` }),
+      content: Object.fromEntries(Object.entries(spec.content).map(([code, triple]) => [code, text(...triple)])),
+      provider: { id: providerId, name: providerName, verified },
+      venue: venue(district, lat, lng, venueName),
+      sessions,
+      accent: spec.accent,
+    };
+  });
+
+  return [...list, ...more].map(withTranslations);
 }

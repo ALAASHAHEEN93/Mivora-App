@@ -198,7 +198,7 @@ CI (`.github/workflows/ci.yml`) migrates a test database, then runs typecheck, t
 |---|---|---|
 | Local, no DB | `pnpm dev` | built-in demo data |
 | Local, with DB | `pnpm db:up && pnpm db:migrate && pnpm db:seed && pnpm dev` | demo seed. Mailpit at `localhost:8025` |
-| Demo | `pnpm demo` / `pnpm dev:present` | presentation mode (no dev badge) |
+| Demo | `pnpm demo` / `pnpm demo:phone` (local Wi-Fi) / `pnpm dev:present` | presentation mode (no dev badge) |
 | Test version | `deploy/compose.yml` + Caddy on one German server, behind a tester password | demo data. **Prepared, not deployed** ([06](06-test-version-online.md)) |
 
 The `Dockerfile` builds Next's `standalone` output on Node 22. **No accounts or paid services are created without the owner's approval.**

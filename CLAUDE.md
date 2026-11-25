@@ -22,6 +22,7 @@ pnpm db:migrate     # prisma migrate dev
 pnpm db:seed        # demo listings (local hosts only)
 pnpm jobs:daily     # reminder + "still current?" emails
 pnpm dev:present    # demo without the Next.js dev badge
+pnpm demo:phone     # built demo on the local Wi-Fi, prints phone link + QR (docs/demo-guide.md)
 ```
 
 ## Where things go

@@ -5,7 +5,12 @@ Notable changes, newest first. Format based on [Keep a Changelog](https://keepac
 ## [Unreleased]
 
 ### Added
+- 2026-11-25: 19 more fictional demo listings (32 visible, 15 Köln Stadtteile, all 9 languages) in `src/data/demo-activities-more.ts`.
+- 2026-11-25: `pnpm demo:phone` serves the built demo on the local Wi-Fi and prints the phone link + QR code; [docs/demo-guide.md](docs/demo-guide.md) with the meeting click path.
 - 2026-11-25: Project documentation: `CLAUDE.md`, `CONTRIBUTING.md`, this changelog, `docs/features.md`, `docs/architecture.md`, `docs/status.md`, `docs/glossary.md`, ADRs 0001–0003.
+
+### Fixed
+- 2026-11-25: The desktop "get the app" QR code used `https` for home-network addresses (e.g. `192.168.…`); it now uses `http` there.
 
 ## 2026-11-21
 - Dark mode switch, About and For-providers pages, livelier meadow, editable design files (`design/`).

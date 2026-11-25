@@ -6,7 +6,9 @@ import { getLocale, getTranslations } from "next-intl/server";
 async function appUrl(locale: string): Promise<string> {
   const h = await headers();
   const host = h.get("x-forwarded-host") ?? h.get("host") ?? "localhost:3000";
-  const proto = h.get("x-forwarded-proto") ?? (host.startsWith("localhost") || host.startsWith("127.") ? "http" : "https");
+  // Local and home-network addresses (`pnpm demo:phone`) are served over plain http.
+  const local = /^(localhost|127\.|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)|\.local(:|$)/.test(host);
+  const proto = h.get("x-forwarded-proto") ?? (local ? "http" : "https");
   return `${proto}://${host}/${locale}`;
 }
 
