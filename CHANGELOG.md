@@ -9,6 +9,10 @@ Notable changes, newest first. Format based on [Keep a Changelog](https://keepac
 - 2026-11-25: `pnpm demo:phone` serves the built demo on the local Wi-Fi and prints the phone link + QR code; [docs/demo-guide.md](docs/demo-guide.md) with the meeting click path.
 - 2026-11-25: Project documentation: `CLAUDE.md`, `CONTRIBUTING.md`, this changelog, `docs/features.md`, `docs/architecture.md`, `docs/status.md`, `docs/glossary.md`, ADRs 0001–0003.
 
+### Changed
+- 2026-11-26: Swipe rows (Kategorien, "Für {child}"): no more "more" arrow button; swipe with a finger, or drag with the mouse on a laptop. The edge fade and cut-off item still show there is more.
+- 2026-11-26: "Für {child}" headings on the home screen: calm Fredoka ink letters instead of the outlined sticker style; the child's name gets a hand-drawn squiggle in their own colour (works in light and dark).
+
 ### Fixed
 - 2026-11-25: The desktop "get the app" QR code used `https` for home-network addresses (e.g. `192.168.…`); it now uses `http` there.
 

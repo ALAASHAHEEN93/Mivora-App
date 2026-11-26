@@ -192,11 +192,6 @@ body {
   .mv-splash { animation-duration: 0.6s; }
   .mv-splash-logo { animation: none; }
 }
-@keyframes mv-nudge {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 4px 0; }
-}
-[dir="rtl"] .motion-safe\:animate-\[mv-nudge_1\.6s_ease-in-out_2\] { animation-direction: reverse; }
 
 /* ---------- Playful motion (all disabled with prefers-reduced-motion) ---------- */
 @keyframes mv-pop-in {

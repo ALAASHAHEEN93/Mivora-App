@@ -72,8 +72,8 @@ export async function ForYou({ now }: { now: Date }) {
                   {name.charAt(0).toUpperCase()}
                 </span>
                 <div className="min-w-0">
-                  <h2 id={`for-${c.id}`} className="mv-sticker truncate py-1 text-2xl md:text-3xl">
-                    <StickerName text={heading} name={name} />
+                  <h2 id={`for-${c.id}`} className="truncate pb-2.5 pt-1 font-display text-2xl font-bold leading-tight md:text-3xl">
+                    <ChildHeading text={heading} name={name} color={childColor(i)} />
                   </h2>
                   <p className="truncate text-sm text-muted">
                     {t("family.age", { age })}
@@ -106,15 +106,20 @@ export async function ForYou({ now }: { now: Date }) {
   );
 }
 
-/** "Für Maus": the words in pink, the child's name in apricot (works for any word order). */
-function StickerName({ text, name }: { text: string; name: string }) {
+/** "Für Maus": calm ink letters; the child's name gets a hand-drawn squiggle in their own colour. */
+function ChildHeading({ text, name, color }: { text: string; name: string; color: string }) {
   const i = text.indexOf(name);
-  if (i < 0) return <span className="text-[#f2a68a]">{text}</span>;
+  if (i < 0) return <>{text}</>;
   return (
     <>
-      <span className="text-[#f2a68a]">{text.slice(0, i)}</span>
-      <span className="text-[#f3d077]">{name}</span>
-      <span className="text-[#f2a68a]">{text.slice(i + name.length)}</span>
+      {text.slice(0, i)}
+      <span className="relative inline-block">
+        {name}
+        <svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true" className="absolute -bottom-2 start-0 h-2.5 w-full overflow-visible">
+          <path className="mv-draw" pathLength={100} d="M2 6 Q 18 1 34 6 T 66 6 T 98 5" fill="none" stroke={color} strokeWidth="5" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+        </svg>
+      </span>
+      {text.slice(i + name.length)}
     </>
   );
 }
