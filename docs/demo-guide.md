@@ -4,7 +4,7 @@ How to show Mivora on your phone in a meeting, without anything going online. Th
 
 ## The day before
 
-1. Charge the laptop and phone. Close other apps that use port 3000.
+1. Charge the laptop and phone. Close other apps that use port 3000 (an older Mivora demo is stopped automatically).
 2. Run the demo once at home (below) and click through the path, so the first build is not done in the meeting.
 3. Keep the pitch deck open in a browser tab as a backup.
 
@@ -14,7 +14,7 @@ How to show Mivora on your phone in a meeting, without anything going online. Th
 pnpm demo:phone
 ```
 
-This builds the app (about 1–2 minutes) and prints a **phone link** like `http://192.168.x.x:3000/de` and a QR code. Scan the QR code with the phone camera.
+If an older Mivora demo is still running on port 3000, it is stopped first. Then it builds the app (about 1–2 minutes) and prints a **phone link** like `http://192.168.x.x:3000/de` and a QR code. Scan the QR code with the phone camera.
 
 - Phone and laptop must be on the **same Wi-Fi**. Guest Wi-Fi often blocks devices from seeing each other. If the phone can't open the link, turn on your **phone's hotspot**, connect the laptop to it, and run the command again.
 - On the laptop, the desktop page also shows a QR code (bottom right / footer) that points to the same link.

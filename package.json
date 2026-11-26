@@ -23,7 +23,7 @@
     "dev:preview": "NEXT_DIST_DIR=.next-preview next dev --turbopack",
     "dev:present": "PRESENTATION_MODE=1 next dev --turbopack",
     "demo": "PRESENTATION_MODE=1 next build && PRESENTATION_MODE=1 next start -p 3000",
-    "demo:phone": "PRESENTATION_MODE=1 next build && tsx scripts/demo-phone.ts",
+    "demo:phone": "tsx scripts/demo-phone.ts",
     "jobs:daily": "tsx scripts/daily-jobs.ts",
     "test:e2e": "playwright test"
   },
