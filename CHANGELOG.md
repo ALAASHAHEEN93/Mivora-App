@@ -15,6 +15,7 @@ Notable changes, newest first. Format based on [Keep a Changelog](https://keepac
 - 2026-11-26: "Für {child}" headings on the home screen: calm Fredoka ink letters instead of the outlined sticker style; the child's name gets a hand-drawn squiggle in their own colour (works in light and dark).
 
 ### Fixed
+- 2026-11-26: iPhone Safari: sideways rows on the home screen (Kategorien, Wochenende, Kostenlos, Ferien) didn't move with a finger. Sections with a swipe row no longer use the scroll-in rise animation.
 - 2026-11-25: The desktop "get the app" QR code used `https` for home-network addresses (e.g. `192.168.…`); it now uses `http` there.
 
 ## 2026-11-21

@@ -315,6 +315,8 @@ body {
   /* Sections rise in as they scroll into view (browsers without scroll timelines just show them). */
   @supports (animation-timeline: view()) {
     .mv-reveal { animation: mv-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 40%; }
+    /* iPhone Safari: a scroll-driven transform on a section stops finger swipes in the sideways rows inside it. */
+    .mv-reveal:has(.overflow-x-auto) { animation: none; }
   }
 }
 
