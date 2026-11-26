@@ -225,7 +225,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 href={{ pathname: "/entdecken", query: { kategorie: c } }}
                 className="mv-wiggle-on-touch group flex flex-col items-center gap-1.5 rounded-2xl py-1 text-center"
               >
-                <span className={`grid size-16 place-items-center rounded-full border-2 border-[#263847] text-[#263847] shadow-[0_3px_0_#263847] transition group-hover:-translate-y-1 group-active:scale-95 ${BUBBLES[i % BUBBLES.length]}`}>
+                <span className={`grid size-16 place-items-center rounded-full border-2 border-[#263847] text-[#263847] shadow-[0_3px_0_#263847] transition group-hover:-translate-y-1 pointer-fine:group-active:scale-95 ${BUBBLES[i % BUBBLES.length]}`}>
                   <CategoryIcon category={c} className="mv-wiggle-target size-7" />
                 </span>
                 <span className="line-clamp-2 text-xs font-bold leading-tight">{t(`categories.${c}`)}</span>

@@ -15,6 +15,8 @@ Notable changes, newest first. Format based on [Keep a Changelog](https://keepac
 - 2026-11-26: "Für {child}" headings on the home screen: calm Fredoka ink letters instead of the outlined sticker style; the child's name gets a hand-drawn squiggle in their own colour (works in light and dark).
 
 ### Fixed
+- 2026-11-26: iPhone Safari: Kategorien swipes still failed now and then. Touching a bubble no longer starts the icon wiggle, the press-shrink or the section badge wiggle on touch screens (they stay for the mouse).
+- 2026-11-26: iPhone Safari: the Kategorien row still didn't swipe when the finger started on a bubble. The bubbles' pop-in animation no longer stays attached after it plays.
 - 2026-11-26: iPhone Safari: sideways rows on the home screen (Kategorien, Wochenende, Kostenlos, Ferien) didn't move with a finger. Sections with a swipe row no longer use the scroll-in rise animation.
 - 2026-11-25: The desktop "get the app" QR code used `https` for home-network addresses (e.g. `192.168.…`); it now uses `http` there.
 
