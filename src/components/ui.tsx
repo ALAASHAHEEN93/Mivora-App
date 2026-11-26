@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
 import { Mascot } from "./illustrations/Mascot";
+import { EmptyArt, type EmptyArtKind } from "./illustrations/EmptyArt";
 
 type Href = Parameters<typeof Link>[0]["href"];
 
@@ -51,10 +52,21 @@ export function SectionHeader({
   );
 }
 
-export function EmptyState({ title, text, action }: { title: string; text: string; action?: ReactNode }) {
+export function EmptyState({
+  title,
+  text,
+  action,
+  art,
+}: {
+  title: string;
+  text: string;
+  action?: ReactNode;
+  /** Which little scene to show; without it, the plain star mascot. */
+  art?: EmptyArtKind;
+}) {
   return (
-    <div className="flex flex-col items-center gap-3 rounded-[2rem] bg-surface px-6 py-12 text-center shadow-[0_10px_30px_-16px_rgba(42,47,58,0.35)]">
-      <Mascot className="size-20" mood="wow" />
+    <div className="flex flex-col items-center gap-3 rounded-[2rem] bg-surface px-6 py-10 text-center shadow-[0_10px_30px_-16px_rgba(42,47,58,0.35)]">
+      {art ? <EmptyArt kind={art} className="w-44 sm:w-52" /> : <Mascot className="size-20" mood="wow" />}
       <h2 className="font-display text-2xl font-bold">{title}</h2>
       <p className="max-w-sm text-muted">{text}</p>
       {action}

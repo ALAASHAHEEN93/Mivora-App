@@ -5,6 +5,8 @@ Notable changes, newest first. Format based on [Keep a Changelog](https://keepac
 ## [Unreleased]
 
 ### Added
+- 2026-11-26: Empty-state scenes with the star mascot (`components/illustrations/EmptyArt.tsx`): nothing saved (empty heart), no search results (magnifier), nothing planned today (napping star + calendar), not found (signpost), screen error (plaster), offline (cloud). Used on Gemerkt, Entdecken, Kalender, the not-found pages, the error screen and `offline.html`. The star now has sleepy, curious and "oops" faces.
+- 2026-11-26: `pnpm art:export` writes the editable copy `design/mivora-empty-states.svg`.
 - 2026-11-25: 19 more fictional demo listings (32 visible, 15 Köln Stadtteile, all 9 languages) in `src/data/demo-activities-more.ts`.
 - 2026-11-25: `pnpm demo:phone` serves the built demo on the local Wi-Fi and prints the phone link + QR code; [docs/demo-guide.md](docs/demo-guide.md) with the meeting click path.
 - 2026-11-25: Project documentation: `CLAUDE.md`, `CONTRIBUTING.md`, this changelog, `docs/features.md`, `docs/architecture.md`, `docs/status.md`, `docs/glossary.md`, ADRs 0001–0003.
@@ -15,6 +17,7 @@ Notable changes, newest first. Format based on [Keep a Changelog](https://keepac
 - 2026-11-26: "Für {child}" headings on the home screen: calm Fredoka ink letters instead of the outlined sticker style; the child's name gets a hand-drawn squiggle in their own colour (works in light and dark).
 
 ### Fixed
+- 2026-11-26: Screen readers read the "Für {child}" headings with gaps ("Für dein Kind ( 5 )"); they now hear the plain sentence. This also fixes the failing first-launch e2e test.
 - 2026-11-26: iPhone Safari: Kategorien swipes still failed now and then. Touching a bubble no longer starts the icon wiggle, the press-shrink or the section badge wiggle on touch screens (they stay for the mouse).
 - 2026-11-26: iPhone Safari: the Kategorien row still didn't swipe when the finger started on a bubble. The bubbles' pop-in animation no longer stays attached after it plays.
 - 2026-11-26: iPhone Safari: sideways rows on the home screen (Kategorien, Wochenende, Kostenlos, Ferien) didn't move with a finger. Sections with a swipe row no longer use the scroll-in rise animation.

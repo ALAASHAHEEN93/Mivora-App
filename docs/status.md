@@ -2,14 +2,14 @@
 
 Progress against the [implementation plan](05-implementation-plan.md). Feature-level detail: [features.md](features.md). Update this file when a step changes state.
 
-_Last updated: 2026-11-25 (32 demo listings, `pnpm demo:phone`)_
+_Last updated: 2026-11-26 (empty-state artwork)_
 
 **Legend:** ✅ Done locally · 🟡 Partly done · 💤 Not started. **Nothing is deployed.**
 
 | # | Step | Status | Notes |
 |---|---|---|---|
 | 1 | Repo scaffold | ✅ | Single Next.js app ([ADR-0001](decisions/0001-single-nextjs-app.md)), Vitest, CI |
-| 2 | Design system | ✅ | Brand tokens, dark mode, original artwork ([ADR-0003](decisions/0003-brand-design-system.md)) |
+| 2 | Design system | ✅ | Brand tokens, dark mode, original artwork incl. empty-state scenes ([ADR-0003](decisions/0003-brand-design-system.md)) |
 | 3 | i18n | ✅ | 9 locales, Arabic RTL. Translations except de/en unreviewed |
 | 4 | Database | ✅ | Prisma 7 + Postgres, demo fallback ([ADR-0002](decisions/0002-repository-with-demo-fallback.md)). No PostGIS yet |
 | 5 | Catalogue read | 🟡 | Home, Explore (list + map), detail done. 32 visible demo listings in 15 Stadtteile. Provider page, holiday and district pages missing |

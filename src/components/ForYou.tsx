@@ -110,16 +110,21 @@ export async function ForYou({ now }: { now: Date }) {
 function ChildHeading({ text, name, color }: { text: string; name: string; color: string }) {
   const i = text.indexOf(name);
   if (i < 0) return <>{text}</>;
+  // Screen readers get the plain sentence: the inline-block name would otherwise be read
+  // with extra gaps ("Für dein Kind ( 5 )").
   return (
     <>
-      {text.slice(0, i)}
-      <span className="relative inline-block">
-        {name}
-        <svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true" className="absolute -bottom-2 start-0 h-2.5 w-full overflow-visible">
-          <path className="mv-draw" pathLength={100} d="M2 6 Q 18 1 34 6 T 66 6 T 98 5" fill="none" stroke={color} strokeWidth="5" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
-        </svg>
+      <span className="sr-only">{text}</span>
+      <span aria-hidden="true">
+        {text.slice(0, i)}
+        <span className="relative inline-block">
+          {name}
+          <svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true" className="absolute -bottom-2 start-0 h-2.5 w-full overflow-visible">
+            <path className="mv-draw" pathLength={100} d="M2 6 Q 18 1 34 6 T 66 6 T 98 5" fill="none" stroke={color} strokeWidth="5" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+          </svg>
+        </span>
+        {text.slice(i + name.length)}
       </span>
-      {text.slice(i + name.length)}
     </>
   );
 }

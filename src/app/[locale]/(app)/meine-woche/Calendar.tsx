@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { EmptyArt } from "@/components/illustrations/EmptyArt";
 import { useLocale, useTranslations } from "next-intl";
 import type { Activity } from "@/domain/types";
 import {
@@ -304,7 +305,10 @@ export function Calendar({ activities, today, nowIso, note }: { activities: Acti
           )}
 
           {dayPlanned.length === 0 ? (
-            <p className="rounded-2xl bg-surface px-4 py-3 text-muted shadow-[0_3px_10px_-6px_rgba(42,47,58,0.25)]">{t("nothingPlanned")}</p>
+            <div className="flex items-center gap-3 rounded-2xl bg-surface px-3 py-2 shadow-[0_3px_10px_-6px_rgba(42,47,58,0.25)]">
+              <EmptyArt kind="week" className="w-24 shrink-0" />
+              <p className="text-muted">{t("nothingPlanned")}</p>
+            </div>
           ) : (
             <ul className="flex flex-col gap-3">
               {dayPlanned.map((p) => {

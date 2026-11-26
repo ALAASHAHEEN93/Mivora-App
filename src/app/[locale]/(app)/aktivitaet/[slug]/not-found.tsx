@@ -6,6 +6,7 @@ export default function ActivityNotFound() {
   const t = useTranslations();
   return (
     <EmptyState
+      art="lost"
       title={t("activity.notFound")}
       text={t("explore.emptyText")}
       action={

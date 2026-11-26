@@ -41,7 +41,7 @@ _Last updated: 2026-11-25, from the code at commit `af30ef3`._
 | F-I18N-01 | 9 languages, Arabic RTL, native-name switcher | ✅ | `i18n/*`, `messages/*.json`, `LanguageSwitcher.tsx` |
 | F-I18N-02 | Machine translation of provider texts | 💤 | Demo translations are hand-written |
 | F-PLAT-01 | Brand design system, dark mode | ✅ | `app/globals.css`, `ThemeToggle.tsx`, `domain/theme.ts` |
-| F-PLAT-02 | Original illustrations (meadow, kids, mascot) | ✅ | `components/illustrations/*`, `design/*.svg` |
+| F-PLAT-02 | Original illustrations (meadow, kids, mascot, empty-state scenes) | ✅ | `components/illustrations/*`, `design/*.svg` |
 | F-PLAT-03 | Installable app (PWA), offline page, desktop QR card | ✅ | `app/manifest.ts`, `public/sw.js`, `AppInstall.tsx`, `GetTheApp.tsx` |
 | F-PLAT-04 | Accessibility (WCAG 2.2 AA target) | ✅ | contrast tests, Playwright + axe |
 | F-PLAT-05 | SEO: schema.org `Event` | ✅ | activity page |

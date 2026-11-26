@@ -15,6 +15,7 @@ export function SavedList({ all }: { all: ActivityResult[] }) {
   if (saved.length === 0) {
     return (
       <EmptyState
+        art="saved"
         title={t("emptyTitle")}
         text={t("emptyText")}
         action={
