@@ -6,6 +6,8 @@ export interface ActivityFilters {
   date?: DateRangeKey;
   /** A single Berlin calendar day "YYYY-MM-DD" (week strip). Takes precedence over `date`. */
   day?: string;
+  /** Berlin calendar days "YYYY-MM-DD", inclusive (holiday windows). Takes precedence over `date`. */
+  between?: { from: string; to: string };
   /** Child age in years; activity must include it. */
   age?: number;
   district?: string;
@@ -55,7 +57,9 @@ export function searchActivities(
 ): ActivityResult[] {
   const range = filters.day
     ? { from: filters.day, to: filters.day }
-    : filters.date
+    : filters.between
+      ? filters.between
+      : filters.date
       ? dateRange(filters.date, now)
       : null;
 

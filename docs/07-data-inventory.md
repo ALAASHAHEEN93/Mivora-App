@@ -12,6 +12,7 @@ Status: factual list of what the code does today (2026-11-17). **This is not a p
 | Child profile: optional nickname, birth year, interests | Parent's children | Age-fitting suggestions, per-child calendar | Typed in by parent | Editable in Profil; deleted with account |
 | Saved activities, planned dates, which child goes | Parent | Sync across devices, reminders | Parent's taps | Removable anytime; deleted with account |
 | Reminder setting, "reminder sent" times | Parent | Evening-before reminder email | Setting in Profil | Deleted with account |
+| Holiday-ideas opt-in time, which holiday emails were sent and when | Parent | Opt-in holiday idea emails (proof of consent; once per occasion, at most weekly) | Switch in Profil, off by default | Switching off clears the opt-in; all deleted with account |
 | Booking requests: preferred date, optional child age, message | Parent → provider | Forwarded to the provider by email (Reply-To = parent) | Request form, with explicit consent checkbox | Deleted with parent account; retention period still to decide |
 | Problem reports: reason, optional note, optional reporter | Anyone | Fixing wrong listings | Report form | Retention still to decide |
 | Provider listings: organisation, venue address, dates, texts, booking link, terms, optional photo | Provider | Publishing the activity | Provider form | Until deleted/archived; photo deleted when declined |
@@ -39,7 +40,7 @@ All cookies are functional. There is no analytics or advertising tracking.
 | Who | When | What they receive |
 |---|---|---|
 | Hosting provider (planned: German cloud server) | Always | All data above (processor, needs a DPA/AVV) |
-| Email provider (planned: EU SMTP service) | Sign-in codes, booking requests, reminders, "still current?" | Recipient address and email content (processor, needs a DPA/AVV) |
+| Email provider (planned: EU SMTP service) | Sign-in codes, booking requests, reminders, "still current?", holiday ideas | Recipient address and email content (processor, needs a DPA/AVV) |
 | OpenStreetMap tile servers | Only after the parent taps "Karte laden" | Parent's IP address and the map area viewed |
 | Unsplash | Demo photos only, fetched by our server | Nothing about visitors |
 
@@ -51,3 +52,4 @@ All cookies are functional. There is no analytics or advertising tracking.
 4. Booking requests forward the parent's email to providers: wording of the consent and the provider's duties.
 5. Is a cookie banner needed with only functional cookies and the two-click map?
 6. Impressum details (company form, address, responsible person).
+7. Holiday idea emails (advertising, § 7 UWG): is the in-app opt-in switch with a stored time enough (the address is proven by the sign-in code), or is a double opt-in email needed? Wording of the switch and the unsubscribe line.

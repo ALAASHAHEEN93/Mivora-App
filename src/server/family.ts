@@ -49,6 +49,7 @@ export async function exportAccount(db: PrismaClient, userId: string) {
       sessions: { select: { createdAt: true, lastSeenAt: true, expiresAt: true } },
       saved: { select: { activityId: true, createdAt: true } },
       planned: { select: { activityId: true, startsAt: true, endsAt: true, childIds: true, createdAt: true } },
+      occasionNotices: { select: { occasionKey: true, sentAt: true } },
     },
   });
   if (!user) return null;
@@ -59,6 +60,8 @@ export async function exportAccount(db: PrismaClient, userId: string) {
     savedActivities: user.saved,
     calendar: user.planned,
     signedInDevices: user.sessions,
+    emailSettings: { reminders: user.remindersEnabled, holidayIdeasSince: user.occasionEmailsSince },
+    holidayIdeasSent: user.occasionNotices,
   };
 }
 

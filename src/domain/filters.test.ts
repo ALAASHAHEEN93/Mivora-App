@@ -13,7 +13,7 @@ describe("freshness rules", () => {
     const all = slugs(searchActivities(data, {}, NOW));
     expect(all).not.toContain("abgelaufenes-sommerfest");
     expect(all).not.toContain("entwurf-malkurs");
-    expect(all.length).toBe(13);
+    expect(all.length).toBe(32);
   });
 
   it("drops past and cancelled sessions", () => {
@@ -59,6 +59,12 @@ describe("filters", () => {
     const res = searchActivities(data, { day: "2026-11-21" }, NOW);
     expect(res.length).toBeGreaterThan(0);
     for (const r of res) for (const s of r.sessions) expect(berlinDate(new Date(s.startsAt))).toBe("2026-11-21");
+  });
+
+  it("a date window keeps only sessions between both days (inclusive)", () => {
+    const res = searchActivities(data, { between: { from: "2026-11-21", to: "2026-11-22" } }, NOW);
+    expect(res.length).toBeGreaterThan(0);
+    for (const r of res) for (const s of r.sessions) expect(["2026-11-21", "2026-11-22"]).toContain(berlinDate(new Date(s.startsAt)));
   });
 
   it("matches text across languages and provider name", () => {

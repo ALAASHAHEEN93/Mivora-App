@@ -68,3 +68,11 @@ export async function toggleRemindersAction(formData: FormData) {
   await getPrisma().user.update({ where: { id: user.id }, data: { remindersEnabled: formData.get("enabled") === "yes" } });
   revalidatePath(`/${localeOf(formData)}/profil`);
 }
+
+/** Holiday ideas are promotional, so they need an explicit opt-in; we keep when it was given. */
+export async function toggleOccasionEmailsAction(formData: FormData) {
+  const user = await requireUser(formData);
+  const on = formData.get("enabled") === "yes";
+  await getPrisma().user.update({ where: { id: user.id }, data: { occasionEmailsSince: on ? new Date() : null } });
+  revalidatePath(`/${localeOf(formData)}/profil`);
+}

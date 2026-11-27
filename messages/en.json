@@ -69,6 +69,7 @@
     "rainToday": "It's raining in Cologne today – here are indoor ideas",
     "rainTomorrow": "It's going to rain in Cologne tomorrow – here are indoor ideas",
     "rainEmpty": "No indoor activities for that day right now.",
+    "rainForFamily": "Best fits for your children first.",
     "weatherSource": "Weather data: Deutscher Wetterdienst",
     "pickerTitle": "What shall we do today?",
     "pickerHint": "Tap the button and get surprised!",
@@ -302,7 +303,11 @@
     "remindersTitle": "Reminders",
     "remindersText": "The evening before, we email you tomorrow's planned activities.",
     "remindersOn": "Reminders on",
-    "remindersOff": "Reminders off"
+    "remindersOff": "Reminders off",
+    "occasionsTitle": "Holiday & school break ideas",
+    "occasionsText": "About a week before Christmas, carnival, St. Martin, Easter or the school holidays, we send you ideas that suit your children. At most one email a week; switch it off anytime.",
+    "occasionsOn": "Holiday ideas on",
+    "occasionsOff": "Holiday ideas off"
   },
   "email": {
     "subject": "Your Mivora code: {code}",
@@ -571,5 +576,22 @@
     "footerText": "Scan to get Mivora on your phone.",
     "qrAlt": "QR code to the Mivora app",
     "previewAlt": "Mivora on a phone: home screen"
+  },
+  "occasionEmail": {
+    "subject": {
+      "carnival": "Carnival is coming 🎉 Ideas for you",
+      "easter": "Easter is coming 🐣 Ideas for you",
+      "halloween": "Halloween is coming 🎃 Ideas for you",
+      "stMartin": "St. Martin's Day is coming 🏮 Ideas for you",
+      "nikolaus": "St. Nicholas Day is coming 🎁 Ideas for you",
+      "christmas": "Christmas is coming 🎄 Ideas for you",
+      "easterBreak": "Easter holidays are coming ☀️ Ideas for you",
+      "summerBreak": "Summer holidays are coming ☀️ Ideas for you",
+      "autumnBreak": "Autumn half-term is coming 🍂 Ideas for you",
+      "christmasBreak": "Christmas holidays are coming ❄️ Ideas for you"
+    },
+    "intro": "Hello! For {dates} we found these ideas for your family:",
+    "more": "More ideas: {url}",
+    "optOut": "You get this email because you switched on holiday ideas. You can switch them off in your profile: {url}"
   }
 }

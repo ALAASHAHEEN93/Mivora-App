@@ -69,6 +69,7 @@
     "rainToday": "Il pleut à Cologne aujourd'hui – voici des idées à l'intérieur",
     "rainTomorrow": "Il va pleuvoir à Cologne demain – voici des idées à l'intérieur",
     "rainEmpty": "Pas d'activité en intérieur ce jour-là pour le moment.",
+    "rainForFamily": "D'abord ce qui convient le mieux à vos enfants.",
     "weatherSource": "Données météo : Deutscher Wetterdienst",
     "pickerTitle": "On fait quoi aujourd'hui ?",
     "pickerHint": "Appuie sur le bouton et laisse-toi surprendre !",
@@ -302,7 +303,11 @@
     "remindersTitle": "Rappels",
     "remindersText": "La veille au soir, nous t'envoyons par e-mail les activités du lendemain.",
     "remindersOn": "Rappels activés",
-    "remindersOff": "Rappels désactivés"
+    "remindersOff": "Rappels désactivés",
+    "occasionsTitle": "Idées pour les fêtes et les vacances",
+    "occasionsText": "Environ une semaine avant Noël, le carnaval, la Saint-Martin, Pâques ou les vacances scolaires, nous t'envoyons des idées adaptées à tes enfants. Un e-mail par semaine au maximum, désactivable à tout moment.",
+    "occasionsOn": "Idées de fêtes activées",
+    "occasionsOff": "Idées de fêtes désactivées"
   },
   "email": {
     "subject": "Ton code Mivora : {code}",
@@ -571,5 +576,22 @@
     "footerText": "Scanne pour avoir Mivora sur ton téléphone.",
     "qrAlt": "Code QR vers l’appli Mivora",
     "previewAlt": "Mivora sur un téléphone : accueil"
+  },
+  "occasionEmail": {
+    "subject": {
+      "carnival": "Le carnaval approche 🎉 Des idées pour vous",
+      "easter": "Pâques approche 🐣 Des idées pour vous",
+      "halloween": "Halloween approche 🎃 Des idées pour vous",
+      "stMartin": "La Saint-Martin approche 🏮 Des idées pour vous",
+      "nikolaus": "La Saint-Nicolas approche 🎁 Des idées pour vous",
+      "christmas": "Noël approche 🎄 Des idées pour vous",
+      "easterBreak": "Les vacances de Pâques approchent ☀️ Des idées pour vous",
+      "summerBreak": "Les vacances d'été approchent ☀️ Des idées pour vous",
+      "autumnBreak": "Les vacances d'automne approchent 🍂 Des idées pour vous",
+      "christmasBreak": "Les vacances de Noël approchent ❄️ Des idées pour vous"
+    },
+    "intro": "Bonjour ! Pour {dates}, nous avons trouvé ces idées pour ta famille :",
+    "more": "Encore plus d'idées : {url}",
+    "optOut": "Tu reçois cet e-mail parce que tu as activé les idées de fêtes. Tu peux les désactiver dans ton profil : {url}"
   }
 }

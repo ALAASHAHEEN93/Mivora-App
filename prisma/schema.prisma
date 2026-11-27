@@ -133,6 +133,9 @@ model User {
   locale    String        @default("de")
   /// Evening-before reminders for planned activities (parents can switch them off).
   remindersEnabled Boolean @default(true)
+  /// Opt-in for holiday and school-break ideas (promotional email, so off until the parent
+  /// switches it on). Holds when they switched it on, as proof of consent; null = off.
+  occasionEmailsSince DateTime?
   createdAt DateTime      @default(now())
   updatedAt DateTime      @updatedAt
   sessions  AuthSession[]
@@ -144,6 +147,19 @@ model User {
   reports     Report[]   @relation("Reporter")
   inquiries   Inquiry[]
   resolved    Report[]   @relation("Resolver")
+  occasionNotices OccasionNotice[]
+}
+
+/// One holiday-ideas email sent to a parent, so each occasion goes out once (and at most weekly).
+model OccasionNotice {
+  id          String   @id @default(cuid())
+  userId      String
+  occasionKey String // e.g. "christmas:2026-12-18"
+  sentAt      DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, occasionKey])
+  @@index([userId, sentAt])
 }
 
 /// One-time sign-in code sent by email. Only an HMAC of the code is stored.

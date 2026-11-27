@@ -202,6 +202,7 @@ export default async function ExplorePage({
           </h2>
           {results.length === 0 ? (
             <EmptyState
+              art="search"
               title={t("explore.emptyTitle")}
               text={t("explore.emptyText")}
               action={

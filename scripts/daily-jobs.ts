@@ -1,5 +1,5 @@
 /**
- * Daily email jobs. Run once a day around 18:00 Berlin time:
+ * Daily email jobs (reminders, "still current?", holiday ideas). Run once a day around 18:00 Berlin time:
  *   pnpm jobs:daily
  * On the server: `docker compose -f deploy/compose.yml --env-file deploy/.env run --rm jobs` from cron.
  */
@@ -7,7 +7,8 @@ import { config } from "dotenv";
 import nodemailer from "nodemailer";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../src/generated/prisma/client";
-import { sendRecheckRequests, sendTomorrowReminders, type OutgoingMail } from "../src/server/jobs";
+import { sendOccasionSuggestions, sendRecheckRequests, sendTomorrowReminders, type OutgoingMail } from "../src/server/jobs";
+import { findVisibleActivities } from "../src/data/db/visible";
 
 config({ path: ".env.local", quiet: true });
 const { DATABASE_URL, SMTP_URL, EMAIL_FROM } = process.env;
@@ -24,7 +25,8 @@ async function main() {
   try {
     const reminders = await sendTomorrowReminders(db, send, appUrl);
     const rechecks = await sendRecheckRequests(db, send, appUrl);
-    console.log(`${new Date().toISOString()} reminders sent: ${reminders}, re-check requests sent: ${rechecks}`);
+    const occasions = await sendOccasionSuggestions(db, send, appUrl, await findVisibleActivities(db, new Date()));
+    console.log(`${new Date().toISOString()} reminders sent: ${reminders}, re-check requests sent: ${rechecks}, holiday ideas sent: ${occasions}`);
   } finally {
     await db.$disconnect();
   }

@@ -69,6 +69,7 @@
     "rainToday": "Hoy llueve en Colonia – aquí tienes ideas bajo techo",
     "rainTomorrow": "Mañana lloverá en Colonia – aquí tienes ideas bajo techo",
     "rainEmpty": "Ahora mismo no hay actividades bajo techo para ese día.",
+    "rainForFamily": "Primero, lo que mejor encaja con tus hijos.",
     "weatherSource": "Datos meteorológicos: Deutscher Wetterdienst",
     "pickerTitle": "¿Qué hacemos hoy?",
     "pickerHint": "¡Pulsa el botón y déjate sorprender!",
@@ -302,7 +303,11 @@
     "remindersTitle": "Recordatorios",
     "remindersText": "La tarde anterior te enviamos un correo con las actividades de mañana.",
     "remindersOn": "Recordatorios activados",
-    "remindersOff": "Recordatorios desactivados"
+    "remindersOff": "Recordatorios desactivados",
+    "occasionsTitle": "Ideas para fiestas y vacaciones",
+    "occasionsText": "Una semana antes de Navidad, carnaval, San Martín, Semana Santa o las vacaciones escolares, te enviamos ideas que encajan con tus hijos. Como máximo un correo por semana; puedes desactivarlo cuando quieras.",
+    "occasionsOn": "Ideas de fiestas activadas",
+    "occasionsOff": "Ideas de fiestas desactivadas"
   },
   "email": {
     "subject": "Tu código de Mivora: {code}",
@@ -571,5 +576,22 @@
     "footerText": "Escanea y lleva Mivora en tu móvil.",
     "qrAlt": "Código QR a la app Mivora",
     "previewAlt": "Mivora en un móvil: inicio"
+  },
+  "occasionEmail": {
+    "subject": {
+      "carnival": "Llega el carnaval 🎉 Ideas para vosotros",
+      "easter": "Llega la Pascua 🐣 Ideas para vosotros",
+      "halloween": "Llega Halloween 🎃 Ideas para vosotros",
+      "stMartin": "Llega San Martín 🏮 Ideas para vosotros",
+      "nikolaus": "Llega San Nicolás 🎁 Ideas para vosotros",
+      "christmas": "Llega la Navidad 🎄 Ideas para vosotros",
+      "easterBreak": "Llegan las vacaciones de Pascua ☀️ Ideas para vosotros",
+      "summerBreak": "Llegan las vacaciones de verano ☀️ Ideas para vosotros",
+      "autumnBreak": "Llegan las vacaciones de otoño 🍂 Ideas para vosotros",
+      "christmasBreak": "Llegan las vacaciones de Navidad ❄️ Ideas para vosotros"
+    },
+    "intro": "¡Hola! Para {dates} hemos encontrado estas ideas para tu familia:",
+    "more": "Más ideas: {url}",
+    "optOut": "Recibes este correo porque activaste las ideas de fiestas. Puedes desactivarlas en tu perfil: {url}"
   }
 }

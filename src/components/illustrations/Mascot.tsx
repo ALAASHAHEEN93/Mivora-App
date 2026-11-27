@@ -2,8 +2,14 @@
  * Mivora's little badge: the logo's star in sticker style (sunshine fill, dark outline),
  * now with a face: blinking eyes, a smile and rosy cheeks. "wow" adds a coral sparkle.
  * Decorative only; the blink and twinkle stop with prefers-reduced-motion.
+ *
+ * `eyes` and `mouth` let scenes give the star a feeling (sleepy, curious, oops) without
+ * a second drawing. The defaults are the classic happy face.
  */
-export function StarFace() {
+export type StarEyes = "open" | "closed" | "side";
+export type StarMouth = "smile" | "o" | "wobble";
+
+export function StarFace({ eyes = "open", mouth = "smile" }: { eyes?: StarEyes; mouth?: StarMouth }) {
   return (
     <g className="mv-star-twinkle">
       <path
@@ -16,13 +22,32 @@ export function StarFace() {
       <path d="M20.5 26.5 Q22.5 23.8 25.8 23.4" fill="none" stroke="#fff3ea" strokeWidth="2.6" strokeLinecap="round" opacity="0.9" />
       <ellipse cx="24.6" cy="36.4" rx="2.6" ry="1.7" fill="#f2a68a" opacity="0.75" />
       <ellipse cx="39.4" cy="36.4" rx="2.6" ry="1.7" fill="#f2a68a" opacity="0.75" />
-      <g className="mv-blink">
-        <circle cx="27.6" cy="31" r="2.3" fill="#263847" />
-        <circle cx="36.4" cy="31" r="2.3" fill="#263847" />
-        <circle cx="28.3" cy="30.2" r="0.7" fill="#fff3ea" />
-        <circle cx="37.1" cy="30.2" r="0.7" fill="#fff3ea" />
-      </g>
-      <path d="M28.4 36.2 Q32 39.8 35.6 36.2" fill="none" stroke="#263847" strokeWidth="2" strokeLinecap="round" />
+      {eyes === "closed" ? (
+        <path d="M25.2 30.6 Q27.6 33 30 30.6 M34 30.6 Q36.4 33 38.8 30.6" fill="none" stroke="#263847" strokeWidth="2" strokeLinecap="round" />
+      ) : (
+        <g className="mv-blink">
+          <circle cx="27.6" cy="31" r="2.3" fill="#263847" />
+          <circle cx="36.4" cy="31" r="2.3" fill="#263847" />
+          {eyes === "side" ? (
+            <>
+              <circle cx="28.7" cy="30.4" r="0.7" fill="#fff3ea" />
+              <circle cx="37.5" cy="30.4" r="0.7" fill="#fff3ea" />
+            </>
+          ) : (
+            <>
+              <circle cx="28.3" cy="30.2" r="0.7" fill="#fff3ea" />
+              <circle cx="37.1" cy="30.2" r="0.7" fill="#fff3ea" />
+            </>
+          )}
+        </g>
+      )}
+      {mouth === "o" && <ellipse cx="32" cy="37.6" rx="1.9" ry="2.2" fill="#263847" />}
+      {mouth === "wobble" && (
+        <path d="M28 37.6 Q30 35.8 32 37.6 T36 37.6" fill="none" stroke="#263847" strokeWidth="2" strokeLinecap="round" />
+      )}
+      {mouth === "smile" && (
+        <path d="M28.4 36.2 Q32 39.8 35.6 36.2" fill="none" stroke="#263847" strokeWidth="2" strokeLinecap="round" />
+      )}
     </g>
   );
 }

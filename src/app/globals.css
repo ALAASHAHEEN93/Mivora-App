@@ -192,11 +192,6 @@ body {
   .mv-splash { animation-duration: 0.6s; }
   .mv-splash-logo { animation: none; }
 }
-@keyframes mv-nudge {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 4px 0; }
-}
-[dir="rtl"] .motion-safe\:animate-\[mv-nudge_1\.6s_ease-in-out_2\] { animation-direction: reverse; }
 
 /* ---------- Playful motion (all disabled with prefers-reduced-motion) ---------- */
 @keyframes mv-pop-in {
@@ -231,9 +226,15 @@ body {
   50% { transform: translateY(-7px); }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .mv-pop-in { animation: mv-pop-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both; animation-delay: calc(var(--i, 0) * 60ms); }
-  .mv-wiggle-on-touch:hover .mv-wiggle-target,
-  .mv-wiggle-on-touch:active .mv-wiggle-target { animation: mv-wiggle 0.5s ease-in-out; }
+  /* "backwards", not "both": once played, the animation lets go. A lingering transform on the
+     category bubbles stopped iPhone Safari from swiping the row when the finger started on a bubble. */
+  .mv-pop-in { animation: mv-pop-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) backwards; animation-delay: calc(var(--i, 0) * 60ms); }
+  /* Mouse only: on a touch screen these start the moment a finger lands, and iPhone Safari
+     then sometimes drops the sideways swipe the finger was starting in the Kategorien row. */
+  @media (hover: hover) and (pointer: fine) {
+    .mv-wiggle-on-touch:hover .mv-wiggle-target,
+    .mv-wiggle-on-touch:active .mv-wiggle-target { animation: mv-wiggle 0.5s ease-in-out; }
+  }
   [aria-pressed="true"] .mv-heart { animation: mv-heart-pop 0.45s ease-out; }
   [aria-current="page"] .mv-tab-icon { animation: mv-tab-bounce 0.5s ease-out; }
   .mv-blink { transform-box: fill-box; transform-origin: center; animation: mv-blink 4.5s infinite; }
@@ -320,6 +321,8 @@ body {
   /* Sections rise in as they scroll into view (browsers without scroll timelines just show them). */
   @supports (animation-timeline: view()) {
     .mv-reveal { animation: mv-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 40%; }
+    /* iPhone Safari: a scroll-driven transform on a section stops finger swipes in the sideways rows inside it. */
+    .mv-reveal:has(.overflow-x-auto) { animation: none; }
   }
 }
 
@@ -328,7 +331,10 @@ body {
   :root:has(#mv-home-hero) .mv-app-header { background-color: color-mix(in srgb, var(--kw-sky) 92%, transparent); }
 }
 @media (prefers-reduced-motion: no-preference) {
-  h2:hover > .mv-badge, section:active .mv-badge { animation: mv-wiggle 0.5s ease-in-out; }
+  /* Mouse only, for the same reason as .mv-wiggle-on-touch (section:active fired on every swipe in a row). */
+  @media (hover: hover) and (pointer: fine) {
+    h2:hover > .mv-badge, section:active .mv-badge { animation: mv-wiggle 0.5s ease-in-out; }
+  }
 }
 
 /* Heart sparkle, shooting star, star waving hello */

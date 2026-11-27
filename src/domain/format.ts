@@ -34,6 +34,12 @@ export function formatSessionStart(iso: string, locale: string): string {
   }).format(new Date(iso));
 }
 
+/** Two "YYYY-MM-DD" days as a range, e.g. de: "18.–26. Dezember". */
+export function formatDayRange(from: string, to: string, locale: string): string {
+  const fmt = new Intl.DateTimeFormat(intlLocale(locale), { timeZone: "UTC", day: "numeric", month: "long" });
+  return fmt.formatRange(new Date(`${from}T12:00:00Z`), new Date(`${to}T12:00:00Z`));
+}
+
 export function formatTime(iso: string, locale: string): string {
   return new Intl.DateTimeFormat(intlLocale(locale), {
     timeZone: TIME_ZONE,

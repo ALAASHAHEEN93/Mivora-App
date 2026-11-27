@@ -5,6 +5,8 @@ import type { ActivityResult } from "@/domain/filters";
 import { formatSessionStart, intlLocale, priceAmount } from "@/domain/format";
 import { pickContent } from "@/domain/localize";
 import { rainOutlook } from "@/server/weather";
+import { homeChildren } from "@/server/home-children";
+import { rankForFamily } from "@/domain/suggestions";
 import { SurprisePicker, type PickerItem } from "@/components/SurprisePicker";
 import { TIME_ZONE } from "@/domain/time";
 import { ActivityCard } from "@/components/ActivityCard";
@@ -65,7 +67,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     activityRepository.search({ date: "today" }, now),
     rainOutlook(now),
   ]);
-  const indoor = rain ? await activityRepository.search({ day: rain.day, setting: "indoor" }, now) : [];
+  // Rainy day: indoor ideas, the ones that fit the family's children first.
+  const family = rain ? await homeChildren(now) : [];
+  const indoor = rain ? rankForFamily(await activityRepository.search({ day: rain.day, setting: "indoor" }, now), family, now) : [];
 
   // Nothing left today (e.g. in the evening)? Suggest the coming days instead of an empty card.
   const pickToday = today.length > 0;
@@ -160,6 +164,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <h2 id="rain-h" className="font-display text-xl font-bold leading-tight">
                 {t(rain.when === "today" ? "home.rainToday" : "home.rainTomorrow")}
               </h2>
+              {family.length > 0 && indoor.length > 0 && <p className="text-sm text-muted">{t("home.rainForFamily")}</p>}
               <Link
                 href={{ pathname: "/entdecken", query: { datum: rain.when, ort: "indoor" } }}
                 className="text-sm font-bold underline underline-offset-4"
@@ -225,7 +230,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 href={{ pathname: "/entdecken", query: { kategorie: c } }}
                 className="mv-wiggle-on-touch group flex flex-col items-center gap-1.5 rounded-2xl py-1 text-center"
               >
-                <span className={`grid size-16 place-items-center rounded-full border-2 border-[#263847] text-[#263847] shadow-[0_3px_0_#263847] transition group-hover:-translate-y-1 group-active:scale-95 ${BUBBLES[i % BUBBLES.length]}`}>
+                <span className={`grid size-16 place-items-center rounded-full border-2 border-[#263847] text-[#263847] shadow-[0_3px_0_#263847] transition group-hover:-translate-y-1 pointer-fine:group-active:scale-95 ${BUBBLES[i % BUBBLES.length]}`}>
                   <CategoryIcon category={c} className="mv-wiggle-target size-7" />
                 </span>
                 <span className="line-clamp-2 text-xs font-bold leading-tight">{t(`categories.${c}`)}</span>

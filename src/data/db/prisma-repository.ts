@@ -2,7 +2,7 @@ import "server-only";
 import type { ActivityRepository } from "../repository";
 import { searchActivities, upcomingSessions, type ActivityFilters } from "@/domain/filters";
 import { getPrisma } from "./client";
-import { toDomain } from "./mapping";
+import { findVisibleActivities } from "./visible";
 
 /**
  * PostgreSQL-backed catalogue. The database only returns published, non-expired
@@ -11,17 +11,8 @@ import { toDomain } from "./mapping";
  * Fine for a single-city catalogue; move filters into SQL once listings grow into the thousands.
  */
 export class PrismaActivityRepository implements ActivityRepository {
-  private async visible(now: Date) {
-    const rows = await getPrisma().activity.findMany({
-      where: { status: "published", expiresAt: { gt: now } },
-      include: {
-        provider: true,
-        venue: true,
-        translations: true,
-        sessions: { where: { startsAt: { gte: now }, status: { not: "cancelled" } }, orderBy: { startsAt: "asc" } },
-      },
-    });
-    return rows.map(toDomain);
+  private visible(now: Date) {
+    return findVisibleActivities(getPrisma(), now);
   }
 
   async search(filters: ActivityFilters, now = new Date()) {
