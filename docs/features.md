@@ -64,7 +64,7 @@ _Last updated: 2026-11-25, from the code at commit `af30ef3`._
 - **F-HOME-01 Home:** animated sky/meadow hero, search, date chips (Heute / Morgen / Wochenende / 7 Tage), categories, and the sections *Dieses Wochenende*, *Kostenlos* and *Ferienangebote*.
 - **F-HOME-02 Suggestions:** for signed-in families, "Für {child}" rows are computed from birth year and interests. Nothing extra is stored.
 - **F-HOME-03 Surprise picker:** kids tap, the card shuffles through today's activities and lands on one. If nothing is left today, it suggests the coming days.
-- **F-HOME-04 Rain banner:** the Deutscher Wetterdienst rain outlook for Köln, via the free Bright Sky API. Only fixed city coordinates are sent. Any failure means no banner.
+- **F-HOME-04 Rain banner:** the Deutscher Wetterdienst rain outlook for Köln, via the free Bright Sky API. Only fixed city coordinates are sent. Any failure means no banner. Indoor ideas that fit the family's children (child profiles, or the welcome-screen ages) come first: more children by age, then interests, then the soonest date (`rankForFamily` in `domain/suggestions.ts`). Nothing is filtered out.
 - **F-EXP-01 Explore:** filters for text, date, child's age, category, district, price, language, indoor/outdoor and accessibility. It is a plain GET form, so it works without JavaScript, and filters live in the URL.
 - **F-EXP-02 Map:** Leaflet with OpenStreetMap tiles, loaded only after the user clicks to agree (tiles come from a third party). "Near me" uses the device location, which never leaves the device.
 - **Categories:** `sports, music, dance, arts, stem, theatre, museum, outdoors, baby, holidayCamp` (`domain/types.ts`).

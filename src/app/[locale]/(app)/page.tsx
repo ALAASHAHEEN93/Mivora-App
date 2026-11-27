@@ -5,6 +5,8 @@ import type { ActivityResult } from "@/domain/filters";
 import { formatSessionStart, intlLocale, priceAmount } from "@/domain/format";
 import { pickContent } from "@/domain/localize";
 import { rainOutlook } from "@/server/weather";
+import { homeChildren } from "@/server/home-children";
+import { rankForFamily } from "@/domain/suggestions";
 import { SurprisePicker, type PickerItem } from "@/components/SurprisePicker";
 import { TIME_ZONE } from "@/domain/time";
 import { ActivityCard } from "@/components/ActivityCard";
@@ -65,7 +67,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     activityRepository.search({ date: "today" }, now),
     rainOutlook(now),
   ]);
-  const indoor = rain ? await activityRepository.search({ day: rain.day, setting: "indoor" }, now) : [];
+  // Rainy day: indoor ideas, the ones that fit the family's children first.
+  const family = rain ? await homeChildren(now) : [];
+  const indoor = rain ? rankForFamily(await activityRepository.search({ day: rain.day, setting: "indoor" }, now), family, now) : [];
 
   // Nothing left today (e.g. in the evening)? Suggest the coming days instead of an empty card.
   const pickToday = today.length > 0;
@@ -160,6 +164,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <h2 id="rain-h" className="font-display text-xl font-bold leading-tight">
                 {t(rain.when === "today" ? "home.rainToday" : "home.rainTomorrow")}
               </h2>
+              {family.length > 0 && indoor.length > 0 && <p className="text-sm text-muted">{t("home.rainForFamily")}</p>}
               <Link
                 href={{ pathname: "/entdecken", query: { datum: rain.when, ort: "indoor" } }}
                 className="text-sm font-bold underline underline-offset-4"

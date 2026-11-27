@@ -5,6 +5,7 @@ Notable changes, newest first. Format based on [Keep a Changelog](https://keepac
 ## [Unreleased]
 
 ### Added
+- 2026-11-27: Rainy days on the home screen: the indoor ideas that fit the family's children (by age, then interests) now come first, with the line "Passend für eure Kinder zuerst." Uses child profiles or the welcome-screen ages; nothing new is stored or sent.
 - 2026-11-26: Empty-state scenes with the star mascot (`components/illustrations/EmptyArt.tsx`): nothing saved (empty heart), no search results (magnifier), nothing planned today (napping star + calendar), not found (signpost), screen error (plaster), offline (cloud). Used on Gemerkt, Entdecken, Kalender, the not-found pages, the error screen and `offline.html`. The star now has sleepy, curious and "oops" faces.
 - 2026-11-26: `pnpm art:export` writes the editable copy `design/mivora-empty-states.svg`.
 - 2026-11-25: 19 more fictional demo listings (32 visible, 15 Köln Stadtteile, all 9 languages) in `src/data/demo-activities-more.ts`.

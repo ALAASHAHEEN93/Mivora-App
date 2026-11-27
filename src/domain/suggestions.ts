@@ -28,3 +28,29 @@ export function suggestForChild(
     .sort((a, b) => Number(matchesInterest(b)) - Number(matchesInterest(a)) || a.sessions[0]!.startsAt.localeCompare(b.sessions[0]!.startsAt))
     .slice(0, limit);
 }
+
+/**
+ * Orders a list for the whole family: activities that fit more of the children (by age) come
+ * first, then those matching more interests, then the soonest date. Nothing is dropped, so
+ * a family still sees every idea (e.g. on a rainy day), just the best fits first.
+ */
+export function rankForFamily(
+  results: ActivityResult[],
+  children: readonly { birthYear: number; interests: readonly string[] }[],
+  now: Date,
+): ActivityResult[] {
+  if (children.length === 0) return results;
+  const kids = children.map((c) => ({ ages: possibleAges(c.birthYear, now), likes: new Set(c.interests) }));
+  const score = (r: ActivityResult) => {
+    let fits = 0;
+    let likes = 0;
+    for (const k of kids) {
+      if (r.activity.ageMin > k.ages[1] || r.activity.ageMax < k.ages[0]) continue;
+      fits++;
+      if (r.activity.categories.some((c: CategorySlug) => k.likes.has(c))) likes++;
+    }
+    return fits * 100 + likes;
+  };
+  const scored = results.map((r) => ({ r, s: score(r), at: r.sessions[0]?.startsAt ?? "" }));
+  return scored.sort((a, b) => b.s - a.s || a.at.localeCompare(b.at)).map((x) => x.r);
+}

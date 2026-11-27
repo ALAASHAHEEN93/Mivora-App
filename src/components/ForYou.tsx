@@ -1,13 +1,10 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { activityRepository } from "@/data/repository";
-import { getPrisma } from "@/data/db/client";
 import { childColor } from "@/domain/children";
 import { possibleAges, suggestForChild } from "@/domain/suggestions";
-import { listChildren } from "@/server/family";
 import { accountsAvailable, getCurrentUser } from "@/server/auth/session";
-import { cookies } from "next/headers";
-import { AGES_COOKIE, parseAges } from "@/domain/ages";
+import { homeChildren } from "@/server/home-children";
 import { ActivityCard } from "./ActivityCard";
 import { ScrollRow } from "./ScrollRow";
 import { Mascot } from "./illustrations/Mascot";
@@ -20,13 +17,11 @@ import { Mascot } from "./illustrations/Mascot";
 export async function ForYou({ now }: { now: Date }) {
   const t = await getTranslations();
   const user = accountsAvailable() ? await getCurrentUser() : null;
-  const accountChildren = user ? await listChildren(getPrisma(), user.id) : [];
-  // Without child profiles, use the ages picked on the welcome screen (device only).
-  const deviceAges = accountChildren.length ? [] : parseAges((await cookies()).get(AGES_COOKIE)?.value);
-  const year = now.getUTCFullYear();
-  const children = accountChildren.length
-    ? accountChildren.map((c, i) => ({ ...c, name: c.nickname ?? t("family.childFallback", { n: i + 1 }) }))
-    : deviceAges.map((age) => ({ id: `age-${age}`, nickname: null, birthYear: year - age, interests: [] as string[], name: String(age), byAge: true }));
+  // Child profiles, or else the ages picked on the welcome screen (device only).
+  const children = (await homeChildren(now)).map((c, i) => ({
+    ...c,
+    name: c.byAge ? String(now.getUTCFullYear() - c.birthYear) : (c.nickname ?? t("family.childFallback", { n: i + 1 })),
+  }));
 
   if (children.length === 0) {
     if (!accountsAvailable()) return null;
@@ -56,7 +51,7 @@ export async function ForYou({ now }: { now: Date }) {
     <>
       {children.slice(0, 4).map((c, i) => {
         const name = c.name;
-        const heading = "byAge" in c ? t("home.forAgeChild", { age: name }) : t("home.forChild", { name });
+        const heading = c.byAge ? t("home.forAgeChild", { age: name }) : t("home.forChild", { name });
         const [, age] = possibleAges(c.birthYear, now);
         const picks = suggestForChild(all, c, now);
         const interests = c.interests.map((x) => t(`categories.${x}`)).join(", ");
