@@ -303,7 +303,11 @@
     "remindersTitle": "Przypomnienia",
     "remindersText": "Wieczorem dzień wcześniej wyślemy ci e-mail z jutrzejszymi zajęciami.",
     "remindersOn": "Przypomnienia włączone",
-    "remindersOff": "Przypomnienia wyłączone"
+    "remindersOff": "Przypomnienia wyłączone",
+    "occasionsTitle": "Pomysły na święta i ferie",
+    "occasionsText": "Mniej więcej tydzień przed Bożym Narodzeniem, karnawałem, dniem św. Marcina, Wielkanocą lub feriami szkolnymi wyślemy ci pomysły dopasowane do twoich dzieci. Najwyżej jeden e-mail tygodniowo, możesz to wyłączyć w każdej chwili.",
+    "occasionsOn": "Pomysły na święta włączone",
+    "occasionsOff": "Pomysły na święta wyłączone"
   },
   "email": {
     "subject": "Twój kod Mivora: {code}",
@@ -572,5 +576,22 @@
     "footerText": "Zeskanuj i miej Mivora w telefonie.",
     "qrAlt": "Kod QR do aplikacji Mivora",
     "previewAlt": "Mivora w telefonie: strona główna"
+  },
+  "occasionEmail": {
+    "subject": {
+      "carnival": "Zbliża się karnawał 🎉 Pomysły dla was",
+      "easter": "Zbliża się Wielkanoc 🐣 Pomysły dla was",
+      "halloween": "Zbliża się Halloween 🎃 Pomysły dla was",
+      "stMartin": "Zbliża się dzień św. Marcina 🏮 Pomysły dla was",
+      "nikolaus": "Zbliżają się Mikołajki 🎁 Pomysły dla was",
+      "christmas": "Zbliża się Boże Narodzenie 🎄 Pomysły dla was",
+      "easterBreak": "Zbliżają się ferie wielkanocne ☀️ Pomysły dla was",
+      "summerBreak": "Zbliżają się wakacje ☀️ Pomysły dla was",
+      "autumnBreak": "Zbliżają się ferie jesienne 🍂 Pomysły dla was",
+      "christmasBreak": "Zbliżają się ferie świąteczne ❄️ Pomysły dla was"
+    },
+    "intro": "Cześć! Na {dates} znaleźliśmy te pomysły dla twojej rodziny:",
+    "more": "Więcej pomysłów: {url}",
+    "optOut": "Dostajesz ten e-mail, bo włączono pomysły na święta. Możesz je wyłączyć w profilu: {url}"
   }
 }

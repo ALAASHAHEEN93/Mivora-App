@@ -303,7 +303,11 @@
     "remindersTitle": "Promemoria",
     "remindersText": "La sera prima ti inviamo un'email con le attività di domani.",
     "remindersOn": "Promemoria attivi",
-    "remindersOff": "Promemoria disattivati"
+    "remindersOff": "Promemoria disattivati",
+    "occasionsTitle": "Idee per feste e vacanze",
+    "occasionsText": "Circa una settimana prima di Natale, Carnevale, San Martino, Pasqua o delle vacanze scolastiche ti mandiamo idee adatte ai tuoi bambini. Al massimo un'e-mail a settimana, disattivabile in qualsiasi momento.",
+    "occasionsOn": "Idee per le feste attive",
+    "occasionsOff": "Idee per le feste disattivate"
   },
   "email": {
     "subject": "Il tuo codice Mivora: {code}",
@@ -572,5 +576,22 @@
     "footerText": "Scansiona e porta Mivora sul telefono.",
     "qrAlt": "Codice QR per l’app Mivora",
     "previewAlt": "Mivora sul telefono: home"
+  },
+  "occasionEmail": {
+    "subject": {
+      "carnival": "Arriva il Carnevale 🎉 Idee per voi",
+      "easter": "Arriva Pasqua 🐣 Idee per voi",
+      "halloween": "Arriva Halloween 🎃 Idee per voi",
+      "stMartin": "Arriva San Martino 🏮 Idee per voi",
+      "nikolaus": "Arriva San Nicola 🎁 Idee per voi",
+      "christmas": "Arriva Natale 🎄 Idee per voi",
+      "easterBreak": "Arrivano le vacanze di Pasqua ☀️ Idee per voi",
+      "summerBreak": "Arrivano le vacanze estive ☀️ Idee per voi",
+      "autumnBreak": "Arrivano le vacanze d'autunno 🍂 Idee per voi",
+      "christmasBreak": "Arrivano le vacanze di Natale ❄️ Idee per voi"
+    },
+    "intro": "Ciao! Per {dates} abbiamo trovato queste idee per la tua famiglia:",
+    "more": "Altre idee: {url}",
+    "optOut": "Ricevi questa e-mail perché hai attivato le idee per le feste. Puoi disattivarle nel profilo: {url}"
   }
 }

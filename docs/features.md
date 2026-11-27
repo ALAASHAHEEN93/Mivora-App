@@ -30,6 +30,7 @@ _Last updated: 2026-11-25, from the code at commit `af30ef3`._
 | F-ACC-01 | Family account: email code sign-in | ✅ | `app/[locale]/anmelden`, `server/auth/*` |
 | F-ACC-02 | Child profiles, data export, account deletion | ✅ | `app/[locale]/(app)/profil`, `server/family.ts`, `api/account/export` |
 | F-ACC-03 | Reminder and "still current?" emails | ✅ | `server/jobs.ts`, `scripts/daily-jobs.ts` |
+| F-ACC-04 | Holiday idea emails (opt-in): a week before Christmas, carnival, St. Martin, Easter, school breaks | ✅ | `domain/occasions.ts`, `server/jobs.ts`, Profil switch, [ADR-0004](decisions/0004-holiday-idea-emails-opt-in.md). NRW school-break dates still to fill in |
 | F-ADM-01 | Admin: dashboard, create/edit listings, approve/decline | ✅ | `app/[locale]/(app)/admin`, `server/listings.ts` |
 | F-ADM-02 | Audit log of listing decisions | ✅ | `AuditLog` model |
 | F-ADM-03 | Photo upload (checked, re-encoded, metadata removed) | ✅ | `server/photos.ts`, `api/photos/[id]` |

@@ -6,7 +6,11 @@ import { mergeMessages } from "@/i18n/merge";
 import { routing } from "@/i18n/routing";
 import { decodePlanned } from "@/domain/calendar";
 import { addDays, berlinDate } from "@/domain/time";
-import { formatTime } from "@/domain/format";
+import { formatDayRange, formatSessionStart, formatTime } from "@/domain/format";
+import { pickContent } from "@/domain/localize";
+import { dueOccasions, NRW_SCHOOL_BREAKS, type Occasion } from "@/domain/occasions";
+import { occasionSuggestions } from "@/domain/suggestions";
+import type { Activity } from "@/domain/types";
 
 export type OutgoingMail = { to: string; subject: string; text: string };
 export type Send = (mail: OutgoingMail) => Promise<void>;
@@ -93,6 +97,75 @@ export async function sendRecheckRequests(db: PrismaClient, send: Send, appUrl: 
     await db.activity.update({ where: { id: a.id }, data: { recheckSentAt: now } });
   }
   return stale.length;
+}
+
+/**
+ * Holiday ideas (opt-in): about a week before Christmas, carnival, St. Martin, a school
+ * break … parents who switched it on get up to 5 activities in that window that fit their
+ * children. Each occasion once per family, at most one such email a week, never an empty one.
+ */
+export async function sendOccasionSuggestions(
+  db: PrismaClient,
+  send: Send,
+  appUrl: string,
+  activities: Activity[],
+  now = new Date(),
+  breaks = NRW_SCHOOL_BREAKS,
+) {
+  const due = dueOccasions(berlinDate(now), breaks);
+  if (due.length === 0) return 0;
+  const users = await db.user.findMany({
+    where: { occasionEmailsSince: { not: null } },
+    select: {
+      id: true,
+      email: true,
+      locale: true,
+      children: { select: { birthYear: true, interests: true } },
+      occasionNotices: {
+        where: { OR: [{ occasionKey: { in: due.map((o) => o.key) } }, { sentAt: { gt: new Date(now.getTime() - 7 * DAY) } }] },
+        select: { occasionKey: true, sentAt: true },
+      },
+    },
+  });
+
+  let sent = 0;
+  for (const user of users) {
+    if (user.occasionNotices.some((n) => n.sentAt.getTime() > now.getTime() - 7 * DAY)) continue;
+    const done = new Set(user.occasionNotices.map((n) => n.occasionKey));
+    let pick: { occasion: Occasion; ideas: ReturnType<typeof occasionSuggestions> } | null = null;
+    for (const occasion of due) {
+      if (done.has(occasion.key)) continue;
+      const ideas = occasionSuggestions(activities, occasion, user.children, now);
+      if (ideas.length) {
+        pick = { occasion, ideas };
+        break;
+      }
+    }
+    if (!pick) continue;
+
+    const t = translator(user.locale, "occasionEmail");
+    const lines = pick.ideas.map(({ activity, sessions }) => {
+      const title = pickContent(activity, user.locale).text.title;
+      return `• ${formatSessionStart(sessions[0]!.startsAt, user.locale)}: ${title} (${activity.venue.district})\n  ${appUrl}/${user.locale}/aktivitaet/${activity.slug}`;
+    });
+    await send({
+      to: user.email,
+      subject: t(`subject.${pick.occasion.id}`),
+      text: [
+        t("intro", { dates: formatDayRange(pick.occasion.from, pick.occasion.to, user.locale) }),
+        "",
+        ...lines,
+        "",
+        t("more", { url: `${appUrl}/${user.locale}/entdecken` }),
+        "",
+        t("optOut", { url: `${appUrl}/${user.locale}/profil` }),
+        "– Mivora",
+      ].join("\n"),
+    });
+    await db.occasionNotice.create({ data: { userId: user.id, occasionKey: pick.occasion.key, sentAt: now } });
+    sent++;
+  }
+  return sent;
 }
 
 /** Provider confirms their listing is still current (own listings only). */

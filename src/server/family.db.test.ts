@@ -13,7 +13,8 @@ import { adminStats, approveSubmission, createSubmission, listAllActivities, lis
 import { readPhoto, savePhoto } from "./photos";
 import { createReport, listOpenReports, resolveReport } from "./reports";
 import { createInquiry } from "./inquiries";
-import { confirmListing, sendRecheckRequests, sendTomorrowReminders, type OutgoingMail } from "./jobs";
+import { confirmListing, sendOccasionSuggestions, sendRecheckRequests, sendTomorrowReminders, type OutgoingMail } from "./jobs";
+import { buildDemoActivities } from "@/data/demo-activities";
 import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
@@ -452,6 +453,35 @@ describe.skipIf(!url)("accounts & family (database)", () => {
       expect(mails[0]!.text).toContain("(Maus)");
       // not twice
       expect(await sendTomorrowReminders(db, send, "https://test.example", evening)).toBe(0);
+    });
+
+    it("sends holiday ideas only to parents who opted in, once per occasion, at most weekly", async () => {
+      const anna = await signIn("anna@example.invalid");
+      await signIn("ben@example.invalid"); // never opted in
+      await db.user.update({ where: { id: anna.userId }, data: { occasionEmailsSince: new Date("2026-11-01T12:00:00Z") } });
+      await addChild(db, anna.userId, { nickname: "Maus", birthYear: 2020, interests: [] });
+      const now = new Date("2026-11-20T17:00:00Z");
+      const activities = buildDemoActivities(now);
+      const breaks = [
+        { id: "autumnBreak" as const, from: "2026-11-23", to: "2026-11-29" },
+        { id: "summerBreak" as const, from: "2026-11-24", to: "2026-11-29" },
+      ];
+      const mails: OutgoingMail[] = [];
+      const send = async (m: OutgoingMail) => {
+        mails.push(m);
+      };
+      expect(await sendOccasionSuggestions(db, send, "https://test.example", activities, now, breaks)).toBe(1);
+      expect(mails[0]!.to).toBe("anna@example.invalid");
+      expect(mails[0]!.subject).toContain("Herbstferien");
+      expect(mails[0]!.text).toContain("https://test.example/de/aktivitaet/");
+      expect(mails[0]!.text).toContain("https://test.example/de/profil");
+      // the second occasion waits: at most one such email a week
+      const nextDay = new Date("2026-11-21T17:00:00Z");
+      expect(await sendOccasionSuggestions(db, send, "https://test.example", activities, nextDay, breaks)).toBe(0);
+      // switching off stops it
+      await db.user.update({ where: { id: anna.userId }, data: { occasionEmailsSince: null } });
+      await db.occasionNotice.deleteMany();
+      expect(await sendOccasionSuggestions(db, send, "https://test.example", activities, now, breaks)).toBe(0);
     });
 
     it("asks providers about stale listings, at most weekly; confirming resets it", async () => {

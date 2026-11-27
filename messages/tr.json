@@ -303,7 +303,11 @@
     "remindersTitle": "Hatırlatmalar",
     "remindersText": "Bir önceki akşam yarınki etkinliklerini e-postayla göndeririz.",
     "remindersOn": "Hatırlatmalar açık",
-    "remindersOff": "Hatırlatmalar kapalı"
+    "remindersOff": "Hatırlatmalar kapalı",
+    "occasionsTitle": "Bayram ve tatil fikirleri",
+    "occasionsText": "Noel, karnaval, Aziz Martin, Paskalya veya okul tatillerinden yaklaşık bir hafta önce çocuklarına uygun fikirler gönderiyoruz. Haftada en fazla bir e-posta; istediğin zaman kapatabilirsin.",
+    "occasionsOn": "Bayram fikirleri açık",
+    "occasionsOff": "Bayram fikirleri kapalı"
   },
   "email": {
     "subject": "Mivora kodun: {code}",
@@ -572,5 +576,22 @@
     "footerText": "Tara ve Mivora’yı telefonuna al.",
     "qrAlt": "Mivora uygulamasına QR kodu",
     "previewAlt": "Telefonda Mivora: ana sayfa"
+  },
+  "occasionEmail": {
+    "subject": {
+      "carnival": "Karnaval yaklaşıyor 🎉 Size fikirler",
+      "easter": "Paskalya yaklaşıyor 🐣 Size fikirler",
+      "halloween": "Cadılar Bayramı yaklaşıyor 🎃 Size fikirler",
+      "stMartin": "Aziz Martin Günü yaklaşıyor 🏮 Size fikirler",
+      "nikolaus": "Aziz Nikolaos Günü yaklaşıyor 🎁 Size fikirler",
+      "christmas": "Noel yaklaşıyor 🎄 Size fikirler",
+      "easterBreak": "Paskalya tatili yaklaşıyor ☀️ Size fikirler",
+      "summerBreak": "Yaz tatili yaklaşıyor ☀️ Size fikirler",
+      "autumnBreak": "Sonbahar tatili yaklaşıyor 🍂 Size fikirler",
+      "christmasBreak": "Noel tatili yaklaşıyor ❄️ Size fikirler"
+    },
+    "intro": "Merhaba! {dates} için ailen için şu fikirleri bulduk:",
+    "more": "Daha fazla fikir: {url}",
+    "optOut": "Bu e-postayı bayram fikirlerini açtığın için alıyorsun. Profilinden kapatabilirsin: {url}"
   }
 }

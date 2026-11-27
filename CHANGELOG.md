@@ -5,6 +5,7 @@ Notable changes, newest first. Format based on [Keep a Changelog](https://keepac
 ## [Unreleased]
 
 ### Added
+- 2026-11-27: Holiday idea emails (opt-in, [ADR-0004](docs/decisions/0004-holiday-idea-emails-opt-in.md)): about a week before Christmas, Köln carnival, St. Martin, Nikolaus, Halloween, Easter or NRW school holidays, `pnpm jobs:daily` emails parents up to 5 activities in that window that fit their children. Off by default; switch "Ideen zu Feiertagen & Ferien" in Profil. Once per occasion, at most weekly, never empty. Occasion calendar with Easter/carnival dates in `domain/occasions.ts`; NRW school-break dates still to fill in. New `User.occasionEmailsSince` and `OccasionNotice` (migration `occasion_emails`); both included in the data export.
 - 2026-11-27: Rainy days on the home screen: the indoor ideas that fit the family's children (by age, then interests) now come first, with the line "Passend für eure Kinder zuerst." Uses child profiles or the welcome-screen ages; nothing new is stored or sent.
 - 2026-11-26: Empty-state scenes with the star mascot (`components/illustrations/EmptyArt.tsx`): nothing saved (empty heart), no search results (magnifier), nothing planned today (napping star + calendar), not found (signpost), screen error (plaster), offline (cloud). Used on Gemerkt, Entdecken, Kalender, the not-found pages, the error screen and `offline.html`. The star now has sleepy, curious and "oops" faces.
 - 2026-11-26: `pnpm art:export` writes the editable copy `design/mivora-empty-states.svg`.

@@ -303,7 +303,11 @@
     "remindersTitle": "Erinnerungen",
     "remindersText": "Am Abend vorher schicken wir dir eine E-Mail mit den Terminen von morgen.",
     "remindersOn": "Erinnerungen an",
-    "remindersOff": "Erinnerungen aus"
+    "remindersOff": "Erinnerungen aus",
+    "occasionsTitle": "Ideen zu Feiertagen & Ferien",
+    "occasionsText": "Etwa eine Woche vor Weihnachten, Karneval, St. Martin, Ostern oder den Schulferien schicken wir dir passende Ideen für deine Kinder. Höchstens eine E-Mail pro Woche, jederzeit abschaltbar.",
+    "occasionsOn": "Feiertags-Ideen an",
+    "occasionsOff": "Feiertags-Ideen aus"
   },
   "email": {
     "subject": "Dein Mivora-Code: {code}",
@@ -572,5 +576,22 @@
     "footerText": "Scannen und Mivora aufs Handy holen.",
     "qrAlt": "QR-Code zur Mivora-App",
     "previewAlt": "Mivora auf dem Handy: Startseite"
+  },
+  "occasionEmail": {
+    "subject": {
+      "carnival": "Karneval steht vor der Tür 🎉 Ideen für euch",
+      "easter": "Bald ist Ostern 🐣 Ideen für euch",
+      "halloween": "Bald ist Halloween 🎃 Ideen für euch",
+      "stMartin": "Bald ist St. Martin 🏮 Ideen für euch",
+      "nikolaus": "Bald ist Nikolaus 🎁 Ideen für euch",
+      "christmas": "Weihnachten steht vor der Tür 🎄 Ideen für euch",
+      "easterBreak": "Bald sind Osterferien ☀️ Ideen für euch",
+      "summerBreak": "Bald sind Sommerferien ☀️ Ideen für euch",
+      "autumnBreak": "Bald sind Herbstferien 🍂 Ideen für euch",
+      "christmasBreak": "Bald sind Weihnachtsferien ❄️ Ideen für euch"
+    },
+    "intro": "Hallo! Für {dates} haben wir diese Ideen für eure Familie gefunden:",
+    "more": "Noch mehr Ideen: {url}",
+    "optOut": "Du bekommst diese E-Mail, weil du Feiertags-Ideen eingeschaltet hast. Abschalten kannst du sie im Profil: {url}"
   }
 }

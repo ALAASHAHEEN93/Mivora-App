@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { buildDemoActivities } from "@/data/demo-activities";
 import { searchActivities } from "./filters";
-import { possibleAges, rankForFamily, suggestForChild } from "./suggestions";
+import { occasionSuggestions, possibleAges, rankForFamily, suggestForChild } from "./suggestions";
+import { berlinDate } from "./time";
 
 const now = new Date("2026-11-17T12:00:00Z");
 const all = searchActivities(buildDemoActivities(now), {}, now);
@@ -60,5 +61,26 @@ describe("family ranking", () => {
     expect(both(res[0]!)).toBe(true);
     const theatreForBoth = all.some((r) => both(r) && r.activity.categories.includes("theatre"));
     if (theatreForBoth) expect(res[0]!.activity.categories).toContain("theatre");
+  });
+});
+
+describe("holiday email ideas", () => {
+  const activities = buildDemoActivities(now);
+  const window = { from: "2026-11-21", to: "2026-11-29" };
+
+  it("only takes sessions inside the window, at most 5", () => {
+    const res = occasionSuggestions(activities, window, [], now);
+    expect(res.length).toBeGreaterThan(0);
+    expect(res.length).toBeLessThanOrEqual(5);
+    for (const r of res) for (const s of r.sessions) expect(berlinDate(new Date(s.startsAt)) >= window.from && berlinDate(new Date(s.startsAt)) <= window.to).toBe(true);
+  });
+
+  it("drops activities that fit none of the children", () => {
+    const res = occasionSuggestions(activities, window, [{ birthYear: 2024, interests: [] }], now, 50);
+    expect(res.every((r) => r.activity.ageMin <= 2 && r.activity.ageMax >= 1)).toBe(true);
+  });
+
+  it("finds nothing in a window without sessions", () => {
+    expect(occasionSuggestions(activities, { from: "2030-01-01", to: "2030-01-02" }, [], now)).toEqual([]);
   });
 });

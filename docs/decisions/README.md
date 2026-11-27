@@ -13,3 +13,4 @@ ADRs 0001–0003 were recorded on 2026-11-25 for decisions made earlier (16.–2
 | [0001](0001-single-nextjs-app.md) | One Next.js app with a pure `domain/` layer | Accepted | 2026-11-16 |
 | [0002](0002-repository-with-demo-fallback.md) | Repository boundary, Prisma 7, demo-data fallback | Accepted | 2026-11-16 |
 | [0003](0003-brand-design-system.md) | Brand design system: tokens, dark mode, original artwork | Accepted | 2026-11-17 to 2026-11-21 |
+| [0004](0004-holiday-idea-emails-opt-in.md) | Holiday idea emails are opt-in | Accepted | 2026-11-27 |

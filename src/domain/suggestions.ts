@@ -1,5 +1,5 @@
-import type { ActivityResult } from "./filters";
-import type { CategorySlug } from "./types";
+import { searchActivities, type ActivityResult } from "./filters";
+import type { Activity, CategorySlug } from "./types";
 
 /**
  * We only know a child's birth year, so in a given year the child is one of two ages.
@@ -53,4 +53,27 @@ export function rankForFamily(
   };
   const scored = results.map((r) => ({ r, s: score(r), at: r.sessions[0]?.startsAt ?? "" }));
   return scored.sort((a, b) => b.s - a.s || a.at.localeCompare(b.at)).map((x) => x.r);
+}
+
+/**
+ * Ideas for a holiday email: activities in the occasion's window. With children on file,
+ * only those that fit at least one child's age; best family fit first.
+ */
+export function occasionSuggestions(
+  activities: Activity[],
+  window: { from: string; to: string },
+  children: readonly { birthYear: number; interests: readonly string[] }[],
+  now: Date,
+  limit = 5,
+): ActivityResult[] {
+  const inWindow = searchActivities(activities, { between: window }, now);
+  const fitting = children.length
+    ? inWindow.filter((r) =>
+        children.some((c) => {
+          const [low, high] = possibleAges(c.birthYear, now);
+          return r.activity.ageMin <= high && r.activity.ageMax >= low;
+        }),
+      )
+    : inWindow;
+  return rankForFamily(fitting, children, now).slice(0, limit);
 }

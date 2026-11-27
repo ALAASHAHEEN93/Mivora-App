@@ -61,6 +61,12 @@ describe("filters", () => {
     for (const r of res) for (const s of r.sessions) expect(berlinDate(new Date(s.startsAt))).toBe("2026-11-21");
   });
 
+  it("a date window keeps only sessions between both days (inclusive)", () => {
+    const res = searchActivities(data, { between: { from: "2026-11-21", to: "2026-11-22" } }, NOW);
+    expect(res.length).toBeGreaterThan(0);
+    for (const r of res) for (const s of r.sessions) expect(["2026-11-21", "2026-11-22"]).toContain(berlinDate(new Date(s.startsAt)));
+  });
+
   it("matches text across languages and provider name", () => {
     expect(slugs(searchActivities(data, { q: "robotik" }, NOW))).toEqual(["robotik-werkstatt"]);
     expect(slugs(searchActivities(data, { q: "okuma" }, NOW))).toEqual(["mehrsprachige-vorlesestunde"]);

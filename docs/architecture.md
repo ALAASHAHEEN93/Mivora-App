@@ -143,7 +143,7 @@ sequenceDiagram
 | Bright Sky (DWD open data) | Rain banner | Fixed Köln coordinates | Server-side; failure means no banner |
 | OpenStreetMap tile server | Explore map | Visitor's IP (tile requests) | Only after a consent click. Production needs an EU tile provider with an agreement |
 | images.unsplash.com | Demo listing photos | Visitor's IP | Demo only (Unsplash License). Real listings use uploaded photos |
-| SMTP provider | Sign-in codes, inquiries, reminders | Recipient email and content | Mailpit locally. EU provider + DPA before going live |
+| SMTP provider | Sign-in codes, inquiries, reminders, holiday ideas | Recipient email and content | Mailpit locally. EU provider + DPA before going live |
 
 ---
 
